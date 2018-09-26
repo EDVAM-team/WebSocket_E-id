@@ -1,0 +1,1 @@
+web: ./build/install/keu-guide/bin/keu-guide
