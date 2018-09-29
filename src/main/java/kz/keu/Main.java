@@ -20,13 +20,25 @@ import static spark.Spark.*;
 
 public class Main {
 
+    /**
+     * Запускает WebSocket
+     * Port и запросы настроенны именно в этом методе.
+     */
     public static void main(String[] args) {
 
+        /* Изменяет port. */
         port(getHerokuAssignedPort());
 
+        /* GET запрос на получение статуса WebSocket'а */
         get("/", (req, res) -> "Status: Online");
     }
 
+    /**
+     * Настройка port'а
+     * С heroku.com приходит ответ зарег. порта для WebSocket'а
+     *
+     * @return если сервер запущен на стороне heroku.com, то будет использован port от heroku.com.
+     */
     private static int getHerokuAssignedPort() {
         ProcessBuilder processBuilder = new ProcessBuilder();
 
