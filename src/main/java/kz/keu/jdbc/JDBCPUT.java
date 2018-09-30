@@ -16,28 +16,29 @@
 
 package kz.keu.jdbc;
 
-import kz.keu.utils.HerokuKey;
-
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 public class JDBCPUT {
 
-    /* Подключается к базе данных. */
-    private Connection connection;
+    /**
+     * Вносит изменения в расписании группы.
+     * Используется таблица "schedule"
+     *
+     * @param connection
+     * @return
+     */
+    public static String putSchedule(Connection connection){
+        return "JDBCPUT getSchedule";
+    }
 
-    /* Служит для выполнения запросов к базе данных. */
-    private PreparedStatement preparedStatement;
-
-    public JDBCPUT() {
-
-        try {
-            connection = DriverManager.getConnection(HerokuKey.url, HerokuKey.login, HerokuKey.password);
-        } catch (SQLException e) {
-
-            System.out.println("Error SQL Connecting");
-        }
+    /**
+     * Вносит изменения в замене группы.
+     * Используется таблица "change"
+     *
+     * @param connection
+     * @return
+     */
+    public static String putChange(Connection connection){
+        return "JDBCPUT getChange";
     }
 }

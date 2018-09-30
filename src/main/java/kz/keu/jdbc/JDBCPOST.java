@@ -16,28 +16,29 @@
 
 package kz.keu.jdbc;
 
-import kz.keu.utils.HerokuKey;
-
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 public class JDBCPOST {
 
-    /* Подключается к базе данных. */
-    private Connection connection;
+    /**
+     * Создает расписание для группы.
+     * Используется таблица "schedule"
+     *
+     * @param connection
+     * @return
+     */
+    public static String getSchedule(Connection connection){
+        return "JDBCPOST getSchedule";
+    }
 
-    /* Служит для выполнения запросов к базе данных. */
-    private PreparedStatement preparedStatement;
-
-    public JDBCPOST() {
-
-        try {
-            connection = DriverManager.getConnection(HerokuKey.url, HerokuKey.login, HerokuKey.password);
-        } catch (SQLException e) {
-
-            System.out.println("Error SQL Connecting");
-        }
+    /**
+     * Создает замену для конкретного предмета в расписании группы.
+     * Используется таблица "change"
+     *
+     * @param connection
+     * @return
+     */
+    public static String getChange(Connection connection){
+        return "JDBCPOST getChange";
     }
 }

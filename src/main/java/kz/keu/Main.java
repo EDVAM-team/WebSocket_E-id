@@ -16,9 +16,21 @@
 
 package kz.keu;
 
+import kz.keu.jdbc.JDBCGET;
+import kz.keu.jdbc.JDBCPOST;
+import kz.keu.jdbc.JDBCPUT;
+import kz.keu.utils.HerokuKey;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 import static spark.Spark.*;
 
 public class Main {
+
+    /* Подключается к базе данных. */
+    private static Connection connection;
 
     /**
      * Запускает WebSocket
@@ -29,8 +41,128 @@ public class Main {
         /* Изменяет port. */
         port(getHerokuAssignedPort());
 
+        /* Подключение к БД. */
+        connectDB();
+
         /* GET запрос на получение статуса WebSocket'а */
         get("/", (req, res) -> "Status: Online");
+
+        /* GET запросы */
+        getAPI();
+
+        /* POST запросы */
+        postAPI();
+
+        /* PUT запросы */
+        putAPI();
+    }
+
+    /**
+     * GET запросы.
+     */
+    private static void getAPI() {
+
+        /*
+         * Получить факультеты.
+         *
+         * https://example.com/faculty
+         */
+        get("/faculty", (request, response) -> JDBCGET.getFaculty(connection));
+
+        /*
+         * Получить специальности.
+         *
+         * https://example.com/specialty
+         */
+        get("/specialty", (request, response) -> JDBCGET.getSpecialty(connection));
+
+        /*
+         * Получить группы.
+         *
+         * https://example.com/group
+         */
+        get("/group", (request, response) -> JDBCGET.getGroup(connection));
+
+        /*
+         * Получить расписание.
+         *
+         * https://example.com/schedule
+         */
+        get("/schedule", (request, response) -> JDBCGET.getSchedule(connection));
+
+        /*
+         * Получить преподавателя.
+         *
+         * https://example.com/teacher
+         */
+        get("/teacher", (request, response) -> JDBCGET.getTeacher(connection));
+
+        /*
+         * Получить всех преподавателей.
+         *
+         * https://example.com/teacher/all
+         */
+        path("/teacher", () -> get("/all", (request, response) -> JDBCGET.getAll(connection)));
+
+        /*
+         * Получить список предметов.
+         *
+         * https://example.com/list
+         */
+        get("/list", (request, response) -> JDBCGET.getList(connection));
+    }
+
+    /**
+     * POST запросы.
+     */
+    private static void postAPI() {
+
+        /*
+         * Создает расписание для группы.
+         *
+         * https://example.com/schedule
+         */
+        post("/schedule", (request, response) -> JDBCPOST.getSchedule(connection));
+
+        /*
+         * Создает замену для конкретного предмета в расписании группы.
+         *
+         * https://example.com/change
+         */
+        post("/change", (request, response) -> JDBCPOST.getChange(connection));
+    }
+
+    /**
+     * PUT запросы.
+     */
+    private static void putAPI() {
+
+        /*
+         * Вносит изменения в расписании группы.
+         *
+         * https://example.com/schedule
+         */
+        put("/schedule", (request, response) -> JDBCPUT.putSchedule(connection));
+
+        /*
+         * Вносит изменения в замене группы.
+         *
+         * https://example.com/change
+         */
+        put("/change", (request, response) -> JDBCPUT.putChange(connection));
+    }
+
+    /**
+     * Подключение к БД.
+     */
+    private static void connectDB() {
+
+        try {
+            connection = DriverManager.getConnection(HerokuKey.url, HerokuKey.login, HerokuKey.password);
+        } catch (SQLException e) {
+
+            System.out.println("Error SQL Connecting");
+        }
     }
 
     /**

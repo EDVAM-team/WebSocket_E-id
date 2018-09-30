@@ -16,28 +16,78 @@
 
 package kz.keu.jdbc;
 
-import kz.keu.utils.HerokuKey;
-
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 public class JDBCGET {
 
-    /* Подключается к базе данных. */
-    private Connection connection;
+    /**
+     * Получает информацию с таблицы "faculty"
+     *
+     * @param connection
+     * @return возвращает список факультетов в JSON.
+     */
+    public static String getFaculty(Connection connection){
+        return "JDBCGET getFaculty";
+    }
 
-    /* Служит для выполнения запросов к базе данных. */
-    private PreparedStatement preparedStatement;
+    /**
+     * Получает информацию с таблицы "specialty"
+     *
+     * @param connection
+     * @return возвращает список конкретных специальностей в JSON.
+     */
+    public static String getSpecialty(Connection connection){
+        return "JDBCGET getSpecialty";
+    }
 
-    public JDBCGET() {
+    /**
+     * Получает информацию с таблицы "group"
+     *
+     * @param connection
+     * @return возвращает конкретную группу в JSON.
+     */
+    public static String getGroup(Connection connection){
+        return "JDBCGET getGroup";
+    }
 
-        try {
-            connection = DriverManager.getConnection(HerokuKey.url, HerokuKey.login, HerokuKey.password);
-        } catch (SQLException e) {
+    /**
+     * Обрабатывает информацию так, чтобы JSON отправлял ответ
+     * в виде дня и его предметов. Еще есть информация про замены.
+     *
+     * @param connection
+     * @return возвращает полную информацию расписания группы в JSON.
+     */
+    public static String getSchedule(Connection connection){
+        return "JDBCGET getSchedule";
+    }
 
-            System.out.println("Error SQL Connecting");
-        }
+    /**
+     * Получает информацию с таблицы "teacher"
+     *
+     * @param connection
+     * @return возвращает конкретного преподователя в JSON.
+     */
+    public static String getTeacher(Connection connection){
+        return "JDBCGET getTeacher";
+    }
+
+    /**
+     * Получает информацию с таблицы "teacher"
+     *
+     * @param connection
+     * @return возвращает всех преподавателей в JSON.
+     */
+    public static String getAll(Connection connection){
+        return "JDBCGET getTeacherAll";
+    }
+
+    /**
+     * Получает информацию с таблицы "list_subject"
+     *
+     * @param connection
+     * @return возвращает весь список предметов в JSON.
+     */
+    public static String getList(Connection connection){
+        return "JDBCGET getListAll";
     }
 }
