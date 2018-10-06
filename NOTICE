@@ -1,3 +1,4 @@
 Title            Lib                                        Copyright
 
 Spark            com.sparkjava:spark-core:2.7.2             Per Wendel
+Gson             com.google.code.gson:gson:2.8.2            Google Inc.
