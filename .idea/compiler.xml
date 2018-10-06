@@ -4,6 +4,8 @@
     <bytecodeTargetLevel>
       <module name="keu-_main" target="1.8" />
       <module name="keu-_test" target="1.8" />
+      <module name="keu-guide_main" target="1.8" />
+      <module name="keu-guide_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

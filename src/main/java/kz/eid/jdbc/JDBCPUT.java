@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 KEUGuide
+ * Copyright 2018 EDVAM
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,31 +14,31 @@
  * limitations under the License.
  */
 
-package kz.keu.jdbc;
+package kz.eid.jdbc;
 
 import java.sql.Connection;
 
-public class JDBCPOST {
+public class JDBCPUT {
 
     /**
-     * Создает расписание для группы.
+     * Вносит изменения в расписании группы.
      * Используется таблица "schedule"
      *
      * @param connection
      * @return
      */
-    public static String getSchedule(Connection connection){
-        return "JDBCPOST getSchedule";
+    public static String putSchedule(Connection connection){
+        return "JDBCPUT getSchedule";
     }
 
     /**
-     * Создает замену для конкретного предмета в расписании группы.
+     * Вносит изменения в замене группы.
      * Используется таблица "change"
      *
      * @param connection
      * @return
      */
-    public static String getChange(Connection connection){
-        return "JDBCPOST getChange";
+    public static String putChange(Connection connection){
+        return "JDBCPUT getChange";
     }
 }

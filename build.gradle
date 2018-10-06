@@ -1,10 +1,10 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
-archivesBaseName = "keu-guide"
+archivesBaseName = "e-id"
 version = '1.0'
-applicationName = "keu-guide"
-mainClassName = "kz.keu.Main"
+applicationName = "e-id"
+mainClassName = "kz.eid.Main"
 
 repositories {
     mavenCentral()

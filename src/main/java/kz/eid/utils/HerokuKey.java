@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 KEUGuide
+ * Copyright 2018 EDVAM
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-package kz.keu.utils;
+package kz.eid.utils;
+
+import kz.eid.Main;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -36,7 +38,7 @@ public class HerokuKey {
     /**
      * Ссылка для подключения к базе данных через JDBC.
      * {@link java.sql.DriverManager#getConnection}
-     * в {@link kz.keu.Main#main(String[])}
+     * в {@link Main#main(String[])}
      */
     public static final String url = "jdbc:mysql://" + dbUri.getHost() + dbUri.getPath();
 

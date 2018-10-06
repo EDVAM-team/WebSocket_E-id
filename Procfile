@@ -1,1 +1,1 @@
-web: ./build/install/keu-guide/bin/keu-guide
+web: ./build/install/e-id/bin/e-id

@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 KEUGuide
+ * Copyright 2018 EDVAM
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package kz.keu;
+package kz.eid;
 
-import kz.keu.jdbc.JDBCGET;
-import kz.keu.jdbc.JDBCPOST;
-import kz.keu.jdbc.JDBCPUT;
-import kz.keu.utils.HerokuKey;
+import kz.eid.jdbc.JDBCGET;
+import kz.eid.jdbc.JDBCPOST;
+import kz.eid.jdbc.JDBCPUT;
+import kz.eid.utils.HerokuKey;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
