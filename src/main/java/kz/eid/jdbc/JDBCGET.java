@@ -50,6 +50,7 @@ public class JDBCGET {
         while (resultSet.next()){
             HashMap<String, String> hash = new HashMap<>();
 
+            hash.put("id_faculty", resultSet.getString("id_faculty"));
             hash.put("name", resultSet.getString("name"));
             list.add(hash);
         }
