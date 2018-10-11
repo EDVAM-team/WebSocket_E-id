@@ -1,11 +1,15 @@
 package kz.eid.objects;
 
-public class Faculty {
-    public int id_faculty;
-    public String name;
+import com.google.gson.annotations.SerializedName;
 
-    public Faculty(int id_faculty, String name) {
-        this.id_faculty = id_faculty;
+public class Faculty {
+    @SerializedName("id_faculty")
+    private final int idFaculty;
+    @SerializedName("name")
+    private final String name;
+
+    public Faculty(int idFaculty, String name) {
+        this.idFaculty = idFaculty;
         this.name = name;
     }
 }
