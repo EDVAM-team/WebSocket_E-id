@@ -49,23 +49,53 @@ public class SQLStatement {
     }
 
     /**
-     * Запрос на вывод расписания группы по `id_schedule`
+     * Запрос на вывод расписания группы по `id_group`
      * Истользуется таблица "schedule"
      *
      * @return
      */
     public static String getSchedule(){
-        return "SELECT * FROM `schedule` WHERE `id_schedule`=?";
+        return "SELECT * FROM `schedule` WHERE `id_group`=?";
     }
 
     /**
-     * Запрос на вывод дня из расписания по `id_day`
-     * Истользуется таблица "day"
+     * Запрос на вывод расписания преподавателя по `id_teacher`
+     * Истользуется таблица "schedule"
      *
      * @return
      */
-    public static String getDay(){
-        return "SELECT * FROM `day` WHERE `id_day`=?";
+    public static String getScheduleTeacher(){
+        return "SELECT * FROM `schedule` WHERE `id_teacher`=?";
+    }
+
+    /**
+     * Запрос на вывод замены преподавателя по `id_teacher`
+     * Истользуется таблица "change"
+     *
+     * @return
+     */
+    public static String getChangeTeacher(){
+        return "SELECT * FROM `change` WHERE `id_teacher`=?";
+    }
+
+    /**
+     * Запрос на вывод замены по `id_change`
+     * Истользуется таблица "change"
+     *
+     * @return
+     */
+    public static String getChange(){
+        return "SELECT * FROM `change` WHERE `id_change`=?";
+    }
+
+    /**
+     * Запрос на вывод расписания замены преподавателя по `id_change`
+     * Истользуется таблица "schedule"
+     *
+     * @return
+     */
+    public static String getScheduleChange(){
+        return "SELECT * FROM `schedule` WHERE `id_change`=?";
     }
 
     /**
@@ -79,13 +109,23 @@ public class SQLStatement {
     }
 
     /**
-     * Запрос на вывод замены по `id_change`
-     * Истользуется таблица "change"
+     * Запрос на вывод конкретного одного преподавателя по `id_teacher`
+     * Истользуется таблица "teacher"
      *
      * @return
      */
-    public static String getChange(){
-        return "SELECT * FROM `change` WHERE `id_change`=?";
+    public static String getTeacher(){
+        return "SELECT * FROM `teacher` WHERE `id_teacher`=?";
+    }
+
+    /**
+     * Запрос на вывод всех преподавателей
+     * Истользуется таблица "teacher"
+     *
+     * @return
+     */
+    public static String getTeacherAll(){
+        return "SELECT * FROM `teacher`";
     }
 
     /**
@@ -109,34 +149,14 @@ public class SQLStatement {
     }
 
     /**
-     * Запрос на вывод всех преподавателей
-     * Истользуется таблица "teacher"
-     *
-     * @return
-     */
-    public static String getTeacherAll(){
-        return "SELECT * FROM `teacher`";
-    }
-
-    /**
-     * Запрос на вывод конкретного одного преподавателя по `id_teacher`
-     * Истользуется таблица "teacher"
-     *
-     * @return
-     */
-    public static String getTeacher(){
-        return "SELECT * FROM `teacher` WHERE `id_teacher`=?";
-    }
-
-    /**
      * Запрос на вывод куратора группы по `id_group`
      * Истользуется таблица "search"
      *
      * @return
      */
-    public static String getSearchTeacher(){
-        return "SELECT * FROM `search` WHERE `id_group`=?";
-    }
+//    public static String getSearchTeacher(){
+//        return "SELECT * FROM `search` WHERE `id_group`=?";
+//    }
 
     /**
      * Запрос на вывод групп куратора
@@ -144,8 +164,52 @@ public class SQLStatement {
      *
      * @return
      */
-    public static String getSearchGroup(){
-        return "SELECT * FROM `search` WHERE `id_teacher`=?";
+//    public static String getSearchGroup(){
+//        return "SELECT * FROM `search` WHERE `id_teacher`=?";
+//    }
+
+    /**
+     * Запрос на создание ячейки данных в таблице `faculty`
+     *
+     * @return
+     */
+    public static String postFaculty(){
+        return "INSERT INTO `faculty` " +
+                "(`name`) " +
+                "VALUE (?)";
+    }
+
+    /**
+     * Запрос на создание ячейки данных в таблице `specialty`
+     *
+     * @return
+     */
+    public static String postSpecialty(){
+        return "INSERT INTO `specialty` " +
+                "(`name`, `id_faculty`) " +
+                "VALUE (?, ?)";
+    }
+
+    /**
+     * Запрос на создание ячейки данных в таблице `group`
+     *
+     * @return
+     */
+    public static String postGroup(){
+        return "INSERT INTO `group` " +
+                "(`name`, `id_specialty`) " +
+                "VALUE (?, ?)";
+    }
+
+    /**
+     * Запрос на создание ячейки данных в таблице `teacher`
+     *
+     * @return
+     */
+    public static String postTeacher(){
+        return "INSERT INTO `teacher` " +
+                "(`name`, `s_name`, `l_name`, `phone`, `email`, `room`, `id_group`) " +
+                "VALUE (?, ?, ?, ?, ?, ?, ?)";
     }
 
     /**
@@ -155,7 +219,18 @@ public class SQLStatement {
      */
     public static String postSubject(){
         return "INSERT INTO `schedule_subject` " +
-                "(`id_list_subject`, `type`, `id_teacher`, `room`, `id_change`) " +
+                "(`id_list_subject`, `type`, `room`, `id_change`) " +
+                "VALUE (?, ?, ?, ?)";
+    }
+
+    /**
+     * Запрос на создание ячейки данных в таблице `schedule`
+     *
+     * @return
+     */
+    public static String postSchedule(){
+        return "INSERT INTO `schedule` " +
+                "(`d`, `num`, `id_schedule_subject`, `id_group`, `id_teacher`) " +
                 "VALUE (?, ?, ?, ?, ?)";
     }
 
@@ -168,5 +243,16 @@ public class SQLStatement {
         return "INSERT INTO `change` " +
                 "(`id_list_subject`, `type`, `id_teacher`, `room`) " +
                 "VALUE (?, ?, ?, ?)";
+    }
+
+    /**
+     * Запрос на создание ячейки данных в таблице `list_subject`
+     *
+     * @return
+     */
+    public static String postItemSubject(){
+        return "INSERT INTO `list_subject` " +
+                "(`name`) " +
+                "VALUE (?)";
     }
 }

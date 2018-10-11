@@ -16,9 +16,77 @@
 
 package kz.eid.jdbc;
 
+import spark.Request;
+
 import java.sql.Connection;
 
 public class JDBCPOST {
+
+    /**
+     * Создает факультет.
+     * Используется таблица "faculty"
+     *
+     * @param connection
+     * @return
+     */
+    public static String postFaculty(Connection connection, Request request){
+        return "JDBCPOST postFaculty";
+    }
+
+    /**
+     * Создает факультет.
+     * Используется таблица "specialty"
+     *
+     * @param connection
+     * @return
+     */
+    public static String postSpecialty(Connection connection, Request request){
+        return "JDBCPOST postSpecialty";
+    }
+
+    /**
+     * Создает группу.
+     * Используется таблица "group"
+     *
+     * @param connection
+     * @return
+     */
+    public static String postGroup(Connection connection, Request request){
+        return "JDBCPOST postGroup";
+    }
+
+    /**
+     * Создает преподавателя.
+     * Используется таблица "teacher"
+     *
+     * @param connection
+     * @return
+     */
+    public static String postTeacher(Connection connection, Request request){
+        return "JDBCPOST postTeacher";
+    }
+
+    /**
+     * Создает предмет для расписания.
+     * Используется таблица "schedule_subject"
+     *
+     * @param connection
+     * @return
+     */
+    public static String postSubject(Connection connection, Request request){
+        return "JDBCPOST postSubject";
+    }
+
+    /**
+     * Создает предмет для расписания.
+     * Используется таблица "list_subject"
+     *
+     * @param connection
+     * @return
+     */
+    public static String postSubjectItem(Connection connection, Request request){
+        return "JDBCPOST postSubjectItem";
+    }
 
     /**
      * Создает расписание для группы.
@@ -27,8 +95,8 @@ public class JDBCPOST {
      * @param connection
      * @return
      */
-    public static String getSchedule(Connection connection){
-        return "JDBCPOST getSchedule";
+    public static String postSchedule(Connection connection, Request request){
+        return "JDBCPOST postSchedule";
     }
 
     /**
@@ -38,7 +106,7 @@ public class JDBCPOST {
      * @param connection
      * @return
      */
-    public static String getChange(Connection connection){
-        return "JDBCPOST getChange";
+    public static String postChange(Connection connection, Request request){
+        return "JDBCPOST postChange";
     }
 }

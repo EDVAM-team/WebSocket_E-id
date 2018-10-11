@@ -16,9 +16,26 @@
 
 package kz.eid.jdbc;
 
+import com.google.gson.Gson;
+import kz.eid.utils.SQLStatement;
+import spark.Request;
+
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class JDBCGET {
+
+    /**
+     * Отправка ключа для редактирования
+     *
+     * @return возвращает список факультетов в JSON.
+     */
+    public static String getAuth(Request request){
+        return "JDBCGET getAuth";
+    }
 
     /**
      * Получает информацию с таблицы "faculty"
@@ -26,8 +43,14 @@ public class JDBCGET {
      * @param connection
      * @return возвращает список факультетов в JSON.
      */
-    public static String getFaculty(Connection connection){
-        return "JDBCGET getFaculty";
+    public static String getFaculty(Connection connection) throws SQLException {
+        ArrayList<HashMap<String, String>> list = new ArrayList<>();
+        ResultSet resultSet = connection.prepareStatement(SQLStatement.getFaculty()).executeQuery();
+
+        while (resultSet.next())
+            list.add(new HashMap<String, String>(){{ put("name", resultSet.getString("name")); }});
+
+        return new Gson().toJson(list);
     }
 
     /**
@@ -36,7 +59,7 @@ public class JDBCGET {
      * @param connection
      * @return возвращает список конкретных специальностей в JSON.
      */
-    public static String getSpecialty(Connection connection){
+    public static String getSpecialty(Connection connection, Request request){
         return "JDBCGET getSpecialty";
     }
 
@@ -46,19 +69,30 @@ public class JDBCGET {
      * @param connection
      * @return возвращает конкретную группу в JSON.
      */
-    public static String getGroup(Connection connection){
+    public static String getGroup(Connection connection, Request request){
         return "JDBCGET getGroup";
     }
 
     /**
      * Обрабатывает информацию так, чтобы JSON отправлял ответ
-     * в виде дня и его предметов. Еще есть информация про замены.
+     * расписания на всю неделю для ученика. Еще есть информация про замены.
      *
      * @param connection
      * @return возвращает полную информацию расписания группы в JSON.
      */
-    public static String getSchedule(Connection connection){
+    public static String getSchedule(Connection connection, Request request){
         return "JDBCGET getSchedule";
+    }
+
+    /**
+     * Обрабатывает информацию так, чтобы JSON отправлял ответ
+     * расписания на всю неделю для преподавателя. Еще есть информация про замены.
+     *
+     * @param connection
+     * @return возвращает полную информацию расписания группы в JSON.
+     */
+    public static String getScheduleTeacher(Connection connection, Request request){
+        return "JDBCGET getScheduleTeacher";
     }
 
     /**
@@ -67,7 +101,7 @@ public class JDBCGET {
      * @param connection
      * @return возвращает конкретного преподователя в JSON.
      */
-    public static String getTeacher(Connection connection){
+    public static String getTeacher(Connection connection, Request request){
         return "JDBCGET getTeacher";
     }
 

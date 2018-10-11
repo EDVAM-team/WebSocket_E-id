@@ -67,7 +67,7 @@ public class Main {
          *
          * https://example.com/auth
          */
-        get("/auth", (request, response) -> "return");
+        get("/auth", (request, response) -> JDBCGET.getAuth(request));
 
         /*
          * Получить факультеты.
@@ -81,35 +81,35 @@ public class Main {
          *
          * https://example.com/specialty
          */
-        get("/specialty", (request, response) -> JDBCGET.getSpecialty(connection));
+        get("/specialty", (request, response) -> JDBCGET.getSpecialty(connection, request));
 
         /*
          * Получить группы.
          *
          * https://example.com/group
          */
-        get("/group", (request, response) -> JDBCGET.getGroup(connection));
+        get("/group", (request, response) -> JDBCGET.getGroup(connection, request));
 
         /*
          * Получить расписание.
          *
          * https://example.com/schedule
          */
-        get("/schedule", (request, response) -> JDBCGET.getSchedule(connection));
+        get("/schedule", (request, response) -> JDBCGET.getSchedule(connection, request));
 
         /*
          * Получить расписание для преподователя.
          *
          * https://example.com/schedule/teacher
          */
-        path("/schedule", () -> get("/teacher", (request, response) -> "return"));
+        path("/schedule", () -> get("/teacher", (request, response) -> JDBCGET.getScheduleTeacher(connection, request)));
 
         /*
          * Получить преподавателя.
          *
          * https://example.com/teacher
          */
-        get("/teacher", (request, response) -> JDBCGET.getTeacher(connection));
+        get("/teacher", (request, response) -> JDBCGET.getTeacher(connection, request));
 
         /*
          * Получить всех преподавателей.
@@ -136,49 +136,56 @@ public class Main {
          *
          * https://example.com/faculty
          */
-        post("/faculty", (request, response) -> "return");
+        post("/faculty", (request, response) -> JDBCPOST.postFaculty(connection, request));
 
         /*
          * Создает специальность.
          *
          * https://example.com/specialty
          */
-        post("/specialty", (request, response) -> "return");
+        post("/specialty", (request, response) -> JDBCPOST.postSpecialty(connection, request));
 
         /*
          * Создает группу.
          *
          * https://example.com/group
          */
-        post("/group", (request, response) -> "return");
+        post("/group", (request, response) -> JDBCPOST.postGroup(connection, request));
 
         /*
          * Создает преподавателя.
          *
          * https://example.com/teacher
          */
-        post("/teacher", (request, response) -> "return");
+        post("/teacher", (request, response) -> JDBCPOST.postTeacher(connection, request));
+
+        /*
+         * Создает предмет для расписания.
+         *
+         * https://example.com/subject
+         */
+        post("/subject", (request, response) -> JDBCPOST.postSubject(connection, request));
 
         /*
          * Создает предмет.
          *
-         * https://example.com/subject
+         * https://example.com/subject/item
          */
-        post("/subject", (request, response) -> "return");
+        path("/subject", () -> post("/item", (request, response) -> JDBCPOST.postSubjectItem(connection, request)));
 
         /*
          * Создает расписание для группы.
          *
          * https://example.com/schedule
          */
-        post("/schedule", (request, response) -> JDBCPOST.getSchedule(connection));
+        post("/schedule", (request, response) -> JDBCPOST.postSchedule(connection, request));
 
         /*
          * Создает замену для конкретного предмета в расписании группы.
          *
          * https://example.com/change
          */
-        post("/change", (request, response) -> JDBCPOST.getChange(connection));
+        post("/change", (request, response) -> JDBCPOST.postChange(connection, request));
     }
 
     /**
@@ -191,14 +198,14 @@ public class Main {
          *
          * https://example.com/schedule
          */
-        put("/schedule", (request, response) -> JDBCPUT.putSchedule(connection));
+//        put("/schedule", (request, response) -> JDBCPUT.putSchedule(connection));
 
         /*
          * Вносит изменения группы.
          *
          * https://example.com/group
          */
-        put("/group", (request, response) -> "return");
+//        put("/group", (request, response) -> "return");
     }
 
     /**
