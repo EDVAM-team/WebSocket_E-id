@@ -63,6 +63,13 @@ public class Main {
     private static void getAPI() {
 
         /*
+         * Получить ключ.
+         *
+         * https://example.com/auth
+         */
+        get("/auth", (request, response) -> "return");
+
+        /*
          * Получить факультеты.
          *
          * https://example.com/faculty
@@ -89,6 +96,13 @@ public class Main {
          * https://example.com/schedule
          */
         get("/schedule", (request, response) -> JDBCGET.getSchedule(connection));
+
+        /*
+         * Получить расписание для преподователя.
+         *
+         * https://example.com/schedule/teacher
+         */
+        path("/schedule", () -> get("/teacher", (request, response) -> "return"));
 
         /*
          * Получить преподавателя.
@@ -118,6 +132,41 @@ public class Main {
     private static void postAPI() {
 
         /*
+         * Создает факультет.
+         *
+         * https://example.com/faculty
+         */
+        post("/faculty", (request, response) -> "return");
+
+        /*
+         * Создает специальность.
+         *
+         * https://example.com/specialty
+         */
+        post("/specialty", (request, response) -> "return");
+
+        /*
+         * Создает группу.
+         *
+         * https://example.com/group
+         */
+        post("/group", (request, response) -> "return");
+
+        /*
+         * Создает преподавателя.
+         *
+         * https://example.com/teacher
+         */
+        post("/teacher", (request, response) -> "return");
+
+        /*
+         * Создает предмет.
+         *
+         * https://example.com/subject
+         */
+        post("/subject", (request, response) -> "return");
+
+        /*
          * Создает расписание для группы.
          *
          * https://example.com/schedule
@@ -145,11 +194,11 @@ public class Main {
         put("/schedule", (request, response) -> JDBCPUT.putSchedule(connection));
 
         /*
-         * Вносит изменения в замене группы.
+         * Вносит изменения группы.
          *
-         * https://example.com/change
+         * https://example.com/group
          */
-        put("/change", (request, response) -> JDBCPUT.putChange(connection));
+        put("/group", (request, response) -> "return");
     }
 
     /**
