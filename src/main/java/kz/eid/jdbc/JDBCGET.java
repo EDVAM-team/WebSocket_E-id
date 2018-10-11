@@ -47,8 +47,12 @@ public class JDBCGET {
         ArrayList<HashMap<String, String>> list = new ArrayList<>();
         ResultSet resultSet = connection.prepareStatement(SQLStatement.getFaculty()).executeQuery();
 
-        while (resultSet.next())
-            list.add(new HashMap<String, String>(){{ put("name", resultSet.getString("name")); }});
+        while (resultSet.next()){
+            HashMap<String, String> hash = new HashMap<>();
+
+            hash.put("name", resultSet.getString("name"));
+            list.add(hash);
+        }
 
         return new Gson().toJson(list);
     }
