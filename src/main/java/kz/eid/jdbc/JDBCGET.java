@@ -17,6 +17,7 @@
 package kz.eid.jdbc;
 
 import com.google.gson.Gson;
+import kz.eid.objects.Faculty;
 import kz.eid.utils.SQLStatement;
 import spark.Request;
 
@@ -44,16 +45,11 @@ public class JDBCGET {
      * @return возвращает список факультетов в JSON.
      */
     public static String getFaculty(Connection connection) throws SQLException {
-        ArrayList<HashMap<String, String>> list = new ArrayList<>();
+        ArrayList<Faculty> list = new ArrayList<>();
         ResultSet resultSet = connection.prepareStatement(SQLStatement.getFaculty()).executeQuery();
 
-        while (resultSet.next()){
-            HashMap<String, String> hash = new HashMap<>();
-
-            hash.put("id_faculty", resultSet.getString("id_faculty"));
-            hash.put("name", resultSet.getString("name"));
-            list.add(hash);
-        }
+        while (resultSet.next())
+            list.add(new Faculty(resultSet.getInt("id_faculty"), resultSet.getString("name")));
 
         return new Gson().toJson(list);
     }
