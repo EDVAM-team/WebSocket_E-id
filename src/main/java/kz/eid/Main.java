@@ -43,6 +43,9 @@ public class Main {
         /* Подключение к БД. */
         connectDB();
 
+        /* Разрешаю лок. серверу доступ к API */
+        preferences();
+
         /* GET запрос на получение статуса WebSocket'а */
         get("/", (req, res) -> "Status: Online");
 
@@ -118,14 +121,14 @@ public class Main {
          *
          * https://example.com/teacher
          */
-        get("/teacher", (request, response) -> JDBCGET.getTeacher(connection, request));
+        get("/teacher", (request, response) -> JDBCGET.getTeacher(connection, request, response));
 
         /*
          * Получить всех преподавателей.
          *
          * https://example.com/teacher/all
          */
-        path("/teacher", () -> get("/all", (request, response) -> JDBCGET.getAll(connection)));
+        path("/teacher", () -> get("/all", (request, response) -> JDBCGET.getAll(connection, response)));
 
         /*
          * Получить список предметов.
@@ -252,6 +255,31 @@ public class Main {
 
             System.out.println("Error SQL Connecting");
         }
+    }
+
+    private static void preferences(){
+
+        options("/*",
+                (request, response) -> {
+
+                    String accessControlRequestHeaders = request
+                            .headers("Access-Control-Request-Headers");
+                    if (accessControlRequestHeaders != null) {
+                        response.header("Access-Control-Allow-Headers",
+                                accessControlRequestHeaders);
+                    }
+
+                    String accessControlRequestMethod = request
+                            .headers("Access-Control-Request-Method");
+                    if (accessControlRequestMethod != null) {
+                        response.header("Access-Control-Allow-Methods",
+                                accessControlRequestMethod);
+                    }
+
+                    return "OK";
+                });
+
+        before((request, response) -> response.header("Access-Control-Allow-Origin", "*"));
     }
 
     /**

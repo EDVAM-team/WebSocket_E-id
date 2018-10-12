@@ -203,7 +203,7 @@ public class JDBCGET {
      * @param connection
      * @return возвращает конкретного преподователя в JSON.
      */
-    public static String getTeacher(Connection connection, Request request) {
+    public static String getTeacher(Connection connection, Request request, Response response) {
         return "JDBCGET getTeacher";
     }
 
@@ -213,7 +213,7 @@ public class JDBCGET {
      * @param connection
      * @return возвращает всех преподавателей в JSON.
      */
-    public static String getAll(Connection connection) {
+    public static String getAll(Connection connection, Response response) {
         return "JDBCGET getTeacherAll";
     }
 

@@ -109,7 +109,7 @@ public class SQLStatement {
     }
 
     /**
-     * Запрос на вывод предмета зарегистрированного в ячейке "дня" по `id_schedule_subject`
+     * Запрос на вывод предмета по `id_schedule_subject`
      * Истользуется таблица "schedule_subject"
      *
      * @return
