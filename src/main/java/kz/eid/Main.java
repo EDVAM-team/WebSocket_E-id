@@ -138,7 +138,7 @@ public class Main {
          *
          * https://example.com/faculty
          */
-        post("/faculty", (request, response) -> JDBCPOST.postFaculty(connection, request));
+        post("/faculty", (request, response) -> JDBCPOST.postFaculty(connection, request, response));
 
         /*
          * Создает специальность.

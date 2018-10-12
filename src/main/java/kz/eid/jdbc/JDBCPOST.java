@@ -16,9 +16,15 @@
 
 package kz.eid.jdbc;
 
+import kz.eid.utils.HerokuAPI;
+import kz.eid.utils.SQLStatement;
+import kz.eid.utils.StatusResponse;
 import spark.Request;
+import spark.Response;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import static spark.Spark.*;
 
@@ -31,11 +37,35 @@ public class JDBCPOST {
      * @param connection
      * @return
      */
-    public static String postFaculty(Connection connection, Request request){
+    public static String postFaculty(Connection connection, Request request, Response response){
 
-        halt(204, "GOOOOD");
+        if (request.queryParams("key").equals(HerokuAPI.key)){
 
-        return "23123123123123123";
+            if (request.queryParams("name") != null){
+
+                try {
+                    PreparedStatement preparedStatement = connection.prepareStatement(SQLStatement.postFaculty());
+
+                    preparedStatement.setString(1, request.queryParams("name"));
+                    preparedStatement.execute();
+                } catch (SQLException e){
+
+                    response.status(400);
+
+                    return StatusResponse.error;
+                }
+            } else {
+
+                response.status(400);
+
+                return StatusResponse.error;
+            }
+        } else {
+
+            response.status(401);
+
+            return StatusResponse.error;
+        }
     }
 
     /**
