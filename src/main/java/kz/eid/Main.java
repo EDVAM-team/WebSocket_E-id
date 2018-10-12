@@ -65,7 +65,7 @@ public class Main {
          * Получить ключ.
          *
          * https://example.com/auth ?
-         * & key = <String>
+         * & pass = <String>
          */
         get("/auth", (request, response) -> JDBCGET.getAuth(request));
 

@@ -34,10 +34,10 @@ public class JDBCGET {
      *
      * @return возвращает список факультетов в JSON.
      */
-    public static String getAuth(Request request){
+    public static String getAuth(Request request) {
 
-        if (HerokuAPI.pass.equals(request.queryParams("pass"))){
-            return HerokuAPI.key;
+        if (HerokuAPI.pass.equals(request.queryParams("pass"))) {
+            return "{\"key\":" + HerokuAPI.key + "}";
         } else {
             return null;
         }
@@ -65,7 +65,7 @@ public class JDBCGET {
      * @param connection
      * @return возвращает список конкретных специальностей в JSON.
      */
-    public static String getSpecialty(Connection connection, Request request){
+    public static String getSpecialty(Connection connection, Request request) {
         return "JDBCGET getSpecialty";
     }
 
@@ -75,7 +75,7 @@ public class JDBCGET {
      * @param connection
      * @return возвращает конкретную группу в JSON.
      */
-    public static String getGroup(Connection connection, Request request){
+    public static String getGroup(Connection connection, Request request) {
         return "JDBCGET getGroup";
     }
 
@@ -86,7 +86,7 @@ public class JDBCGET {
      * @param connection
      * @return возвращает полную информацию расписания группы в JSON.
      */
-    public static String getSchedule(Connection connection, Request request){
+    public static String getSchedule(Connection connection, Request request) {
         return "JDBCGET getSchedule";
     }
 
@@ -97,7 +97,7 @@ public class JDBCGET {
      * @param connection
      * @return возвращает полную информацию расписания группы в JSON.
      */
-    public static String getScheduleTeacher(Connection connection, Request request){
+    public static String getScheduleTeacher(Connection connection, Request request) {
         return "JDBCGET getScheduleTeacher";
     }
 
@@ -107,7 +107,7 @@ public class JDBCGET {
      * @param connection
      * @return возвращает конкретного преподователя в JSON.
      */
-    public static String getTeacher(Connection connection, Request request){
+    public static String getTeacher(Connection connection, Request request) {
         return "JDBCGET getTeacher";
     }
 
@@ -117,7 +117,7 @@ public class JDBCGET {
      * @param connection
      * @return возвращает всех преподавателей в JSON.
      */
-    public static String getAll(Connection connection){
+    public static String getAll(Connection connection) {
         return "JDBCGET getTeacherAll";
     }
 
@@ -127,7 +127,7 @@ public class JDBCGET {
      * @param connection
      * @return возвращает весь список предметов в JSON.
      */
-    public static String getList(Connection connection){
+    public static String getList(Connection connection) {
         return "JDBCGET getListAll";
     }
 }
