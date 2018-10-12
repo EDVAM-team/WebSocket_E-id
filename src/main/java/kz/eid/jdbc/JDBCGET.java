@@ -206,6 +206,7 @@ public class JDBCGET {
     public static String getTeacher(Connection connection, Request request, Response response) {
 
         if (request.queryParams("id_teacher") != null) {
+            Teacher teacher;
 
             try {
                 PreparedStatement preparedStatement = connection.prepareStatement(SQLStatement.getTeacher());
@@ -214,7 +215,7 @@ public class JDBCGET {
 
                 ResultSet resultSet = preparedStatement.executeQuery();
 
-                Teacher teacher = new Teacher(
+                teacher = new Teacher(
                         resultSet.getInt("id_teacher"),
                         resultSet.getString("name"),
                         resultSet.getString("s_name"),
@@ -225,19 +226,19 @@ public class JDBCGET {
                 );
 
                 response.status(200);
-
-                return new Gson().toJson(teacher);
             } catch (SQLException | NumberFormatException e) {
 
                 response.status(400);
 
                 return "400 Bad Request";
             }
+
+            return new Gson().toJson(teacher);
         } else {
 
             response.status(400);
 
-            return "400 Bad Request 2";
+            return "400 Bad Request";
         }
     }
 
