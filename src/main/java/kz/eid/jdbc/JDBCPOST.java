@@ -48,6 +48,8 @@ public class JDBCPOST {
 
                     preparedStatement.setString(1, request.queryParams("name"));
                     preparedStatement.execute();
+
+                    return StatusResponse.success;
                 } catch (SQLException e){
 
                     response.status(400);

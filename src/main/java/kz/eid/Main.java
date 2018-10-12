@@ -136,7 +136,9 @@ public class Main {
         /*
          * Создает факультет.
          *
-         * https://example.com/faculty
+         * https://example.com/faculty ?
+         * & key = <String>
+         * & name = <String>
          */
         post("/faculty", (request, response) -> JDBCPOST.postFaculty(connection, request, response));
 
