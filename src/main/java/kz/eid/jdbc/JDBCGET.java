@@ -24,6 +24,7 @@ import kz.eid.objects.Specialty;
 import kz.eid.utils.HerokuAPI;
 import kz.eid.utils.SQLStatement;
 import spark.Request;
+import spark.Response;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -39,11 +40,17 @@ public class JDBCGET {
      *
      * @return возвращает список факультетов в JSON.
      */
-    public static String getAuth(Request request) {
+    public static String getAuth(Request request, Response response) {
 
         if (HerokuAPI.pass.equals(request.queryParams("pass"))) {
+
+            response.status(200);
+
             return "{\"key\":" + HerokuAPI.key + "}";
         } else {
+
+            response.status(400);
+
             return null;
         }
     }
@@ -54,12 +61,22 @@ public class JDBCGET {
      * @param connection
      * @return возвращает список факультетов в JSON.
      */
-    public static String getFaculty(Connection connection) throws SQLException {
+    public static String getFaculty(Connection connection, Response response) {
         ArrayList<Faculty> list = new ArrayList<>();
-        ResultSet resultSet = connection.prepareStatement(SQLStatement.getFaculty()).executeQuery();
 
-        while (resultSet.next())
-            list.add(new Faculty(resultSet.getInt("id_faculty"), resultSet.getString("name")));
+        try {
+            ResultSet resultSet = connection.prepareStatement(SQLStatement.getFaculty()).executeQuery();
+
+            while (resultSet.next())
+                list.add(new Faculty(resultSet.getInt("id_faculty"), resultSet.getString("name")));
+
+            response.status(200);
+        } catch (SQLException e) {
+
+            response.status(400);
+
+            return null;
+        }
 
         return new Gson().toJson(list);
     }
@@ -70,7 +87,7 @@ public class JDBCGET {
      * @param connection
      * @return возвращает список конкретных специальностей в JSON.
      */
-    public static String getSpecialty(Connection connection, Request request) {
+    public static String getSpecialty(Connection connection, Request request, Response response) {
         ArrayList<Specialty> list = new ArrayList<>();
 
         try {
@@ -85,7 +102,12 @@ public class JDBCGET {
                         resultSet.getInt("id_specialty"),
                         resultSet.getString("name")
                 ));
-        } catch (SQLException | NumberFormatException e){
+
+            response.status(200);
+        } catch (SQLException | NumberFormatException e) {
+
+            response.status(400);
+
             return null;
         }
 
@@ -98,7 +120,7 @@ public class JDBCGET {
      * @param connection
      * @return возвращает конкретную группу в JSON.
      */
-    public static String getGroup(Connection connection, Request request) {
+    public static String getGroup(Connection connection, Request request, Response response) {
         ArrayList<Group> list = new ArrayList<>();
 
         try {
@@ -113,7 +135,12 @@ public class JDBCGET {
                         resultSet.getInt("id_group"),
                         resultSet.getString("name")
                 ));
-        } catch (SQLException | NumberFormatException e){
+
+            response.status(200);
+        } catch (SQLException | NumberFormatException e) {
+
+            response.status(400);
+
             return null;
         }
 
@@ -168,12 +195,22 @@ public class JDBCGET {
      * @param connection
      * @return возвращает весь список предметов в JSON.
      */
-    public static String getList(Connection connection) throws SQLException {
+    public static String getList(Connection connection, Response response) {
         ArrayList<ListSubject> list = new ArrayList<>();
-        ResultSet resultSet = connection.prepareStatement(SQLStatement.getListSubjectAll()).executeQuery();
 
-        while (resultSet.next())
-            list.add(new ListSubject(resultSet.getInt("id_list_subject"), resultSet.getString("name")));
+        try {
+            ResultSet resultSet = connection.prepareStatement(SQLStatement.getListSubjectAll()).executeQuery();
+
+            while (resultSet.next())
+                list.add(new ListSubject(resultSet.getInt("id_list_subject"), resultSet.getString("name")));
+
+            response.status(200);
+        } catch (SQLException e) {
+
+            response.status(400);
+
+            return null;
+        }
 
         return new Gson().toJson(list);
     }

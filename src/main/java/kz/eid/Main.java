@@ -67,14 +67,14 @@ public class Main {
          * https://example.com/auth ?
          * & pass = <String>
          */
-        get("/auth", "application/json", (request, response) -> JDBCGET.getAuth(request));
+        get("/auth", "application/json", JDBCGET::getAuth);
 
         /*
          * Получить факультеты.
          *
          * https://example.com/faculty
          */
-        get("/faculty", "application/json", (request, response) -> JDBCGET.getFaculty(connection));
+        get("/faculty", "application/json", (request, response) -> JDBCGET.getFaculty(connection, response));
 
         /*
          * Получить специальности.
@@ -82,7 +82,7 @@ public class Main {
          * https://example.com/specialty ?
          * & faculty = <Integer>
          */
-        get("/specialty", "application/json", (request, response) -> JDBCGET.getSpecialty(connection, request));
+        get("/specialty", "application/json", (request, response) -> JDBCGET.getSpecialty(connection, request, response));
 
         /*
          * Получить группы.
@@ -90,7 +90,7 @@ public class Main {
          * https://example.com/group ?
          * & specialty = <Integer>
          */
-        get("/group", "application/json", (request, response) -> JDBCGET.getGroup(connection, request));
+        get("/group", "application/json", (request, response) -> JDBCGET.getGroup(connection, request, response));
 
         /*
          * Получить расписание.
@@ -125,7 +125,7 @@ public class Main {
          *
          * https://example.com/list
          */
-        get("/list", "application/json", (request, response) -> JDBCGET.getList(connection));
+        get("/list", "application/json", (request, response) -> JDBCGET.getList(connection, response));
     }
 
     /**
@@ -140,7 +140,7 @@ public class Main {
          * & key = <String>
          * & name = <String>
          */
-        post("/faculty", (request, response) -> JDBCPOST.postFaculty(connection, request, response));
+        post("/faculty", "application/json", (request, response) -> JDBCPOST.postFaculty(connection, request, response));
 
         /*
          * Создает специальность.
@@ -150,7 +150,7 @@ public class Main {
          * & name = <String>
          * & id_faculty = <Integer>
          */
-        post("/specialty", (request, response) -> JDBCPOST.postSpecialty(connection, request, response));
+        post("/specialty", "application/json", (request, response) -> JDBCPOST.postSpecialty(connection, request, response));
 
         /*
          * Создает группу.
@@ -160,7 +160,7 @@ public class Main {
          * & name = <String>
          * & id_specialty = <Integer>
          */
-        post("/group", (request, response) -> JDBCPOST.postGroup(connection, request, response));
+        post("/group", "application/json", (request, response) -> JDBCPOST.postGroup(connection, request, response));
 
         /*
          * Создает преподавателя.
