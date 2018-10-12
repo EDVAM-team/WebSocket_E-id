@@ -18,6 +18,7 @@ package kz.eid.jdbc;
 
 import com.google.gson.Gson;
 import kz.eid.objects.Faculty;
+import kz.eid.utils.HerokuAPI;
 import kz.eid.utils.SQLStatement;
 import spark.Request;
 
@@ -25,7 +26,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class JDBCGET {
 
@@ -35,7 +35,12 @@ public class JDBCGET {
      * @return возвращает список факультетов в JSON.
      */
     public static String getAuth(Request request){
-        return "JDBCGET getAuth";
+
+        if (HerokuAPI.pass.equals(request.queryParams("pass"))){
+            return HerokuAPI.key;
+        } else {
+            return null;
+        }
     }
 
     /**

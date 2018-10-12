@@ -21,15 +21,23 @@ import kz.eid.Main;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-public class HerokuKey {
+public class HerokuAPI {
 
     /* Ссылка на базу данных. */
-    public static URI dbUri;
+    private static URI dbUri;
+
+    /* Пароль для авторизации. */
+    public static String pass;
+
+    /* Ключ для POST запросов. */
+    public static String key;
 
     static {
 
         try {
             dbUri = new URI(System.getenv("JAWSDB_URL"));
+            pass = System.getenv("PASSWORD_AUTH");
+            key = System.getenv("KEY_AUTH");
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }

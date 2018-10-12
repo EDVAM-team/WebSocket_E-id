@@ -18,8 +18,7 @@ package kz.eid;
 
 import kz.eid.jdbc.JDBCGET;
 import kz.eid.jdbc.JDBCPOST;
-import kz.eid.jdbc.JDBCPUT;
-import kz.eid.utils.HerokuKey;
+import kz.eid.utils.HerokuAPI;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -65,7 +64,8 @@ public class Main {
         /*
          * Получить ключ.
          *
-         * https://example.com/auth
+         * https://example.com/auth ?
+         * & key = <String>
          */
         get("/auth", (request, response) -> JDBCGET.getAuth(request));
 
@@ -214,7 +214,7 @@ public class Main {
     private static void connectDB() {
 
         try {
-            connection = DriverManager.getConnection(HerokuKey.url, HerokuKey.login, HerokuKey.password);
+            connection = DriverManager.getConnection(HerokuAPI.url, HerokuAPI.login, HerokuAPI.password);
         } catch (SQLException e) {
 
             System.out.println("Error SQL Connecting");
