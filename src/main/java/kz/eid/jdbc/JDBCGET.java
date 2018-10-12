@@ -48,7 +48,7 @@ public class JDBCGET {
 
             response.status(400);
 
-            return null;
+            return "400 Bad Request";
         }
     }
 
@@ -72,7 +72,7 @@ public class JDBCGET {
 
             response.status(400);
 
-            return null;
+            return "400 Bad Request";
         }
 
         return new Gson().toJson(list);
@@ -105,7 +105,7 @@ public class JDBCGET {
 
             response.status(400);
 
-            return null;
+            return "400 Bad Request";
         }
 
         return new Gson().toJson(list);
@@ -138,7 +138,7 @@ public class JDBCGET {
 
             response.status(400);
 
-            return null;
+            return "400 Bad Request";
         }
 
         return new Gson().toJson(list);
@@ -169,7 +169,7 @@ public class JDBCGET {
 
             response.status(400);
 
-            return null;
+            return "400 Bad Request";
         }
 
         return new Gson().toJson(list);
@@ -231,13 +231,13 @@ public class JDBCGET {
 
                 response.status(400);
 
-                return "400";
+                return "400 Bad Request";
             }
         } else {
 
             response.status(400);
 
-            return "400";
+            return "400 Bad Request 2";
         }
     }
 
@@ -269,7 +269,7 @@ public class JDBCGET {
 
             response.status(400);
 
-            return null;
+            return "400 Bad Request";
         }
 
         return new Gson().toJson(list);
@@ -295,7 +295,7 @@ public class JDBCGET {
 
             response.status(400);
 
-            return null;
+            return "400 Bad Request";
         }
 
         return new Gson().toJson(list);
