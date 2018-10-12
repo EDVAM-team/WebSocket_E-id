@@ -77,8 +77,39 @@ public class JDBCPOST {
      * @param connection
      * @return
      */
-    public static String postSpecialty(Connection connection, Request request){
-        return "JDBCPOST postSpecialty";
+    public static String postSpecialty(Connection connection, Request request, Response response){
+
+        if (request.queryParams("key").equals(HerokuAPI.key)){
+
+            if (request.queryParams("name") != null &&
+                    request.queryParams("id_faculty") != null){
+
+                try {
+                    PreparedStatement preparedStatement = connection.prepareStatement(SQLStatement.postSpecialty());
+
+                    preparedStatement.setString(1, request.queryParams("name"));
+                    preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_faculty")));
+                    preparedStatement.execute();
+
+                    return StatusResponse.success;
+                } catch (SQLException | NumberFormatException e){
+
+                    response.status(400);
+
+                    return StatusResponse.error;
+                }
+            } else {
+
+                response.status(400);
+
+                return StatusResponse.error;
+            }
+        } else {
+
+            response.status(401);
+
+            return StatusResponse.error;
+        }
     }
 
     /**
@@ -88,8 +119,39 @@ public class JDBCPOST {
      * @param connection
      * @return
      */
-    public static String postGroup(Connection connection, Request request){
-        return "JDBCPOST postGroup";
+    public static String postGroup(Connection connection, Request request, Response response){
+
+        if (request.queryParams("key").equals(HerokuAPI.key)){
+
+            if (request.queryParams("name") != null &&
+                    request.queryParams("id_specialty") != null){
+
+                try {
+                    PreparedStatement preparedStatement = connection.prepareStatement(SQLStatement.postGroup());
+
+                    preparedStatement.setString(1, request.queryParams("name"));
+                    preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_specialty")));
+                    preparedStatement.execute();
+
+                    return StatusResponse.success;
+                } catch (SQLException | NumberFormatException e){
+
+                    response.status(400);
+
+                    return StatusResponse.error;
+                }
+            } else {
+
+                response.status(400);
+
+                return StatusResponse.error;
+            }
+        } else {
+
+            response.status(401);
+
+            return StatusResponse.error;
+        }
     }
 
     /**

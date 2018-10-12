@@ -145,16 +145,22 @@ public class Main {
         /*
          * Создает специальность.
          *
-         * https://example.com/specialty
+         * https://example.com/specialty ?
+         * & key = <String>
+         * & name = <String>
+         * & id_faculty = <Integer>
          */
-        post("/specialty", (request, response) -> JDBCPOST.postSpecialty(connection, request));
+        post("/specialty", (request, response) -> JDBCPOST.postSpecialty(connection, request, response));
 
         /*
          * Создает группу.
          *
-         * https://example.com/group
+         * https://example.com/group ?
+         * & key = <String>
+         * & name = <String>
+         * & id_specialty = <Integer>
          */
-        post("/group", (request, response) -> JDBCPOST.postGroup(connection, request));
+        post("/group", (request, response) -> JDBCPOST.postGroup(connection, request, response));
 
         /*
          * Создает преподавателя.
