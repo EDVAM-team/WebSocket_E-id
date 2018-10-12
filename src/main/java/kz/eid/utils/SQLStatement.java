@@ -208,8 +208,8 @@ public class SQLStatement {
      */
     public static String postTeacher(){
         return "INSERT INTO `teacher` " +
-                "(`name`, `s_name`, `l_name`, `phone`, `email`, `room`, `id_group`) " +
-                "VALUE (?, ?, ?, ?, ?, ?, ?)";
+                "(`name`, `s_name`, `l_name`, `phone`, `email`, `room`) " +
+                "VALUE (?, ?, ?, ?, ?, ?)";
     }
 
     /**

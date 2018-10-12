@@ -165,9 +165,16 @@ public class Main {
         /*
          * Создает преподавателя.
          *
-         * https://example.com/teacher
+         * https://example.com/teacher ?
+         * & key = <String>
+         * & name = <String>
+         * - & s_name = <String>
+         * - & l_name = <String>
+         * - & phone = <String>
+         * - & email = <String>
+         * - & id_room = <Integer>
          */
-        post("/teacher", (request, response) -> JDBCPOST.postTeacher(connection, request));
+        post("/teacher", "application/json", (request, response) -> JDBCPOST.postTeacher(connection, request, response));
 
         /*
          * Создает предмет для расписания.

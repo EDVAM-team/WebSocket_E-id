@@ -37,11 +37,11 @@ public class JDBCPOST {
      * @param connection
      * @return
      */
-    public static String postFaculty(Connection connection, Request request, Response response){
+    public static String postFaculty(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("key").equals(HerokuAPI.key)){
+        if (request.queryParams("key").equals(HerokuAPI.key)) {
 
-            if (request.queryParams("name") != null){
+            if (request.queryParams("name") != null) {
 
                 try {
                     PreparedStatement preparedStatement = connection.prepareStatement(SQLStatement.postFaculty());
@@ -50,7 +50,7 @@ public class JDBCPOST {
                     preparedStatement.execute();
 
                     return StatusResponse.success;
-                } catch (SQLException e){
+                } catch (SQLException e) {
 
                     response.status(400);
 
@@ -77,12 +77,12 @@ public class JDBCPOST {
      * @param connection
      * @return
      */
-    public static String postSpecialty(Connection connection, Request request, Response response){
+    public static String postSpecialty(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("key").equals(HerokuAPI.key)){
+        if (request.queryParams("key").equals(HerokuAPI.key)) {
 
             if (request.queryParams("name") != null &&
-                    request.queryParams("id_faculty") != null){
+                    request.queryParams("id_faculty") != null) {
 
                 try {
                     PreparedStatement preparedStatement = connection.prepareStatement(SQLStatement.postSpecialty());
@@ -92,7 +92,7 @@ public class JDBCPOST {
                     preparedStatement.execute();
 
                     return StatusResponse.success;
-                } catch (SQLException | NumberFormatException e){
+                } catch (SQLException | NumberFormatException e) {
 
                     response.status(400);
 
@@ -119,12 +119,12 @@ public class JDBCPOST {
      * @param connection
      * @return
      */
-    public static String postGroup(Connection connection, Request request, Response response){
+    public static String postGroup(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("key").equals(HerokuAPI.key)){
+        if (request.queryParams("key").equals(HerokuAPI.key)) {
 
             if (request.queryParams("name") != null &&
-                    request.queryParams("id_specialty") != null){
+                    request.queryParams("id_specialty") != null) {
 
                 try {
                     PreparedStatement preparedStatement = connection.prepareStatement(SQLStatement.postGroup());
@@ -134,7 +134,7 @@ public class JDBCPOST {
                     preparedStatement.execute();
 
                     return StatusResponse.success;
-                } catch (SQLException | NumberFormatException e){
+                } catch (SQLException | NumberFormatException e) {
 
                     response.status(400);
 
@@ -161,8 +161,45 @@ public class JDBCPOST {
      * @param connection
      * @return
      */
-    public static String postTeacher(Connection connection, Request request){
-        return "JDBCPOST postTeacher";
+    public static String postTeacher(Connection connection, Request request, Response response) {
+
+        if (request.queryParams("key").equals(HerokuAPI.key)) {
+
+            if (request.queryParams("name") != null) {
+
+                try {
+                    PreparedStatement preparedStatement = connection.prepareStatement(SQLStatement.postTeacher());
+
+                    preparedStatement.setString(1, request.queryParams("name"));
+                    preparedStatement.setString(2, request.queryParams("s_name"));
+                    preparedStatement.setString(3, request.queryParams("l_name"));
+                    preparedStatement.setString(4, request.queryParams("phone"));
+                    preparedStatement.setString(5, request.queryParams("email"));
+
+                    if (request.queryParams("id_room") != null)
+                        preparedStatement.setInt(6, Integer.parseInt(request.queryParams("id_room")));
+
+                    preparedStatement.execute();
+
+                    return StatusResponse.success;
+                } catch (SQLException | NumberFormatException e) {
+
+                    response.status(400);
+
+                    return StatusResponse.error;
+                }
+            } else {
+
+                response.status(400);
+
+                return StatusResponse.error;
+            }
+        } else {
+
+            response.status(401);
+
+            return StatusResponse.error;
+        }
     }
 
     /**
@@ -172,7 +209,7 @@ public class JDBCPOST {
      * @param connection
      * @return
      */
-    public static String postSubject(Connection connection, Request request){
+    public static String postSubject(Connection connection, Request request) {
         return "JDBCPOST postSubject";
     }
 
@@ -183,7 +220,7 @@ public class JDBCPOST {
      * @param connection
      * @return
      */
-    public static String postSubjectItem(Connection connection, Request request){
+    public static String postSubjectItem(Connection connection, Request request) {
         return "JDBCPOST postSubjectItem";
     }
 
@@ -194,7 +231,7 @@ public class JDBCPOST {
      * @param connection
      * @return
      */
-    public static String postSchedule(Connection connection, Request request){
+    public static String postSchedule(Connection connection, Request request) {
         return "JDBCPOST postSchedule";
     }
 
@@ -205,7 +242,7 @@ public class JDBCPOST {
      * @param connection
      * @return
      */
-    public static String postChange(Connection connection, Request request){
+    public static String postChange(Connection connection, Request request) {
         return "JDBCPOST postChange";
     }
 }
