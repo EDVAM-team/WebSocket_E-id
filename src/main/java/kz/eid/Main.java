@@ -67,14 +67,14 @@ public class Main {
          * https://example.com/auth ?
          * & pass = <String>
          */
-        get("/auth", (request, response) -> JDBCGET.getAuth(request));
+        get("/auth", "application/json", (request, response) -> JDBCGET.getAuth(request));
 
         /*
          * Получить факультеты.
          *
          * https://example.com/faculty
          */
-        get("/faculty", (request, response) -> JDBCGET.getFaculty(connection));
+        get("/faculty", "application/json", (request, response) -> JDBCGET.getFaculty(connection));
 
         /*
          * Получить специальности.
@@ -82,7 +82,7 @@ public class Main {
          * https://example.com/specialty ?
          * & faculty = <Integer>
          */
-        get("/specialty", (request, response) -> JDBCGET.getSpecialty(connection, request));
+        get("/specialty", "application/json", (request, response) -> JDBCGET.getSpecialty(connection, request));
 
         /*
          * Получить группы.
@@ -90,7 +90,7 @@ public class Main {
          * https://example.com/group ?
          * & specialty = <Integer>
          */
-        get("/group", (request, response) -> JDBCGET.getGroup(connection, request));
+        get("/group", "application/json", (request, response) -> JDBCGET.getGroup(connection, request));
 
         /*
          * Получить расписание.
@@ -125,7 +125,7 @@ public class Main {
          *
          * https://example.com/list
          */
-        get("/list", (request, response) -> JDBCGET.getList(connection));
+        get("/list", "application/json", (request, response) -> JDBCGET.getList(connection));
     }
 
     /**

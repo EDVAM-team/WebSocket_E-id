@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f1a897c-0f26-43e4-8795-18635adbb59a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/kz/eid/jdbc/JDBCGET.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/eid/jdbc/JDBCGET.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kz/eid/objects/Specialty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/eid/objects/Specialty.java" afterDir="false" />
-    </list>
+    <list default="true" id="8f1a897c-0f26-43e4-8795-18635adbb59a" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -113,14 +110,14 @@
           <entry key="Procfile" value="4" />
           <entry key="dummy" value="3" />
           <entry key="gradle" value="5" />
-          <entry key="java" value="2021" />
+          <entry key="java" value="2038" />
           <entry key="md" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="5" />
-          <entry key="JAVA" value="2021" />
+          <entry key="JAVA" value="2038" />
           <entry key="Markdown" value="5" />
           <entry key="PLAIN_TEXT" value="40" />
         </counts>
@@ -130,11 +127,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/eid/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="83" column="60" selection-start-line="83" selection-start-column="60" selection-end-line="83" selection-end-column="60" />
+            <state relative-caret-position="364">
+              <caret line="132" column="7" lean-forward="true" selection-start-line="132" selection-start-column="7" selection-end-line="132" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -142,11 +139,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/eid/jdbc/JDBCGET.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="563">
-              <caret line="113" column="53" lean-forward="true" selection-start-line="113" selection-start-column="53" selection-end-line="113" selection-end-column="53" />
+            <state relative-caret-position="255">
+              <caret line="72" column="30" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -157,15 +154,19 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/eid/objects/Specialty.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+            <state relative-caret-position="420">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/eid/objects/Group.java">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -600,10 +601,10 @@
         <option value="$PROJECT_DIR$/src/main/java/kz/eid/utils/HerokuKey.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/eid/utils/HerokuAPI.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/eid/objects/ListSubject.java" />
-        <option value="$PROJECT_DIR$/src/main/java/kz/eid/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/kz/eid/objects/Group.java" />
-        <option value="$PROJECT_DIR$/src/main/java/kz/eid/objects/Specialty.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/eid/jdbc/JDBCGET.java" />
+        <option value="$PROJECT_DIR$/src/main/java/kz/eid/objects/Specialty.java" />
+        <option value="$PROJECT_DIR$/src/main/java/kz/eid/objects/Group.java" />
+        <option value="$PROJECT_DIR$/src/main/java/kz/eid/Main.java" />
       </list>
     </option>
   </component>
@@ -705,7 +706,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539341789201" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539343009580" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -917,30 +918,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/eid/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/eid/jdbc/JDBCGET.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="83" column="60" selection-start-line="83" selection-start-column="60" selection-end-line="83" selection-end-column="60" />
+        <state relative-caret-position="255">
+          <caret line="72" column="30" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/eid/objects/Group.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/eid/objects/Specialty.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+        <state relative-caret-position="420">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/eid/jdbc/JDBCGET.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/eid/objects/Group.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
-          <caret line="113" column="53" lean-forward="true" selection-start-line="113" selection-start-column="53" selection-end-line="113" selection-end-column="53" />
+        <state relative-caret-position="420">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/eid/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="132" column="7" lean-forward="true" selection-start-line="132" selection-start-column="7" selection-end-line="132" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
