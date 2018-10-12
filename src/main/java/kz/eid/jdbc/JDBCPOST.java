@@ -186,7 +186,7 @@ public class JDBCPOST {
                     if (request.queryParams("id_room") != null)
                         preparedStatement.setInt(6, Integer.parseInt(request.queryParams("id_room")));
                     else
-                        preparedStatement.setInt(6, Types.INTEGER);
+                        preparedStatement.setNull(6, Types.INTEGER);
 
                     preparedStatement.execute();
 
