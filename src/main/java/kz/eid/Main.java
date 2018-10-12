@@ -119,7 +119,8 @@ public class Main {
         /*
          * Получить преподавателя.
          *
-         * https://example.com/teacher
+         * https://example.com/teacher ?
+         * & id_teacher = <Integer>
          */
         get("/teacher", (request, response) -> JDBCGET.getTeacher(connection, request, response));
 

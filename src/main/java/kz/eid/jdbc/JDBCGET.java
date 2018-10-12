@@ -204,7 +204,41 @@ public class JDBCGET {
      * @return возвращает конкретного преподователя в JSON.
      */
     public static String getTeacher(Connection connection, Request request, Response response) {
-        return "JDBCGET getTeacher";
+
+        if (request.queryParams("id_teacher") != null) {
+
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(SQLStatement.getTeacher());
+
+                preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_teacher")));
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                Teacher teacher = new Teacher(
+                        resultSet.getInt("id_teacher"),
+                        resultSet.getString("name"),
+                        resultSet.getString("s_name"),
+                        resultSet.getString("l_name"),
+                        resultSet.getString("phone"),
+                        resultSet.getString("email"),
+                        resultSet.getInt("id_room")
+                );
+
+                response.status(200);
+
+                return new Gson().toJson(teacher);
+            } catch (SQLException | NumberFormatException e) {
+
+                response.status(400);
+
+                return null;
+            }
+        } else {
+
+            response.status(400);
+
+            return null;
+        }
     }
 
     /**
@@ -214,7 +248,31 @@ public class JDBCGET {
      * @return возвращает всех преподавателей в JSON.
      */
     public static String getAll(Connection connection, Response response) {
-        return "JDBCGET getTeacherAll";
+        ArrayList<Teacher> list = new ArrayList<>();
+
+        try {
+            ResultSet resultSet = connection.prepareStatement(SQLStatement.getTeacherAll()).executeQuery();
+
+            while (resultSet.next())
+                list.add(new Teacher(
+                        resultSet.getInt("id_teacher"),
+                        resultSet.getString("name"),
+                        resultSet.getString("s_name"),
+                        resultSet.getString("l_name"),
+                        resultSet.getString("phone"),
+                        resultSet.getString("email"),
+                        resultSet.getInt("id_room")
+                ));
+
+            response.status(200);
+        } catch (SQLException e) {
+
+            response.status(400);
+
+            return null;
+        }
+
+        return new Gson().toJson(list);
     }
 
     /**
