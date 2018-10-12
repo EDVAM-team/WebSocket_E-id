@@ -79,7 +79,8 @@ public class Main {
         /*
          * Получить специальности.
          *
-         * https://example.com/specialty
+         * https://example.com/specialty ?
+         * & faculty = <Integer>
          */
         get("/specialty", (request, response) -> JDBCGET.getSpecialty(connection, request));
 
@@ -87,7 +88,7 @@ public class Main {
          * Получить группы.
          *
          * https://example.com/group ?
-         * & faculty = <Integer>
+         * & specialty = <Integer>
          */
         get("/group", (request, response) -> JDBCGET.getGroup(connection, request));
 
