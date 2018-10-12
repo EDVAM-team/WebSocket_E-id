@@ -231,13 +231,13 @@ public class JDBCGET {
 
                 response.status(400);
 
-                return null;
+                return "400";
             }
         } else {
 
             response.status(400);
 
-            return null;
+            return "400";
         }
     }
 
