@@ -230,7 +230,7 @@ public class JDBCGET {
 
                 response.status(400);
 
-                return "400 Bad Request";
+                return e.getMessage();
             }
 
             return new Gson().toJson(teacher);
