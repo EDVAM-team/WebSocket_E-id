@@ -122,14 +122,14 @@ public class Main {
          * https://example.com/teacher ?
          * & id_teacher = <Integer>
          */
-        get("/teacher", (request, response) -> JDBCGET.getTeacher(connection, request, response));
+        get("/teacher", "application/json", (request, response) -> JDBCGET.getTeacher(connection, request, response));
 
         /*
-         * Получить всех преподавателей.
+         * Получить список преподавателей.
          *
          * https://example.com/teacher/all
          */
-        path("/teacher", () -> get("/all", (request, response) -> JDBCGET.getAll(connection, response)));
+        path("/teacher", () -> get("/all", "application/json", (request, response) -> JDBCGET.getAll(connection, response)));
 
         /*
          * Получить список предметов.
