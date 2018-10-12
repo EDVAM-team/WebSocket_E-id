@@ -178,10 +178,26 @@ public class JDBCPOST {
                     PreparedStatement preparedStatement = connection.prepareStatement(SQLStatement.postTeacher());
 
                     preparedStatement.setString(1, request.queryParams("name"));
-                    preparedStatement.setString(2, request.queryParams("s_name"));
-                    preparedStatement.setString(3, request.queryParams("l_name"));
-                    preparedStatement.setString(4, request.queryParams("phone"));
-                    preparedStatement.setString(5, request.queryParams("email"));
+
+                    if (request.queryParams("s_name") != null)
+                        preparedStatement.setString(2, request.queryParams("s_name"));
+                    else
+                        preparedStatement.setNull(2, Types.VARCHAR);
+
+                    if (request.queryParams("l_name") != null)
+                        preparedStatement.setString(3, request.queryParams("l_name"));
+                    else
+                        preparedStatement.setNull(3, Types.VARCHAR);
+
+                    if (request.queryParams("phone") != null)
+                        preparedStatement.setString(4, request.queryParams("phone"));
+                    else
+                        preparedStatement.setNull(4, Types.VARCHAR);
+
+                    if (request.queryParams("email") != null)
+                        preparedStatement.setString(5, request.queryParams("email"));
+                    else
+                        preparedStatement.setNull(5, Types.VARCHAR);
 
                     if (request.queryParams("id_room") != null)
                         preparedStatement.setInt(6, Integer.parseInt(request.queryParams("id_room")));
