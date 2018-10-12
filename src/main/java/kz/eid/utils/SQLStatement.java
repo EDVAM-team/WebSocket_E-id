@@ -213,6 +213,17 @@ public class SQLStatement {
     }
 
     /**
+     * Запрос на создание ячейки данных в таблице `room`
+     *
+     * @return
+     */
+    public static String postRoom(){
+        return "INSERT INTO `room` " +
+                "(`name`) " +
+                "VALUE (?)";
+    }
+
+    /**
      * Запрос на создание ячейки данных в таблице `schedule_subject`
      *
      * @return

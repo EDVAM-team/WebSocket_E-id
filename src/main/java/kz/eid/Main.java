@@ -163,6 +163,15 @@ public class Main {
         post("/group", "application/json", (request, response) -> JDBCPOST.postGroup(connection, request, response));
 
         /*
+         * Создает кабинет.
+         *
+         * https://example.com/room ?
+         * & key = <String>
+         * & name = <String>
+         */
+        post("/room", "application/json", (request, response) -> JDBCPOST.postRoom(connection, request, response));
+
+        /*
          * Создает преподавателя.
          *
          * https://example.com/teacher ?

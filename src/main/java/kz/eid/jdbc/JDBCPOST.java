@@ -162,6 +162,48 @@ public class JDBCPOST {
     }
 
     /**
+     * Создает кабинет.
+     * Используется таблица "room"
+     *
+     * @param connection
+     * @return
+     */
+    public static String postRoom(Connection connection, Request request, Response response) {
+
+        if (request.queryParams("key").equals(HerokuAPI.key)) {
+
+            if (request.queryParams("name") != null) {
+
+                try {
+                    PreparedStatement preparedStatement = connection.prepareStatement(SQLStatement.postRoom());
+
+                    preparedStatement.setString(1, request.queryParams("name"));
+                    preparedStatement.execute();
+
+                    response.status(200);
+
+                    return StatusResponse.success;
+                } catch (SQLException | NumberFormatException e) {
+
+                    response.status(400);
+
+                    return StatusResponse.error;
+                }
+            } else {
+
+                response.status(400);
+
+                return StatusResponse.error;
+            }
+        } else {
+
+            response.status(401);
+
+            return StatusResponse.error;
+        }
+    }
+
+    /**
      * Создает преподавателя.
      * Используется таблица "teacher"
      *
