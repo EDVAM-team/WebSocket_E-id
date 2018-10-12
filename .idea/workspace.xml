@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f1a897c-0f26-43e4-8795-18635adbb59a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/kz/eid/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/eid/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/kz/eid/jdbc/JDBCPOST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/eid/jdbc/JDBCPOST.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kz/eid/utils/SQLStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/eid/utils/SQLStatement.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -114,14 +112,14 @@
           <entry key="Procfile" value="4" />
           <entry key="dummy" value="3" />
           <entry key="gradle" value="5" />
-          <entry key="java" value="2563" />
+          <entry key="java" value="2578" />
           <entry key="md" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="5" />
-          <entry key="JAVA" value="2563" />
+          <entry key="JAVA" value="2578" />
           <entry key="Markdown" value="5" />
           <entry key="PLAIN_TEXT" value="40" />
         </counts>
@@ -134,8 +132,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/eid/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="514">
-              <caret line="176" column="79" lean-forward="true" selection-start-line="176" selection-start-column="79" selection-end-line="176" selection-end-column="79" />
+            <state relative-caret-position="486">
+              <caret line="175" column="11" lean-forward="true" selection-start-line="175" selection-start-column="11" selection-end-line="175" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -146,8 +144,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/eid/jdbc/JDBCPOST.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="26">
-              <caret line="163" column="25" selection-start-line="163" selection-start-column="25" selection-end-line="163" selection-end-column="25" />
+            <state relative-caret-position="319">
+              <caret line="173" column="48" selection-start-line="173" selection-start-column="48" selection-end-line="173" selection-end-column="48" />
               <folding>
                 <element signature="e#0#5797#0" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -620,8 +618,8 @@
         <option value="$PROJECT_DIR$/src/main/java/kz/eid/objects/Group.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/eid/objects/Faculty.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/eid/utils/SQLStatement.java" />
-        <option value="$PROJECT_DIR$/src/main/java/kz/eid/jdbc/JDBCPOST.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/eid/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/kz/eid/jdbc/JDBCPOST.java" />
       </list>
     </option>
   </component>
@@ -723,7 +721,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539354782284" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539355828003" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -775,7 +773,7 @@
     <frame x="63" y="27" width="1857" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17985612" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17985612" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -961,8 +959,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/eid/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="514">
-          <caret line="176" column="79" lean-forward="true" selection-start-line="176" selection-start-column="79" selection-end-line="176" selection-end-column="79" />
+        <state relative-caret-position="486">
+          <caret line="175" column="11" lean-forward="true" selection-start-line="175" selection-start-column="11" selection-end-line="175" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -971,8 +969,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/eid/jdbc/JDBCPOST.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="163" column="25" selection-start-line="163" selection-start-column="25" selection-end-line="163" selection-end-column="25" />
+        <state relative-caret-position="319">
+          <caret line="173" column="48" selection-start-line="173" selection-start-column="48" selection-end-line="173" selection-end-column="48" />
           <folding>
             <element signature="e#0#5797#0" expanded="true" />
             <element signature="imports" expanded="true" />

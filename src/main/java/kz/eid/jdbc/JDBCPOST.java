@@ -25,6 +25,7 @@ import spark.Response;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Types;
 
 import static spark.Spark.*;
 
@@ -48,6 +49,8 @@ public class JDBCPOST {
 
                     preparedStatement.setString(1, request.queryParams("name"));
                     preparedStatement.execute();
+
+                    response.status(200);
 
                     return StatusResponse.success;
                 } catch (SQLException e) {
@@ -91,6 +94,8 @@ public class JDBCPOST {
                     preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_faculty")));
                     preparedStatement.execute();
 
+                    response.status(200);
+
                     return StatusResponse.success;
                 } catch (SQLException | NumberFormatException e) {
 
@@ -132,6 +137,8 @@ public class JDBCPOST {
                     preparedStatement.setString(1, request.queryParams("name"));
                     preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_specialty")));
                     preparedStatement.execute();
+
+                    response.status(200);
 
                     return StatusResponse.success;
                 } catch (SQLException | NumberFormatException e) {
@@ -178,8 +185,12 @@ public class JDBCPOST {
 
                     if (request.queryParams("id_room") != null)
                         preparedStatement.setInt(6, Integer.parseInt(request.queryParams("id_room")));
+                    else
+                        preparedStatement.setInt(6, Types.INTEGER);
 
                     preparedStatement.execute();
+
+                    response.status(200);
 
                     return StatusResponse.success;
                 } catch (SQLException | NumberFormatException e) {
