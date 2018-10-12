@@ -86,7 +86,8 @@ public class Main {
         /*
          * Получить группы.
          *
-         * https://example.com/group
+         * https://example.com/group ?
+         * & faculty = <Integer>
          */
         get("/group", (request, response) -> JDBCGET.getGroup(connection, request));
 

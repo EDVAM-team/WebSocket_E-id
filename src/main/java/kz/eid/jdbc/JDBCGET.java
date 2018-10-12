@@ -19,13 +19,16 @@ package kz.eid.jdbc;
 import com.google.gson.Gson;
 import kz.eid.objects.Faculty;
 import kz.eid.objects.ListSubject;
+import kz.eid.objects.Specialty;
 import kz.eid.utils.HerokuAPI;
 import kz.eid.utils.SQLStatement;
 import spark.Request;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public class JDBCGET {
@@ -67,6 +70,7 @@ public class JDBCGET {
      * @return возвращает список конкретных специальностей в JSON.
      */
     public static String getSpecialty(Connection connection, Request request) {
+
         return "JDBCGET getSpecialty";
     }
 
@@ -77,7 +81,26 @@ public class JDBCGET {
      * @return возвращает конкретную группу в JSON.
      */
     public static String getGroup(Connection connection, Request request) {
-        return "JDBCGET getGroup";
+        ArrayList<Specialty> list = new ArrayList<>();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLStatement.getGroup());
+
+            preparedStatement.setInt(1, Integer.parseInt(request.queryParams("faculty")));
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next())
+                list.add(new Specialty(
+                        resultSet.getInt("id_group"),
+                        resultSet.getString("name"),
+                        resultSet.getInt("id_specialty")
+                ));
+        } catch (SQLException | NumberFormatException e){
+            return null;
+        }
+
+        return new Gson().toJson(list);
     }
 
     /**
@@ -129,8 +152,8 @@ public class JDBCGET {
      * @return возвращает весь список предметов в JSON.
      */
     public static String getList(Connection connection) throws SQLException {
-        ResultSet resultSet = connection.prepareStatement(SQLStatement.getListSubjectAll()).executeQuery();
         ArrayList<ListSubject> list = new ArrayList<>();
+        ResultSet resultSet = connection.prepareStatement(SQLStatement.getListSubjectAll()).executeQuery();
 
         while (resultSet.next())
             list.add(new ListSubject(resultSet.getInt("id_list_subject"), resultSet.getString("name")));
