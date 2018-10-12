@@ -20,6 +20,8 @@ import spark.Request;
 
 import java.sql.Connection;
 
+import static spark.Spark.*;
+
 public class JDBCPOST {
 
     /**
@@ -30,7 +32,10 @@ public class JDBCPOST {
      * @return
      */
     public static String postFaculty(Connection connection, Request request){
-        return "JDBCPOST postFaculty";
+
+        halt(204, "GOOOOD");
+
+        return "23123123123123123";
     }
 
     /**
