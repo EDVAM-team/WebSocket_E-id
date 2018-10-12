@@ -17,10 +17,7 @@
 package kz.eid.jdbc;
 
 import com.google.gson.Gson;
-import kz.eid.objects.Faculty;
-import kz.eid.objects.Group;
-import kz.eid.objects.ListSubject;
-import kz.eid.objects.Specialty;
+import kz.eid.objects.*;
 import kz.eid.utils.HerokuAPI;
 import kz.eid.utils.SQLStatement;
 import spark.Request;
@@ -133,6 +130,37 @@ public class JDBCGET {
             while (resultSet.next())
                 list.add(new Group(
                         resultSet.getInt("id_group"),
+                        resultSet.getString("name")
+                ));
+
+            response.status(200);
+        } catch (SQLException | NumberFormatException e) {
+
+            response.status(400);
+
+            return null;
+        }
+
+        return new Gson().toJson(list);
+    }
+
+    /**
+     * Получает информацию с таблицы "room"
+     *
+     * @param connection
+     * @return возвращает конкретную группу в JSON.
+     */
+    public static String getRoom(Connection connection, Response response) {
+        ArrayList<Room> list = new ArrayList<>();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLStatement.getRoom());
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next())
+                list.add(new Room(
+                        resultSet.getInt("id_room"),
                         resultSet.getString("name")
                 ));
 

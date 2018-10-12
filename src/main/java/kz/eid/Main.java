@@ -93,6 +93,13 @@ public class Main {
         get("/group", "application/json", (request, response) -> JDBCGET.getGroup(connection, request, response));
 
         /*
+         * Получить кабинеты.
+         *
+         * https://example.com/room
+         */
+        get("/room", "application/json", (request, response) -> JDBCGET.getRoom(connection, response));
+
+        /*
          * Получить расписание.
          *
          * https://example.com/schedule

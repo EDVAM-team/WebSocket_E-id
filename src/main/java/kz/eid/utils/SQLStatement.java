@@ -49,6 +49,16 @@ public class SQLStatement {
     }
 
     /**
+     * Запрос на вывод кабинетов
+     * Истользуется таблица "room"
+     *
+     * @return
+     */
+    public static String getRoom(){
+        return "SELECT * FROM `room`";
+    }
+
+    /**
      * Запрос на вывод расписания группы по `id_group`
      * Истользуется таблица "schedule"
      *
