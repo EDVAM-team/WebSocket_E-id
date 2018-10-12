@@ -18,6 +18,7 @@ package kz.eid.jdbc;
 
 import com.google.gson.Gson;
 import kz.eid.objects.Faculty;
+import kz.eid.objects.ListSubject;
 import kz.eid.utils.HerokuAPI;
 import kz.eid.utils.SQLStatement;
 import spark.Request;
@@ -127,7 +128,13 @@ public class JDBCGET {
      * @param connection
      * @return возвращает весь список предметов в JSON.
      */
-    public static String getList(Connection connection) {
-        return "JDBCGET getListAll";
+    public static String getList(Connection connection) throws SQLException {
+        ResultSet resultSet = connection.prepareStatement(SQLStatement.getListSubjectAll()).executeQuery();
+        ArrayList<ListSubject> list = new ArrayList<>();
+
+        while (resultSet.next())
+            list.add(new ListSubject(resultSet.getInt("id_list_subject"), resultSet.getString("name")));
+
+        return new Gson().toJson(list);
     }
 }
