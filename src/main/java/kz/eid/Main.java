@@ -16,6 +16,7 @@
 
 package kz.eid;
 
+import kz.eid.jdbc.JDBCDELETE;
 import kz.eid.jdbc.JDBCGET;
 import kz.eid.jdbc.JDBCPOST;
 import kz.eid.utils.HerokuAPI;
@@ -57,6 +58,9 @@ public class Main {
 
         /* PUT запросы */
         putAPI();
+
+        /* DELETE запросы */
+        deleteAPI();
     }
 
     /**
@@ -96,6 +100,26 @@ public class Main {
         get("/group", "application/json", (request, response) -> JDBCGET.getGroup(connection, request, response));
 
         /*
+         * Получить куратора для группы.
+         *
+         * https://example.com/curator/group ?
+         * & group = <Integer>
+         * & teacher = <Integer>
+         */
+        path("/curator", () -> get("/group", "application/json", (request, response) ->
+                JDBCGET.getCuratorGroup(connection, request, response)));
+
+        /*
+         * Получить группы для куратора.
+         *
+         * https://example.com/curator/teacher ?
+         * & group = <Integer>
+         * & teacher = <Integer>
+         */
+        path("/curator", () -> get("/teacher", "application/json", (request, response) ->
+                JDBCGET.getCuratorTeacher(connection, request, response)));
+
+        /*
          * Получить кабинеты.
          *
          * https://example.com/room
@@ -129,7 +153,8 @@ public class Main {
          *
          * https://example.com/teacher/all
          */
-        path("/teacher", () -> get("/all", "application/json", (request, response) -> JDBCGET.getAll(connection, response)));
+        path("/teacher", () -> get("/all", "application/json", (request, response) ->
+                JDBCGET.getAll(connection, response)));
 
         /*
          * Получить список предметов.
@@ -181,6 +206,16 @@ public class Main {
          * & name = <String>
          */
         post("/room", "application/json", (request, response) -> JDBCPOST.postRoom(connection, request, response));
+
+        /*
+         * Создает куратора.
+         *
+         * https://example.com/curator ?
+         * & key = <String>
+         * & id_group = <Integer>
+         * & id_teacher = <Integer>
+         */
+        post("/curator", "application/json", (request, response) -> JDBCPOST.postCurator(connection, request, response));
 
         /*
          * Создает преподавателя.
@@ -246,6 +281,21 @@ public class Main {
     }
 
     /**
+     * DELETE запросы.
+     */
+    private static void deleteAPI() {
+
+        /*
+         * Удаляет куратора.
+         *
+         * https://example.com/curator ?
+         * & key = <String>
+         * & group = <Integer>
+         */
+        post("/curator", "application/json", (request, response) -> JDBCDELETE.deleteCurator(connection, request, response));
+    }
+
+    /**
      * Подключение к БД.
      */
     private static void connectDB() {
@@ -258,7 +308,10 @@ public class Main {
         }
     }
 
-    private static void preferences(){
+    /**
+     * Настройка сервера "Access-Control-Allow-Origin"
+     */
+    private static void preferences() {
 
         options("/*",
                 (request, response) -> {

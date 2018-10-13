@@ -19,7 +19,7 @@ package kz.eid.jdbc;
 import com.google.gson.Gson;
 import kz.eid.objects.*;
 import kz.eid.utils.HerokuAPI;
-import kz.eid.utils.SQLStatement;
+import kz.eid.utils.sql.statement.GETStatement;
 import spark.Request;
 import spark.Response;
 
@@ -27,7 +27,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.ArrayList;
 
 public class JDBCGET {
@@ -39,7 +38,8 @@ public class JDBCGET {
      */
     public static String getAuth(Request request, Response response) {
 
-        if (HerokuAPI.pass.equals(request.queryParams("pass"))) {
+        if (request.queryParams("pass") != null &&
+                HerokuAPI.pass.equals(request.queryParams("pass"))) {
 
             response.status(200);
 
@@ -62,7 +62,7 @@ public class JDBCGET {
         ArrayList<Faculty> list = new ArrayList<>();
 
         try {
-            ResultSet resultSet = connection.prepareStatement(SQLStatement.getFaculty()).executeQuery();
+            ResultSet resultSet = connection.prepareStatement(GETStatement.getFaculty()).executeQuery();
 
             while (resultSet.next())
                 list.add(new Faculty(resultSet.getInt("id_faculty"), resultSet.getString("name")));
@@ -85,30 +85,125 @@ public class JDBCGET {
      * @return возвращает список конкретных специальностей в JSON.
      */
     public static String getSpecialty(Connection connection, Request request, Response response) {
-        ArrayList<Specialty> list = new ArrayList<>();
 
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(SQLStatement.getSpecialty());
+        if (request.queryParams("faculty") != null) {
+            ArrayList<Specialty> list = new ArrayList<>();
 
-            preparedStatement.setInt(1, Integer.parseInt(request.queryParams("faculty")));
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getSpecialty());
 
-            ResultSet resultSet = preparedStatement.executeQuery();
+                preparedStatement.setInt(1, Integer.parseInt(request.queryParams("faculty")));
 
-            while (resultSet.next())
-                list.add(new Specialty(
-                        resultSet.getInt("id_specialty"),
-                        resultSet.getString("name")
-                ));
+                ResultSet resultSet = preparedStatement.executeQuery();
 
-            response.status(200);
-        } catch (SQLException | NumberFormatException e) {
+                while (resultSet.next())
+                    list.add(new Specialty(
+                            resultSet.getInt("id_specialty"),
+                            resultSet.getString("name")
+                    ));
+
+                response.status(200);
+            } catch (SQLException | NumberFormatException e) {
+
+                response.status(400);
+
+                return "400 Bad Request";
+            }
+
+            return new Gson().toJson(list);
+        } else {
 
             response.status(400);
 
             return "400 Bad Request";
         }
+    }
 
-        return new Gson().toJson(list);
+    /**
+     * Получает информацию с таблицы "curator"
+     *
+     * @param connection
+     * @return возвращает список конкретных специальностей в JSON.
+     */
+    public static String getCuratorGroup(Connection connection, Request request, Response response) {
+
+        if (request.queryParams("group") != null &&
+                request.queryParams("teacher") != null) {
+            Curator curator;
+
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getCuratorGroup());
+
+                preparedStatement.setInt(1, Integer.parseInt(request.queryParams("group")));
+                preparedStatement.setInt(2, Integer.parseInt(request.queryParams("teacher")));
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                resultSet.next();
+
+                curator = new Curator(
+                        resultSet.getInt("id_group"),
+                        resultSet.getInt("id_teacher")
+                );
+
+                response.status(200);
+            } catch (SQLException | NumberFormatException e) {
+
+                response.status(400);
+
+                return "400 Bad Request";
+            }
+
+            return new Gson().toJson(curator);
+        } else {
+
+            response.status(400);
+
+            return "400 Bad Request";
+        }
+    }
+
+    /**
+     * Получает информацию с таблицы "curator"
+     *
+     * @param connection
+     * @return возвращает список конкретных специальностей в JSON.
+     */
+    public static String getCuratorTeacher(Connection connection, Request request, Response response) {
+
+        if (request.queryParams("group") != null &&
+                request.queryParams("teacher") != null) {
+            ArrayList<Curator> list = new ArrayList<>();
+
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getCuratorGroup());
+
+                preparedStatement.setInt(1, Integer.parseInt(request.queryParams("group")));
+                preparedStatement.setInt(2, Integer.parseInt(request.queryParams("teacher")));
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                while (resultSet.next())
+                    list.add(new Curator(
+                            resultSet.getInt("id_group"),
+                            resultSet.getInt("id_teacher")
+                    ));
+
+                response.status(200);
+            } catch (SQLException | NumberFormatException e) {
+
+                response.status(400);
+
+                return "400 Bad Request";
+            }
+
+            return new Gson().toJson(list);
+        } else {
+
+            response.status(400);
+
+            return "400 Bad Request";
+        }
     }
 
     /**
@@ -118,30 +213,38 @@ public class JDBCGET {
      * @return возвращает конкретную группу в JSON.
      */
     public static String getGroup(Connection connection, Request request, Response response) {
-        ArrayList<Group> list = new ArrayList<>();
 
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(SQLStatement.getGroup());
+        if (request.queryParams("specialty") != null) {
+            ArrayList<Group> list = new ArrayList<>();
 
-            preparedStatement.setInt(1, Integer.parseInt(request.queryParams("specialty")));
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getGroup());
 
-            ResultSet resultSet = preparedStatement.executeQuery();
+                preparedStatement.setInt(1, Integer.parseInt(request.queryParams("specialty")));
 
-            while (resultSet.next())
-                list.add(new Group(
-                        resultSet.getInt("id_group"),
-                        resultSet.getString("name")
-                ));
+                ResultSet resultSet = preparedStatement.executeQuery();
 
-            response.status(200);
-        } catch (SQLException | NumberFormatException e) {
+                while (resultSet.next())
+                    list.add(new Group(
+                            resultSet.getInt("id_group"),
+                            resultSet.getString("name")
+                    ));
+
+                response.status(200);
+            } catch (SQLException | NumberFormatException e) {
+
+                response.status(400);
+
+                return "400 Bad Request";
+            }
+
+            return new Gson().toJson(list);
+        } else {
 
             response.status(400);
 
             return "400 Bad Request";
         }
-
-        return new Gson().toJson(list);
     }
 
     /**
@@ -154,7 +257,7 @@ public class JDBCGET {
         ArrayList<Room> list = new ArrayList<>();
 
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(SQLStatement.getRoom());
+            PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getRoom());
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -208,7 +311,7 @@ public class JDBCGET {
         if (request.queryParams("id_teacher") != null) {
 
             try {
-                PreparedStatement preparedStatement = connection.prepareStatement(SQLStatement.getTeacher());
+                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getTeacher());
 
                 preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_teacher")));
 
@@ -253,7 +356,7 @@ public class JDBCGET {
         ArrayList<Teacher> list = new ArrayList<>();
 
         try {
-            ResultSet resultSet = connection.prepareStatement(SQLStatement.getTeacherAll()).executeQuery();
+            ResultSet resultSet = connection.prepareStatement(GETStatement.getTeacherAll()).executeQuery();
 
             while (resultSet.next())
                 list.add(new Teacher(
@@ -287,7 +390,7 @@ public class JDBCGET {
         ArrayList<ListSubject> list = new ArrayList<>();
 
         try {
-            ResultSet resultSet = connection.prepareStatement(SQLStatement.getListSubjectAll()).executeQuery();
+            ResultSet resultSet = connection.prepareStatement(GETStatement.getListSubjectAll()).executeQuery();
 
             while (resultSet.next())
                 list.add(new ListSubject(resultSet.getInt("id_list_subject"), resultSet.getString("name")));

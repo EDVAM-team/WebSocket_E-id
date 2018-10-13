@@ -17,8 +17,8 @@
 package kz.eid.jdbc;
 
 import kz.eid.utils.HerokuAPI;
-import kz.eid.utils.SQLStatement;
 import kz.eid.utils.StatusResponse;
+import kz.eid.utils.sql.statement.POSTStatement;
 import spark.Request;
 import spark.Response;
 
@@ -26,8 +26,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Types;
-
-import static spark.Spark.*;
 
 public class JDBCPOST {
 
@@ -45,7 +43,7 @@ public class JDBCPOST {
             if (request.queryParams("name") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(SQLStatement.postFaculty());
+                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postFaculty());
 
                     preparedStatement.setString(1, request.queryParams("name"));
                     preparedStatement.execute();
@@ -88,7 +86,7 @@ public class JDBCPOST {
                     request.queryParams("id_faculty") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(SQLStatement.postSpecialty());
+                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postSpecialty());
 
                     preparedStatement.setString(1, request.queryParams("name"));
                     preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_faculty")));
@@ -132,10 +130,54 @@ public class JDBCPOST {
                     request.queryParams("id_specialty") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(SQLStatement.postGroup());
+                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postGroup());
 
                     preparedStatement.setString(1, request.queryParams("name"));
                     preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_specialty")));
+                    preparedStatement.execute();
+
+                    response.status(201);
+
+                    return StatusResponse.success;
+                } catch (SQLException | NumberFormatException e) {
+
+                    response.status(400);
+
+                    return StatusResponse.error;
+                }
+            } else {
+
+                response.status(400);
+
+                return StatusResponse.error;
+            }
+        } else {
+
+            response.status(401);
+
+            return StatusResponse.error;
+        }
+    }
+
+    /**
+     * Создает куратора.
+     * Используется таблица "search"
+     *
+     * @param connection
+     * @return
+     */
+    public static String postCurator(Connection connection, Request request, Response response) {
+
+        if (request.queryParams("key").equals(HerokuAPI.key)) {
+
+            if (request.queryParams("id_group") != null &&
+                    request.queryParams("id_teacher") != null) {
+
+                try {
+                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postCurator());
+
+                    preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_group")));
+                    preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_teacher")));
                     preparedStatement.execute();
 
                     response.status(201);
@@ -175,7 +217,7 @@ public class JDBCPOST {
             if (request.queryParams("name") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(SQLStatement.postRoom());
+                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postRoom());
 
                     preparedStatement.setString(1, request.queryParams("name"));
                     preparedStatement.execute();
@@ -217,7 +259,7 @@ public class JDBCPOST {
             if (request.queryParams("name") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(SQLStatement.postTeacher());
+                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postTeacher());
 
                     preparedStatement.setString(1, request.queryParams("name"));
 
