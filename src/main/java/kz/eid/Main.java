@@ -104,7 +104,6 @@ public class Main {
          *
          * https://example.com/curator/group ?
          * & group = <Integer>
-         * & teacher = <Integer>
          */
         path("/curator", () -> get("/group", "application/json", (request, response) ->
                 JDBCGET.getCuratorGroup(connection, request, response)));
@@ -113,7 +112,6 @@ public class Main {
          * Получить группы для куратора.
          *
          * https://example.com/curator/teacher ?
-         * & group = <Integer>
          * & teacher = <Integer>
          */
         path("/curator", () -> get("/teacher", "application/json", (request, response) ->

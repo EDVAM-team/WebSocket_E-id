@@ -127,15 +127,13 @@ public class JDBCGET {
      */
     public static String getCuratorGroup(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("group") != null &&
-                request.queryParams("teacher") != null) {
+        if (request.queryParams("group") != null) {
             Curator curator;
 
             try {
                 PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getCuratorGroup());
 
                 preparedStatement.setInt(1, Integer.parseInt(request.queryParams("group")));
-                preparedStatement.setInt(2, Integer.parseInt(request.queryParams("teacher")));
 
                 ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -171,15 +169,13 @@ public class JDBCGET {
      */
     public static String getCuratorTeacher(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("group") != null &&
-                request.queryParams("teacher") != null) {
+        if (request.queryParams("teacher") != null) {
             ArrayList<Curator> list = new ArrayList<>();
 
             try {
-                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getCuratorGroup());
+                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getCuratorTeacher());
 
-                preparedStatement.setInt(1, Integer.parseInt(request.queryParams("group")));
-                preparedStatement.setInt(2, Integer.parseInt(request.queryParams("teacher")));
+                preparedStatement.setInt(1, Integer.parseInt(request.queryParams("teacher")));
 
                 ResultSet resultSet = preparedStatement.executeQuery();
 
