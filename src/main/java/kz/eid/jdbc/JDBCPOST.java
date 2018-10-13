@@ -170,14 +170,14 @@ public class JDBCPOST {
 
         if (request.queryParams("key").equals(HerokuAPI.key)) {
 
-            if (request.queryParams("id_group") != null &&
-                    request.queryParams("id_teacher") != null) {
+            if (request.queryParams("group") != null &&
+                    request.queryParams("teacher") != null) {
 
                 try {
                     PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postCurator());
 
-                    preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_group")));
-                    preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_teacher")));
+                    preparedStatement.setInt(1, Integer.parseInt(request.queryParams("group")));
+                    preparedStatement.setInt(2, Integer.parseInt(request.queryParams("teacher")));
                     preparedStatement.execute();
 
                     response.status(201);

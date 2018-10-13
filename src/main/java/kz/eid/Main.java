@@ -212,8 +212,8 @@ public class Main {
          *
          * https://example.com/curator ?
          * & key = <String>
-         * & id_group = <Integer>
-         * & id_teacher = <Integer>
+         * & group = <Integer>
+         * & teacher = <Integer>
          */
         post("/curator", "application/json", (request, response) -> JDBCPOST.postCurator(connection, request, response));
 
@@ -292,7 +292,7 @@ public class Main {
          * & key = <String>
          * & group = <Integer>
          */
-        post("/curator", "application/json", (request, response) -> JDBCDELETE.deleteCurator(connection, request, response));
+        delete("/curator", "application/json", (request, response) -> JDBCDELETE.deleteCurator(connection, request, response));
     }
 
     /**
