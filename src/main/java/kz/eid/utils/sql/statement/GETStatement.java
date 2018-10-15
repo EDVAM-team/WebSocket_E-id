@@ -101,10 +101,10 @@ public class GETStatement {
      */
     public static String getSchedule() {
         return "SELECT `schedule`.id_schedule, `schedule`.d , `schedule`.num, `schedule`.id_schedule_subject, " +
-                "`schedule`.id_teacher, `teacher`.name, `teacher`.s_name, `teacher`.l_name, `teacher`.phone , " +
+                "`schedule`.id_teacher AS teacher, `teacher`.name AS name_teacher, `teacher`.s_name, `teacher`.l_name, `teacher`.phone , " +
                 "`teacher`.email, `teacher`.id_room " +
                 "FROM `schedule`, `teacher` " +
-                "WHERE `schedule`.id_teacher = `teacher`.id_teacher " +
+                "WHERE `schedule`.id_teacher = `teacher`.teacher " +
                 "AND `schedule`.id_group = ?";
     }
 
