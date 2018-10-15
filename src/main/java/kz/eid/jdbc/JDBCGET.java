@@ -299,7 +299,7 @@ public class JDBCGET {
                     schedule.setNum(resultSet.getInt("num")); aaa = 23;
                     schedule.setId_teacher(resultSet.getInt("id_teacher")); aaa = 24;
                     aaa = 3;
-                    ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getScheduleSubject(), resultSet.getInt(4));
+                    ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getScheduleSubject(), resultSet.getInt("id_schedule_subject"));
                     aaa = 4;
                     resultSet2.next();
 
@@ -308,7 +308,7 @@ public class JDBCGET {
                         schedule.setType(resultSet2.getInt("t"));
                         schedule.setChange(0);
 
-                        ResultSet resultSet3 = GETStatement.getReadDB(connection, GETStatement.getRoom(), resultSet2.getInt(11));
+                        ResultSet resultSet3 = GETStatement.getReadDB(connection, GETStatement.getRoom(), resultSet2.getInt("room"));
                         aaa = 6;
                         resultSet3.next();
                         schedule.setRoom(resultSet3.getString("name"));
