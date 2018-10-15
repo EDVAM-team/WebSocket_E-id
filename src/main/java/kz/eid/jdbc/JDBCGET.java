@@ -293,7 +293,7 @@ aaa = 1;
                 while (resultSet.next()){
 aaa = 2;
                     Schedule schedule = new Schedule();
-
+                    aaa = 20;
                     schedule.setId_schedule(resultSet.getInt("id_schedule")); aaa = 21;
                     schedule.setD(resultSet.getInt("d")); aaa = 22;
                     schedule.setNum(resultSet.getInt("num")); aaa = 23;
