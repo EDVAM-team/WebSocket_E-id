@@ -286,15 +286,15 @@ public class JDBCGET {
 
         if (request.queryParams("group") != null) {
             ArrayList<Schedule> list = new ArrayList<>();
-aaa = 1;
+
             try {
                 ResultSet resultSet = GETStatement.getReadDB(connection, GETStatement.getSchedule(), Integer.parseInt(request.queryParams("group")));
 
                 while (resultSet.next()){
-aaa = 2;
+
                     Schedule schedule = new Schedule();
                     aaa = 20;
-                    schedule.setId_schedule(resultSet.getInt("`schedule`.id_schedule")); aaa = 21;
+                    schedule.setId_schedule(resultSet.getInt("id_schedule")); aaa = 21;
                     schedule.setD(resultSet.getInt("d")); aaa = 22;
                     schedule.setNum(resultSet.getInt("num")); aaa = 23;
                     schedule.setId_teacher(resultSet.getInt("id_teacher")); aaa = 24;
