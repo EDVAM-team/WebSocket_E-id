@@ -294,7 +294,7 @@ public class JDBCGET {
 
                     Schedule schedule = new Schedule();
                     aaa = 20;
-                    schedule.setId_schedule(resultSet.getInt("id_schedule")); aaa = 21;
+                    schedule.setId_schedule(resultSet.getInt("schedule.id_schedule")); aaa = 21;
                     schedule.setD(resultSet.getInt("d")); aaa = 22;
                     schedule.setNum(resultSet.getInt("num")); aaa = 23;
                     schedule.setId_teacher(resultSet.getInt("id_teacher")); aaa = 24;
