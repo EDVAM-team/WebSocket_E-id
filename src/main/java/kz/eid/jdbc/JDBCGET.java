@@ -345,12 +345,14 @@ public class JDBCGET {
 
                         resultSet4 = GETStatement.getReadDB(connection, GETStatement.getTeacher(), resultSet3.getInt("id_teacher"));
 
-                        resultSet4.next();
-                        schedule.setName(resultSet4.getString("name"));
-                        schedule.setS_name(resultSet4.getString("s_name"));
-                        schedule.setL_name(resultSet4.getString("l_name"));
-                        schedule.setPhone(resultSet4.getString("phone"));
-                        schedule.setEmail(resultSet4.getString("email"));
+                        while (resultSet4.next()) {
+
+                            schedule.setName(resultSet4.getString("name"));
+                            schedule.setS_name(resultSet4.getString("s_name"));
+                            schedule.setL_name(resultSet4.getString("l_name"));
+                            schedule.setPhone(resultSet4.getString("phone"));
+                            schedule.setEmail(resultSet4.getString("email"));
+                        }
                     }
 
                     list.add(schedule);
