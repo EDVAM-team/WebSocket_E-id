@@ -130,9 +130,10 @@ public class Main {
         /*
          * Получить расписание.
          *
-         * https://example.com/schedule
+         * https://example.com/schedule ?
+         * & group = <Integer>
          */
-        get("/schedule", (request, response) -> JDBCGET.getSchedule(connection, request));
+        get("/schedule", (request, response) -> JDBCGET.getSchedule(connection, request, response));
 
         /*
          * Получить расписание для преподователя.
