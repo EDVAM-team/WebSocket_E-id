@@ -313,7 +313,7 @@ public class JDBCGET {
                         schedule.setType(resultSet2.getInt("t"));
                         schedule.setChange(0);
 
-                        ResultSet resultSet3 = GETStatement.getReadDB(connection, GETStatement.getRoom(), resultSet2.getInt(11));
+                        ResultSet resultSet3 = GETStatement.getReadDB(connection, GETStatement.getRoom(), resultSet2.getInt("room"));
                         aaa = 6;
                         resultSet3.next();
                         schedule.setRoom(resultSet3.getString("name"));
