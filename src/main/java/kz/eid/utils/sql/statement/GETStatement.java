@@ -106,7 +106,6 @@ public class GETStatement {
                 "FROM `schedule`, `teacher` " +
                 "WHERE `schedule`.id_teacher = `teacher`.id_teacher " +
                 "AND `schedule`.id_group = ?";
-//        return "SELECT FROM `schedule` WHERE `schedule`.id_group = ?";
     }
 
     /**

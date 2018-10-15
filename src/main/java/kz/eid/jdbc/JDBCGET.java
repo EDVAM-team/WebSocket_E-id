@@ -304,6 +304,9 @@ public class JDBCGET {
                         schedule.setL_name(resultSet.getString(8));
                         schedule.setPhone(resultSet.getString(9));
                         schedule.setEmail(resultSet.getString(10));
+                    } else {
+
+                        schedule.setId_teacher(1);
                     }
 
                     ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getScheduleSubject(), resultSet.getInt(4));
@@ -357,6 +360,9 @@ public class JDBCGET {
                                 schedule.setPhone(resultSet4.getString("phone"));
                                 schedule.setEmail(resultSet4.getString("email"));
                             }
+                        } else {
+
+                            schedule.setId_teacher(1);
                         }
                     }
 
