@@ -289,7 +289,7 @@ public class JDBCGET {
             try {
                 ResultSet resultSet = GETStatement.getReadDB(connection, GETStatement.getSchedule(), Integer.parseInt(request.queryParams("group")));
 
-                while (resultSet.next()){
+                while (resultSet.next()) {
 
                     Schedule schedule = new Schedule();
 
@@ -307,15 +307,15 @@ public class JDBCGET {
 
                     resultSet2.next();
 
-                    if (resultSet2.getInt("id_change") == 0){
+                    if (resultSet2.getInt("id_change") == 0) {
 
                         schedule.setType(resultSet2.getInt("t"));
                         schedule.setChange(0);
 
                         ResultSet resultSet3 = GETStatement.getReadDB(connection, GETStatement.getRoom(), resultSet2.getInt("room"));
 
-                        resultSet3.next();
-                        schedule.setRoom(resultSet3.getString("name"));
+                        while (resultSet3.next())
+                            schedule.setRoom(resultSet3.getString("name"));
 
                         resultSet3 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet2.getInt("id_list_subject"));
 
@@ -340,8 +340,8 @@ public class JDBCGET {
 
                         resultSet4 = GETStatement.getReadDB(connection, GETStatement.getRoom(), resultSet3.getInt("id_room"));
 
-                        resultSet4.next();
-                        schedule.setRoom(resultSet4.getString("name"));
+                        while (resultSet4.next())
+                            schedule.setRoom(resultSet4.getString("name"));
 
                         resultSet4 = GETStatement.getReadDB(connection, GETStatement.getTeacher(), resultSet3.getInt("id_teacher"));
 
