@@ -16,6 +16,11 @@
 
 package kz.eid.utils.sql.statement;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class GETStatement {
 
     /**
@@ -54,8 +59,18 @@ public class GETStatement {
      *
      * @return
      */
-    public static String getRoom() {
+    public static String getRoomAll() {
         return "SELECT * FROM `room`";
+    }
+
+    /**
+     * Запрос на вывод конкретного кабинета
+     * Истользуется таблица "room"
+     *
+     * @return
+     */
+    public static String getRoom() {
+        return "SELECT * FROM `room` WHERE `room`.id_room=?";
     }
 
     /**
@@ -85,7 +100,12 @@ public class GETStatement {
      * @return
      */
     public static String getSchedule() {
-        return "SELECT * FROM `schedule` WHERE `id_group`=?";
+        return "SELECT `schedule`.id_schedule, `schedule`.d , `schedule`.num, `schedule`.id_schedule_subject, " +
+                "`schedule`.id_teacher, `teacher`.name, `teacher`.s_name, `teacher`.l_name, `teacher`.phone , " +
+                "`teacher`.email, `teacher`.id_room " +
+                "FROM `schedule`, `teacher` " +
+                "WHERE `schedule`.id_teacher = `teacher`.id_teacher " +
+                "AND `schedule`.id_group = ?";
     }
 
     /**
@@ -196,5 +216,14 @@ public class GETStatement {
      */
     public static String getSearchGroup() {
         return "SELECT * FROM `search` WHERE `id_teacher`=?";
+    }
+
+    public static ResultSet getReadDB(Connection connection, String sql, int id) throws SQLException {
+
+        PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getRoom());
+
+        preparedStatement.setInt(1, id);
+
+        return preparedStatement.executeQuery();
     }
 }

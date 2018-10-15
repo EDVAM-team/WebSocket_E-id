@@ -41,6 +41,9 @@ public class Main {
         /* Изменяет port. */
         port(getHerokuAssignedPort());
 
+        /* Конфигурация WebSocket */
+        config();
+
         /* Подключение к БД. */
         connectDB();
 
@@ -304,6 +307,14 @@ public class Main {
 
             System.out.println("Error SQL Connecting");
         }
+    }
+
+    /**
+     * Конфигурация WebSocket
+     */
+    private static void config(){
+
+        after((req, res) -> res.type("application/json"));
     }
 
     /**

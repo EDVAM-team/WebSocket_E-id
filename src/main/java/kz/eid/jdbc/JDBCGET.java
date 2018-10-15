@@ -281,8 +281,95 @@ public class JDBCGET {
      * @param connection
      * @return возвращает полную информацию расписания группы в JSON.
      */
-    public static String getSchedule(Connection connection, Request request) {
-        return "JDBCGET getSchedule";
+    public static String getSchedule(Connection connection, Request request, Response response) {
+
+        if (request.queryParams("group") != null) {
+            ArrayList<Schedule> list = new ArrayList<>();
+
+            try {
+                ResultSet resultSet = GETStatement.getReadDB(connection, GETStatement.getSchedule(), Integer.parseInt(request.queryParams("group")));
+
+                while (resultSet.next()){
+
+                    Schedule schedule = new Schedule();
+
+                    schedule.setId_schedule(resultSet.getInt("id_schedule"));
+                    schedule.setD(resultSet.getInt("d"));
+                    schedule.setNum(resultSet.getInt("num"));
+                    schedule.setId_teacher(resultSet.getInt("id_teacher"));
+                    schedule.setName(resultSet.getString("name"));
+                    schedule.setS_name(resultSet.getString("s_name"));
+                    schedule.setL_name(resultSet.getString("l_name"));
+                    schedule.setPhone(resultSet.getString("phone"));
+                    schedule.setEmail(resultSet.getString("email"));
+
+                    ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet.getInt("id_schedule_subject"));
+
+                    resultSet2.next();
+
+                    if (resultSet2.getInt("id_change") == 0){
+
+                        schedule.setType(resultSet2.getInt("t"));
+                        schedule.setChange(0);
+
+                        ResultSet resultSet3 = GETStatement.getReadDB(connection, GETStatement.getRoom(), resultSet.getInt("id_room"));
+
+                        resultSet3.next();
+                        schedule.setRoom(resultSet3.getString("name"));
+
+                        resultSet3 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet.getInt("id_list_subject"));
+
+                        resultSet3.next();
+
+                        schedule.setSubject(resultSet3.getString("name"));
+                    } else {
+
+                        schedule.setChange(1);
+
+                        ResultSet resultSet3 = GETStatement.getReadDB(connection, GETStatement.getChange(), resultSet.getInt("id_change"));
+
+                        resultSet3.next();
+                        schedule.setType(resultSet3.getInt("t"));
+
+                        ResultSet resultSet4 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet.getInt("id_list_subject"));
+
+                        resultSet4.next();
+
+                        schedule.setSubject(resultSet4.getString("name"));
+
+                        resultSet4 = GETStatement.getReadDB(connection, GETStatement.getRoom(), resultSet.getInt("id_room"));
+
+                        resultSet4.next();
+                        schedule.setRoom(resultSet4.getString("name"));
+
+                        resultSet4 = GETStatement.getReadDB(connection, GETStatement.getTeacher(), resultSet.getInt("id_teacher"));
+
+                        schedule.setId_teacher(resultSet4.getInt("id_teacher"));
+                        schedule.setName(resultSet4.getString("name"));
+                        schedule.setS_name(resultSet4.getString("s_name"));
+                        schedule.setL_name(resultSet4.getString("l_name"));
+                        schedule.setPhone(resultSet4.getString("phone"));
+                        schedule.setEmail(resultSet4.getString("email"));
+                    }
+
+                    list.add(schedule);
+                }
+
+                response.status(200);
+            } catch (SQLException | NumberFormatException e) {
+
+                response.status(400);
+
+                return "400 Bad Request";
+            }
+
+            return new Gson().toJson(list);
+        } else {
+
+            response.status(400);
+
+            return "400 Bad Request";
+        }
     }
 
     /**

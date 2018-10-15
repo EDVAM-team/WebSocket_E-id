@@ -49,14 +49,14 @@ public class JDBCPOST {
                     preparedStatement.execute();
 
                     response.status(201);
-
-                    return StatusResponse.success;
                 } catch (SQLException e) {
 
                     response.status(400);
 
                     return StatusResponse.error;
                 }
+
+                return StatusResponse.success;
             } else {
 
                 response.status(400);
@@ -93,14 +93,14 @@ public class JDBCPOST {
                     preparedStatement.execute();
 
                     response.status(201);
-
-                    return StatusResponse.success;
                 } catch (SQLException | NumberFormatException e) {
 
                     response.status(400);
 
                     return StatusResponse.error;
                 }
+
+                return StatusResponse.success;
             } else {
 
                 response.status(400);
@@ -137,14 +137,14 @@ public class JDBCPOST {
                     preparedStatement.execute();
 
                     response.status(201);
-
-                    return StatusResponse.success;
                 } catch (SQLException | NumberFormatException e) {
 
                     response.status(400);
 
                     return StatusResponse.error;
                 }
+
+                return StatusResponse.success;
             } else {
 
                 response.status(400);
@@ -181,14 +181,14 @@ public class JDBCPOST {
                     preparedStatement.execute();
 
                     response.status(201);
-
-                    return StatusResponse.success;
                 } catch (SQLException | NumberFormatException e) {
 
                     response.status(400);
 
                     return StatusResponse.error;
                 }
+
+                return StatusResponse.success;
             } else {
 
                 response.status(400);
@@ -223,14 +223,14 @@ public class JDBCPOST {
                     preparedStatement.execute();
 
                     response.status(201);
-
-                    return StatusResponse.success;
                 } catch (SQLException | NumberFormatException e) {
 
                     response.status(400);
 
                     return StatusResponse.error;
                 }
+
+                return StatusResponse.success;
             } else {
 
                 response.status(400);
@@ -291,14 +291,14 @@ public class JDBCPOST {
                     preparedStatement.execute();
 
                     response.status(201);
-
-                    return StatusResponse.success;
                 } catch (SQLException | NumberFormatException e) {
 
                     response.status(400);
 
                     return StatusResponse.error;
                 }
+
+                return StatusResponse.success;
             } else {
 
                 response.status(400);
