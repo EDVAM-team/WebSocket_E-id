@@ -361,7 +361,7 @@ aaa = 2;
 
                 response.status(400);
 
-                return "400 Bad Request" + aaa;
+                return "400 Bad Request " + aaa + e.getMessage();
             }
 
             return new Gson().toJson(list);
