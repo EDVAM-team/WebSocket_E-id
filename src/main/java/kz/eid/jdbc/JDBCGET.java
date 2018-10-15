@@ -282,7 +282,6 @@ public class JDBCGET {
      * @return возвращает полную информацию расписания группы в JSON.
      */
     public static String getSchedule(Connection connection, Request request, Response response) {
-        int aaa = 0;
 
         if (request.queryParams("group") != null) {
             ArrayList<Schedule> list = new ArrayList<>();
@@ -293,59 +292,59 @@ public class JDBCGET {
                 while (resultSet.next()){
 
                     Schedule schedule = new Schedule();
-                    aaa = 20;
-                    schedule.setId_schedule(resultSet.getInt(1)); aaa = 21;
-                    schedule.setD(resultSet.getInt(2)); aaa = 22;
-                    schedule.setNum(resultSet.getInt(3)); aaa = 23;
-                    schedule.setId_teacher(resultSet.getInt(5)); aaa = 24;
-                    schedule.setName(resultSet.getString(6)); aaa = 25;
-                    schedule.setS_name(resultSet.getString(7)); aaa = 26;
-                    schedule.setL_name(resultSet.getString(8)); aaa = 27;
-                    schedule.setPhone(resultSet.getString(9)); aaa = 28;
-                    schedule.setEmail(resultSet.getString(10)); aaa = 29;
-                    aaa = 3;
+
+                    schedule.setId_schedule(resultSet.getInt(1));
+                    schedule.setD(resultSet.getInt(2));
+                    schedule.setNum(resultSet.getInt(3));
+                    schedule.setId_teacher(resultSet.getInt(5));
+                    schedule.setName(resultSet.getString(6));
+                    schedule.setS_name(resultSet.getString(7));
+                    schedule.setL_name(resultSet.getString(8));
+                    schedule.setPhone(resultSet.getString(9));
+                    schedule.setEmail(resultSet.getString(10));
+
                     ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getScheduleSubject(), resultSet.getInt(4));
-                    aaa = 4;
+
                     resultSet2.next();
 
                     if (resultSet2.getInt("id_change") == 0){
-                        aaa = 5;
+
                         schedule.setType(resultSet2.getInt("t"));
                         schedule.setChange(0);
 
                         ResultSet resultSet3 = GETStatement.getReadDB(connection, GETStatement.getRoom(), resultSet2.getInt("room"));
-                        aaa = 6;
+
                         resultSet3.next();
                         schedule.setRoom(resultSet3.getString("name"));
 
                         resultSet3 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet2.getInt("id_list_subject"));
-                        aaa = 7;
+
                         resultSet3.next();
 
                         schedule.setSubject(resultSet3.getString("name"));
                     } else {
-                        aaa = 8;
+
                         schedule.setChange(1);
 
                         ResultSet resultSet3 = GETStatement.getReadDB(connection, GETStatement.getChange(), resultSet2.getInt("id_change"));
-                        aaa = 9;
+
                         resultSet3.next();
                         schedule.setType(resultSet3.getInt("t"));
 
                         ResultSet resultSet4 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet3.getInt("id_list_subject"));
-                        aaa = 10;
+
                         resultSet4.next();
 
                         schedule.setSubject(resultSet4.getString("name"));
 
                         resultSet4 = GETStatement.getReadDB(connection, GETStatement.getRoom(), resultSet3.getInt("id_room"));
-                        aaa = 11;
+
                         resultSet4.next();
                         schedule.setRoom(resultSet4.getString("name"));
 
                         resultSet4 = GETStatement.getReadDB(connection, GETStatement.getTeacher(), resultSet3.getInt("id_teacher"));
-                        aaa = 12;
-                        schedule.setId_teacher(resultSet4.getInt("id_teacher"));
+
+                        schedule.setId_teacher(1);
                         schedule.setName(resultSet4.getString("name"));
                         schedule.setS_name(resultSet4.getString("s_name"));
                         schedule.setL_name(resultSet4.getString("l_name"));
@@ -361,7 +360,7 @@ public class JDBCGET {
 
                 response.status(400);
 
-                return "400 Bad Request " + aaa + e.getMessage();
+                return "400 Bad Request: " + e.getMessage();
             }
 
             return new Gson().toJson(list);
