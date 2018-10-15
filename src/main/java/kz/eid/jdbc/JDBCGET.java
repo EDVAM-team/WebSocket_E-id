@@ -294,17 +294,17 @@ public class JDBCGET {
 
                     Schedule schedule = new Schedule();
                     aaa = 20;
-                    schedule.setId_schedule(resultSet.getInt("schedule.id_schedule")); aaa = 21;
-                    schedule.setD(resultSet.getInt("d")); aaa = 22;
-                    schedule.setNum(resultSet.getInt("num")); aaa = 23;
-                    schedule.setId_teacher(resultSet.getInt("id_teacher")); aaa = 24;
-                    schedule.setName(resultSet.getString("name")); aaa = 25;
-                    schedule.setS_name(resultSet.getString("s_name")); aaa = 26;
-                    schedule.setL_name(resultSet.getString("l_name")); aaa = 27;
-                    schedule.setPhone(resultSet.getString("phone")); aaa = 28;
-                    schedule.setEmail(resultSet.getString("email")); aaa = 29;
+                    schedule.setId_schedule(resultSet.getInt(1)); aaa = 21;
+                    schedule.setD(resultSet.getInt(2)); aaa = 22;
+                    schedule.setNum(resultSet.getInt(3)); aaa = 23;
+                    schedule.setId_teacher(resultSet.getInt(5)); aaa = 24;
+                    schedule.setName(resultSet.getString(6)); aaa = 25;
+                    schedule.setS_name(resultSet.getString(7)); aaa = 26;
+                    schedule.setL_name(resultSet.getString(8)); aaa = 27;
+                    schedule.setPhone(resultSet.getString(9)); aaa = 28;
+                    schedule.setEmail(resultSet.getString(10)); aaa = 29;
                     aaa = 3;
-                    ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet.getInt("id_schedule_subject"));
+                    ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getScheduleSubject(), resultSet.getInt(4));
                     aaa = 4;
                     resultSet2.next();
 
@@ -313,12 +313,12 @@ public class JDBCGET {
                         schedule.setType(resultSet2.getInt("t"));
                         schedule.setChange(0);
 
-                        ResultSet resultSet3 = GETStatement.getReadDB(connection, GETStatement.getRoom(), resultSet.getInt("id_room"));
+                        ResultSet resultSet3 = GETStatement.getReadDB(connection, GETStatement.getRoom(), resultSet2.getInt(11));
                         aaa = 6;
                         resultSet3.next();
                         schedule.setRoom(resultSet3.getString("name"));
 
-                        resultSet3 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet.getInt("id_list_subject"));
+                        resultSet3 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet2.getInt("id_list_subject"));
                         aaa = 7;
                         resultSet3.next();
 
@@ -327,23 +327,23 @@ public class JDBCGET {
                         aaa = 8;
                         schedule.setChange(1);
 
-                        ResultSet resultSet3 = GETStatement.getReadDB(connection, GETStatement.getChange(), resultSet.getInt("id_change"));
+                        ResultSet resultSet3 = GETStatement.getReadDB(connection, GETStatement.getChange(), resultSet2.getInt("id_change"));
                         aaa = 9;
                         resultSet3.next();
                         schedule.setType(resultSet3.getInt("t"));
 
-                        ResultSet resultSet4 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet.getInt("id_list_subject"));
+                        ResultSet resultSet4 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet3.getInt("id_list_subject"));
                         aaa = 10;
                         resultSet4.next();
 
                         schedule.setSubject(resultSet4.getString("name"));
 
-                        resultSet4 = GETStatement.getReadDB(connection, GETStatement.getRoom(), resultSet.getInt("id_room"));
+                        resultSet4 = GETStatement.getReadDB(connection, GETStatement.getRoom(), resultSet3.getInt("id_room"));
                         aaa = 11;
                         resultSet4.next();
                         schedule.setRoom(resultSet4.getString("name"));
 
-                        resultSet4 = GETStatement.getReadDB(connection, GETStatement.getTeacher(), resultSet.getInt("id_teacher"));
+                        resultSet4 = GETStatement.getReadDB(connection, GETStatement.getTeacher(), resultSet3.getInt("id_teacher"));
                         aaa = 12;
                         schedule.setId_teacher(resultSet4.getInt("id_teacher"));
                         schedule.setName(resultSet4.getString("name"));
