@@ -296,12 +296,15 @@ public class JDBCGET {
                     schedule.setId_schedule(resultSet.getInt(1));
                     schedule.setD(resultSet.getInt(2));
                     schedule.setNum(resultSet.getInt(3));
-                    schedule.setId_teacher(resultSet.getInt(5));
-                    schedule.setName(resultSet.getString(6));
-                    schedule.setS_name(resultSet.getString(7));
-                    schedule.setL_name(resultSet.getString(8));
-                    schedule.setPhone(resultSet.getString(9));
-                    schedule.setEmail(resultSet.getString(10));
+
+                    if (resultSet.getInt("id_teacher") != 1) {
+                        schedule.setId_teacher(resultSet.getInt(5));
+                        schedule.setName(resultSet.getString(6));
+                        schedule.setS_name(resultSet.getString(7));
+                        schedule.setL_name(resultSet.getString(8));
+                        schedule.setPhone(resultSet.getString(9));
+                        schedule.setEmail(resultSet.getString(10));
+                    }
 
                     ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getScheduleSubject(), resultSet.getInt(4));
 
@@ -343,15 +346,17 @@ public class JDBCGET {
                         while (resultSet4.next())
                             schedule.setRoom(resultSet4.getString("name"));
 
-                        resultSet4 = GETStatement.getReadDB(connection, GETStatement.getTeacher(), resultSet3.getInt("id_teacher"));
+                        if (resultSet3.getInt("id_teacher") != 1){
+                            resultSet4 = GETStatement.getReadDB(connection, GETStatement.getTeacher(), resultSet3.getInt("id_teacher"));
 
-                        while (resultSet4.next()) {
+                            while (resultSet4.next()) {
 
-                            schedule.setName(resultSet4.getString("name"));
-                            schedule.setS_name(resultSet4.getString("s_name"));
-                            schedule.setL_name(resultSet4.getString("l_name"));
-                            schedule.setPhone(resultSet4.getString("phone"));
-                            schedule.setEmail(resultSet4.getString("email"));
+                                schedule.setName(resultSet4.getString("name"));
+                                schedule.setS_name(resultSet4.getString("s_name"));
+                                schedule.setL_name(resultSet4.getString("l_name"));
+                                schedule.setPhone(resultSet4.getString("phone"));
+                                schedule.setEmail(resultSet4.getString("email"));
+                            }
                         }
                     }
 
