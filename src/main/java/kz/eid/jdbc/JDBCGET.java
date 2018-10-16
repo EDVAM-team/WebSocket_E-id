@@ -440,6 +440,7 @@ public class JDBCGET {
                     ScheduleTeacher scheduleTeacher = new ScheduleTeacher();
 
                     scheduleTeacher.setType(resultSet.getInt("t"));
+                    scheduleTeacher.setChange(1);
 
                     ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getRoom(), resultSet.getInt("id_room"));
 

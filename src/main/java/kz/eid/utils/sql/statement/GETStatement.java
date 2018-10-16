@@ -170,7 +170,7 @@ public class GETStatement {
      * @return
      */
     public static String getScheduleChange() {
-        return "SELECT * FROM `schedule` WHERE `id_change`=?";
+        return "SELECT * FROM `schedule_subject` WHERE `id_change`=?";
     }
 
     /**
