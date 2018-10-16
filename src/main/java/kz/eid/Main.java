@@ -138,9 +138,10 @@ public class Main {
         /*
          * Получить расписание для преподователя.
          *
-         * https://example.com/schedule/teacher
+         * https://example.com/schedule/teacher ?
+         * & teacher = <Integer>
          */
-        path("/schedule", () -> get("/teacher", (request, response) -> JDBCGET.getScheduleTeacher(connection, request)));
+        path("/schedule", () -> get("/teacher", (request, response) -> JDBCGET.getScheduleTeacher(connection, request, response)));
 
         /*
          * Получить преподавателя.
