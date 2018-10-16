@@ -441,7 +441,7 @@ public class JDBCGET {
 
                     scheduleTeacher.setType(resultSet.getInt("t"));
 
-                    ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getRoom(), resultSet.getInt("room"));
+                    ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getRoom(), resultSet.getInt("id_room"));
 
                     while (resultSet2.next())
                         scheduleTeacher.setRoom(resultSet2.getString("name"));
