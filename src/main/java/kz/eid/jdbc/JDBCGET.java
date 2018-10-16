@@ -429,7 +429,43 @@ public class JDBCGET {
 
                     scheduleTeacher.setSubject(resultSet3.getString("name"));
 
+
+
                     list.add(scheduleTeacher);
+                }
+
+                resultSet = GETStatement.getReadDB(connection, GETStatement.getChangeTeacher(), Integer.parseInt(request.queryParams("teacher")));
+
+                while (resultSet.next()){
+                    ScheduleTeacher scheduleTeacher = new ScheduleTeacher();
+
+                    scheduleTeacher.setType(resultSet.getInt("t"));
+
+                    ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getRoom(), resultSet.getInt("room"));
+
+                    while (resultSet2.next())
+                        scheduleTeacher.setRoom(resultSet2.getString("name"));
+
+                    resultSet2 = GETStatement.getReadDB(connection, GETStatement.getScheduleChange(), resultSet.getInt("id_change"));
+
+                    while (resultSet2.next()){
+                        ResultSet resultSet3 = GETStatement.getReadDB(connection, GETStatement.getSubjectSchedule(), resultSet2.getInt("id_schedule_subject"));
+
+                        while (resultSet3.next()){
+
+                            scheduleTeacher.setId_schedule(resultSet3.getInt("id_schedule"));
+                            scheduleTeacher.setD(resultSet3.getInt("d"));
+                            scheduleTeacher.setNum(resultSet3.getInt("num"));
+                            scheduleTeacher.setId_group(resultSet3.getInt("id_group"));
+
+                            ResultSet resultSet4 = GETStatement.getReadDB(connection, GETStatement.getGroupSchedule(), resultSet3.getInt("id_group"));
+
+                            while (resultSet4.next()){
+
+                                scheduleTeacher.setName(resultSet4.getString("name"));
+                            }
+                        }
+                    }
                 }
 
                 response.status(200);

@@ -53,6 +53,17 @@ public class GETStatement {
         return "SELECT * FROM `group` WHERE `id_specialty`=?";
     }
 
+
+    /**
+     * Запрос на вывод групп по `id_group`
+     * Истользуется таблица "group"
+     *
+     * @return
+     */
+    public static String getGroupSchedule() {
+        return "SELECT * FROM `group` WHERE `id_group`=?";
+    }
+
     /**
      * Запрос на вывод кабинетов
      * Истользуется таблица "room"
@@ -140,6 +151,16 @@ public class GETStatement {
      */
     public static String getChange() {
         return "SELECT * FROM `change` WHERE `id_change`=?";
+    }
+
+    /**
+     * Запрос на вывод расписания по `id_schedule_subject`
+     * Истользуется таблица "schedule"
+     *
+     * @return
+     */
+    public static String getSubjectSchedule() {
+        return "SELECT * FROM `schedule` WHERE `id_schedule_subject`=?";
     }
 
     /**
