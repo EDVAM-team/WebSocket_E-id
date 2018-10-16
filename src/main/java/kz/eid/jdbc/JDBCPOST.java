@@ -16,9 +16,324 @@
 
 package kz.eid.jdbc;
 
+import kz.eid.utils.HerokuAPI;
+import kz.eid.utils.StatusResponse;
+import kz.eid.utils.sql.statement.POSTStatement;
+import spark.Request;
+import spark.Response;
+
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Types;
 
 public class JDBCPOST {
+
+    /**
+     * Создает факультет.
+     * Используется таблица "faculty"
+     *
+     * @param connection
+     * @return
+     */
+    public static String postFaculty(Connection connection, Request request, Response response) {
+
+        if (request.queryParams("key").equals(HerokuAPI.key)) {
+
+            if (request.queryParams("name") != null) {
+
+                try {
+                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postFaculty());
+
+                    preparedStatement.setString(1, request.queryParams("name"));
+                    preparedStatement.execute();
+
+                    response.status(201);
+                } catch (SQLException e) {
+
+                    response.status(400);
+
+                    return StatusResponse.error;
+                }
+
+                return StatusResponse.success;
+            } else {
+
+                response.status(400);
+
+                return StatusResponse.error;
+            }
+        } else {
+
+            response.status(401);
+
+            return StatusResponse.error;
+        }
+    }
+
+    /**
+     * Создает факультет.
+     * Используется таблица "specialty"
+     *
+     * @param connection
+     * @return
+     */
+    public static String postSpecialty(Connection connection, Request request, Response response) {
+
+        if (request.queryParams("key").equals(HerokuAPI.key)) {
+
+            if (request.queryParams("name") != null &&
+                    request.queryParams("id_faculty") != null) {
+
+                try {
+                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postSpecialty());
+
+                    preparedStatement.setString(1, request.queryParams("name"));
+                    preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_faculty")));
+                    preparedStatement.execute();
+
+                    response.status(201);
+                } catch (SQLException | NumberFormatException e) {
+
+                    response.status(400);
+
+                    return StatusResponse.error;
+                }
+
+                return StatusResponse.success;
+            } else {
+
+                response.status(400);
+
+                return StatusResponse.error;
+            }
+        } else {
+
+            response.status(401);
+
+            return StatusResponse.error;
+        }
+    }
+
+    /**
+     * Создает группу.
+     * Используется таблица "group"
+     *
+     * @param connection
+     * @return
+     */
+    public static String postGroup(Connection connection, Request request, Response response) {
+
+        if (request.queryParams("key").equals(HerokuAPI.key)) {
+
+            if (request.queryParams("name") != null &&
+                    request.queryParams("id_specialty") != null) {
+
+                try {
+                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postGroup());
+
+                    preparedStatement.setString(1, request.queryParams("name"));
+                    preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_specialty")));
+                    preparedStatement.execute();
+
+                    response.status(201);
+                } catch (SQLException | NumberFormatException e) {
+
+                    response.status(400);
+
+                    return StatusResponse.error;
+                }
+
+                return StatusResponse.success;
+            } else {
+
+                response.status(400);
+
+                return StatusResponse.error;
+            }
+        } else {
+
+            response.status(401);
+
+            return StatusResponse.error;
+        }
+    }
+
+    /**
+     * Создает куратора.
+     * Используется таблица "search"
+     *
+     * @param connection
+     * @return
+     */
+    public static String postCurator(Connection connection, Request request, Response response) {
+
+        if (request.queryParams("key").equals(HerokuAPI.key)) {
+
+            if (request.queryParams("group") != null &&
+                    request.queryParams("teacher") != null) {
+
+                try {
+                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postCurator());
+
+                    preparedStatement.setInt(1, Integer.parseInt(request.queryParams("group")));
+                    preparedStatement.setInt(2, Integer.parseInt(request.queryParams("teacher")));
+                    preparedStatement.execute();
+
+                    response.status(201);
+                } catch (SQLException | NumberFormatException e) {
+
+                    response.status(400);
+
+                    return StatusResponse.error;
+                }
+
+                return StatusResponse.success;
+            } else {
+
+                response.status(400);
+
+                return StatusResponse.error;
+            }
+        } else {
+
+            response.status(401);
+
+            return StatusResponse.error;
+        }
+    }
+
+    /**
+     * Создает кабинет.
+     * Используется таблица "room"
+     *
+     * @param connection
+     * @return
+     */
+    public static String postRoom(Connection connection, Request request, Response response) {
+
+        if (request.queryParams("key").equals(HerokuAPI.key)) {
+
+            if (request.queryParams("name") != null) {
+
+                try {
+                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postRoom());
+
+                    preparedStatement.setString(1, request.queryParams("name"));
+                    preparedStatement.execute();
+
+                    response.status(201);
+                } catch (SQLException | NumberFormatException e) {
+
+                    response.status(400);
+
+                    return StatusResponse.error;
+                }
+
+                return StatusResponse.success;
+            } else {
+
+                response.status(400);
+
+                return StatusResponse.error;
+            }
+        } else {
+
+            response.status(401);
+
+            return StatusResponse.error;
+        }
+    }
+
+    /**
+     * Создает преподавателя.
+     * Используется таблица "teacher"
+     *
+     * @param connection
+     * @return
+     */
+    public static String postTeacher(Connection connection, Request request, Response response) {
+
+        if (request.queryParams("key").equals(HerokuAPI.key)) {
+
+            if (request.queryParams("name") != null) {
+
+                try {
+                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postTeacher());
+
+                    preparedStatement.setString(1, request.queryParams("name"));
+
+                    if (request.queryParams("s_name") != null)
+                        preparedStatement.setString(2, request.queryParams("s_name"));
+                    else
+                        preparedStatement.setNull(2, Types.VARCHAR);
+
+                    if (request.queryParams("l_name") != null)
+                        preparedStatement.setString(3, request.queryParams("l_name"));
+                    else
+                        preparedStatement.setNull(3, Types.VARCHAR);
+
+                    if (request.queryParams("phone") != null)
+                        preparedStatement.setString(4, request.queryParams("phone"));
+                    else
+                        preparedStatement.setNull(4, Types.VARCHAR);
+
+                    if (request.queryParams("email") != null)
+                        preparedStatement.setString(5, request.queryParams("email"));
+                    else
+                        preparedStatement.setNull(5, Types.VARCHAR);
+
+                    if (request.queryParams("id_room") != null)
+                        preparedStatement.setInt(6, Integer.parseInt(request.queryParams("id_room")));
+                    else
+                        preparedStatement.setNull(6, Types.INTEGER);
+
+                    preparedStatement.execute();
+
+                    response.status(201);
+                } catch (SQLException | NumberFormatException e) {
+
+                    response.status(400);
+
+                    return StatusResponse.error;
+                }
+
+                return StatusResponse.success;
+            } else {
+
+                response.status(400);
+
+                return StatusResponse.error;
+            }
+        } else {
+
+            response.status(401);
+
+            return StatusResponse.error;
+        }
+    }
+
+    /**
+     * Создает предмет для расписания.
+     * Используется таблица "schedule_subject"
+     *
+     * @param connection
+     * @return
+     */
+    public static String postSubject(Connection connection, Request request) {
+        return "JDBCPOST postSubject";
+    }
+
+    /**
+     * Создает предмет для расписания.
+     * Используется таблица "list_subject"
+     *
+     * @param connection
+     * @return
+     */
+    public static String postSubjectItem(Connection connection, Request request) {
+        return "JDBCPOST postSubjectItem";
+    }
 
     /**
      * Создает расписание для группы.
@@ -27,8 +342,8 @@ public class JDBCPOST {
      * @param connection
      * @return
      */
-    public static String getSchedule(Connection connection){
-        return "JDBCPOST getSchedule";
+    public static String postSchedule(Connection connection, Request request) {
+        return "JDBCPOST postSchedule";
     }
 
     /**
@@ -38,7 +353,7 @@ public class JDBCPOST {
      * @param connection
      * @return
      */
-    public static String getChange(Connection connection){
-        return "JDBCPOST getChange";
+    public static String postChange(Connection connection, Request request) {
+        return "JDBCPOST postChange";
     }
 }
