@@ -115,7 +115,11 @@ public class GETStatement {
      * @return
      */
     public static String getScheduleTeacher() {
-        return "SELECT * FROM `schedule` WHERE `id_teacher`=?";
+        return "SELECT `schedule`.id_schedule, `schedule`.d , `schedule`.num, `schedule`.id_schedule_subject, " +
+                "`schedule`.id_group, `group`.name " +
+                "FROM `schedule`, `group` " +
+                "WHERE `schedule`.id_group = `group`.id_group " +
+                "AND `schedule`.id_teacher = ?";
     }
 
     /**

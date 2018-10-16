@@ -393,8 +393,60 @@ public class JDBCGET {
      * @param connection
      * @return возвращает полную информацию расписания группы в JSON.
      */
-    public static String getScheduleTeacher(Connection connection, Request request) {
-        return "JDBCGET getScheduleTeacher";
+    public static String getScheduleTeacher(Connection connection, Request request, Response response) {
+
+        if (request.queryParams("teacher") != null) {
+            ArrayList<ScheduleTeacher> list = new ArrayList<>();
+
+            try {
+                ResultSet resultSet = GETStatement.getReadDB(connection, GETStatement.getScheduleTeacher(), Integer.parseInt(request.queryParams("teacher")));
+
+                while (resultSet.next()) {
+
+                    ScheduleTeacher scheduleTeacher = new ScheduleTeacher();
+
+                    scheduleTeacher.setId_schedule(resultSet.getInt(1));
+                    scheduleTeacher.setD(resultSet.getInt(2));
+                    scheduleTeacher.setNum(resultSet.getInt(3));
+                    scheduleTeacher.setId_group(resultSet.getInt(5));
+                    scheduleTeacher.setName(resultSet.getString(6));
+
+                    ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getScheduleSubject(), resultSet.getInt(4));
+
+                    resultSet2.next();
+
+                    scheduleTeacher.setType(resultSet2.getInt("t"));
+                    scheduleTeacher.setChange(0);
+
+                    ResultSet resultSet3 = GETStatement.getReadDB(connection, GETStatement.getRoom(), resultSet2.getInt("room"));
+
+                    while (resultSet3.next())
+                        scheduleTeacher.setRoom(resultSet3.getString("name"));
+
+                    resultSet3 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet2.getInt("id_list_subject"));
+
+                    resultSet3.next();
+
+                    scheduleTeacher.setSubject(resultSet3.getString("name"));
+
+                    list.add(scheduleTeacher);
+                }
+
+                response.status(200);
+            } catch (SQLException | NumberFormatException e) {
+
+                response.status(400);
+
+                return "400 Bad Request: " + e.getMessage();
+            }
+
+            return new Gson().toJson(list);
+        } else {
+
+            response.status(400);
+
+            return "400 Bad Request";
+        }
     }
 
     /**
