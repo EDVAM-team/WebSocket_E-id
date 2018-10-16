@@ -416,7 +416,7 @@ public class JDBCGET {
                     resultSet2.next();
 
                     scheduleTeacher.setType(resultSet2.getInt("t"));
-                    scheduleTeacher.setChange(1);
+                    scheduleTeacher.setChange(0);
 
                     ResultSet resultSet3 = GETStatement.getReadDB(connection, GETStatement.getRoom(), resultSet2.getInt("room"));
 
@@ -464,6 +464,8 @@ public class JDBCGET {
                             }
                         }
                     }
+
+                    list.add(scheduleTeacher);
                 }
 
                 response.status(200);
