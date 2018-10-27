@@ -256,38 +256,42 @@ public class JDBCPOST {
 
         if (request.queryParams("key").equals(HerokuAPI.key)) {
 
-            if (request.queryParams("name") != null) {
+            if (request.queryParams("name") != null &&
+                    request.queryParams("login") != null &&
+                    request.queryParams("pass") != null) {
 
                 try {
                     PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postTeacher());
 
                     preparedStatement.setString(1, request.queryParams("name"));
                     preparedStatement.setInt(2, 2);
+                    preparedStatement.setString(3, request.queryParams("login"));
+                    preparedStatement.setString(4, request.queryParams("pass"));
 
                     if (request.queryParams("s_name") != null)
-                        preparedStatement.setString(3, request.queryParams("s_name"));
-                    else
-                        preparedStatement.setNull(3, Types.VARCHAR);
-
-                    if (request.queryParams("l_name") != null)
-                        preparedStatement.setString(4, request.queryParams("l_name"));
-                    else
-                        preparedStatement.setNull(4, Types.VARCHAR);
-
-                    if (request.queryParams("phone") != null)
-                        preparedStatement.setString(5, request.queryParams("phone"));
+                        preparedStatement.setString(5, request.queryParams("s_name"));
                     else
                         preparedStatement.setNull(5, Types.VARCHAR);
 
-                    if (request.queryParams("email") != null)
-                        preparedStatement.setString(6, request.queryParams("email"));
+                    if (request.queryParams("l_name") != null)
+                        preparedStatement.setString(6, request.queryParams("l_name"));
                     else
                         preparedStatement.setNull(6, Types.VARCHAR);
 
-                    if (request.queryParams("id_room") != null)
-                        preparedStatement.setInt(7, Integer.parseInt(request.queryParams("id_room")));
+                    if (request.queryParams("phone") != null)
+                        preparedStatement.setString(7, request.queryParams("phone"));
                     else
-                        preparedStatement.setNull(7, Types.INTEGER);
+                        preparedStatement.setNull(7, Types.VARCHAR);
+
+                    if (request.queryParams("email") != null)
+                        preparedStatement.setString(8, request.queryParams("email"));
+                    else
+                        preparedStatement.setNull(8, Types.VARCHAR);
+
+                    if (request.queryParams("id_room") != null)
+                        preparedStatement.setInt(9, Integer.parseInt(request.queryParams("id_room")));
+                    else
+                        preparedStatement.setNull(9, Types.INTEGER);
 
                     preparedStatement.execute();
 
@@ -325,38 +329,42 @@ public class JDBCPOST {
 
         if (request.queryParams("key").equals(HerokuAPI.key)) {
 
-            if (request.queryParams("name") != null) {
+            if (request.queryParams("name") != null &&
+                    request.queryParams("login") != null &&
+                    request.queryParams("pass") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postTeacher());
+                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postStudent());
 
                     preparedStatement.setString(1, request.queryParams("name"));
                     preparedStatement.setInt(2, 1);
+                    preparedStatement.setString(3, request.queryParams("login"));
+                    preparedStatement.setString(4, request.queryParams("pass"));
 
                     if (request.queryParams("s_name") != null)
-                        preparedStatement.setString(3, request.queryParams("s_name"));
-                    else
-                        preparedStatement.setNull(3, Types.VARCHAR);
-
-                    if (request.queryParams("l_name") != null)
-                        preparedStatement.setString(4, request.queryParams("l_name"));
-                    else
-                        preparedStatement.setNull(4, Types.VARCHAR);
-
-                    if (request.queryParams("phone") != null)
-                        preparedStatement.setString(5, request.queryParams("phone"));
+                        preparedStatement.setString(5, request.queryParams("s_name"));
                     else
                         preparedStatement.setNull(5, Types.VARCHAR);
 
-                    if (request.queryParams("email") != null)
-                        preparedStatement.setString(6, request.queryParams("email"));
+                    if (request.queryParams("l_name") != null)
+                        preparedStatement.setString(6, request.queryParams("l_name"));
                     else
                         preparedStatement.setNull(6, Types.VARCHAR);
 
-                    if (request.queryParams("id_group") != null)
-                        preparedStatement.setInt(7, Integer.parseInt(request.queryParams("id_group")));
+                    if (request.queryParams("phone") != null)
+                        preparedStatement.setString(7, request.queryParams("phone"));
                     else
-                        preparedStatement.setNull(7, Types.INTEGER);
+                        preparedStatement.setNull(7, Types.VARCHAR);
+
+                    if (request.queryParams("email") != null)
+                        preparedStatement.setString(8, request.queryParams("email"));
+                    else
+                        preparedStatement.setNull(8, Types.VARCHAR);
+
+                    if (request.queryParams("id_group") != null)
+                        preparedStatement.setInt(9, Integer.parseInt(request.queryParams("id_group")));
+                    else
+                        preparedStatement.setNull(9, Types.INTEGER);
 
                     preparedStatement.execute();
 

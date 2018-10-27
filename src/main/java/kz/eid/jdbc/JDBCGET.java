@@ -53,6 +53,55 @@ public class JDBCGET {
     }
 
     /**
+     * Получает информацию с таблицы "account"
+     *
+     * @param connection
+     * @return возвращает список факультетов в JSON.
+     */
+    public static String getAccount(Connection connection, Request request, Response response) {
+
+        if (request.queryParams("login") != null &&
+                request.queryParams("pass") != null) {
+
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getAccount());
+
+                preparedStatement.setString(1, request.queryParams("login"));
+                preparedStatement.setString(2, request.queryParams("pass"));
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                while (resultSet.next()) {
+                    Account account = new Account(
+                            resultSet.getInt("id_account"),
+                            resultSet.getString("name"),
+                            resultSet.getString("s_name"),
+                            resultSet.getString("l_name"),
+                            resultSet.getString("phone"),
+                            resultSet.getString("email"),
+                            resultSet.getInt("id_room"),
+                            resultSet.getInt("id_group"),
+                            resultSet.getInt("t")
+                    );
+
+                    response.status(200);
+
+                    return new Gson().toJson(account);
+                }
+            } catch (SQLException | NumberFormatException e) {
+
+                response.status(400);
+
+                return "400 Bad Request";
+            }
+        }
+
+        response.status(400);
+
+        return "400 Bad Request";
+    }
+
+    /**
      * Получает информацию с таблицы "faculty"
      *
      * @param connection
@@ -349,7 +398,7 @@ public class JDBCGET {
                         while (resultSet4.next())
                             schedule.setRoom(resultSet4.getString("name"));
 
-                        if (resultSet3.getInt("id_teacher") != 1){
+                        if (resultSet3.getInt("id_teacher") != 1) {
                             resultSet4 = GETStatement.getReadDB(connection, GETStatement.getTeacher(), resultSet3.getInt("id_teacher"));
 
                             while (resultSet4.next()) {
@@ -433,7 +482,7 @@ public class JDBCGET {
 
                 resultSet = GETStatement.getReadDB(connection, GETStatement.getChangeTeacher(), Integer.parseInt(request.queryParams("teacher")));
 
-                while (resultSet.next()){
+                while (resultSet.next()) {
                     ScheduleTeacher scheduleTeacher = new ScheduleTeacher();
 
                     scheduleTeacher.setType(resultSet.getInt("t"));
@@ -446,10 +495,10 @@ public class JDBCGET {
 
                     resultSet2 = GETStatement.getReadDB(connection, GETStatement.getScheduleChange(), resultSet.getInt("id_change"));
 
-                    while (resultSet2.next()){
+                    while (resultSet2.next()) {
                         ResultSet resultSet3 = GETStatement.getReadDB(connection, GETStatement.getSubjectSchedule(), resultSet2.getInt("id_schedule_subject"));
 
-                        while (resultSet3.next()){
+                        while (resultSet3.next()) {
 
                             scheduleTeacher.setId_schedule(resultSet3.getInt("id_schedule"));
                             scheduleTeacher.setD(resultSet3.getInt("d"));
@@ -458,7 +507,7 @@ public class JDBCGET {
 
                             ResultSet resultSet4 = GETStatement.getReadDB(connection, GETStatement.getGroupSchedule(), resultSet3.getInt("id_group"));
 
-                            while (resultSet4.next()){
+                            while (resultSet4.next()) {
 
                                 scheduleTeacher.setName(resultSet4.getString("name"));
                             }
@@ -502,33 +551,34 @@ public class JDBCGET {
 
                 ResultSet resultSet = preparedStatement.executeQuery();
 
-                resultSet.next();
+                while (resultSet.next()) {
+                    Account account = new Account(
+                            resultSet.getInt("id_account"),
+                            resultSet.getString("name"),
+                            resultSet.getString("s_name"),
+                            resultSet.getString("l_name"),
+                            resultSet.getString("phone"),
+                            resultSet.getString("email"),
+                            resultSet.getInt("id_room"),
+                            resultSet.getInt("id_group"),
+                            resultSet.getInt("t")
+                    );
 
-                Teacher teacher = new Teacher(
-                        resultSet.getInt("id_teacher"),
-                        resultSet.getString("name"),
-                        resultSet.getString("s_name"),
-                        resultSet.getString("l_name"),
-                        resultSet.getString("phone"),
-                        resultSet.getString("email"),
-                        resultSet.getInt("id_room")
-                );
+                    response.status(200);
 
-                response.status(200);
-
-                return new Gson().toJson(teacher);
+                    return new Gson().toJson(account);
+                }
             } catch (SQLException | NumberFormatException e) {
 
                 response.status(400);
 
                 return "400 Bad Request";
             }
-        } else {
-
-            response.status(400);
-
-            return "400 Bad Request";
         }
+
+        response.status(400);
+
+        return "400 Bad Request";
     }
 
     /**
@@ -538,20 +588,22 @@ public class JDBCGET {
      * @return возвращает всех преподавателей в JSON.
      */
     public static String getAll(Connection connection, Response response) {
-        ArrayList<Teacher> list = new ArrayList<>();
+        ArrayList<Account> list = new ArrayList<>();
 
         try {
             ResultSet resultSet = connection.prepareStatement(GETStatement.getTeacherAll()).executeQuery();
 
             while (resultSet.next())
-                list.add(new Teacher(
-                        resultSet.getInt("id_teacher"),
+                list.add(new Account(
+                        resultSet.getInt("id_account"),
                         resultSet.getString("name"),
                         resultSet.getString("s_name"),
                         resultSet.getString("l_name"),
                         resultSet.getString("phone"),
                         resultSet.getString("email"),
-                        resultSet.getInt("id_room")
+                        resultSet.getInt("id_room"),
+                        resultSet.getInt("id_group"),
+                        resultSet.getInt("t")
                 ));
 
             response.status(200);

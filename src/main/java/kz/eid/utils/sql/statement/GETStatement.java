@@ -24,6 +24,16 @@ import java.sql.SQLException;
 public class GETStatement {
 
     /**
+     * Запрос на авторизацию приложения.
+     * Истользуется таблица "account"
+     *
+     * @return
+     */
+    public static String getAccount() {
+        return "SELECT * FROM `account` WHERE `account`.login=? AND `account`.pass=?";
+    }
+
+    /**
      * Запрос на вывод всех факультетов.
      * Истользуется таблица "faculty"
      *

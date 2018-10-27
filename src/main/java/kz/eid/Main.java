@@ -80,6 +80,15 @@ public class Main {
         get("/auth", "application/json", JDBCGET::getAuth);
 
         /*
+         * Авторизовать приложение.
+         *
+         * https://example.com/account ?
+         * & login = <String>
+         * & pass = <String>
+         */
+        get("/account", "application/json", (request, response) -> JDBCGET.getAccount(connection, request, response));
+
+        /*
          * Получить факультеты.
          *
          * https://example.com/faculty
@@ -226,6 +235,8 @@ public class Main {
          * https://example.com/teacher ?
          * & key = <String>
          * & name = <String>
+         * & login = <String>
+         * & pass = <String>
          * - & s_name = <String>
          * - & l_name = <String>
          * - & phone = <String>
@@ -240,6 +251,8 @@ public class Main {
          * https://example.com/student ?
          * & key = <String>
          * & name = <String>
+         * & login = <String>
+         * & pass = <String>
          * - & s_name = <String>
          * - & l_name = <String>
          * - & phone = <String>

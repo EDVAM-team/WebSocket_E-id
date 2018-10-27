@@ -18,9 +18,9 @@ package kz.eid.objects;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Teacher {
-    @SerializedName("id_teacher")
-    private final int idTeacher;
+public class Account {
+    @SerializedName("id_account")
+    private final int idAccount;
     @SerializedName("name")
     private final String name;
     @SerializedName("s_name")
@@ -33,14 +33,20 @@ public class Teacher {
     private final String email;
     @SerializedName("id_room")
     private final int idRoom;
+    @SerializedName("id_group")
+    private final int idGroup;
+    @SerializedName("t")
+    private final int t;
 
-    public Teacher(int idTeacher, String name, String sName, String lName, String phone, String email, int idRoom) {
-        this.idTeacher = idTeacher;
+    public Account(int idAccount, String name, String sName, String lName, String phone, String email, int idRoom, int idGroup, int t) {
+        this.idAccount = idAccount;
         this.name = name;
         this.sName = sName;
         this.lName = lName;
         this.phone = phone;
         this.email = email;
         this.idRoom = idRoom;
+        this.idGroup = idGroup;
+        this.t = t;
     }
 }

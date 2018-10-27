@@ -69,8 +69,8 @@ public class POSTStatement {
      */
     public static String postTeacher() {
         return "INSERT INTO `account` " +
-                "(`name`, `t`, `s_name`, `l_name`, `phone`, `email`, `id_room`) " +
-                "VALUE (?, ?, ?, ?, ?, ?, ?)";
+                "(`name`, `t`, `login`, `pass`, `s_name`, `l_name`, `phone`, `email`, `id_room`) " +
+                "VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     }
 
     /**
@@ -80,8 +80,8 @@ public class POSTStatement {
      */
     public static String postStudent() {
         return "INSERT INTO `account` " +
-                "(`name`, `t`, `s_name`, `l_name`, `phone`, `email`, `id_group`) " +
-                "VALUE (?, ?, ?, ?, ?, ?, ?)";
+                "(`name`, `t`, `login`, `pass`, `s_name`, `l_name`, `phone`, `email`, `id_group`) " +
+                "VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     }
 
     /**
