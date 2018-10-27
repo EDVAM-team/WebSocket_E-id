@@ -235,6 +235,20 @@ public class Main {
         post("/teacher", "application/json", (request, response) -> JDBCPOST.postTeacher(connection, request, response));
 
         /*
+         * Создает студента.
+         *
+         * https://example.com/student ?
+         * & key = <String>
+         * & name = <String>
+         * - & s_name = <String>
+         * - & l_name = <String>
+         * - & phone = <String>
+         * - & email = <String>
+         * - & id_group = <Integer>
+         */
+        post("/student", "application/json", (request, response) -> JDBCPOST.postStudent(connection, request, response));
+
+        /*
          * Создает предмет для расписания.
          *
          * https://example.com/subject

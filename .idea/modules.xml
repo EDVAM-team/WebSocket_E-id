@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/e-id.iml" filepath="$PROJECT_DIR$/.idea/modules/e-id.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/e-id_main.iml" filepath="$PROJECT_DIR$/.idea/modules/e-id_main.iml" group="e-id" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/e-id_test.iml" filepath="$PROJECT_DIR$/.idea/modules/e-id_test.iml" group="e-id" />
     </modules>

@@ -101,21 +101,21 @@ public class GETStatement {
      * @return
      */
     public static String getCuratorTeacher() {
-        return "SELECT * FROM `curator` WHERE `id_teacher`=?";
+        return "SELECT * FROM `curator` WHERE `id_account`=?";
     }
 
     /**
      * Запрос на вывод расписания группы по `id_group`
-     * Истользуется таблица "schedule"
+     * Истользуется таблица "schedule" и "account"
      *
      * @return
      */
     public static String getSchedule() {
         return "SELECT `schedule`.id_schedule, `schedule`.d , `schedule`.num, `schedule`.id_schedule_subject, " +
-                "`schedule`.id_teacher, `teacher`.name, `teacher`.s_name, `teacher`.l_name, `teacher`.phone , " +
-                "`teacher`.email, `teacher`.id_room " +
-                "FROM `schedule`, `teacher` " +
-                "WHERE `schedule`.id_teacher = `teacher`.id_teacher " +
+                "`schedule`.id_account, `account`.name, `account`.s_name, `account`.l_name, `account`.phone , " +
+                "`account`.email, `account`.id_room " +
+                "FROM `schedule`, `account` " +
+                "WHERE `schedule`.id_account = `account`.id_account " +
                 "AND `schedule`.id_group = ?";
     }
 
@@ -130,7 +130,7 @@ public class GETStatement {
                 "`schedule`.id_group, `group`.name " +
                 "FROM `schedule`, `group` " +
                 "WHERE `schedule`.id_group = `group`.id_group " +
-                "AND `schedule`.id_teacher = ?";
+                "AND `schedule`.id_account = ?";
     }
 
     /**
@@ -140,7 +140,7 @@ public class GETStatement {
      * @return
      */
     public static String getChangeTeacher() {
-        return "SELECT * FROM `change` WHERE `id_teacher`=?";
+        return "SELECT * FROM `change` WHERE `id_account`=?";
     }
 
     /**
@@ -190,7 +190,7 @@ public class GETStatement {
      * @return
      */
     public static String getTeacher() {
-        return "SELECT * FROM `teacher` WHERE `id_teacher`=?";
+        return "SELECT * FROM `account` WHERE `id_account`=?";
     }
 
     /**
@@ -200,7 +200,7 @@ public class GETStatement {
      * @return
      */
     public static String getTeacherAll() {
-        return "SELECT * FROM `teacher`";
+        return "SELECT * FROM `account` WHERE `account`.t=2";
     }
 
     /**
@@ -240,7 +240,7 @@ public class GETStatement {
      * @return
      */
     public static String getSearchGroup() {
-        return "SELECT * FROM `search` WHERE `id_teacher`=?";
+        return "SELECT * FROM `search` WHERE `id_account`=?";
     }
 
     public static ResultSet getReadDB(Connection connection, String sql, int id) throws SQLException {

@@ -58,19 +58,30 @@ public class POSTStatement {
      */
     public static String postCurator() {
         return "INSERT INTO `curator` " +
-                "(`id_group`, `id_teacher`) " +
+                "(`id_group`, `id_account`) " +
                 "VALUE (?, ?)";
     }
 
     /**
-     * Запрос на создание ячейки данных в таблице `teacher`
+     * Запрос на создание ячейки данных в таблице `account`
      *
      * @return
      */
     public static String postTeacher() {
-        return "INSERT INTO `teacher` " +
-                "(`name`, `s_name`, `l_name`, `phone`, `email`, `id_room`) " +
-                "VALUE (?, ?, ?, ?, ?, ?)";
+        return "INSERT INTO `account` " +
+                "(`name`, `t`, `s_name`, `l_name`, `phone`, `email`, `id_room`) " +
+                "VALUE (?, ?, ?, ?, ?, ?, ?)";
+    }
+
+    /**
+     * Запрос на создание ячейки данных в таблице `account`
+     *
+     * @return
+     */
+    public static String postStudent() {
+        return "INSERT INTO `account` " +
+                "(`name`, `t`, `s_name`, `l_name`, `phone`, `email`, `id_group`) " +
+                "VALUE (?, ?, ?, ?, ?, ?, ?)";
     }
 
     /**
@@ -102,7 +113,7 @@ public class POSTStatement {
      */
     public static String postSchedule() {
         return "INSERT INTO `schedule` " +
-                "(`d`, `num`, `id_schedule_subject`, `id_group`, `id_teacher`) " +
+                "(`d`, `num`, `id_schedule_subject`, `id_group`, `id_account`) " +
                 "VALUE (?, ?, ?, ?, ?)";
     }
 
@@ -113,7 +124,7 @@ public class POSTStatement {
      */
     public static String postChange() {
         return "INSERT INTO `change` " +
-                "(`id_list_subject`, `type`, `id_teacher`, `room`) " +
+                "(`id_list_subject`, `type`, `id_account`, `room`) " +
                 "VALUE (?, ?, ?, ?)";
     }
 

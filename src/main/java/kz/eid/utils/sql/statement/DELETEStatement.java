@@ -59,13 +59,13 @@ public class DELETEStatement {
     }
 
     /**
-     * Запрос на удаление преподавателя.
-     * Истользуется таблица "teacher"
+     * Запрос на удаление аккаунт.
+     * Истользуется таблица "account"
      *
      * @return
      */
-    public static String deleteTeacher() {
-        return "DELETE FROM `teacher` WHERE `id_teacher`=?";
+    public static String deleteAccount() {
+        return "DELETE FROM `account` WHERE `id_account`=?";
     }
 
     /**

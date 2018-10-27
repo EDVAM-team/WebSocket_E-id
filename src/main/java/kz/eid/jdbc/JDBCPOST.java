@@ -247,7 +247,7 @@ public class JDBCPOST {
 
     /**
      * Создает преподавателя.
-     * Используется таблица "teacher"
+     * Используется таблица "account"
      *
      * @param connection
      * @return
@@ -262,31 +262,101 @@ public class JDBCPOST {
                     PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postTeacher());
 
                     preparedStatement.setString(1, request.queryParams("name"));
+                    preparedStatement.setInt(2, 2);
 
                     if (request.queryParams("s_name") != null)
-                        preparedStatement.setString(2, request.queryParams("s_name"));
-                    else
-                        preparedStatement.setNull(2, Types.VARCHAR);
-
-                    if (request.queryParams("l_name") != null)
-                        preparedStatement.setString(3, request.queryParams("l_name"));
+                        preparedStatement.setString(3, request.queryParams("s_name"));
                     else
                         preparedStatement.setNull(3, Types.VARCHAR);
 
-                    if (request.queryParams("phone") != null)
-                        preparedStatement.setString(4, request.queryParams("phone"));
+                    if (request.queryParams("l_name") != null)
+                        preparedStatement.setString(4, request.queryParams("l_name"));
                     else
                         preparedStatement.setNull(4, Types.VARCHAR);
 
-                    if (request.queryParams("email") != null)
-                        preparedStatement.setString(5, request.queryParams("email"));
+                    if (request.queryParams("phone") != null)
+                        preparedStatement.setString(5, request.queryParams("phone"));
                     else
                         preparedStatement.setNull(5, Types.VARCHAR);
 
-                    if (request.queryParams("id_room") != null)
-                        preparedStatement.setInt(6, Integer.parseInt(request.queryParams("id_room")));
+                    if (request.queryParams("email") != null)
+                        preparedStatement.setString(6, request.queryParams("email"));
                     else
-                        preparedStatement.setNull(6, Types.INTEGER);
+                        preparedStatement.setNull(6, Types.VARCHAR);
+
+                    if (request.queryParams("id_room") != null)
+                        preparedStatement.setInt(7, Integer.parseInt(request.queryParams("id_room")));
+                    else
+                        preparedStatement.setNull(7, Types.INTEGER);
+
+                    preparedStatement.execute();
+
+                    response.status(201);
+                } catch (SQLException | NumberFormatException e) {
+
+                    response.status(400);
+
+                    return StatusResponse.error;
+                }
+
+                return StatusResponse.success;
+            } else {
+
+                response.status(400);
+
+                return StatusResponse.error;
+            }
+        } else {
+
+            response.status(401);
+
+            return StatusResponse.error;
+        }
+    }
+
+    /**
+     * Создает студента.
+     * Используется таблица "account"
+     *
+     * @param connection
+     * @return
+     */
+    public static String postStudent(Connection connection, Request request, Response response) {
+
+        if (request.queryParams("key").equals(HerokuAPI.key)) {
+
+            if (request.queryParams("name") != null) {
+
+                try {
+                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postTeacher());
+
+                    preparedStatement.setString(1, request.queryParams("name"));
+                    preparedStatement.setInt(2, 1);
+
+                    if (request.queryParams("s_name") != null)
+                        preparedStatement.setString(3, request.queryParams("s_name"));
+                    else
+                        preparedStatement.setNull(3, Types.VARCHAR);
+
+                    if (request.queryParams("l_name") != null)
+                        preparedStatement.setString(4, request.queryParams("l_name"));
+                    else
+                        preparedStatement.setNull(4, Types.VARCHAR);
+
+                    if (request.queryParams("phone") != null)
+                        preparedStatement.setString(5, request.queryParams("phone"));
+                    else
+                        preparedStatement.setNull(5, Types.VARCHAR);
+
+                    if (request.queryParams("email") != null)
+                        preparedStatement.setString(6, request.queryParams("email"));
+                    else
+                        preparedStatement.setNull(6, Types.VARCHAR);
+
+                    if (request.queryParams("id_group") != null)
+                        preparedStatement.setInt(7, Integer.parseInt(request.queryParams("id_group")));
+                    else
+                        preparedStatement.setNull(7, Types.INTEGER);
 
                     preparedStatement.execute();
 
