@@ -166,7 +166,7 @@ public class Main {
          * https://example.com/teacher/all
          */
         path("/teacher", () -> get("/all", "application/json", (request, response) ->
-                JDBCGET.getAll(connection, response)));
+                JDBCGET.getTeacherAll(connection, response)));
 
         /*
          * Получить список предметов.

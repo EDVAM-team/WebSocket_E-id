@@ -586,12 +586,12 @@ public class JDBCGET {
     }
 
     /**
-     * Получает информацию с таблицы "teacher"
+     * Получает информацию с таблицы "account"
      *
      * @param connection
      * @return возвращает всех преподавателей в JSON.
      */
-    public static String getAll(Connection connection, Response response) {
+    public static String getTeacherAll(Connection connection, Response response) {
         ArrayList<Account> list = new ArrayList<>();
 
         try {
