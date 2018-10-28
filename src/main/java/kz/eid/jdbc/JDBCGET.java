@@ -302,7 +302,7 @@ public class JDBCGET {
         ArrayList<Room> list = new ArrayList<>();
 
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getRoom());
+            PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getRoomAll());
 
             ResultSet resultSet = preparedStatement.executeQuery();
 

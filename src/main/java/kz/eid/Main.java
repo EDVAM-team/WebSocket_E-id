@@ -341,7 +341,7 @@ public class Main {
     /**
      * Конфигурация WebSocket
      */
-    private static void config(){
+    private static void config() {
 
         after((req, res) -> res.type("application/json"));
     }
