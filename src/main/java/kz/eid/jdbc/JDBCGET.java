@@ -346,7 +346,7 @@ public class JDBCGET {
                     schedule.setD(resultSet.getInt(2));
                     schedule.setNum(resultSet.getInt(3));
 
-                    if (resultSet.getInt("id_teacher") != 1) {
+                    if (resultSet.getInt("id_account") != 1) {
                         schedule.setId_teacher(resultSet.getInt(5));
                         schedule.setName(resultSet.getString(6));
                         schedule.setS_name(resultSet.getString(7));
@@ -385,7 +385,7 @@ public class JDBCGET {
 
                         resultSet3.next();
                         schedule.setType(resultSet3.getInt("t"));
-                        schedule.setId_teacher(resultSet3.getInt("id_teacher"));
+                        schedule.setId_teacher(resultSet3.getInt("id_account"));
 
                         ResultSet resultSet4 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet3.getInt("id_list_subject"));
 
@@ -398,8 +398,8 @@ public class JDBCGET {
                         while (resultSet4.next())
                             schedule.setRoom(resultSet4.getString("name"));
 
-                        if (resultSet3.getInt("id_teacher") != 1) {
-                            resultSet4 = GETStatement.getReadDB(connection, GETStatement.getTeacher(), resultSet3.getInt("id_teacher"));
+                        if (resultSet3.getInt("id_account") != 1) {
+                            resultSet4 = GETStatement.getReadDB(connection, GETStatement.getTeacher(), resultSet3.getInt("id_account"));
 
                             while (resultSet4.next()) {
 
