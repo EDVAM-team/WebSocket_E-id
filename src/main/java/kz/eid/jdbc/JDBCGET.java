@@ -539,17 +539,17 @@ public class JDBCGET {
     }
 
     /**
-     * Получает информацию с таблицы "teacher"
+     * Получает информацию с таблицы "account"
      *
      * @param connection
      * @return возвращает конкретного преподователя в JSON.
      */
-    public static String getTeacher(Connection connection, Request request, Response response) {
+    public static String getAccountID(Connection connection, Request request, Response response) {
 
         if (request.queryParams("id_account") != null) {
 
             try {
-                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getAccount());
+                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getAccountID());
 
                 preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_account")));
 

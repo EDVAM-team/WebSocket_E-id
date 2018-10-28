@@ -158,7 +158,7 @@ public class Main {
          * https://example.com/accountid ?
          * & id_account = <Integer>
          */
-        get("/accountid", "application/json", (request, response) -> JDBCGET.getTeacher(connection, request, response));
+        get("/accountid", "application/json", (request, response) -> JDBCGET.getAccountID(connection, request, response));
 
         /*
          * Получить список преподавателей.
