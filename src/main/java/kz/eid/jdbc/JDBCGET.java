@@ -190,7 +190,7 @@ public class JDBCGET {
 
                 curator = new Curator(
                         resultSet.getInt("id_group"),
-                        resultSet.getInt("id_teacher")
+                        resultSet.getInt("id_account")
                 );
 
                 response.status(200);
@@ -231,7 +231,7 @@ public class JDBCGET {
                 while (resultSet.next())
                     list.add(new Curator(
                             resultSet.getInt("id_group"),
-                            resultSet.getInt("id_teacher")
+                            resultSet.getInt("id_account")
                     ));
 
                 response.status(200);

@@ -21,11 +21,11 @@ import com.google.gson.annotations.SerializedName;
 public class Curator {
     @SerializedName("id_group")
     private final int idGroup;
-    @SerializedName("id_teacher")
-    private final int idTeacher;
+    @SerializedName("id_account")
+    private final int idAccount;
 
-    public Curator(int idGroup, int idTeacher) {
+    public Curator(int idGroup, int idAccount) {
         this.idGroup = idGroup;
-        this.idTeacher = idTeacher;
+        this.idAccount = idAccount;
     }
 }
