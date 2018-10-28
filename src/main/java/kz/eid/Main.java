@@ -153,12 +153,12 @@ public class Main {
         path("/schedule", () -> get("/teacher", (request, response) -> JDBCGET.getScheduleTeacher(connection, request, response)));
 
         /*
-         * Получить преподавателя.
+         * Получить информацию аккаунта.
          *
-         * https://example.com/teacher ?
-         * & id_teacher = <Integer>
+         * https://example.com/accountid ?
+         * & id_account = <Integer>
          */
-        get("/teacher", "application/json", (request, response) -> JDBCGET.getTeacher(connection, request, response));
+        get("/accountid", "application/json", (request, response) -> JDBCGET.getTeacher(connection, request, response));
 
         /*
          * Получить список преподавателей.

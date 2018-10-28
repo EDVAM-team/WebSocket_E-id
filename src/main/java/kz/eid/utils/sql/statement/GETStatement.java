@@ -194,12 +194,12 @@ public class GETStatement {
     }
 
     /**
-     * Запрос на вывод конкретного одного преподавателя по `id_teacher`
-     * Истользуется таблица "teacher"
+     * Запрос на вывод конкретного аккаунта по `id_account`
+     * Истользуется таблица "account"
      *
      * @return
      */
-    public static String getTeacher() {
+    public static String getAccountID() {
         return "SELECT * FROM `account` WHERE `id_account`=?";
     }
 

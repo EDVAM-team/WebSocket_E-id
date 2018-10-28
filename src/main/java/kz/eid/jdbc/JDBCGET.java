@@ -336,7 +336,11 @@ public class JDBCGET {
             ArrayList<Schedule> list = new ArrayList<>();
 
             try {
-                ResultSet resultSet = GETStatement.getReadDB(connection, GETStatement.getSchedule(), Integer.parseInt(request.queryParams("group")));
+                ResultSet resultSet = GETStatement.getReadDB(
+                        connection,
+                        GETStatement.getSchedule(),
+                        Integer.parseInt(request.queryParams("group"))
+                );
 
                 while (resultSet.next()) {
 
@@ -399,7 +403,7 @@ public class JDBCGET {
                             schedule.setRoom(resultSet4.getString("name"));
 
                         if (resultSet3.getInt("id_account") != 1) {
-                            resultSet4 = GETStatement.getReadDB(connection, GETStatement.getTeacher(), resultSet3.getInt("id_account"));
+                            resultSet4 = GETStatement.getReadDB(connection, GETStatement.getAccountID(), resultSet3.getInt("id_account"));
 
                             while (resultSet4.next()) {
 
@@ -542,12 +546,12 @@ public class JDBCGET {
      */
     public static String getTeacher(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("id_teacher") != null) {
+        if (request.queryParams("id_account") != null) {
 
             try {
-                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getTeacher());
+                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getAccount());
 
-                preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_teacher")));
+                preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_account")));
 
                 ResultSet resultSet = preparedStatement.executeQuery();
 
