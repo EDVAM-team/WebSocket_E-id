@@ -155,10 +155,11 @@ public class Main {
         /*
          * Получить информацию аккаунта.
          *
-         * https://example.com/accountid ?
+         * https://example.com/account/id ?
          * & id_account = <Integer>
          */
-        get("/accountid", "application/json", (request, response) -> JDBCGET.getAccountID(connection, request, response));
+        path("/account", () -> get("/id", "application/json", (request, response) ->
+                JDBCGET.getAccountID(connection, request, response)));
 
         /*
          * Получить список преподавателей.
