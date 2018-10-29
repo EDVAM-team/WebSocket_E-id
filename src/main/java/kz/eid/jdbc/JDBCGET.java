@@ -529,6 +529,11 @@ public class JDBCGET {
                                 groupList.add(new Group(resultSet4.getInt("id_group"), resultSet4.getString("name")));
 
                             scheduleTeacher.setGroup(groupList);
+
+                            resultSet4 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet3.getInt("id_list_subject"));
+
+                            resultSet4.next();
+                            scheduleTeacher.setSubject(resultSet4.getString("name"));
                         }
                     }
 
