@@ -478,15 +478,15 @@ public class JDBCGET {
                         scheduleTeacher.setChange(0);
                     }
 
-                    resultSet2 = GETStatement.getReadDB(connection, GETStatement.getRoom(), resultSet2.getInt("room"));
+                    ResultSet resultSet3 = GETStatement.getReadDB(connection, GETStatement.getRoom(), resultSet2.getInt("room"));
 
-                    while (resultSet2.next())
-                        scheduleTeacher.setRoom(resultSet2.getString("name"));
+                    while (resultSet3.next())
+                        scheduleTeacher.setRoom(resultSet3.getString("name"));
 
-                    resultSet2 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet2.getInt("id_list_subject"));
+                    ResultSet resultSet4 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet3.getInt("id_list_subject"));
 
-                    while (resultSet2.next())
-                        scheduleTeacher.setSubject(resultSet2.getString("name"));
+                    while (resultSet4.next())
+                        scheduleTeacher.setSubject(resultSet4.getString("name"));
 
 //                    resultSet2 = GETStatement.getReadDB(connection, GETStatement.getGroupID(), resultSet.getInt(5));
 //                    ArrayList<Group> groupList = new ArrayList<>();
