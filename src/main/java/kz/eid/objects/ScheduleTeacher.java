@@ -33,8 +33,6 @@ public class ScheduleTeacher {
     private int type;
     @SerializedName("group")
     private ArrayList<Group> group;
-    @SerializedName("name")
-    private String name;
     @SerializedName("room")
     private String room;
     @SerializedName("change")
@@ -58,10 +56,6 @@ public class ScheduleTeacher {
 
     public void setType(int type) {
         this.type = type;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public void setRoom(String room) {
