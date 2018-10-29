@@ -530,7 +530,7 @@ public class JDBCGET {
 
                             scheduleTeacher.setGroup(groupList);
 
-                            resultSet4 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet3.getInt("id_list_subject"));
+                            resultSet4 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet2.getInt("id_list_subject"));
 
                             resultSet4.next();
                             scheduleTeacher.setSubject(resultSet4.getString("name"));
