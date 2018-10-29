@@ -172,9 +172,9 @@ public class Main {
         /*
          * Получить список предметов.
          *
-         * https://example.com/list
+         * https://example.com/subject/list
          */
-        get("/list", "application/json", (request, response) -> JDBCGET.getList(connection, response));
+        path("/subject", () -> get("/list", "application/json", (request, response) -> JDBCGET.getListSubject(connection, response)));
     }
 
     /**

@@ -635,7 +635,7 @@ public class JDBCGET {
      * @param connection
      * @return возвращает весь список предметов в JSON.
      */
-    public static String getList(Connection connection, Response response) {
+    public static String getListSubject(Connection connection, Response response) {
         ArrayList<ListSubject> list = new ArrayList<>();
 
         try {
