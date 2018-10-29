@@ -488,13 +488,13 @@ public class JDBCGET {
                     while (resultSet2.next())
                         scheduleTeacher.setSubject(resultSet2.getString("name"));
 
-                    resultSet2 = GETStatement.getReadDB(connection, GETStatement.getGroupID(), resultSet.getInt(5));
-                    ArrayList<Group> groupList = new ArrayList<>();
-
-                    while (resultSet2.next())
-                        groupList.add(new Group(resultSet2.getInt("id_group"), resultSet2.getString("name")));
-
-                    scheduleTeacher.setGroup(groupList);
+//                    resultSet2 = GETStatement.getReadDB(connection, GETStatement.getGroupID(), resultSet.getInt(5));
+//                    ArrayList<Group> groupList = new ArrayList<>();
+//
+//                    while (resultSet2.next())
+//                        groupList.add(new Group(resultSet2.getInt("id_group"), resultSet2.getString("name")));
+//
+//                    scheduleTeacher.setGroup(groupList);
 
                     list.add(scheduleTeacher);
                 }

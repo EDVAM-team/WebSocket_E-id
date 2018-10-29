@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f1a897c-0f26-43e4-8795-18635adbb59a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/kz/eid/jdbc/JDBCGET.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/eid/jdbc/JDBCGET.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kz/eid/objects/ScheduleTeacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/eid/objects/ScheduleTeacher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kz/eid/utils/sql/statement/GETStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/eid/utils/sql/statement/GETStatement.java" afterDir="false" />
-    </list>
+    <list default="true" id="8f1a897c-0f26-43e4-8795-18635adbb59a" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -153,12 +149,12 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="7" />
-          <entry key="java" value="1155" />
+          <entry key="java" value="1159" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1155" />
+          <entry key="JAVA" value="1159" />
           <entry key="PLAIN_TEXT" value="7" />
         </counts>
       </usages-collector>
@@ -170,8 +166,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/eid/jdbc/JDBCGET.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="501">
-              <caret line="518" column="28" selection-start-line="518" selection-start-column="28" selection-end-line="524" selection-end-column="64" />
+            <state relative-caret-position="796">
+              <caret line="492" lean-forward="true" selection-start-line="492" selection-end-line="492" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -771,7 +767,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540833687232" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540834181461" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -861,7 +857,7 @@
     <frame x="55" y="30" width="1865" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16363636" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16363636" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -1126,8 +1122,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/eid/jdbc/JDBCGET.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="518" column="28" selection-start-line="518" selection-start-column="28" selection-end-line="524" selection-end-column="64" />
+        <state relative-caret-position="796">
+          <caret line="492" lean-forward="true" selection-start-line="492" selection-end-line="492" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
