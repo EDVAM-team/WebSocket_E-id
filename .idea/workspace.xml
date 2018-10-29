@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f1a897c-0f26-43e4-8795-18635adbb59a" name="Default Changelist" comment="" />
+    <list default="true" id="8f1a897c-0f26-43e4-8795-18635adbb59a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/kz/eid/jdbc/JDBCDELETE.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/eid/jdbc/JDBCDELETE.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -138,23 +140,23 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="53" />
+          <entry key="java" value="54" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="53" />
+          <entry key="JAVA" value="54" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="7" />
-          <entry key="java" value="1176" />
+          <entry key="java" value="1186" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1176" />
+          <entry key="JAVA" value="1186" />
           <entry key="PLAIN_TEXT" value="7" />
         </counts>
       </usages-collector>
@@ -163,14 +165,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/eid/jdbc/JDBCGET.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
-              <caret line="486" lean-forward="true" selection-start-line="486" selection-end-line="486" />
+            <state relative-caret-position="848">
+              <caret line="498" column="46" lean-forward="true" selection-start-line="498" selection-start-column="46" selection-end-line="498" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/kz/eid/jdbc/JDBCDELETE.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="28">
+              <caret line="1" column="24" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -640,7 +651,6 @@
         <option value="$PROJECT_DIR$/src/main/java/kz/eid/objects/Room.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/eid/utils/sql/statement/PUTStatement.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/eid/utils/SQLStatement.java" />
-        <option value="$PROJECT_DIR$/src/main/java/kz/eid/jdbc/JDBCDELETE.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/eid/objects/Schedule.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/eid/utils/sql/statement/DELETEStatement.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/eid/utils/sql/statement/POSTStatement.java" />
@@ -652,6 +662,7 @@
         <option value="$PROJECT_DIR$/src/main/java/kz/eid/objects/ScheduleTeacher.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/eid/utils/sql/statement/GETStatement.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/eid/jdbc/JDBCGET.java" />
+        <option value="$PROJECT_DIR$/src/main/java/kz/eid/jdbc/JDBCDELETE.java" />
       </list>
     </option>
   </component>
@@ -769,7 +780,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540835113193" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540835471852" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -859,7 +870,7 @@
     <frame x="55" y="30" width="1865" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16363636" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16363636" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -873,7 +884,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32917318" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32411504" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32411504" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32964602" />
       <window_info anchor="bottom" id="Build" order="10" weight="0.32893288" />
@@ -957,13 +968,6 @@
     </entry>
     <entry file="jar:///usr/lib/jvm/java-8-openjdk/jre/lib/rt.jar!/java/sql/ResultSet.class" />
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/eid/utils/SQLStatement.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/eid/jdbc/JDBCDELETE.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="40" column="55" selection-start-line="40" selection-start-column="55" selection-end-line="40" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/eid/objects/Specialty.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1126,11 +1130,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/eid/jdbc/JDBCGET.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="486" lean-forward="true" selection-start-line="486" selection-end-line="486" />
+        <state relative-caret-position="848">
+          <caret line="498" column="46" lean-forward="true" selection-start-line="498" selection-start-column="46" selection-end-line="498" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/eid/jdbc/JDBCDELETE.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="1" column="24" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="24" />
         </state>
       </provider>
     </entry>
