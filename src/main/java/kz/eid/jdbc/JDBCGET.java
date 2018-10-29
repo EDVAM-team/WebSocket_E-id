@@ -483,10 +483,10 @@ public class JDBCGET {
                     while (resultSet3.next())
                         scheduleTeacher.setRoom(resultSet3.getString("name"));
 
-                    ResultSet resultSet4 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet3.getInt("id_list_subject"));
+                    resultSet3 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet2.getInt("id_list_subject"));
 
-                    while (resultSet4.next())
-                        scheduleTeacher.setSubject(resultSet4.getString("name"));
+                    while (resultSet3.next())
+                        scheduleTeacher.setSubject(resultSet3.getString("name"));
 
 //                    resultSet2 = GETStatement.getReadDB(connection, GETStatement.getGroupID(), resultSet.getInt(5));
 //                    ArrayList<Group> groupList = new ArrayList<>();
