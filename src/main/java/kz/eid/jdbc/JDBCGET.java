@@ -169,7 +169,7 @@ public class JDBCGET {
     }
 
     /**
-     * Получает информацию с таблицы "curator"
+     * Получает информацию с таблицы "account"
      *
      * @param connection
      * @return возвращает список конкретных специальностей в JSON.
@@ -177,23 +177,28 @@ public class JDBCGET {
     public static String getCuratorGroup(Connection connection, Request request, Response response) {
 
         if (request.queryParams("group") != null) {
-            Curator curator;
 
             try {
-                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getCuratorGroup());
+                ResultSet resultSet = GETStatement.getReadDB(connection, GETStatement.getCuratorGroup(), Integer.parseInt(request.queryParams("group")));
 
-                preparedStatement.setInt(1, Integer.parseInt(request.queryParams("group")));
+                while (resultSet.next()) {
+                    ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getAccountID(), resultSet.getInt("id_account"));
 
-                ResultSet resultSet = preparedStatement.executeQuery();
+                    while (resultSet2.next()) {
 
-                resultSet.next();
+                        response.status(200);
 
-                curator = new Curator(
-                        resultSet.getInt("id_group"),
-                        resultSet.getInt("id_account")
-                );
-
-                response.status(200);
+                        return new Gson().toJson(new Teacher(
+                                resultSet2.getInt("id_account"),
+                                resultSet2.getString("name"),
+                                resultSet2.getString("s_name"),
+                                resultSet2.getString("l_name"),
+                                resultSet2.getString("phone"),
+                                resultSet2.getString("email"),
+                                resultSet2.getString("id_room")
+                        ));
+                    }
+                }
             } catch (SQLException | NumberFormatException e) {
 
                 response.status(400);
@@ -201,7 +206,9 @@ public class JDBCGET {
                 return "400 Bad Request";
             }
 
-            return new Gson().toJson(curator);
+            response.status(400);
+
+            return "400 Bad Request";
         } else {
 
             response.status(400);
@@ -219,22 +226,21 @@ public class JDBCGET {
     public static String getCuratorTeacher(Connection connection, Request request, Response response) {
 
         if (request.queryParams("teacher") != null) {
-            ArrayList<Curator> list = new ArrayList<>();
 
             try {
-                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getCuratorTeacher());
+                ResultSet resultSet = GETStatement.getReadDB(connection, GETStatement.getCuratorTeacher(), Integer.parseInt(request.queryParams("teacher")));
 
-                preparedStatement.setInt(1, Integer.parseInt(request.queryParams("teacher")));
+                while (resultSet.next()) {
+                    ArrayList<Group> list = new ArrayList<>();
+                    ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getGroup(), resultSet.getInt("id_group"));
 
-                ResultSet resultSet = preparedStatement.executeQuery();
+                    while (resultSet2.next())
+                        list.add(new Group(resultSet2.getInt("id_group"), resultSet2.getString("name")));
 
-                while (resultSet.next())
-                    list.add(new Curator(
-                            resultSet.getInt("id_group"),
-                            resultSet.getInt("id_account")
-                    ));
+                    response.status(200);
 
-                response.status(200);
+                    return new Gson().toJson(list);
+                }
             } catch (SQLException | NumberFormatException e) {
 
                 response.status(400);
@@ -242,7 +248,9 @@ public class JDBCGET {
                 return "400 Bad Request";
             }
 
-            return new Gson().toJson(list);
+            response.status(400);
+
+            return "400 Bad Request";
         } else {
 
             response.status(400);

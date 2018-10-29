@@ -18,14 +18,29 @@ package kz.eid.objects;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Curator {
-    @SerializedName("id_group")
-    private final int idGroup;
+public class Teacher {
     @SerializedName("id_account")
     private final int idAccount;
+    @SerializedName("name")
+    private final String name;
+    @SerializedName("s_name")
+    private final String sName;
+    @SerializedName("l_name")
+    private final String lName;
+    @SerializedName("phone")
+    private final String phone;
+    @SerializedName("email")
+    private final String email;
+    @SerializedName("id_room")
+    private final String idRoom;
 
-    public Curator(int idGroup, int idAccount) {
-        this.idGroup = idGroup;
+    public Teacher(int idAccount, String name, String sName, String lName, String phone, String email, String idRoom) {
         this.idAccount = idAccount;
+        this.name = name;
+        this.sName = sName;
+        this.lName = lName;
+        this.phone = phone;
+        this.email = email;
+        this.idRoom = idRoom;
     }
 }
