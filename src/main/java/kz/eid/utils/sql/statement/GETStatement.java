@@ -70,7 +70,7 @@ public class GETStatement {
      *
      * @return
      */
-    public static String getGroupSchedule() {
+    public static String getGroupID() {
         return "SELECT * FROM `group` WHERE `id_group`=?";
     }
 

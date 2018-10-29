@@ -18,6 +18,8 @@ package kz.eid.objects;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+
 public class ScheduleTeacher {
     @SerializedName("id_schedule")
     private int id_schedule;
@@ -29,8 +31,8 @@ public class ScheduleTeacher {
     private String subject;
     @SerializedName("type")
     private int type;
-    @SerializedName("id_group")
-    private int id_group;
+    @SerializedName("group")
+    private ArrayList<Group> group;
     @SerializedName("name")
     private String name;
     @SerializedName("room")
@@ -58,10 +60,6 @@ public class ScheduleTeacher {
         this.type = type;
     }
 
-    public void setId_group(int id_group) {
-        this.id_group = id_group;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -72,5 +70,9 @@ public class ScheduleTeacher {
 
     public void setChange(int change) {
         this.change = change;
+    }
+
+    public void setGroup(ArrayList<Group> group) {
+        this.group = group;
     }
 }
