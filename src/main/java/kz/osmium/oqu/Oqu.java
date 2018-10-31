@@ -37,107 +37,134 @@ public class Oqu {
         /*
          * Получить ключ.
          *
-         * https://example.com/auth ?
+         * https://example.com/api/auth ?
          * & pass = <String>
          */
-        get("/auth", "application/json", JDBCGET::getAuth);
+        path("/api", () ->
+                get("/auth", "application/json", JDBCGET::getAuth));
 
         /*
          * Авторизовать приложение.
          *
-         * https://example.com/account ?
+         * https://example.com/api/account ?
          * & login = <String>
          * & pass = <String>
          */
-        get("/account", "application/json", (request, response) -> JDBCGET.getAccount(connection, request, response));
+        path("/api", () ->
+                get("/account", "application/json", (request, response) ->
+                        JDBCGET.getAccount(connection, request, response)));
 
         /*
          * Получить факультеты.
          *
-         * https://example.com/faculty
+         * https://example.com/api/faculty
          */
-        get("/faculty", "application/json", (request, response) -> JDBCGET.getFaculty(connection, response));
+        path("/api", () ->
+                get("/faculty", "application/json", (request, response) ->
+                        JDBCGET.getFaculty(connection, response)));
 
         /*
          * Получить специальности.
          *
-         * https://example.com/specialty ?
+         * https://example.com/api/specialty ?
          * & faculty = <Integer>
          */
-        get("/specialty", "application/json", (request, response) -> JDBCGET.getSpecialty(connection, request, response));
+        path("/api", () ->
+                get("/specialty", "application/json", (request, response) ->
+                        JDBCGET.getSpecialty(connection, request, response)));
 
         /*
          * Получить группы.
          *
-         * https://example.com/group ?
+         * https://example.com/api/group ?
          * & specialty = <Integer>
          */
-        get("/group", "application/json", (request, response) -> JDBCGET.getGroup(connection, request, response));
+        path("/api", () ->
+                get("/group", "application/json", (request, response) ->
+                        JDBCGET.getGroup(connection, request, response)));
 
         /*
          * Получить куратора для группы.
          *
-         * https://example.com/curator/group ?
+         * https://example.com/api/curator/group ?
          * & group = <Integer>
          */
-        path("/curator", () -> get("/group", "application/json", (request, response) ->
-                JDBCGET.getCuratorGroup(connection, request, response)));
+        path("/api", () ->
+                path("/curator", () ->
+                        get("/group", "application/json", (request, response) ->
+                JDBCGET.getCuratorGroup(connection, request, response))));
 
         /*
          * Получить группы для куратора.
          *
-         * https://example.com/curator/teacher ?
+         * https://example.com/api/curator/teacher ?
          * & teacher = <Integer>
          */
-        path("/curator", () -> get("/teacher", "application/json", (request, response) ->
-                JDBCGET.getCuratorTeacher(connection, request, response)));
+        path("/api", () ->
+                path("/curator", () ->
+                        get("/teacher", "application/json", (request, response) ->
+                JDBCGET.getCuratorTeacher(connection, request, response))));
 
         /*
          * Получить кабинеты.
          *
-         * https://example.com/room
+         * https://example.com/api/room
          */
-        get("/room", "application/json", (request, response) -> JDBCGET.getRoom(connection, response));
+        path("/api", () ->
+                get("/room", "application/json", (request, response) ->
+                        JDBCGET.getRoom(connection, response)));
 
         /*
          * Получить расписание.
          *
-         * https://example.com/schedule ?
+         * https://example.com/api/schedule ?
          * & group = <Integer>
          */
-        get("/schedule", (request, response) -> JDBCGET.getSchedule(connection, request, response));
+        path("/api", () ->
+                get("/schedule", (request, response) ->
+                        JDBCGET.getSchedule(connection, request, response)));
 
         /*
          * Получить расписание для преподователя.
          *
-         * https://example.com/schedule/teacher ?
+         * https://example.com/api/schedule/teacher ?
          * & teacher = <Integer>
          */
-        path("/schedule", () -> get("/teacher", (request, response) -> JDBCGET.getScheduleTeacher(connection, request, response)));
+        path("/api", () ->
+                path("/schedule", () ->
+                        get("/teacher", (request, response) ->
+                                JDBCGET.getScheduleTeacher(connection, request, response))));
 
         /*
          * Получить информацию аккаунта.
          *
-         * https://example.com/account/id ?
+         * https://example.com/api/account/id ?
          * & id_account = <Integer>
          */
-        path("/account", () -> get("/id", "application/json", (request, response) ->
-                JDBCGET.getAccountID(connection, request, response)));
+        path("/api", () ->
+                path("/account", () ->
+                        get("/id", "application/json", (request, response) ->
+                JDBCGET.getAccountID(connection, request, response))));
 
         /*
          * Получить список преподавателей.
          *
-         * https://example.com/teacher/all
+         * https://example.com/api/teacher/all
          */
-        path("/teacher", () -> get("/all", "application/json", (request, response) ->
-                JDBCGET.getTeacherAll(connection, response)));
+        path("/api", () ->
+                path("/teacher", () ->
+                        get("/all", "application/json", (request, response) ->
+                JDBCGET.getTeacherAll(connection, response))));
 
         /*
          * Получить список предметов.
          *
-         * https://example.com/subject/list
+         * https://example.com/api/subject/list
          */
-        path("/subject", () -> get("/list", "application/json", (request, response) -> JDBCGET.getListSubject(connection, response)));
+        path("/api", () ->
+                path("/subject", () ->
+                        get("/list", "application/json", (request, response) ->
+                                JDBCGET.getListSubject(connection, response))));
     }
 
     /**
@@ -148,55 +175,65 @@ public class Oqu {
         /*
          * Создает факультет.
          *
-         * https://example.com/faculty ?
+         * https://example.com/api/faculty ?
          * & key = <String>
          * & name = <String>
          */
-        post("/faculty", "application/json", (request, response) -> JDBCPOST.postFaculty(connection, request, response));
+        path("/api", () ->
+                post("/faculty", "application/json", (request, response) ->
+                        JDBCPOST.postFaculty(connection, request, response)));
 
         /*
          * Создает специальность.
          *
-         * https://example.com/specialty ?
+         * https://example.com/api/specialty ?
          * & key = <String>
          * & name = <String>
          * & id_faculty = <Integer>
          */
-        post("/specialty", "application/json", (request, response) -> JDBCPOST.postSpecialty(connection, request, response));
+        path("/api", () ->
+                post("/specialty", "application/json", (request, response) ->
+                        JDBCPOST.postSpecialty(connection, request, response)));
 
         /*
          * Создает группу.
          *
-         * https://example.com/group ?
+         * https://example.com/api/group ?
          * & key = <String>
          * & name = <String>
          * & id_specialty = <Integer>
          */
-        post("/group", "application/json", (request, response) -> JDBCPOST.postGroup(connection, request, response));
+        path("/api", () ->
+                post("/group", "application/json", (request, response) ->
+                        JDBCPOST.postGroup(connection, request, response)));
 
         /*
          * Создает кабинет.
          *
-         * https://example.com/room ?
+         * https://example.com/api/room ?
          * & key = <String>
          * & name = <String>
          */
-        post("/room", "application/json", (request, response) -> JDBCPOST.postRoom(connection, request, response));
+        path("/api", () ->
+                post("/room", "application/json", (request, response) ->
+                        JDBCPOST.postRoom(connection, request, response)));
 
         /*
          * Создает куратора.
          *
-         * https://example.com/curator ?
+         * https://example.com/api/curator ?
          * & key = <String>
          * & group = <Integer>
          * & teacher = <Integer>
          */
-        post("/curator", "application/json", (request, response) -> JDBCPOST.postCurator(connection, request, response));
+        path("/api", () ->
+                post("/curator", "application/json", (request, response) ->
+                        JDBCPOST.postCurator(connection, request, response)));
 
         /*
          * Создает преподавателя.
          *
-         * https://example.com/teacher ?
+         * https://example.com/api/teacher ?
          * & key = <String>
          * & name = <String>
          * & login = <String>
@@ -207,12 +244,14 @@ public class Oqu {
          * - & email = <String>
          * - & id_room = <Integer>
          */
-        post("/teacher", "application/json", (request, response) -> JDBCPOST.postTeacher(connection, request, response));
+        path("/api", () ->
+                post("/teacher", "application/json", (request, response) ->
+                        JDBCPOST.postTeacher(connection, request, response)));
 
         /*
          * Создает студента.
          *
-         * https://example.com/student ?
+         * https://example.com/api/student ?
          * & key = <String>
          * & name = <String>
          * & login = <String>
@@ -223,35 +262,46 @@ public class Oqu {
          * - & email = <String>
          * - & id_group = <Integer>
          */
-        post("/student", "application/json", (request, response) -> JDBCPOST.postStudent(connection, request, response));
+        path("/api", () ->
+                post("/student", "application/json", (request, response) ->
+                        JDBCPOST.postStudent(connection, request, response)));
 
         /*
          * Создает предмет для расписания.
          *
-         * https://example.com/subject
+         * https://example.com/api/subject
          */
-        post("/subject", (request, response) -> JDBCPOST.postSubject(connection, request));
+        path("/api", () ->
+                post("/subject", (request, response) ->
+                        JDBCPOST.postSubject(connection, request)));
 
         /*
          * Создает предмет.
          *
-         * https://example.com/subject/item
+         * https://example.com/api/subject/item
          */
-        path("/subject", () -> post("/item", (request, response) -> JDBCPOST.postSubjectItem(connection, request)));
+        path("/api", () ->
+                path("/subject", () ->
+                        post("/item", (request, response) ->
+                                JDBCPOST.postSubjectItem(connection, request))));
 
         /*
          * Создает расписание для группы.
          *
-         * https://example.com/schedule
+         * https://example.com/api/schedule
          */
-        post("/schedule", (request, response) -> JDBCPOST.postSchedule(connection, request));
+        path("/api", () ->
+                post("/schedule", (request, response) ->
+                        JDBCPOST.postSchedule(connection, request)));
 
         /*
          * Создает замену для конкретного предмета в расписании группы.
          *
-         * https://example.com/change
+         * https://example.com/api/change
          */
-        post("/change", (request, response) -> JDBCPOST.postChange(connection, request));
+        path("/api", () ->
+                post("/change", (request, response) ->
+                        JDBCPOST.postChange(connection, request)));
     }
 
     /**
@@ -282,10 +332,12 @@ public class Oqu {
         /*
          * Удаляет куратора.
          *
-         * https://example.com/curator ?
+         * https://example.com/api/curator ?
          * & key = <String>
          * & group = <Integer>
          */
-        delete("/curator", "application/json", (request, response) -> JDBCDELETE.deleteCurator(connection, request, response));
+        path("/api", () ->
+                delete("/curator", "application/json", (request, response) ->
+                        JDBCDELETE.deleteCurator(connection, request, response)));
     }
 }

@@ -40,7 +40,7 @@ public class Main {
         port(getHerokuAssignedPort());
 
         /* Конфигурация WebSocket */
-        config();
+//        config();
 
         /* Подключение к БД. */
         connectDB();
@@ -82,7 +82,7 @@ public class Main {
      */
     private static void config() {
 
-        after((req, res) -> res.type("application/json"));
+        after("/api/*", (req, res) -> res.type("application/json"));
     }
 
     /**
