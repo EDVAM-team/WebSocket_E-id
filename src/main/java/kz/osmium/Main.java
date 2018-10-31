@@ -48,8 +48,8 @@ public class Main {
         /* Разрешаю лок. серверу доступ к API */
         preferences();
 
-        /* GET запрос на получение статуса WebSocket'а */
-        get("/", (req, res) -> "Status: Online");
+        /* 'src/main/resources/public' */
+        staticFiles.location("/public");
 
         /* GET запросы */
         Oqu.getAPI(connection);
