@@ -14,11 +14,13 @@
  * limitations under the License.
  */
 
-package kz.eid.objects;
+package kz.osmium.oqu.objects;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Schedule {
+import java.util.ArrayList;
+
+public class ScheduleTeacher {
     @SerializedName("id_schedule")
     private int id_schedule;
     @SerializedName("d")
@@ -29,18 +31,8 @@ public class Schedule {
     private String subject;
     @SerializedName("type")
     private int type;
-    @SerializedName("id_teacher")
-    private int id_teacher;
-    @SerializedName("name")
-    private String name;
-    @SerializedName("s_name")
-    private String s_name;
-    @SerializedName("l_name")
-    private String l_name;
-    @SerializedName("phone")
-    private String phone;
-    @SerializedName("email")
-    private String email;
+    @SerializedName("group")
+    private ArrayList<Group> group;
     @SerializedName("room")
     private String room;
     @SerializedName("change")
@@ -66,35 +58,15 @@ public class Schedule {
         this.type = type;
     }
 
-    public void setId_teacher(int id_teacher) {
-        this.id_teacher = id_teacher;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setS_name(String s_name) {
-        this.s_name = s_name;
-    }
-
-    public void setL_name(String l_name) {
-        this.l_name = l_name;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public void setRoom(String room) {
         this.room = room;
     }
 
     public void setChange(int change) {
         this.change = change;
+    }
+
+    public void setGroup(ArrayList<Group> group) {
+        this.group = group;
     }
 }

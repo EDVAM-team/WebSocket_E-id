@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-package kz.eid.objects;
+package kz.osmium.oqu.objects;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Faculty {
-    @SerializedName("id_faculty")
-    private final int idFaculty;
+public class Group {
+    @SerializedName("id_group")
+    private final int idGroup;
     @SerializedName("name")
     private final String name;
 
-    public Faculty(int idFaculty, String name) {
-        this.idFaculty = idFaculty;
+    public Group(int idGroup, String name) {
+        this.idGroup = idGroup;
         this.name = name;
     }
 }

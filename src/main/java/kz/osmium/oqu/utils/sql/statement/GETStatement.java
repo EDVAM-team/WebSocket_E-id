@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package kz.eid.utils.sql.statement;
+package kz.osmium.oqu.utils.sql.statement;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package kz.eid.objects;
+package kz.osmium.oqu.objects;
 
 import com.google.gson.annotations.SerializedName;
 

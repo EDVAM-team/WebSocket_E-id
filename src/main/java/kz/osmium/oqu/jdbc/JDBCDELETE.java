@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package kz.eid.jdbc;
+package kz.osmium.oqu.jdbc;
 
-import kz.eid.utils.HerokuAPI;
-import kz.eid.utils.StatusResponse;
-import kz.eid.utils.sql.statement.DELETEStatement;
+import kz.osmium.oqu.utils.HerokuAPI;
+import kz.osmium.oqu.utils.StatusResponse;
+import kz.osmium.oqu.utils.sql.statement.DELETEStatement;
 import spark.Request;
 import spark.Response;
 

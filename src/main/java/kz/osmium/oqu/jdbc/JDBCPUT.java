@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package kz.eid.jdbc;
+package kz.osmium.oqu.jdbc;
 
 import java.sql.Connection;
 

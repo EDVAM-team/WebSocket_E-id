@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package kz.eid.jdbc;
+package kz.osmium.oqu.jdbc;
 
 import com.google.gson.Gson;
-import kz.eid.objects.*;
-import kz.eid.utils.HerokuAPI;
-import kz.eid.utils.sql.statement.GETStatement;
+import kz.osmium.oqu.objects.*;
+import kz.osmium.oqu.utils.HerokuAPI;
+import kz.osmium.oqu.utils.sql.statement.GETStatement;
 import spark.Request;
 import spark.Response;
 

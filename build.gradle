@@ -1,10 +1,10 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
-archivesBaseName = "e-id"
+archivesBaseName = "oqu"
 version = '1.0'
-applicationName = "e-id"
-mainClassName = "kz.eid.Main"
+applicationName = "oqu"
+mainClassName = "kz.osmium.Main"
 
 repositories {
     mavenCentral()

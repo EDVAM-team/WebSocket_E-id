@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package kz.eid.utils;
+package kz.osmium.oqu.utils;
 
-import kz.eid.Main;
+import kz.osmium.Main;
 
 import java.net.URI;
 import java.net.URISyntaxException;
