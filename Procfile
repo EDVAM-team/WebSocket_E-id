@@ -1,1 +1,1 @@
-web: ./build/install/e-id/bin/oqu
+web: ./build/install/oqu/bin/oqu
