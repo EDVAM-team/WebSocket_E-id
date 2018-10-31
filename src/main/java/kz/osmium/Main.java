@@ -40,7 +40,7 @@ public class Main {
         port(getHerokuAssignedPort());
 
         /* Конфигурация WebSocket */
-//        config();
+        config();
 
         /* Подключение к БД. */
         connectDB();
