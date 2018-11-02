@@ -49,7 +49,8 @@ public class Main {
         preferences();
 
         /* 'src/main/resources/public' */
-        staticFiles.location("/public");
+//        staticFiles.location("/public");
+        get("/", ((request, response) -> request.host()));
 
         /* GET запросы */
         Oqu.getAPI(connection);
