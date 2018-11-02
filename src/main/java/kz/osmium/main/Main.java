@@ -46,8 +46,7 @@ public class Main {
         preferences();
 
         /* 'src/main/resources/public' */
-//        staticFiles.location("/public");
-        get("/", ((request, response) -> HerokuDomain.getDomainOqu(request.host())));
+        staticFiles.location("/public");
 
         /* GET запросы */
         Request.getAPI(connection);
