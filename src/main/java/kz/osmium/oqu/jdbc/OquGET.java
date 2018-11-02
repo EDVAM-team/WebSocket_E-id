@@ -332,6 +332,82 @@ public class OquGET {
     }
 
     /**
+     * Получает информацию с таблицы "rating"
+     *
+     * @param connection
+     * @return возвращает конкретную группу в JSON.
+     */
+    public static String getRatingStudent(Connection connection, Request request, Response response) {
+
+        if (request.queryParams("id_student") != null &&
+                request.queryParams("num") != null) {
+
+            ArrayList<Rating> list = new ArrayList<>();
+
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getRatingStudent());
+
+                preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_student")));
+                preparedStatement.setInt(2, Integer.parseInt(request.queryParams("num")));
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                while (resultSet.next()) {
+                    Rating rating = new Rating();
+                    ArrayList<Mark> markArrayList = new ArrayList<>();
+
+                    rating.setIdRating(resultSet.getInt("id_rating"));
+                    rating.setIdSubject(resultSet.getInt("id_subject"));
+                    rating.setIdTeacher(resultSet.getInt("id_teacher"));
+                    rating.setIdStudent(resultSet.getInt("id_student"));
+                    rating.setNum(resultSet.getInt("num"));
+
+                    ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getMark(), resultSet.getInt("id_rating"));
+
+                    while (resultSet2.next())
+                        markArrayList.add(new Mark(
+                                resultSet2.getInt("id_mark"),
+                                resultSet2.getInt("id_rating"),
+                                resultSet2.getInt("n"),
+                                resultSet2.getInt("mark")
+                        ));
+
+                    rating.setMark(markArrayList);
+
+                    resultSet2 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet.getInt("id_subject"));
+
+                    while (resultSet2.next())
+                        rating.setSubject(resultSet2.getString("name"));
+
+                    resultSet2 = GETStatement.getReadDB(connection, GETStatement.getAccountID(), resultSet.getInt("id_teacher"));
+
+                    while (resultSet2.next())
+                        rating.setTeacher(resultSet2.getString("name"));
+
+                    resultSet2 = GETStatement.getReadDB(connection, GETStatement.getAccountID(), resultSet.getInt("id_student"));
+
+                    while (resultSet2.next())
+                        rating.setStudent(resultSet2.getString("name"));
+                }
+
+                response.status(200);
+            } catch (SQLException | NumberFormatException e) {
+
+                response.status(400);
+
+                return "400 Bad Request";
+            }
+
+            return new Gson().toJson(list);
+        } else {
+
+            response.status(400);
+
+            return "400 Bad Request";
+        }
+    }
+
+    /**
      * Обрабатывает информацию так, чтобы JSON отправлял ответ
      * расписания на всю неделю для ученика. Еще есть информация про замены.
      *

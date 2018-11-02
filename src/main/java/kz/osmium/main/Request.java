@@ -61,6 +61,26 @@ public class Request {
                 ));
 
         /*
+         * Получить рейтинг студента.
+         *
+         * https://*.example.com/api/rating ?
+         * & id_student = <Integer>
+         * & num = <Integer>
+         */
+        path("/api", () ->
+                get("/rating", "application/json", (request, response) -> {
+                            if (HerokuDomain.getDomainOqu(request.host()))
+                                return OquGET.getRatingStudent(connection, request, response);
+                            else {
+
+                                response.status(404);
+
+                                return "404 Not Found";
+                            }
+                        }
+                ));
+
+        /*
          * Получить факультеты.
          *
          * https://*.example.com/api/faculty

@@ -234,7 +234,28 @@ public class GETStatement {
     }
 
     /**
-     * Запрос на вывод куратора группы по `id_group`
+     * Запрос на вывод рейтинга студента
+     * Истользуется таблица "rating"
+     *
+     * @return
+     */
+    public static String getRatingStudent() {
+        return "SELECT * FROM `rating` WHERE `id_student`=? AND `num`=?";
+    }
+
+    /**
+     * Запрос на вывод оценок рейтинга
+     * Истользуется таблица "mark"
+     *
+     * @return
+     */
+    public static String getMark() {
+        return "SELECT * FROM `mark` WHERE `id_rating`=?";
+    }
+
+    /**
+     * Запрос на вывод куратора группы по `i
+	`id_student` INT NOT NULL, d_group`
      * Истользуется таблица "search"
      *
      * @return
