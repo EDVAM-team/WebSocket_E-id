@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package kz.osmium.oqu.utils;
+package kz.osmium.main;
 
 public class StatusResponse {
 

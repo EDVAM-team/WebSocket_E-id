@@ -16,9 +16,9 @@
 
 package kz.osmium.oqu.jdbc;
 
-import kz.osmium.oqu.utils.HerokuAPI;
-import kz.osmium.oqu.utils.StatusResponse;
-import kz.osmium.oqu.utils.sql.statement.DELETEStatement;
+import kz.osmium.main.HerokuAPI;
+import kz.osmium.main.StatusResponse;
+import kz.osmium.oqu.statement.DELETEStatement;
 import spark.Request;
 import spark.Response;
 
@@ -26,7 +26,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class JDBCDELETE {
+public class OquDELETE {
 
     /**
      * Получает информацию с таблицы "curator"

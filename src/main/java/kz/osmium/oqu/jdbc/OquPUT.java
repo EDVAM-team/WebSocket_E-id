@@ -18,7 +18,7 @@ package kz.osmium.oqu.jdbc;
 
 import java.sql.Connection;
 
-public class JDBCPUT {
+public class OquPUT {
 
     /**
      * Вносит изменения в расписании группы.
@@ -28,7 +28,7 @@ public class JDBCPUT {
      * @return
      */
     public static String putSchedule(Connection connection){
-        return "JDBCPUT getSchedule";
+        return "OquPUT getSchedule";
     }
 
     /**
@@ -39,6 +39,6 @@ public class JDBCPUT {
      * @return
      */
     public static String putChange(Connection connection){
-        return "JDBCPUT getChange";
+        return "OquPUT getChange";
     }
 }

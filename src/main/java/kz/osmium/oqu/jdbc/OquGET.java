@@ -18,8 +18,8 @@ package kz.osmium.oqu.jdbc;
 
 import com.google.gson.Gson;
 import kz.osmium.oqu.objects.*;
-import kz.osmium.oqu.utils.HerokuAPI;
-import kz.osmium.oqu.utils.sql.statement.GETStatement;
+import kz.osmium.main.HerokuAPI;
+import kz.osmium.oqu.statement.GETStatement;
 import spark.Request;
 import spark.Response;
 
@@ -29,7 +29,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class JDBCGET {
+public class OquGET {
 
     /**
      * Отправка ключа для редактирования

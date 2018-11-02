@@ -14,10 +14,7 @@
  * limitations under the License.
  */
 
-package kz.osmium;
-
-import kz.osmium.oqu.Oqu;
-import kz.osmium.oqu.utils.HerokuAPI;
+package kz.osmium.main;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -49,20 +46,19 @@ public class Main {
         preferences();
 
         /* 'src/main/resources/public' */
-//        staticFiles.location("/public");
-        get("/", ((request, response) -> request.host()));
+        staticFiles.location("/public");
 
         /* GET запросы */
-        Oqu.getAPI(connection);
+        Request.getAPI(connection);
 
         /* POST запросы */
-        Oqu.postAPI(connection);
+        Request.postAPI(connection);
 
         /* PUT запросы */
-        Oqu.putAPI(connection);
+        Request.putAPI(connection);
 
         /* DELETE запросы */
-        Oqu.deleteAPI(connection);
+        Request.deleteAPI(connection);
     }
 
     /**

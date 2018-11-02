@@ -16,9 +16,9 @@
 
 package kz.osmium.oqu.jdbc;
 
-import kz.osmium.oqu.utils.HerokuAPI;
-import kz.osmium.oqu.utils.StatusResponse;
-import kz.osmium.oqu.utils.sql.statement.POSTStatement;
+import kz.osmium.main.HerokuAPI;
+import kz.osmium.main.StatusResponse;
+import kz.osmium.oqu.statement.POSTStatement;
 import spark.Request;
 import spark.Response;
 
@@ -27,7 +27,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Types;
 
-public class JDBCPOST {
+public class OquPOST {
 
     /**
      * Создает факультет.
@@ -399,7 +399,7 @@ public class JDBCPOST {
      * @return
      */
     public static String postSubject(Connection connection, Request request) {
-        return "JDBCPOST postSubject";
+        return "OquPOST postSubject";
     }
 
     /**
@@ -410,7 +410,7 @@ public class JDBCPOST {
      * @return
      */
     public static String postSubjectItem(Connection connection, Request request) {
-        return "JDBCPOST postSubjectItem";
+        return "OquPOST postSubjectItem";
     }
 
     /**
@@ -421,7 +421,7 @@ public class JDBCPOST {
      * @return
      */
     public static String postSchedule(Connection connection, Request request) {
-        return "JDBCPOST postSchedule";
+        return "OquPOST postSchedule";
     }
 
     /**
@@ -432,6 +432,6 @@ public class JDBCPOST {
      * @return
      */
     public static String postChange(Connection connection, Request request) {
-        return "JDBCPOST postChange";
+        return "OquPOST postChange";
     }
 }

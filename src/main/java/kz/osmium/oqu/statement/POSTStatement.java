@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package kz.osmium.oqu.utils.sql.statement;
+package kz.osmium.oqu.statement;
 
 public class POSTStatement {
 

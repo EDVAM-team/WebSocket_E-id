@@ -4,7 +4,7 @@ apply plugin: 'application'
 archivesBaseName = "oqu"
 version = '1.0'
 applicationName = "oqu"
-mainClassName = "kz.osmium.Main"
+mainClassName = "kz.osmium.main.Main"
 
 repositories {
     mavenCentral()
