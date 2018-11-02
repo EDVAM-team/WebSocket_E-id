@@ -47,7 +47,7 @@ public class Main {
 
         /* 'src/main/resources/public' */
 //        staticFiles.location("/public");
-        get("/", ((request, response) -> request.host().equals("www.osmium.kz")));
+        get("/", ((request, response) -> HerokuDomain.getDomainOqu(request.host())));
 
         /* GET запросы */
         Request.getAPI(connection);
