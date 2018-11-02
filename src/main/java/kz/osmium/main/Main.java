@@ -46,7 +46,8 @@ public class Main {
         preferences();
 
         /* 'src/main/resources/public' */
-        staticFiles.location("/public");
+//        staticFiles.location("/public");
+        get("/", ((request, response) -> "3123131231231231231231233"));
 
         /* GET запросы */
         Request.getAPI(connection);

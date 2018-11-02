@@ -1,5 +1,5 @@
 # WebSocketGuide
-WebSocket for app E-id
+WebSocket for app Oqu
 
 # License
 
