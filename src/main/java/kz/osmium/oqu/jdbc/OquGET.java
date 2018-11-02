@@ -388,6 +388,8 @@ public class OquGET {
 
                     while (resultSet2.next())
                         rating.setStudent(resultSet2.getString("name"));
+
+                    list.add(rating);
                 }
 
                 response.status(200);
