@@ -260,14 +260,14 @@ public class Request {
         path("/api", () ->
                 path("/subject", () ->
                         get("/list", "application/json", (request, response) -> {
-                                    if (HerokuDomain.getDomainOqu(request.host()))
+//                                    if (HerokuDomain.getDomainOqu(request.host()))
                                         return OquGET.getListSubject(connection, response);
-                                    else {
-
-                                        response.status(200);
-
-                                        return request.host();
-                                    }
+//                                    else {
+//
+//                                        response.status(404);
+//
+//                                        return "404 Not Found";
+//                                    }
                                 }
                         )));
     }
