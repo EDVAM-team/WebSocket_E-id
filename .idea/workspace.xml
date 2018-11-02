@@ -191,14 +191,14 @@
           <entry key="bat" value="1" />
           <entry key="gradle" value="5" />
           <entry key="gradlew" value="2" />
-          <entry key="java" value="18" />
+          <entry key="java" value="19" />
           <entry key="md" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Groovy" value="5" />
-          <entry key="JAVA" value="18" />
+          <entry key="JAVA" value="19" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="9" />
         </counts>
@@ -208,14 +208,14 @@
           <entry key="PUMPUM" value="20" />
           <entry key="dummy" value="20" />
           <entry key="gradle" value="6" />
-          <entry key="java" value="447" />
+          <entry key="java" value="454" />
           <entry key="md" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="6" />
-          <entry key="JAVA" value="447" />
+          <entry key="JAVA" value="454" />
           <entry key="Markdown" value="3" />
           <entry key="PLAIN_TEXT" value="40" />
         </counts>
@@ -240,13 +240,28 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="515">
-              <caret line="52" column="35" lean-forward="true" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
+            <state relative-caret-position="375">
+              <caret line="47" column="41" lean-forward="true" selection-start-line="47" selection-start-column="41" selection-end-line="47" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="docComment;method#main#0;class#Main#0" />
                 <element signature="docComment;method#getHerokuAssignedPort#0;class#Main#0" />
                 <element signature="method#getHerokuAssignedPort#0;class#Main#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/main/HerokuDomain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="427">
+              <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+              <folding>
+                <element signature="e#320#321#0" expanded="true" />
+                <element signature="e#371#372#0" expanded="true" />
+                <element signature="e#639#640#0" expanded="true" />
+                <element signature="e#690#691#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -816,7 +831,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541171307067" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541171400966" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -1144,19 +1159,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/main/HerokuDomain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="581">
-          <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
-          <folding>
-            <element signature="e#320#321#0" expanded="true" />
-            <element signature="e#371#372#0" expanded="true" />
-            <element signature="e#639#640#0" expanded="true" />
-            <element signature="e#690#691#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gradlew.bat">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1225,10 +1227,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/main/HerokuDomain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+          <folding>
+            <element signature="e#320#321#0" expanded="true" />
+            <element signature="e#371#372#0" expanded="true" />
+            <element signature="e#639#640#0" expanded="true" />
+            <element signature="e#690#691#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
-          <caret line="52" column="35" lean-forward="true" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
+        <state relative-caret-position="375">
+          <caret line="47" column="41" lean-forward="true" selection-start-line="47" selection-start-column="41" selection-end-line="47" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="docComment;method#main#0;class#Main#0" />
