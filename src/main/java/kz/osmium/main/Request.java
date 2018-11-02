@@ -264,9 +264,9 @@ public class Request {
                                         return OquGET.getListSubject(connection, response);
                                     else {
 
-                                        response.status(404);
+                                        response.status(200);
 
-                                        return "404 Not Found";
+                                        return request.host();
                                     }
                                 }
                         )));
