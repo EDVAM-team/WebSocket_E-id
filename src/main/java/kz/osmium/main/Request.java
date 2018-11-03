@@ -523,33 +523,17 @@ public class Request {
                 ));
 
         /*
-         * Создает предмет для расписания.
-         *
-         * https://*.example.com/api/subject
-         */
-        path("/api", () ->
-                post("/subject", (request, response) -> {
-                            if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquPOST.postSubject(connection, request);
-                            else {
-
-                                response.status(404);
-
-                                return "404 Not Found";
-                            }
-                        }
-                ));
-
-        /*
          * Создает предмет.
          *
-         * https://*.example.com/api/subject/item
+         * https://*.example.com/api/subject/item ?
+         * & key = <String>
+         * & name = <String>
          */
         path("/api", () ->
                 path("/subject", () ->
                         post("/item", (request, response) -> {
                                     if (HerokuDomain.getDomainOqu(request.host()))
-                                        return OquPOST.postSubjectItem(connection, request);
+                                        return OquPOST.postSubjectItem(connection, request, response);
                                     else {
 
                                         response.status(404);
@@ -585,7 +569,7 @@ public class Request {
         path("/api", () ->
                 post("/change", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquPOST.postChange(connection, request);
+                                return OquPOST.postChange(connection, request,response);
                             else {
 
                                 response.status(404);

@@ -118,17 +118,6 @@ public class POSTStatement {
     }
 
     /**
-     * Запрос на создание ячейки данных в таблице `schedule_subject`
-     *
-     * @return
-     */
-    public static String postSubject() {
-        return "INSERT INTO `schedule_subject` " +
-                "(`id_list_subject`, `type`, `room`, `id_change`) " +
-                "VALUE (?, ?, ?, ?)";
-    }
-
-    /**
      * Запрос на создание ячейки данных в таблице `schedule`
      *
      * @return

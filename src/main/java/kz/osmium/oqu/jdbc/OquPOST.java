@@ -502,24 +502,55 @@ public class OquPOST {
 
     /**
      * Создает предмет для расписания.
-     * Используется таблица "schedule_subject"
-     *
-     * @param connection
-     * @return
-     */
-    public static String postSubject(Connection connection, Request request) {
-        return "OquPOST postSubject";
-    }
-
-    /**
-     * Создает предмет для расписания.
      * Используется таблица "list_subject"
      *
      * @param connection
      * @return
      */
-    public static String postSubjectItem(Connection connection, Request request) {
-        return "OquPOST postSubjectItem";
+    public static String postSubjectItem(Connection connection, Request request, Response response) {
+        if (request.queryParams("key").equals(HerokuAPI.key)) {
+
+            if (request.queryParams("name") != null) {
+
+                try {
+                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postItemSubject());
+
+                    preparedStatement.setInt(1, Integer.parseInt(request.queryParams("name")));
+                    preparedStatement.execute();
+
+                    response.status(201);
+                } catch (SQLException | NumberFormatException e) {
+
+                    response.status(400);
+
+                    return StatusResponse.error;
+                }
+
+                return StatusResponse.success;
+            } else {
+
+                response.status(400);
+
+                return StatusResponse.error;
+            }
+        } else {
+
+            response.status(401);
+
+            return StatusResponse.error;
+        }
+    }
+
+
+    /**
+     * Создает замену для конкретного предмета в расписании группы.
+     * Используется таблица "change"
+     *
+     * @param connection
+     * @return
+     */
+    public static String postChange(Connection connection, Request request, Response response) {
+        return "OquPOST postChange";
     }
 
     /**
@@ -531,16 +562,5 @@ public class OquPOST {
      */
     public static String postSchedule(Connection connection, Request request) {
         return "OquPOST postSchedule";
-    }
-
-    /**
-     * Создает замену для конкретного предмета в расписании группы.
-     * Используется таблица "change"
-     *
-     * @param connection
-     * @return
-     */
-    public static String postChange(Connection connection, Request request) {
-        return "OquPOST postChange";
     }
 }
