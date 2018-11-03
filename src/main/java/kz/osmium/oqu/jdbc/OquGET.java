@@ -339,7 +339,7 @@ public class OquGET {
      */
     public static String getRatingStudent(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("id_student") != null &&
+        if (request.queryParams("id_account") != null &&
                 request.queryParams("num") != null) {
 
             ArrayList<Rating> list = new ArrayList<>();
@@ -347,7 +347,7 @@ public class OquGET {
             try {
                 PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getRatingStudent());
 
-                preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_student")));
+                preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_account")));
                 preparedStatement.setInt(2, Integer.parseInt(request.queryParams("num")));
 
                 ResultSet resultSet = preparedStatement.executeQuery();

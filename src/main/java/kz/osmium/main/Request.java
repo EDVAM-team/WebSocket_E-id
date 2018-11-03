@@ -64,7 +64,7 @@ public class Request {
          * Получить рейтинг студента.
          *
          * https://*.example.com/api/rating ?
-         * & id_student = <Integer>
+         * & id_account = <Integer>
          * & num = <Integer>
          */
         path("/api", () ->
@@ -384,8 +384,7 @@ public class Request {
          *
          * https://*.example.com/api/rating ?
          * & id_subject = <Integer>
-         * & id_teacher = <Integer>
-         * & id_student = <Integer>
+         * & id_account = <Integer>
          * & num = <Integer>
          */
         path("/api", () ->
