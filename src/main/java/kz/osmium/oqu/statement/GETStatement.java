@@ -240,7 +240,7 @@ public class GETStatement {
      * @return
      */
     public static String getRatingStudent() {
-        return "SELECT * FROM `rating` WHERE `id_student`=? AND `num`=?";
+        return "SELECT * FROM `rating` WHERE `id_account`=? AND `num`=?";
     }
 
     /**
