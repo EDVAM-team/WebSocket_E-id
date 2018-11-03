@@ -550,7 +550,43 @@ public class OquPOST {
      * @return
      */
     public static String postChange(Connection connection, Request request, Response response) {
-        return "OquPOST postChange";
+
+        if (request.queryParams("key").equals(HerokuAPI.key)) {
+
+            if (request.queryParams("id_list_subject") != null &&
+                    request.queryParams("t") != null &&
+                    request.queryParams("id_account") != null) {
+
+                try {
+                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postChange());
+
+                    preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_list_subject")));
+                    preparedStatement.setInt(2, Integer.parseInt(request.queryParams("t")));
+                    preparedStatement.setInt(3, Integer.parseInt(request.queryParams("id_account")));
+                    preparedStatement.setInt(4, Integer.parseInt(request.queryParams("id_room")));
+                    preparedStatement.execute();
+
+                    response.status(201);
+                } catch (SQLException | NumberFormatException e) {
+
+                    response.status(400);
+
+                    return StatusResponse.error;
+                }
+
+                return StatusResponse.success;
+            } else {
+
+                response.status(400);
+
+                return StatusResponse.error;
+            }
+        } else {
+
+            response.status(401);
+
+            return StatusResponse.error;
+        }
     }
 
     /**

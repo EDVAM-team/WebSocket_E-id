@@ -431,7 +431,7 @@ public class Request {
          * [{
          * "id_account":<Integer>,   - Студент
          * "n":<Integer>,            - Пропуск пары
-         * "mark":<Integer>          - Оценка
+         * "mark":<Integer>          - Оценка (Не обязательно)
          * }]
          */
         path("/api", () ->
@@ -565,6 +565,11 @@ public class Request {
          * Создает замену для конкретного предмета в расписании группы.
          *
          * https://*.example.com/api/change
+         * & key = <String>
+         * & id_list_subject = <Integer>
+         * & t = <Integer>
+         * & id_account = <Integer>
+         * - & id_room = <Integer>
          */
         path("/api", () ->
                 post("/change", (request, response) -> {

@@ -135,7 +135,7 @@ public class POSTStatement {
      */
     public static String postChange() {
         return "INSERT INTO `change` " +
-                "(`id_list_subject`, `type`, `id_account`, `room`) " +
+                "(`id_list_subject`, `t`, `id_account`, `id_room`) " +
                 "VALUE (?, ?, ?, ?)";
     }
 
