@@ -515,7 +515,7 @@ public class OquPOST {
                 try {
                     PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postItemSubject());
 
-                    preparedStatement.setInt(1, Integer.parseInt(request.queryParams("name")));
+                    preparedStatement.setString(1, request.queryParams("name"));
                     preparedStatement.execute();
 
                     response.status(201);
