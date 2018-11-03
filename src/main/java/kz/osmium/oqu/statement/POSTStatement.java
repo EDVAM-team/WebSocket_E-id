@@ -107,6 +107,17 @@ public class POSTStatement {
     }
 
     /**
+     * Запрос на создание ячейки данных в таблице `mark`
+     *
+     * @return
+     */
+    public static String postMark() {
+        return "INSERT INTO `mark` " +
+                "(`id_rating`, `n`, `mark`) " +
+                "VALUE (?, ?, ?)";
+    }
+
+    /**
      * Запрос на создание ячейки данных в таблице `schedule_subject`
      *
      * @return

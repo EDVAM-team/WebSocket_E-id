@@ -383,6 +383,7 @@ public class Request {
          * Создает рейтинг студенту.
          *
          * https://*.example.com/api/rating ?
+         * & key = <String>
          * & id_subject = <Integer>
          * & id_account = <Integer>
          * & num = <Integer>
@@ -391,6 +392,27 @@ public class Request {
                 post("/rating", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
                                 return OquPOST.postRating(connection, request, response);
+                            else {
+
+                                response.status(404);
+
+                                return "404 Not Found";
+                            }
+                        }
+                ));
+
+        /*
+         * Создает оценки.
+         *
+         * https://*.example.com/api/mark ?
+         * & key = <String>
+         * & id_subject = <Integer>
+         * & id_account = <Integer>
+         */
+        path("/api", () ->
+                post("/mark", "application/json", (request, response) -> {
+                            if (HerokuDomain.getDomainOqu(request.host()))
+                                return OquPOST.postMark(connection, request, response);
                             else {
 
                                 response.status(404);

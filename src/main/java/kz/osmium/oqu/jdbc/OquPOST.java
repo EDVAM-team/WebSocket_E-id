@@ -16,16 +16,20 @@
 
 package kz.osmium.oqu.jdbc;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import kz.osmium.main.HerokuAPI;
 import kz.osmium.main.StatusResponse;
+import kz.osmium.oqu.gson.MarkJSON;
+import kz.osmium.oqu.statement.GETStatement;
 import kz.osmium.oqu.statement.POSTStatement;
 import spark.Request;
 import spark.Response;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Types;
+import java.lang.reflect.Type;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OquPOST {
 
@@ -342,7 +346,67 @@ public class OquPOST {
                     preparedStatement.execute();
 
                     response.status(201);
-                } catch (SQLException | NumberFormatException e){
+                } catch (SQLException | NumberFormatException e) {
+
+                    response.status(400);
+
+                    return StatusResponse.error;
+                }
+
+                return StatusResponse.success;
+            } else {
+
+                response.status(400);
+
+                return StatusResponse.error;
+            }
+        } else {
+
+            response.status(401);
+
+            return StatusResponse.error;
+        }
+    }
+
+    /**
+     * Создает оценку студентам.
+     * Используется таблица "mark"
+     *
+     * @param connection
+     * @return
+     */
+    public static String postMark(Connection connection, Request request, Response response) {
+
+        if (request.queryParams("key").equals(HerokuAPI.key)) {
+
+            if (request.queryParams("id_subject") != null &&
+                    request.queryParams("id_account") != null) {
+
+                try {
+                    Type type = new TypeToken<List<MarkJSON>>() {
+                    }.getType();
+                    ArrayList<MarkJSON> list = new Gson().fromJson(request.body(), type);
+
+                    for (MarkJSON markJSON : list) {
+                        PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getRatingCurrent());
+
+                        preparedStatement.setInt(1, markJSON.getIdAccount());
+                        preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_subject")));
+
+                        ResultSet resultSet = preparedStatement.executeQuery();
+
+                        while (resultSet.next()) {
+                            PreparedStatement preparedStatement2 = connection.prepareStatement(POSTStatement.postMark());
+
+                            preparedStatement2.setInt(1, resultSet.getInt("id_rating"));
+                            preparedStatement2.setInt(2, markJSON.getN());
+                            preparedStatement2.setInt(3, markJSON.getMark());
+                            preparedStatement2.execute();
+                        }
+                    }
+
+                    response.status(201);
+                } catch (SQLException | NumberFormatException e) {
 
                     response.status(400);
 

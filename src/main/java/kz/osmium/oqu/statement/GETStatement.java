@@ -244,6 +244,16 @@ public class GETStatement {
     }
 
     /**
+     * Запрос на вывод текущего рейтинга
+     * Истользуется таблица "rating"
+     *
+     * @return
+     */
+    public static String getRatingCurrent() {
+        return "SELECT `rating`.`id_rating` FROM `rating` WHERE `id_account`=? AND `id_subject`=? ORDER BY `num` DESC LIMIT 1";
+    }
+
+    /**
      * Запрос на вывод оценок рейтинга
      * Истользуется таблица "mark"
      *
