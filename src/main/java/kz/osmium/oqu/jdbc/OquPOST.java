@@ -567,7 +567,7 @@ public class OquPOST {
                     if (request.queryParams("id_room") != null)
                         preparedStatement.setInt(4, Integer.parseInt(request.queryParams("id_room")));
                     else
-                        preparedStatement.setInt(4, Types.INTEGER);
+                        preparedStatement.setInt(4, 0);
 
                     preparedStatement.execute();
 

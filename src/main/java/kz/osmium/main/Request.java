@@ -571,18 +571,18 @@ public class Request {
          * & id_account = <Integer>
          * - & id_room = <String>
          */
-        path("/api", () ->
-                post("/change", (request, response) -> {
-                            if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquPOST.postChange(connection, request,response);
-                            else {
-
-                                response.status(404);
-
-                                return "404 Not Found";
-                            }
-                        }
-                ));
+//        path("/api", () ->
+//                post("/change", (request, response) -> {
+//                            if (HerokuDomain.getDomainOqu(request.host()))
+//                                return OquPOST.postChange(connection, request,response);
+//                            else {
+//
+//                                response.status(404);
+//
+//                                return "404 Not Found";
+//                            }
+//                        }
+//                ));
     }
 
     /**
