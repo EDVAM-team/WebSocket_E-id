@@ -330,17 +330,15 @@ public class OquPOST {
         if (request.queryParams("key").equals(HerokuAPI.key)) {
 
             if (request.queryParams("id_subject") != null &&
-                    request.queryParams("id_teacher") != null &&
-                    request.queryParams("id_student") != null &&
+                    request.queryParams("id_account") != null &&
                     request.queryParams("num") != null) {
 
                 try {
                     PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postRating());
 
                     preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_subject")));
-                    preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_teacher")));
-                    preparedStatement.setInt(3, Integer.parseInt(request.queryParams("id_student")));
-                    preparedStatement.setInt(4, Integer.parseInt(request.queryParams("num")));
+                    preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_account")));
+                    preparedStatement.setInt(3, Integer.parseInt(request.queryParams("num")));
                     preparedStatement.execute();
 
                     response.status(201);

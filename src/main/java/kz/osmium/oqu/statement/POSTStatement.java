@@ -102,8 +102,8 @@ public class POSTStatement {
      */
     public static String postRating() {
         return "INSERT INTO `rating` " +
-                "(`id_subject`, `id_teacher`, `id_student`, `num`) " +
-                "VALUE (?, ?, ?, ?)";
+                "(`id_subject`, `id_account`, `num`) " +
+                "VALUE (?, ?, ?)";
     }
 
     /**

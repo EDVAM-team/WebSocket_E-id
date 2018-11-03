@@ -25,16 +25,12 @@ public class Rating {
     private int idRating;
     @SerializedName("id_subject")
     private int idSubject;
-    @SerializedName("id_teacher")
-    private int idTeacher;
     @SerializedName("id_student")
     private int idStudent;
     @SerializedName("rating")
     private String rating;
     @SerializedName("subject")
     private String subject;
-    @SerializedName("teacher")
-    private String teacher;
     @SerializedName("student")
     private String student;
     @SerializedName("num")
@@ -48,10 +44,6 @@ public class Rating {
 
     public void setIdSubject(int idSubject) {
         this.idSubject = idSubject;
-    }
-
-    public void setIdTeacher(int idTeacher) {
-        this.idTeacher = idTeacher;
     }
 
     public void setIdStudent(int idStudent) {
@@ -72,10 +64,6 @@ public class Rating {
 
     public void setSubject(String subject) {
         this.subject = subject;
-    }
-
-    public void setTeacher(String teacher) {
-        this.teacher = teacher;
     }
 
     public void setStudent(String student) {

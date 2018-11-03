@@ -358,8 +358,7 @@ public class OquGET {
 
                     rating.setIdRating(resultSet.getInt("id_rating"));
                     rating.setIdSubject(resultSet.getInt("id_subject"));
-                    rating.setIdTeacher(resultSet.getInt("id_teacher"));
-                    rating.setIdStudent(resultSet.getInt("id_student"));
+                    rating.setIdStudent(resultSet.getInt("id_account"));
                     rating.setNum(resultSet.getInt("num"));
 
                     ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getMark(), resultSet.getInt("id_rating"));
@@ -378,11 +377,6 @@ public class OquGET {
 
                     while (resultSet2.next())
                         rating.setSubject(resultSet2.getString("name"));
-
-                    resultSet2 = GETStatement.getReadDB(connection, GETStatement.getAccountID(), resultSet.getInt("id_teacher"));
-
-                    while (resultSet2.next())
-                        rating.setTeacher(resultSet2.getString("name"));
 
                     resultSet2 = GETStatement.getReadDB(connection, GETStatement.getAccountID(), resultSet.getInt("id_student"));
 

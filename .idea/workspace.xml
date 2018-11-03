@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f1a897c-0f26-43e4-8795-18635adbb59a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/jdbc/OquPOST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/jdbc/OquPOST.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/statement/POSTStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/statement/POSTStatement.java" afterDir="false" />
-    </list>
+    <list default="true" id="8f1a897c-0f26-43e4-8795-18635adbb59a" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -215,14 +210,14 @@
           <entry key="PUMPUM" value="20" />
           <entry key="dummy" value="20" />
           <entry key="gradle" value="6" />
-          <entry key="java" value="1334" />
+          <entry key="java" value="1398" />
           <entry key="md" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="6" />
-          <entry key="JAVA" value="1334" />
+          <entry key="JAVA" value="1398" />
           <entry key="Markdown" value="3" />
           <entry key="PLAIN_TEXT" value="40" />
         </counts>
@@ -235,8 +230,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/main/Request.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="365" column="27" lean-forward="true" selection-start-line="365" selection-start-column="27" selection-end-line="365" selection-end-column="27" />
+            <state relative-caret-position="201">
+              <caret line="388" column="16" selection-start-line="388" selection-start-column="13" selection-end-line="388" selection-end-column="16" />
               <folding>
                 <element signature="docComment;method#getAPI#0;class#Request#0" />
                 <element signature="method#getAPI#0;class#Request#0" />
@@ -257,7 +252,6 @@
                 <element signature="e#10402#10795#0" />
                 <element signature="e#11109#11504#0" />
                 <element signature="e#11805#12196#0" />
-                <element signature="e#12458#12848#0" />
                 <element signature="e#13152#13545#0" />
                 <element signature="e#14043#14436#0" />
                 <element signature="e#14930#15323#0" />
@@ -278,8 +272,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/jdbc/OquPOST.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="342" column="94" selection-start-line="342" selection-start-column="94" selection-end-line="342" selection-end-column="94" />
+            <state relative-caret-position="56">
+              <caret line="334" column="44" selection-start-line="334" selection-start-column="41" selection-end-line="334" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -758,11 +752,11 @@
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/Mark.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/statement/GETStatement.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/Rating.java" />
-        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/main/Request.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/jdbc/OquGET.java" />
         <option value="$PROJECT_DIR$/settings.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/statement/POSTStatement.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/jdbc/OquPOST.java" />
+        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/main/Request.java" />
       </list>
     </option>
   </component>
@@ -773,8 +767,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="116" />
-    <option name="y" value="66" />
+    <option name="x" value="130" />
+    <option name="y" value="111" />
     <option name="width" value="1405" />
     <option name="height" value="950" />
   </component>
@@ -881,7 +875,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541236302035" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541237870834" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -969,8 +963,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="116" y="66" width="1405" height="950" extended-state="0" />
-    <editor active="true" />
+    <frame x="130" y="111" width="1405" height="950" extended-state="0" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -986,7 +979,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32917318" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4997245" weight="0.39811066" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4997245" weight="0.39800996" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5002755" side_tool="true" weight="0.32411504" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32964602" />
       <window_info anchor="bottom" id="Build" order="10" weight="0.32893288" />
@@ -1280,10 +1273,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/statement/POSTStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="104" column="64" selection-start-line="104" selection-start-column="61" selection-end-line="104" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/main/Request.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="365" column="27" lean-forward="true" selection-start-line="365" selection-start-column="27" selection-end-line="365" selection-end-column="27" />
+        <state relative-caret-position="201">
+          <caret line="388" column="16" selection-start-line="388" selection-start-column="13" selection-end-line="388" selection-end-column="16" />
           <folding>
             <element signature="docComment;method#getAPI#0;class#Request#0" />
             <element signature="method#getAPI#0;class#Request#0" />
@@ -1304,7 +1304,6 @@
             <element signature="e#10402#10795#0" />
             <element signature="e#11109#11504#0" />
             <element signature="e#11805#12196#0" />
-            <element signature="e#12458#12848#0" />
             <element signature="e#13152#13545#0" />
             <element signature="e#14043#14436#0" />
             <element signature="e#14930#15323#0" />
@@ -1321,17 +1320,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/statement/POSTStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="104" column="64" selection-start-line="104" selection-start-column="61" selection-end-line="104" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/jdbc/OquPOST.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="342" column="94" selection-start-line="342" selection-start-column="94" selection-end-line="342" selection-end-column="94" />
+        <state relative-caret-position="56">
+          <caret line="334" column="44" selection-start-line="334" selection-start-column="41" selection-end-line="334" selection-end-column="44" />
         </state>
       </provider>
     </entry>
