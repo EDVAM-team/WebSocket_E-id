@@ -353,14 +353,14 @@ public class OquGET {
 
                     while (resultSet2.next()){
                         subject.setId(resultSet2.getInt("id_list_subject"));
-                        subject.setId(resultSet2.getInt("name"));
+                        subject.setName(resultSet2.getString("name"));
                     }
 
                     resultSet2 = GETStatement.getReadDB(connection, GETStatement.getAccountID(), resultSet.getInt("id_account"));
 
                     while (resultSet2.next()){
                         account.setId(resultSet2.getInt("id_account"));
-                        account.setId(resultSet2.getInt("name"));
+                        account.setName(resultSet2.getString("name"));
                     }
 
                     total.setId(resultSet.getInt("id_total"));
@@ -375,7 +375,7 @@ public class OquGET {
 
                 response.status(400);
 
-                return e.getMessage();
+                return "400 Bad Request";
             }
 
             return new Gson().toJson(list);
