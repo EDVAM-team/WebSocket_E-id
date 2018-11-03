@@ -25,10 +25,8 @@ public class Rating {
     private int idRating;
     @SerializedName("id_subject")
     private int idSubject;
-    @SerializedName("id_student")
-    private int idStudent;
-    @SerializedName("rating")
-    private String rating;
+    @SerializedName("id_account")
+    private int idAccount;
     @SerializedName("subject")
     private String subject;
     @SerializedName("student")
@@ -46,8 +44,8 @@ public class Rating {
         this.idSubject = idSubject;
     }
 
-    public void setIdStudent(int idStudent) {
-        this.idStudent = idStudent;
+    public void setIdStudent(int idAccount) {
+        this.idAccount = idAccount;
     }
 
     public void setNum(int num) {
@@ -58,15 +56,11 @@ public class Rating {
         this.mark = mark;
     }
 
-    public void setRating(String rating) {
-        this.rating = rating;
-    }
-
     public void setSubject(String subject) {
         this.subject = subject;
     }
 
-    public void setStudent(String student) {
+    public void setAccount(String student) {
         this.student = student;
     }
 }

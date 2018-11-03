@@ -378,10 +378,10 @@ public class OquGET {
                     while (resultSet2.next())
                         rating.setSubject(resultSet2.getString("name"));
 
-                    resultSet2 = GETStatement.getReadDB(connection, GETStatement.getAccountID(), resultSet.getInt("id_student"));
+                    resultSet2 = GETStatement.getReadDB(connection, GETStatement.getAccountID(), resultSet.getInt("id_account"));
 
                     while (resultSet2.next())
-                        rating.setStudent(resultSet2.getString("name"));
+                        rating.setAccount(resultSet2.getString("name"));
 
                     list.add(rating);
                 }
