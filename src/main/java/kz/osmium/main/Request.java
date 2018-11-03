@@ -81,6 +81,25 @@ public class Request {
                 ));
 
         /*
+         * Получить рейтинг студента.
+         *
+         * https://*.example.com/api/total ?
+         * & id_account = <Integer>
+         */
+        path("/api", () ->
+                get("/total", "application/json", (request, response) -> {
+                            if (HerokuDomain.getDomainOqu(request.host()))
+                                return OquGET.getTotal(connection, request, response);
+                            else {
+
+                                response.status(404);
+
+                                return "404 Not Found";
+                            }
+                        }
+                ));
+
+        /*
          * Получить факультеты.
          *
          * https://*.example.com/api/faculty
@@ -407,6 +426,13 @@ public class Request {
          * https://*.example.com/api/mark ?
          * & key = <String>
          * & id_subject = <Integer>
+         *
+         * JSON <JSON, raw, application/json>
+         * [{
+         * "id_account":<Integer>,   - Студент
+         * "n":<Integer>,            - Пропуск пары
+         * "mark":<Integer>          - Оценка
+         * }]
          */
         path("/api", () ->
                 post("/mark", "application/json", (request, response) -> {

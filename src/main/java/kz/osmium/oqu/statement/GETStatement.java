@@ -254,6 +254,16 @@ public class GETStatement {
     }
 
     /**
+     * Запрос на вывод итоговых оценок
+     * Истользуется таблица "total"
+     *
+     * @return
+     */
+    public static String getTotal() {
+        return "SELECT * FROM `total` WHERE `id_account`=?";
+    }
+
+    /**
      * Запрос на вывод оценок рейтинга
      * Истользуется таблица "mark"
      *

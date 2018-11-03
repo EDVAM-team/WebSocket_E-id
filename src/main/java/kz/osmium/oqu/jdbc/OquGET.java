@@ -332,6 +332,62 @@ public class OquGET {
     }
 
     /**
+     * Получает информацию с таблицы "total"
+     *
+     * @param connection
+     * @return возвращает конкретную группу в JSON.
+     */
+    public static String getTotal(Connection connection, Request request, Response response) {
+        if (request.queryParams("id_account") != null) {
+            ArrayList<Total> list = new ArrayList<>();
+
+            try {
+                ResultSet resultSet = GETStatement.getReadDB(connection, GETStatement.getTotal(), Integer.parseInt(request.queryParams("id_account")));
+
+                while (resultSet.next()){
+                    Total total = new Total();
+                    Total.Subject subject = new Total.Subject();
+                    Total.Account account = new Total.Account();
+
+                    ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet.getInt("id_subject"));
+
+                    while (resultSet2.next()){
+                        subject.setId(resultSet2.getInt("id_list_subject"));
+                        subject.setId(resultSet2.getInt("name"));
+                    }
+
+                    resultSet2 = GETStatement.getReadDB(connection, GETStatement.getAccountID(), resultSet.getInt("id_account"));
+
+                    while (resultSet2.next()){
+                        subject.setId(resultSet2.getInt("id_account"));
+                        subject.setId(resultSet2.getInt("name"));
+                    }
+
+                    total.setId(resultSet.getInt("id_total"));
+                    total.setSubject(subject);
+                    total.setAccount(account);
+                    total.setCourse(resultSet.getInt("course"));
+                    list.add(total);
+                }
+
+                response.status(200);
+            } catch (SQLException | NumberFormatException e) {
+
+                response.status(400);
+
+                return "400 Bad Request";
+            }
+
+            return new Gson().toJson(list);
+        } else {
+
+            response.status(400);
+
+            return "400 Bad Request";
+        }
+    }
+
+    /**
      * Получает информацию с таблицы "rating"
      *
      * @param connection
