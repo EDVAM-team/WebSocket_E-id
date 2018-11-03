@@ -347,7 +347,6 @@ public class OquGET {
                 while (resultSet.next()){
                     Total total = new Total();
                     Total.Subject subject = new Total.Subject();
-                    Total.Account account = new Total.Account();
 
                     ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet.getInt("id_subject"));
 
@@ -356,16 +355,8 @@ public class OquGET {
                         subject.setName(resultSet2.getString("name"));
                     }
 
-                    resultSet2 = GETStatement.getReadDB(connection, GETStatement.getAccountID(), resultSet.getInt("id_account"));
-
-                    while (resultSet2.next()){
-                        account.setId(resultSet2.getInt("id_account"));
-                        account.setName(resultSet2.getString("name"));
-                    }
-
                     total.setId(resultSet.getInt("id_total"));
                     total.setSubject(subject);
-                    total.setAccount(account);
                     total.setCourse(resultSet.getInt("course"));
                     list.add(total);
                 }

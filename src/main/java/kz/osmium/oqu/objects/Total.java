@@ -7,28 +7,11 @@ public class Total {
     private int id;
     @SerializedName("subject")
     private Subject subject;
-    @SerializedName("account")
-    private Account account;
     @SerializedName("course")
     private int course;
 
     public static class Subject{
         @SerializedName("id_total")
-        private int id;
-        @SerializedName("name")
-        private String name;
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-    }
-
-    public static class Account{
-        @SerializedName("id")
         private int id;
         @SerializedName("name")
         private String name;
@@ -48,10 +31,6 @@ public class Total {
 
     public void setSubject(Subject subject) {
         this.subject = subject;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
     }
 
     public void setCourse(int course) {
