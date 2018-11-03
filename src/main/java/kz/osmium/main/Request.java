@@ -407,7 +407,6 @@ public class Request {
          * https://*.example.com/api/mark ?
          * & key = <String>
          * & id_subject = <Integer>
-         * & id_account = <Integer>
          */
         path("/api", () ->
                 post("/mark", "application/json", (request, response) -> {

@@ -379,8 +379,7 @@ public class OquPOST {
 
         if (request.queryParams("key").equals(HerokuAPI.key)) {
 
-            if (request.queryParams("id_subject") != null &&
-                    request.queryParams("id_account") != null) {
+            if (request.queryParams("id_subject") != null) {
 
                 try {
                     Type type = new TypeToken<List<MarkJSON>>() {

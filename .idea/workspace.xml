@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f1a897c-0f26-43e4-8795-18635adbb59a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/jdbc/OquPOST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/jdbc/OquPOST.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/statement/GETStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/statement/GETStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/statement/POSTStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/statement/POSTStatement.java" afterDir="false" />
-    </list>
+    <list default="true" id="8f1a897c-0f26-43e4-8795-18635adbb59a" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -219,14 +212,14 @@
           <entry key="PUMPUM" value="20" />
           <entry key="dummy" value="24" />
           <entry key="gradle" value="7" />
-          <entry key="java" value="1776" />
+          <entry key="java" value="1906" />
           <entry key="md" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="7" />
-          <entry key="JAVA" value="1776" />
+          <entry key="JAVA" value="1906" />
           <entry key="Markdown" value="3" />
           <entry key="PLAIN_TEXT" value="44" />
         </counts>
@@ -236,11 +229,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/main/Request.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
-              <caret line="74" selection-start-line="74" selection-end-line="74" />
+            <state relative-caret-position="389">
+              <caret line="416" lean-forward="true" selection-start-line="416" selection-end-line="416" />
               <folding>
                 <element signature="docComment;method#getAPI#0;class#Request#0" />
                 <element signature="e#1382#1773#0" />
@@ -276,20 +269,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/jdbc/OquPOST.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="396" column="33" selection-start-line="396" selection-start-column="33" selection-end-line="396" selection-end-column="33" />
+            <state relative-caret-position="244">
+              <caret line="331" column="25" selection-start-line="331" selection-start-column="25" selection-end-line="331" selection-end-column="25" />
               <folding>
-                <element signature="e#15888#15889#0" expanded="true" />
-                <element signature="e#15932#15933#0" expanded="true" />
-                <element signature="e#16161#16162#0" expanded="true" />
-                <element signature="e#16209#16210#0" expanded="true" />
-                <element signature="e#16430#16431#0" expanded="true" />
-                <element signature="e#16475#16476#0" expanded="true" />
-                <element signature="e#16722#16723#0" expanded="true" />
-                <element signature="e#16765#16766#0" expanded="true" />
+                <element signature="e#15977#15978#0" expanded="true" />
+                <element signature="e#16021#16022#0" expanded="true" />
+                <element signature="e#16250#16251#0" expanded="true" />
+                <element signature="e#16298#16299#0" expanded="true" />
+                <element signature="e#16519#16520#0" expanded="true" />
+                <element signature="e#16564#16565#0" expanded="true" />
+                <element signature="e#16811#16812#0" expanded="true" />
+                <element signature="e#16854#16855#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -311,8 +304,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/statement/POSTStatement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="120" column="43" selection-start-line="120" selection-start-column="43" selection-end-line="120" selection-end-column="43" />
+            <state relative-caret-position="244">
+              <caret line="113" column="25" selection-start-line="113" selection-start-column="25" selection-end-line="113" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -787,15 +780,15 @@
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/main/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/Mark.java" />
         <option value="$PROJECT_DIR$/settings.gradle" />
-        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/main/Request.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/Rating.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/jdbc/OquGET.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/gson/Mark.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/statement/POSTStatement.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/statement/GETStatement.java" />
-        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/jdbc/OquPOST.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/gson/MarkJSON.java" />
+        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/jdbc/OquPOST.java" />
+        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/main/Request.java" />
       </list>
     </option>
   </component>
@@ -934,7 +927,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541247192474" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541248404818" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -1022,10 +1015,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="135" y="88" width="1405" height="950" extended-state="0" />
-    <editor active="true" />
+    <frame x="132" y="88" width="1405" height="950" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22140221" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22140221" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -1039,7 +1031,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32917318" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4997245" weight="0.39800996" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.4997245" visible="true" weight="0.39800996" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5002755" side_tool="true" weight="0.32411504" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32964602" />
       <window_info anchor="bottom" id="Build" order="10" weight="0.32893288" />
@@ -1086,20 +1078,6 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/jdbc/OquPOST.java</url>
-          <line>377</line>
-          <properties class="kz.osmium.oqu.jdbc.OquPOST" method="postMark">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/mysql/mysql-connector-java/5.1.39/613d0456fa79f67749af2754b6c23abf43b9574f/mysql-connector-java-5.1.39-sources.jar!/com/mysql/jdbc/ResultSetImpl.java">
@@ -1331,51 +1309,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/main/Request.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="74" selection-start-line="74" selection-end-line="74" />
-          <folding>
-            <element signature="docComment;method#getAPI#0;class#Request#0" />
-            <element signature="e#1382#1773#0" />
-            <element signature="e#2665#3047#0" />
-            <element signature="e#3301#3694#0" />
-            <element signature="e#3935#4324#0" />
-            <element signature="e#4629#5081#0" />
-            <element signature="e#5401#5855#0" />
-            <element signature="e#6068#6447#0" />
-            <element signature="e#6674#7066#0" />
-            <element signature="e#7368#7823#0" />
-            <element signature="e#8136#8585#0" />
-            <element signature="e#8864#9305#0" />
-            <element signature="e#9581#10023#0" />
-            <element signature="docComment;method#postAPI#0;class#Request#0" />
-            <element signature="e#10402#10795#0" />
-            <element signature="e#11109#11504#0" />
-            <element signature="e#11805#12196#0" />
-            <element signature="e#13152#13545#0" />
-            <element signature="e#14043#14436#0" />
-            <element signature="e#14930#15323#0" />
-            <element signature="e#15527#15910#0" />
-            <element signature="e#16148#16591#0" />
-            <element signature="e#16805#17189#0" />
-            <element signature="e#17420#17802#0" />
-            <element signature="docComment;method#putAPI#0;class#Request#0" />
-            <element signature="method#putAPI#0;class#Request#0" />
-            <element signature="docComment;method#deleteAPI#0;class#Request#0" />
-            <element signature="method#deleteAPI#0;class#Request#0" />
-            <element signature="e#18654#19051#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/statement/POSTStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="120" column="43" selection-start-line="120" selection-start-column="43" selection-end-line="120" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/lib/jvm/java-8-openjdk/jre/lib/rt.jar!/java/lang/reflect/Type.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
@@ -1446,19 +1379,64 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/statement/POSTStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="113" column="25" selection-start-line="113" selection-start-column="25" selection-end-line="113" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/jdbc/OquPOST.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="396" column="33" selection-start-line="396" selection-start-column="33" selection-end-line="396" selection-end-column="33" />
+        <state relative-caret-position="244">
+          <caret line="331" column="25" selection-start-line="331" selection-start-column="25" selection-end-line="331" selection-end-column="25" />
           <folding>
-            <element signature="e#15888#15889#0" expanded="true" />
-            <element signature="e#15932#15933#0" expanded="true" />
-            <element signature="e#16161#16162#0" expanded="true" />
-            <element signature="e#16209#16210#0" expanded="true" />
-            <element signature="e#16430#16431#0" expanded="true" />
-            <element signature="e#16475#16476#0" expanded="true" />
-            <element signature="e#16722#16723#0" expanded="true" />
-            <element signature="e#16765#16766#0" expanded="true" />
+            <element signature="e#15977#15978#0" expanded="true" />
+            <element signature="e#16021#16022#0" expanded="true" />
+            <element signature="e#16250#16251#0" expanded="true" />
+            <element signature="e#16298#16299#0" expanded="true" />
+            <element signature="e#16519#16520#0" expanded="true" />
+            <element signature="e#16564#16565#0" expanded="true" />
+            <element signature="e#16811#16812#0" expanded="true" />
+            <element signature="e#16854#16855#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/main/Request.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="416" lean-forward="true" selection-start-line="416" selection-end-line="416" />
+          <folding>
+            <element signature="docComment;method#getAPI#0;class#Request#0" />
+            <element signature="e#1382#1773#0" />
+            <element signature="e#2665#3047#0" />
+            <element signature="e#3301#3694#0" />
+            <element signature="e#3935#4324#0" />
+            <element signature="e#4629#5081#0" />
+            <element signature="e#5401#5855#0" />
+            <element signature="e#6068#6447#0" />
+            <element signature="e#6674#7066#0" />
+            <element signature="e#7368#7823#0" />
+            <element signature="e#8136#8585#0" />
+            <element signature="e#8864#9305#0" />
+            <element signature="e#9581#10023#0" />
+            <element signature="docComment;method#postAPI#0;class#Request#0" />
+            <element signature="e#10402#10795#0" />
+            <element signature="e#11109#11504#0" />
+            <element signature="e#11805#12196#0" />
+            <element signature="e#13152#13545#0" />
+            <element signature="e#14043#14436#0" />
+            <element signature="e#14930#15323#0" />
+            <element signature="e#15527#15910#0" />
+            <element signature="e#16148#16591#0" />
+            <element signature="e#16805#17189#0" />
+            <element signature="e#17420#17802#0" />
+            <element signature="docComment;method#putAPI#0;class#Request#0" />
+            <element signature="method#putAPI#0;class#Request#0" />
+            <element signature="docComment;method#deleteAPI#0;class#Request#0" />
+            <element signature="method#deleteAPI#0;class#Request#0" />
+            <element signature="e#18654#19051#0" />
           </folding>
         </state>
       </provider>
