@@ -380,6 +380,28 @@ public class Request {
                 ));
 
         /*
+         * Создает рейтинг студенту.
+         *
+         * https://*.example.com/api/rating ?
+         * & id_subject = <Integer>
+         * & id_teacher = <Integer>
+         * & id_student = <Integer>
+         * & num = <Integer>
+         */
+        path("/api", () ->
+                post("/rating", "application/json", (request, response) -> {
+                            if (HerokuDomain.getDomainOqu(request.host()))
+                                return OquPOST.postRating(connection, request, response);
+                            else {
+
+                                response.status(404);
+
+                                return "404 Not Found";
+                            }
+                        }
+                ));
+
+        /*
          * Создает куратора.
          *
          * https://*.example.com/api/curator ?

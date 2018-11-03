@@ -96,6 +96,17 @@ public class POSTStatement {
     }
 
     /**
+     * Запрос на создание ячейки данных в таблице `rating`
+     *
+     * @return
+     */
+    public static String postRating() {
+        return "INSERT INTO `rating` " +
+                "(`id_subject`, `id_teacher`, `id_student`, `num`) " +
+                "VALUE (?, ?, ?, ?)";
+    }
+
+    /**
      * Запрос на создание ячейки данных в таблице `schedule_subject`
      *
      * @return
