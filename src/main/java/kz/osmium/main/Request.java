@@ -569,7 +569,7 @@ public class Request {
          * & id_list_subject = <Integer>
          * & t = <Integer>
          * & id_account = <Integer>
-         * - & id_room = <Integer>
+         * - & id_room = <String>
          */
         path("/api", () ->
                 post("/change", (request, response) -> {

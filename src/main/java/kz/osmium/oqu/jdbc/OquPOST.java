@@ -563,7 +563,10 @@ public class OquPOST {
                     preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_list_subject")));
                     preparedStatement.setInt(2, Integer.parseInt(request.queryParams("t")));
                     preparedStatement.setInt(3, Integer.parseInt(request.queryParams("id_account")));
-                    preparedStatement.setInt(4, Integer.parseInt(request.queryParams("id_room")));
+
+                    if (request.queryParams("id_room") != null)
+                        preparedStatement.setInt(4, Integer.parseInt(request.queryParams("id_room")));
+
                     preparedStatement.execute();
 
                     response.status(201);
