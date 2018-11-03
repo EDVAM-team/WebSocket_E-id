@@ -359,8 +359,8 @@ public class OquGET {
                     resultSet2 = GETStatement.getReadDB(connection, GETStatement.getAccountID(), resultSet.getInt("id_account"));
 
                     while (resultSet2.next()){
-                        subject.setId(resultSet2.getInt("id_account"));
-                        subject.setId(resultSet2.getInt("name"));
+                        account.setId(resultSet2.getInt("id_account"));
+                        account.setId(resultSet2.getInt("name"));
                     }
 
                     total.setId(resultSet.getInt("id_total"));
