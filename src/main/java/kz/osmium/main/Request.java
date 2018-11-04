@@ -222,7 +222,7 @@ public class Request {
         path("/api", () ->
                 get("/schedule", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquGET.getSchedule(connection, request, response);
+                                return OquGET.getScheduleStudent(connection, request, response);
                             else {
 
                                 response.status(404);

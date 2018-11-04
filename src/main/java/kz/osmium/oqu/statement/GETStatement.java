@@ -120,13 +120,23 @@ public class GETStatement {
      *
      * @return
      */
-    public static String getSchedule() {
-        return "SELECT `schedule`.id_schedule, `schedule`.d , `schedule`.num, `schedule`.id_schedule_subject, " +
-                "`schedule`.id_account, `account`.name, `account`.s_name, `account`.l_name, `account`.phone , " +
-                "`account`.email, `account`.id_room " +
-                "FROM `schedule`, `account` " +
-                "WHERE `schedule`.id_account = `account`.id_account " +
-                "AND `schedule`.id_group = ?";
+    public static String getScheduleStudent() {
+        return "(SELECT `schedule`.`id_schedule`, `schedule`.`d`, `schedule`.`num`, `schedule_subject`.`id_schedule_subject`, `schedule_subject`.`t`, `schedule_subject`.`id_change`, `list_subject`.`id_list_subject`, `list_subject`.`name` AS \"name_list_subject\", `room`.`id_room`, `room`.`name` AS \"name_room\", `account`.`id_account`, `account`.`name` AS \"name_account\"\n" +
+                "FROM `schedule`\n" +
+                "INNER JOIN `schedule_subject` ON `schedule`.`id_schedule_subject`=`schedule_subject`.`id_schedule_subject`\n" +
+                "INNER JOIN `list_subject` ON `schedule_subject`.`id_list_subject`=`list_subject`.`id_list_subject`\n" +
+                "LEFT JOIN `room` ON `schedule_subject`.`id_room`=`room`.`id_room`\n" +
+                "INNER JOIN `account` ON `schedule`.`id_account`=`account`.`id_account`\n" +
+                "WHERE `schedule_subject`.`id_change` IS NULL AND `schedule`.`id_group`=?) \n" +
+                "UNION \n" +
+                "(SELECT `schedule`.`id_schedule`, `schedule`.`d`, `schedule`.`num`, `schedule_subject`.`id_schedule_subject`, `change`.`t`, `change`.`id_change`, `list_subject`.`id_list_subject`, `list_subject`.`name` AS \"name_list_subject\", `room`.`id_room`, `room`.`name` AS \"name_room\", `account`.`id_account`, `account`.`name` AS \"name_account\"\n" +
+                "FROM `schedule`\n" +
+                "INNER JOIN `schedule_subject` ON `schedule`.`id_schedule_subject`=`schedule_subject`.`id_schedule_subject`\n" +
+                "INNER JOIN `change` ON `schedule_subject`.`id_change`=`change`.`id_change`\n" +
+                "INNER JOIN `list_subject` ON `change`.`id_list_subject`=`list_subject`.`id_list_subject`\n" +
+                "LEFT JOIN `room` ON `change`.`id_room`=`room`.`id_room`\n" +
+                "INNER JOIN `account` ON `change`.`id_account`=`account`.`id_account`\n" +
+                "WHERE `schedule_subject`.`id_change` IS NOT NULL AND `schedule`.`id_group`=?)";
     }
 
     /**

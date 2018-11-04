@@ -457,96 +457,45 @@ public class OquGET {
      * @param connection
      * @return возвращает полную информацию расписания группы в JSON.
      */
-    public static String getSchedule(Connection connection, Request request, Response response) {
+    public static String getScheduleStudent(Connection connection, Request request, Response response) {
 
         if (request.queryParams("group") != null) {
-            ArrayList<Schedule> list = new ArrayList<>();
+            ArrayList<ScheduleStudent> list = new ArrayList<>();
 
             try {
-                ResultSet resultSet = GETStatement.getReadDB(
-                        connection,
-                        GETStatement.getSchedule(),
-                        Integer.parseInt(request.queryParams("group"))
-                );
+                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getScheduleStudent());
+
+                preparedStatement.setInt(1, Integer.parseInt(request.queryParams("group")));
+                preparedStatement.setInt(2, Integer.parseInt(request.queryParams("group")));
+
+                ResultSet resultSet = preparedStatement.executeQuery();
 
                 while (resultSet.next()) {
+                    ScheduleStudent scheduleStudent = new ScheduleStudent();
+                    ScheduleStudent.SubjectSchedule subjectSchedule = new ScheduleStudent.SubjectSchedule();
+                    ScheduleStudent.SubjectSchedule.SubjectList subjectList = new ScheduleStudent.SubjectSchedule.SubjectList();
+                    ScheduleStudent.SubjectSchedule.Room room = new ScheduleStudent.SubjectSchedule.Room();
+                    ScheduleStudent.Teacher teacher = new ScheduleStudent.Teacher();
 
-                    Schedule schedule = new Schedule();
+                    subjectList.setId(resultSet.getInt("id_list_subject"));
+                    subjectList.setName(resultSet.getString("name_list_subject"));
 
-                    schedule.setId_schedule(resultSet.getInt(1));
-                    schedule.setD(resultSet.getInt(2));
-                    schedule.setNum(resultSet.getInt(3));
+                    room.setId(resultSet.getInt("id_room"));
+                    room.setName(resultSet.getString("name_room"));
 
-                    if (resultSet.getInt("id_account") != 1) {
-                        schedule.setId_teacher(resultSet.getInt(5));
-                        schedule.setName(resultSet.getString(6));
-                        schedule.setS_name(resultSet.getString(7));
-                        schedule.setL_name(resultSet.getString(8));
-                        schedule.setPhone(resultSet.getString(9));
-                        schedule.setEmail(resultSet.getString(10));
-                    } else {
+                    subjectSchedule.setId(resultSet.getInt("id_schedule_subject"));
+                    subjectSchedule.setT(resultSet.getInt("t"));
+                    subjectSchedule.setChange(resultSet.getInt("id_change"));
+                    subjectSchedule.setRoom(room);
+                    subjectSchedule.setSubjectList(subjectList);
 
-                        schedule.setId_teacher(1);
-                    }
+                    scheduleStudent.setIdSchedule(resultSet.getInt("id_schedule"));
+                    scheduleStudent.setD(resultSet.getInt("d"));
+                    scheduleStudent.setNum(resultSet.getInt("num"));
+                    scheduleStudent.setSubjectSchedule(subjectSchedule);
+                    scheduleStudent.setTeacher(teacher);
 
-                    ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getScheduleSubject(), resultSet.getInt(4));
-
-                    resultSet2.next();
-
-                    if (resultSet2.getInt("id_change") == 0) {
-
-                        schedule.setType(resultSet2.getInt("t"));
-                        schedule.setChange(0);
-
-                        ResultSet resultSet3 = GETStatement.getReadDB(connection, GETStatement.getRoom(), resultSet2.getInt("room"));
-
-                        while (resultSet3.next())
-                            schedule.setRoom(resultSet3.getString("name"));
-
-                        resultSet3 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet2.getInt("id_list_subject"));
-
-                        resultSet3.next();
-
-                        schedule.setSubject(resultSet3.getString("name"));
-                    } else {
-
-                        schedule.setChange(1);
-
-                        ResultSet resultSet3 = GETStatement.getReadDB(connection, GETStatement.getChange(), resultSet2.getInt("id_change"));
-
-                        resultSet3.next();
-                        schedule.setType(resultSet3.getInt("t"));
-                        schedule.setId_teacher(resultSet3.getInt("id_account"));
-
-                        ResultSet resultSet4 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet3.getInt("id_list_subject"));
-
-                        resultSet4.next();
-
-                        schedule.setSubject(resultSet4.getString("name"));
-
-                        resultSet4 = GETStatement.getReadDB(connection, GETStatement.getRoom(), resultSet3.getInt("id_room"));
-
-                        while (resultSet4.next())
-                            schedule.setRoom(resultSet4.getString("name"));
-
-                        if (resultSet3.getInt("id_account") != 1) {
-                            resultSet4 = GETStatement.getReadDB(connection, GETStatement.getAccountID(), resultSet3.getInt("id_account"));
-
-                            while (resultSet4.next()) {
-
-                                schedule.setName(resultSet4.getString("name"));
-                                schedule.setS_name(resultSet4.getString("s_name"));
-                                schedule.setL_name(resultSet4.getString("l_name"));
-                                schedule.setPhone(resultSet4.getString("phone"));
-                                schedule.setEmail(resultSet4.getString("email"));
-                            }
-                        } else {
-
-                            schedule.setId_teacher(1);
-                        }
-                    }
-
-                    list.add(schedule);
+                    list.add(scheduleStudent);
                 }
 
                 response.status(200);
