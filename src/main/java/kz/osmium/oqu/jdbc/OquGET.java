@@ -407,7 +407,7 @@ public class OquGET {
 
                     rating.setIdRating(resultSet.getInt("id_rating"));
                     rating.setNum(resultSet.getInt("num"));
-                    subject.setId(resultSet.getInt("id_subject"));
+                    subject.setId(resultSet.getInt("id_list_subject"));
                     subject.setName(resultSet.getString("name_list_subject"));
                     student.setId(resultSet.getInt("id_account"));
                     student.setName(resultSet.getString("name_account"));
