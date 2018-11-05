@@ -483,6 +483,9 @@ public class OquGET {
                     room.setId(resultSet.getInt("id_room"));
                     room.setName(resultSet.getString("name_room"));
 
+                    teacher.setId(resultSet.getInt("id_account"));
+                    teacher.setName(resultSet.getString("name_account"));
+
                     subjectSchedule.setId(resultSet.getInt("id_schedule_subject"));
                     subjectSchedule.setT(resultSet.getInt("t"));
                     subjectSchedule.setChange(resultSet.getInt("id_change"));
