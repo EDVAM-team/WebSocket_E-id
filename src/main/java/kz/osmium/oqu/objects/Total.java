@@ -3,12 +3,12 @@ package kz.osmium.oqu.objects;
 import com.google.gson.annotations.SerializedName;
 
 public class Total {
-    @SerializedName("id")
-    private int id;
-    @SerializedName("subject")
-    private Subject subject;
+    @SerializedName("id_total")
+    private int idTotal;
     @SerializedName("course")
     private int course;
+    @SerializedName("subject")
+    private Subject subject;
 
     public static class Subject{
         @SerializedName("id_total")
@@ -25,8 +25,8 @@ public class Total {
         }
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdTotal(int idTotal) {
+        this.idTotal = idTotal;
     }
 
     public void setSubject(Subject subject) {

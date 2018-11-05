@@ -274,7 +274,10 @@ public class GETStatement {
      * @return
      */
     public static String getTotal() {
-        return "SELECT * FROM `total` WHERE `id_account`=?";
+        return "SELECT `total`.`id_total`, `total`.`course`, `list_subject`.`id_list_subject`, `list_subject`.`name`\n" +
+                "FROM `total` \n" +
+                "INNER JOIN `list_subject` ON `total`.`id_list_subject`=`list_subject`.`id_list_subject`\n" +
+                "WHERE `id_account`=?";
     }
 
     /**

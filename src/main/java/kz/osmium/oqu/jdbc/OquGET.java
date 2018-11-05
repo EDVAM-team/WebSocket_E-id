@@ -338,6 +338,7 @@ public class OquGET {
      * @return возвращает конкретную группу в JSON.
      */
     public static String getTotal(Connection connection, Request request, Response response) {
+
         if (request.queryParams("id_account") != null) {
             ArrayList<Total> list = new ArrayList<>();
 
@@ -348,16 +349,11 @@ public class OquGET {
                     Total total = new Total();
                     Total.Subject subject = new Total.Subject();
 
-                    ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet.getInt("id_subject"));
-
-                    while (resultSet2.next()) {
-                        subject.setId(resultSet2.getInt("id_list_subject"));
-                        subject.setName(resultSet2.getString("name"));
-                    }
-
-                    total.setId(resultSet.getInt("id_total"));
-                    total.setSubject(subject);
+                    subject.setId(resultSet.getInt("id_list_subject"));
+                    subject.setName(resultSet.getString("name"));
+                    total.setIdTotal(resultSet.getInt("id_total"));
                     total.setCourse(resultSet.getInt("course"));
+                    total.setSubject(subject);
                     list.add(total);
                 }
 
