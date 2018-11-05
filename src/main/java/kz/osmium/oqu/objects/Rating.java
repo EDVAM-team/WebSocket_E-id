@@ -21,79 +21,87 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 
 public class Rating {
-    @SerializedName("id_rating")
-    private int idRating;
-    @SerializedName("num")
-    private int num;
-    @SerializedName("subject")
-    private Subject subject;
-    @SerializedName("student")
-    private Student student;
-    @SerializedName("mark")
-    private ArrayList<Mark> mark;
+    @SerializedName("id_account")
+    private int idAccount;
+    @SerializedName("name_account")
+    private String nameAccount;
+    @SerializedName("rating")
+    private ArrayList<Rating.RatingChild> rating;
 
-    public static class Subject {
+    public static class RatingChild{
         @SerializedName("id")
         private int id;
-        @SerializedName("name")
-        private String name;
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-    }
-
-    public static class Student {
-        @SerializedName("id")
-        private int id;
-        @SerializedName("name")
-        private String name;
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-    }
-
-    public static class Mark {
-        @SerializedName("id")
-        private final int id;
-        @SerializedName("n")
-        private final int n;
+        @SerializedName("num")
+        private int num;
+        @SerializedName("subject")
+        private Subject subject;
         @SerializedName("mark")
-        private final int mark;
+        private ArrayList<Mark> mark;
 
-        public Mark(int id, int n, int mark) {
+        public static class Subject {
+            @SerializedName("id")
+            private int id;
+            @SerializedName("name")
+            private String name;
+
+            public void setId(int id) {
+                this.id = id;
+            }
+
+            public void setName(String name) {
+                this.name = name;
+            }
+        }
+
+        public static class Mark {
+            @SerializedName("id")
+            private final int id;
+            @SerializedName("n")
+            private final int n;
+            @SerializedName("mark")
+            private final int mark;
+
+            public Mark(int id, int n, int mark) {
+                this.id = id;
+                this.n = n;
+                this.mark = mark;
+            }
+        }
+
+        public void setId(int id) {
             this.id = id;
-            this.n = n;
+        }
+
+        public void setNum(int num) {
+            this.num = num;
+        }
+
+        public void setSubject(Subject subject) {
+            this.subject = subject;
+        }
+
+        public void setMark(ArrayList<Mark> mark) {
             this.mark = mark;
         }
     }
 
-    public void setIdRating(int idRating) {
-        this.idRating = idRating;
+    public void setIdAccount(int idAccount) {
+        this.idAccount = idAccount;
     }
 
-    public void setNum(int num) {
-        this.num = num;
+    public void setNameAccount(String nameAccount) {
+        this.nameAccount = nameAccount;
     }
 
-    public void setSubject(Subject subject) {
-        this.subject = subject;
+    public void setRating(ArrayList<Rating.RatingChild> rating) {
+        this.rating = rating;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public int getIdAccount() {
+        return idAccount;
     }
 
-    public void setMark(ArrayList<Mark> mark) {
-        this.mark = mark;
+    public String getNameAccount() {
+        return nameAccount;
     }
 }

@@ -344,13 +344,13 @@ public class OquGET {
             try {
                 ResultSet resultSet = GETStatement.getReadDB(connection, GETStatement.getTotal(), Integer.parseInt(request.queryParams("id_account")));
 
-                while (resultSet.next()){
+                while (resultSet.next()) {
                     Total total = new Total();
                     Total.Subject subject = new Total.Subject();
 
                     ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet.getInt("id_subject"));
 
-                    while (resultSet2.next()){
+                    while (resultSet2.next()) {
                         subject.setId(resultSet2.getInt("id_list_subject"));
                         subject.setName(resultSet2.getString("name"));
                     }
@@ -389,7 +389,8 @@ public class OquGET {
         if (request.queryParams("id_account") != null &&
                 request.queryParams("num") != null) {
 
-            ArrayList<Rating> list = new ArrayList<>();
+            Rating rating = new Rating();
+            ArrayList<Rating.RatingChild> ratingChildren = new ArrayList<>();
 
             try {
                 PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getRatingStudent());
@@ -400,32 +401,36 @@ public class OquGET {
                 ResultSet resultSet = preparedStatement.executeQuery();
 
                 while (resultSet.next()) {
-                    Rating rating = new Rating();
-                    Rating.Subject subject = new Rating.Subject();
-                    Rating.Student student = new Rating.Student();
-                    ArrayList<Rating.Mark> markArrayList = new ArrayList<>();
+                    Rating.RatingChild ratingChild = new Rating.RatingChild();
+                    Rating.RatingChild.Subject subject = new Rating.RatingChild.Subject();
+                    ArrayList<Rating.RatingChild.Mark> markArrayList = new ArrayList<>();
 
-                    rating.setIdRating(resultSet.getInt("id_rating"));
-                    rating.setNum(resultSet.getInt("num"));
+                    ratingChild.setId(resultSet.getInt("id_rating"));
+                    ratingChild.setNum(resultSet.getInt("num"));
                     subject.setId(resultSet.getInt("id_list_subject"));
                     subject.setName(resultSet.getString("name_list_subject"));
-                    student.setId(resultSet.getInt("id_account"));
-                    student.setName(resultSet.getString("name_account"));
+
+                    if (rating.getIdAccount() != 0)
+                        rating.setIdAccount(resultSet.getInt("id_account"));
+
+                    if (rating.getNameAccount() != null)
+                        rating.setNameAccount(resultSet.getString("name_account"));
 
                     ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getMark(), resultSet.getInt("id_rating"));
 
                     while (resultSet2.next())
-                        markArrayList.add(new Rating.Mark(
+                        markArrayList.add(new Rating.RatingChild.Mark(
                                 resultSet2.getInt("id_mark"),
                                 resultSet2.getInt("n"),
                                 resultSet2.getInt("mark")
                         ));
 
-                    rating.setSubject(subject);
-                    rating.setStudent(student);
-                    rating.setMark(markArrayList);
-                    list.add(rating);
+                    ratingChild.setSubject(subject);
+                    ratingChild.setMark(markArrayList);
+                    ratingChildren.add(ratingChild);
                 }
+
+                rating.setRating(ratingChildren);
 
                 response.status(200);
             } catch (SQLException | NumberFormatException e) {
@@ -435,7 +440,7 @@ public class OquGET {
                 return "400 Bad Request " + e.getMessage();
             }
 
-            return new Gson().toJson(list);
+            return new Gson().toJson(rating);
         } else {
 
             response.status(400);
