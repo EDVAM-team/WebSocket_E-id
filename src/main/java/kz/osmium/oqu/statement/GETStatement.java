@@ -254,7 +254,7 @@ public class GETStatement {
                 "FROM `rating` \n" +
                 "INNER JOIN `list_subject` ON `rating`.`id_subject`=`list_subject`.`id_list_subject`\n" +
                 "INNER JOIN `account` ON `rating`.`id_account`=`account`.`id_account`\n" +
-                "WHERE `rating`.`id_account`=14 AND `rating`.`num`=1";
+                "WHERE `rating`.`id_account`=? AND `rating`.`num`=?";
     }
 
     /**
