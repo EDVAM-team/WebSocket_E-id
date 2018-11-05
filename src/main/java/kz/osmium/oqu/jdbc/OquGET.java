@@ -410,10 +410,10 @@ public class OquGET {
                     subject.setId(resultSet.getInt("id_list_subject"));
                     subject.setName(resultSet.getString("name_list_subject"));
 
-                    if (rating.getIdAccount() != 0)
+                    if (rating.getIdAccount() == 0)
                         rating.setIdAccount(resultSet.getInt("id_account"));
 
-                    if (rating.getNameAccount() != null)
+                    if (rating.getNameAccount() == null)
                         rating.setNameAccount(resultSet.getString("name_account"));
 
                     ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getMark(), resultSet.getInt("id_rating"));
