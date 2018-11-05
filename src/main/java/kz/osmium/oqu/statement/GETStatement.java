@@ -101,7 +101,10 @@ public class GETStatement {
      * @return
      */
     public static String getCuratorGroup() {
-        return "SELECT * FROM `curator` WHERE `id_group`=?";
+        return "SELECT `account`.`id_account`, `account`.`name`\n" +
+                "FROM `curator` \n" +
+                "INNER JOIN `account` ON `curator`.`id_account`=`account`.`id_account`\n" +
+                "WHERE `curator`.`id_group`=?";
     }
 
     /**

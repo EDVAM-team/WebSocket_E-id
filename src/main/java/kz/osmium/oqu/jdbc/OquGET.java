@@ -182,22 +182,13 @@ public class OquGET {
                 ResultSet resultSet = GETStatement.getReadDB(connection, GETStatement.getCuratorGroup(), Integer.parseInt(request.queryParams("group")));
 
                 while (resultSet.next()) {
-                    ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getAccountID(), resultSet.getInt("id_account"));
 
-                    while (resultSet2.next()) {
+                    response.status(200);
 
-                        response.status(200);
-
-                        return new Gson().toJson(new Teacher(
-                                resultSet2.getInt("id_account"),
-                                resultSet2.getString("name"),
-                                resultSet2.getString("s_name"),
-                                resultSet2.getString("l_name"),
-                                resultSet2.getString("phone"),
-                                resultSet2.getString("email"),
-                                resultSet2.getString("id_room")
-                        ));
-                    }
+                    return new Gson().toJson(new Teacher(
+                            resultSet.getInt("id_account"),
+                            resultSet.getString("name")
+                    ));
                 }
             } catch (SQLException | NumberFormatException e) {
 
