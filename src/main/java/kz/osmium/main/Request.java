@@ -238,19 +238,19 @@ public class Request {
          * https://*.example.com/api/schedule/teacher ?
          * & teacher = <Integer>
          */
-        path("/api", () ->
-                path("/schedule", () ->
-                        get("/teacher", (request, response) -> {
-                                    if (HerokuDomain.getDomainOqu(request.host()))
-                                        return OquGET.getScheduleTeacher(connection, request, response);
-                                    else {
-
-                                        response.status(404);
-
-                                        return "404 Not Found";
-                                    }
-                                }
-                        )));
+//        path("/api", () ->
+//                path("/schedule", () ->
+//                        get("/teacher", (request, response) -> {
+//                                    if (HerokuDomain.getDomainOqu(request.host()))
+//                                        return OquGET.getScheduleTeacher(connection, request, response);
+//                                    else {
+//
+//                                        response.status(404);
+//
+//                                        return "404 Not Found";
+//                                    }
+//                                }
+//                        )));
 
         /*
          * Получить информацию аккаунта.

@@ -401,35 +401,29 @@ public class OquGET {
 
                 while (resultSet.next()) {
                     Rating rating = new Rating();
-                    ArrayList<Mark> markArrayList = new ArrayList<>();
+                    Rating.Subject subject = new Rating.Subject();
+                    Rating.Student student = new Rating.Student();
+                    ArrayList<Rating.Mark> markArrayList = new ArrayList<>();
 
                     rating.setIdRating(resultSet.getInt("id_rating"));
-                    rating.setIdSubject(resultSet.getInt("id_subject"));
-                    rating.setIdStudent(resultSet.getInt("id_account"));
                     rating.setNum(resultSet.getInt("num"));
+                    subject.setId(resultSet.getInt("id_subject"));
+                    subject.setName(resultSet.getString("name_list_subject"));
+                    student.setId(resultSet.getInt("id_account"));
+                    student.setName(resultSet.getString("name_account"));
 
                     ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getMark(), resultSet.getInt("id_rating"));
 
                     while (resultSet2.next())
-                        markArrayList.add(new Mark(
+                        markArrayList.add(new Rating.Mark(
                                 resultSet2.getInt("id_mark"),
-                                resultSet2.getInt("id_rating"),
                                 resultSet2.getInt("n"),
                                 resultSet2.getInt("mark")
                         ));
 
+                    rating.setSubject(subject);
+                    rating.setStudent(student);
                     rating.setMark(markArrayList);
-
-                    resultSet2 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet.getInt("id_subject"));
-
-                    while (resultSet2.next())
-                        rating.setSubject(resultSet2.getString("name"));
-
-                    resultSet2 = GETStatement.getReadDB(connection, GETStatement.getAccountID(), resultSet.getInt("id_account"));
-
-                    while (resultSet2.next())
-                        rating.setAccount(resultSet2.getString("name"));
-
                     list.add(rating);
                 }
 

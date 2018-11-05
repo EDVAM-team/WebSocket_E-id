@@ -250,7 +250,11 @@ public class GETStatement {
      * @return
      */
     public static String getRatingStudent() {
-        return "SELECT * FROM `rating` WHERE `id_account`=? AND `num`=?";
+        return "SELECT `rating`.`id_rating`, `rating`.`num`, `list_subject`.`id_list_subject`, `list_subject`.`name` AS \"name_list_subject\", `account`.`id_account`, `account`.`name` AS \"name_account\"\n" +
+                "FROM `rating` \n" +
+                "INNER JOIN `list_subject` ON `rating`.`id_subject`=`list_subject`.`id_list_subject`\n" +
+                "INNER JOIN `account` ON `rating`.`id_account`=`account`.`id_account`\n" +
+                "WHERE `rating`.`id_account`=14 AND `rating`.`num`=1";
     }
 
     /**
