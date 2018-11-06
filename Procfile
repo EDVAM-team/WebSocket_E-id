@@ -1,1 +1,1 @@
-web: ./build/install/oqu/bin/oqu
+web: ./build/install/osmiumt/bin/osmiumt
