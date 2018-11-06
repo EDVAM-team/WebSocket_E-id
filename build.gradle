@@ -1,9 +1,9 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
-archivesBaseName = "oqu"
+archivesBaseName = "osmiumt"
 version = '1.0'
-applicationName = "oqu"
+applicationName = "osmiumt"
 mainClassName = "kz.osmium.main.Main"
 
 repositories {

@@ -2,7 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f1a897c-0f26-43e4-8795-18635adbb59a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/statement/GETStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/statement/GETStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/main/HerokuDomain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/main/HerokuDomain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/main/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/main/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/jdbc/OquDELETE.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/request/OquDELETE.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/jdbc/OquGET.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/request/OquGET.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/jdbc/OquPOST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/request/OquPOST.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/jdbc/OquPUT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/request/OquPUT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/gson/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/Faculty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/gson/Faculty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/gson/Group.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/ListSubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/gson/ListSubject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/Rating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/gson/Rating.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/gson/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/ScheduleStudent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/gson/ScheduleStudent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/ScheduleTeacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/gson/ScheduleTeacher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/Specialty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/gson/Specialty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/gson/Teacher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/Total.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/gson/Total.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -178,12 +195,13 @@
     <session id="-307704009">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.22" value="2" />
           <entry key="project.open.time.23" value="1" />
           <entry key="project.open.time.25" value="2" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.open.time.26" value="1" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -196,7 +214,7 @@
           <entry key="class" value="3" />
           <entry key="gradle" value="8" />
           <entry key="gradlew" value="4" />
-          <entry key="java" value="81" />
+          <entry key="java" value="98" />
           <entry key="md" value="1" />
         </counts>
       </usages-collector>
@@ -204,7 +222,7 @@
         <counts>
           <entry key="CLASS" value="3" />
           <entry key="Groovy" value="8" />
-          <entry key="JAVA" value="81" />
+          <entry key="JAVA" value="98" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="13" />
         </counts>
@@ -212,18 +230,18 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="PUMPUM" value="20" />
-          <entry key="dummy" value="31" />
+          <entry key="dummy" value="39" />
           <entry key="gradle" value="7" />
-          <entry key="java" value="3377" />
+          <entry key="java" value="3747" />
           <entry key="md" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="7" />
-          <entry key="JAVA" value="3377" />
+          <entry key="JAVA" value="3747" />
           <entry key="Markdown" value="3" />
-          <entry key="PLAIN_TEXT" value="51" />
+          <entry key="PLAIN_TEXT" value="59" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -234,8 +252,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/main/Request.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="160" column="50" lean-forward="true" selection-start-line="160" selection-start-column="37" selection-end-line="160" selection-end-column="50" />
+            <state relative-caret-position="381">
+              <caret line="323" column="43" selection-start-line="323" selection-start-column="43" selection-end-line="323" selection-end-column="43" />
               <folding>
                 <element signature="docComment;method#getAPI#0;class#Request#0" />
                 <element signature="docComment;method#postAPI#0;class#Request#0" />
@@ -248,10 +266,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/jdbc/OquGET.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/GETTranslit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="183" column="42" lean-forward="true" selection-start-line="183" selection-start-column="42" selection-end-line="183" selection-end-column="42" />
+            <state relative-caret-position="252">
+              <caret line="28" column="74" lean-forward="true" selection-start-line="28" selection-start-column="74" selection-end-line="28" selection-end-column="74" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -684,11 +705,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/kz/keu/utils/SQLStatement.java" />
-        <option value="$PROJECT_DIR$/src/main/java/kz/keu/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/kz/eid/utils/HerokuKey.java" />
-        <option value="$PROJECT_DIR$/src/main/java/kz/eid/utils/SQLStatement.java" />
-        <option value="$PROJECT_DIR$/src/main/java/kz/eid/objects/Curator.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/eid/jdbc/JDBCDELETE.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/eid/jdbc/JDBCPOST.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/eid/jdbc/JDBCPUT.java" />
@@ -718,7 +734,6 @@
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/jdbc/JDBCPUT.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/Request.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/statement/DELETEStatement.java" />
-        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/main/HerokuDomain.java" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/main/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/Mark.java" />
@@ -730,11 +745,17 @@
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/jdbc/OquPOST.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/Schedule.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/ScheduleStudent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/main/Request.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/Rating.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/Total.java" />
-        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/jdbc/OquGET.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/statement/GETStatement.java" />
+        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/Teacher.java" />
+        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/jdbc/OquGET.java" />
+        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/translit/objects/Translit.java" />
+        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/main/HerokuDomain.java" />
+        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/main/Request.java" />
+        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/translit/GETTranslit.java" />
+        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/gson/Teacher.java" />
+        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/GETTranslit.java" />
       </list>
     </option>
   </component>
@@ -745,8 +766,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="74" />
-    <option name="y" value="27" />
+    <option name="x" value="80" />
+    <option name="y" value="77" />
     <option name="width" value="1641" />
     <option name="height" value="982" />
   </component>
@@ -755,80 +776,80 @@
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
+      <hideEmptyPackages ProjectPane="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="e-id" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebSocket_Oqu" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="WebSocket_Oqu" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="e-id" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebSocket_Oqu" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="WebSocket_Oqu" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="e-id" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebSocket_Oqu" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="WebSocket_Oqu" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
               <item name="e-id" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebSocket_Oqu" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="WebSocket_Oqu" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="e-id" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebSocket_Oqu" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="WebSocket_Oqu" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="osmium" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="e-id" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebSocket_Oqu" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="osmium" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="e-id" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebSocket_Oqu" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="WebSocket_Oqu" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="osmium" type="462c0819:PsiDirectoryNode" />
               <item name="oqu" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="e-id" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebSocket_Oqu" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="WebSocket_Oqu" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="osmium" type="462c0819:PsiDirectoryNode" />
-              <item name="oqu" type="462c0819:PsiDirectoryNode" />
-              <item name="jdbc" type="462c0819:PsiDirectoryNode" />
+              <item name="translit" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="e-id" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebSocket_Oqu" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="WebSocket_Oqu" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="osmium" type="462c0819:PsiDirectoryNode" />
-              <item name="oqu" type="462c0819:PsiDirectoryNode" />
+              <item name="translit" type="462c0819:PsiDirectoryNode" />
               <item name="objects" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="e-id" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WebSocket_Oqu" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="osmium" type="462c0819:PsiDirectoryNode" />
+              <item name="translit" type="462c0819:PsiDirectoryNode" />
+              <item name="request" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -850,10 +871,11 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541429442281" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541526430331" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -941,10 +963,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="74" y="27" width="1641" height="982" extended-state="0" />
+    <frame x="80" y="77" width="1641" height="982" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15021999" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1521056" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -958,7 +980,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32917318" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.4997245" visible="true" weight="0.28199053" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4997245" weight="0.28150767" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5002755" side_tool="true" weight="0.32411504" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32964602" />
       <window_info anchor="bottom" id="Build" order="10" weight="0.32893288" />
@@ -1006,6 +1028,18 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/kz/osmium/main/Request.java</url>
+          <line>184</line>
+          <properties />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/mysql/mysql-connector-java/5.1.39/613d0456fa79f67749af2754b6c23abf43b9574f/mysql-connector-java-5.1.39-sources.jar!/com/mysql/jdbc/ResultSetImpl.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1017,41 +1051,6 @@
     <entry file="jar:///usr/lib/jvm/java-8-openjdk/jre/lib/rt.jar!/java/sql/ResultSet.class" />
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/eid/utils/SQLStatement.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/eid/objects/Curator.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/Account.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/Faculty.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/Group.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/ListSubject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/Specialty.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/statement/PUTStatement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="28">
@@ -1091,9 +1090,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1316">
           <caret line="48" column="56" lean-forward="true" selection-start-line="48" selection-start-column="56" selection-end-line="48" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#1669#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1105,11 +1101,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="28">
@@ -1118,24 +1109,16 @@
           <second_editor />
         </state>
       </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Procfile">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="28" selection-start-column="28" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/main/HerokuDomain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
-          <folding>
-            <element signature="e#320#321#0" expanded="true" />
-            <element signature="e#371#372#0" expanded="true" />
-            <element signature="e#639#640#0" expanded="true" />
-            <element signature="e#690#691#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1215,21 +1198,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/Teacher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-163">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/Room.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="24" column="30" lean-forward="true" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/jdbc/OquDELETE.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/request/OquDELETE.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-667">
           <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
@@ -1239,7 +1208,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/jdbc/OquPUT.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/request/OquPUT.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
@@ -1253,79 +1222,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/ScheduleStudent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="53" column="19" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/ScheduleTeacher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/jdbc/OquPOST.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/request/OquPOST.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15176">
           <caret line="569" column="53" selection-start-line="569" selection-start-column="53" selection-end-line="569" selection-end-column="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/Mark.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="20" selection-start-line="20" selection-end-line="36" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/Rating.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="35" column="33" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
-          <folding>
-            <element signature="e#1510#1511#0" expanded="true" />
-            <element signature="e#1554#1555#0" expanded="true" />
-            <element signature="e#1602#1603#0" expanded="true" />
-            <element signature="e#1650#1651#0" expanded="true" />
-            <element signature="e#2009#2010#0" expanded="true" />
-            <element signature="e#2045#2046#0" expanded="true" />
-            <element signature="e#2084#2085#0" expanded="true" />
-            <element signature="e#2122#2123#0" expanded="true" />
-            <element signature="e#2173#2174#0" expanded="true" />
-            <element signature="e#2219#2220#0" expanded="true" />
-            <element signature="e#2272#2273#0" expanded="true" />
-            <element signature="e#2312#2313#0" expanded="true" />
-            <element signature="e#2365#2366#0" expanded="true" />
-            <element signature="e#2407#2408#0" expanded="true" />
-            <element signature="e#2461#2462#0" expanded="true" />
-            <element signature="e#2507#2508#0" expanded="true" />
-            <element signature="e#2556#2557#0" expanded="true" />
-            <element signature="e#2592#2593#0" expanded="true" />
-            <element signature="e#2661#2662#0" expanded="true" />
-            <element signature="e#2693#2694#0" expanded="true" />
-            <element signature="e#2731#2732#0" expanded="true" />
-            <element signature="e#2765#2766#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/main/Request.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="160" column="50" lean-forward="true" selection-start-line="160" selection-start-column="37" selection-end-line="160" selection-end-column="50" />
-          <folding>
-            <element signature="docComment;method#getAPI#0;class#Request#0" />
-            <element signature="docComment;method#postAPI#0;class#Request#0" />
-            <element signature="docComment;method#putAPI#0;class#Request#0" />
-            <element signature="method#putAPI#0;class#Request#0" />
-            <element signature="docComment;method#deleteAPI#0;class#Request#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/Mark.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/statement/GETStatement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
@@ -1333,7 +1237,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/Total.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/gson/Total.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="143">
           <caret line="27" column="26" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="26" />
@@ -1344,10 +1248,148 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/jdbc/OquGET.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/translit/objects/Translit.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="183" column="42" lean-forward="true" selection-start-line="183" selection-start-column="42" selection-end-line="183" selection-end-column="42" />
+        <state relative-caret-position="465">
+          <caret line="246" column="24" selection-start-line="246" selection-start-column="24" selection-end-line="246" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#10305#0" expanded="true" />
+            <element signature="method#сyrlToLatn#0;class#Translit#0" />
+            <element signature="method#latnToCyrl#0;class#Translit#0" />
+            <element signature="method#getCyrl#0;class#Translit#0" />
+            <element signature="method#getLatn#0;class#Translit#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/main/HerokuDomain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="521">
+          <caret line="25" column="48" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
+          <folding>
+            <element signature="e#320#321#0" expanded="true" />
+            <element signature="e#371#372#0" expanded="true" />
+            <element signature="e#639#640#0" expanded="true" />
+            <element signature="e#690#691#0" expanded="true" />
+            <element signature="e#958#959#0" expanded="true" />
+            <element signature="e#1009#1010#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/request/OquGET.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="716" lean-forward="true" selection-start-line="716" selection-end-line="719" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/gson/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#1651#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/gson/Faculty.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#949#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/gson/ListSubject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#978#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/gson/Rating.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/gson/Room.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/gson/ScheduleStudent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/gson/ScheduleTeacher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/gson/Specialty.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#963#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/gson/Teacher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/objects/gson/Group.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#935#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/main/Request.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="323" column="43" selection-start-line="323" selection-start-column="43" selection-end-line="323" selection-end-column="43" />
+          <folding>
+            <element signature="docComment;method#getAPI#0;class#Request#0" />
+            <element signature="docComment;method#postAPI#0;class#Request#0" />
+            <element signature="docComment;method#putAPI#0;class#Request#0" />
+            <element signature="method#putAPI#0;class#Request#0" />
+            <element signature="docComment;method#deleteAPI#0;class#Request#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/GETTranslit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="28" column="74" lean-forward="true" selection-start-line="28" selection-start-column="74" selection-end-line="28" selection-end-column="74" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

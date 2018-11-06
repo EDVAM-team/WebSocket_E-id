@@ -1,5 +1,5 @@
 # WebSocketGuide
-WebSocket for app Oqu
+WebSocket for osmium.kz
 
 # License
 

@@ -16,9 +16,10 @@
 
 package kz.osmium.main;
 
-import kz.osmium.oqu.jdbc.OquDELETE;
-import kz.osmium.oqu.jdbc.OquGET;
-import kz.osmium.oqu.jdbc.OquPOST;
+import kz.osmium.oqu.request.OquDELETE;
+import kz.osmium.oqu.request.OquGET;
+import kz.osmium.oqu.request.OquPOST;
+import kz.osmium.translit.request.GETTranslit;
 
 import java.sql.Connection;
 
@@ -309,6 +310,25 @@ public class Request {
                                     }
                                 }
                         )));
+
+        /*
+         * Транслитезация казахского текста.
+         *
+         * https://*.example.com/api/text ?
+         * & text = <String>
+         * & t = <Integer>
+         */
+        path("/api", () ->
+                get("/text", "application/json", (request, response) -> {
+                    if (HerokuDomain.getDomainTranslit(request.host()))
+                        return GETTranslit.getTranslit(request, response);
+                    else {
+
+                        response.status(404);
+
+                        return "404 Not Found";
+                    }
+                }));
     }
 
     /**
