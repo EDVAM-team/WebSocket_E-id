@@ -1,5 +1,5 @@
 # WebSocketGuide
-WebSocket for osmium.kz
+WebSocket for Osmium
 
 # License
 
