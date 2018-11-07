@@ -113,8 +113,8 @@ public class Translit {
 
                         stringBuilder.append(getLatn(str.charAt(i)));
                     }
-                } else if (str.charAt(i) == 1070 ||
-                        str.charAt(i) == 1102) { // Ш
+                } else if (str.charAt(i) == 83 ||
+                        str.charAt(i) == 115) { // Ш
 
                     if (str.charAt(i + 1) == 104) {
 
