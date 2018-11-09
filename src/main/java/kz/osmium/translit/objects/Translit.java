@@ -63,6 +63,12 @@ public class Translit {
                     case 1094: // ц
                         stringBuilder.append((char) 116 + "" + (char) 115);
                         break;
+                    case 1025: // Ё
+                        stringBuilder.append((char) 73 + "" + (char) 111);
+                        break;
+                    case 1105: // ё
+                        stringBuilder.append((char) 305 + "" + (char) 111);
+                        break;
                     default:
                         stringBuilder.append(getCyrl(a));
                         break;
@@ -115,6 +121,14 @@ public class Translit {
                             stringBuilder.append((char) 1103);
 
                         i++;
+                    } else if (str.charAt(i + 1) == 111) { // Ё
+
+                        if (str.charAt(i) == 73)
+                            stringBuilder.append((char) 1025);
+                        else
+                            stringBuilder.append((char) 1105);
+
+                        i++;
                     } else {
 
                         stringBuilder.append(getLatn(str.charAt(i)));
@@ -136,7 +150,7 @@ public class Translit {
 
                     if (str.charAt(i + 1) == 115) {
 
-                        if (str.charAt(i) == 83)
+                        if (str.charAt(i) == 84)
                             stringBuilder.append((char) 1062);
                         else
                             stringBuilder.append((char) 1094);
