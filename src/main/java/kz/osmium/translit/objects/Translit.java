@@ -57,6 +57,12 @@ public class Translit {
                     case 1102: // ю
                         stringBuilder.append((char) 305 + "" + (char) 253);
                         break;
+                    case 1062: // Ц
+                        stringBuilder.append((char) 84 + "" + (char) 115);
+                        break;
+                    case 1094: // ц
+                        stringBuilder.append((char) 116 + "" + (char) 115);
+                        break;
                     default:
                         stringBuilder.append(getCyrl(a));
                         break;
@@ -122,6 +128,18 @@ public class Translit {
                             stringBuilder.append((char) 1064);
                         else
                             stringBuilder.append((char) 1096);
+
+                        i++;
+                    }
+                } else if (str.charAt(i) == 84 ||
+                        str.charAt(i) == 116) { // Ц
+
+                    if (str.charAt(i + 1) == 115) {
+
+                        if (str.charAt(i) == 83)
+                            stringBuilder.append((char) 1062);
+                        else
+                            stringBuilder.append((char) 1094);
 
                         i++;
                     }
@@ -275,10 +293,6 @@ public class Translit {
                 return 73;
             case 1110: // і
                 return 105;
-            case 1062: // Ц
-                return 83;
-            case 1094: // ц
-                return 115;
             case 1069: // Э
                 return 69;
             case 1101: // э
