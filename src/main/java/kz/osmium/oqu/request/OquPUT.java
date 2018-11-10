@@ -22,10 +22,7 @@ import kz.osmium.oqu.statement.PUTStatement;
 import spark.Request;
 import spark.Response;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class OquPUT {
 
@@ -36,7 +33,7 @@ public class OquPUT {
      * @param connection
      * @return
      */
-    public static String putAccount(Connection connection, Request request, Response response){
+    public static String putAccount(Connection connection, Request request, Response response) {
 
         if (request.queryParams("key").equals(HerokuAPI.key)) {
 
@@ -55,27 +52,66 @@ public class OquPUT {
                 try {
                     PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putAccount());
 
-                    preparedStatement.setInt(1, Integer.parseInt(request.queryParams("t")));
-                    preparedStatement.setInt(2, Integer.parseInt(request.queryParams("t")));
-                    preparedStatement.setInt(3, Integer.parseInt(request.queryParams("id_group")));
-                    preparedStatement.setInt(4, Integer.parseInt(request.queryParams("id_group")));
-                    preparedStatement.setString(5, request.queryParams("name"));
-                    preparedStatement.setString(6, request.queryParams("name"));
-                    preparedStatement.setString(7, request.queryParams("s_name"));
-                    preparedStatement.setString(8, request.queryParams("s_name"));
-                    preparedStatement.setString(9, request.queryParams("l_name"));
-                    preparedStatement.setString(10, request.queryParams("l_name"));
-                    preparedStatement.setString(11, request.queryParams("phone"));
-                    preparedStatement.setString(12, request.queryParams("phone"));
-                    preparedStatement.setString(13, request.queryParams("email"));
-                    preparedStatement.setString(14, request.queryParams("email"));
-                    preparedStatement.setInt(15, Integer.parseInt(request.queryParams("id_room")));
-                    preparedStatement.setInt(16, Integer.parseInt(request.queryParams("id_room")));
-                    preparedStatement.setString(17, request.queryParams("login"));
-                    preparedStatement.setString(18, request.queryParams("login"));
-                    preparedStatement.setString(19, request.queryParams("pass"));
-                    preparedStatement.setString(20, request.queryParams("pass"));
-                    preparedStatement.setInt(21, Integer.parseInt(request.queryParams("id_account")));
+                    if (request.queryParams("t") != null)
+                        preparedStatement.setInt(1, Integer.parseInt(request.queryParams("t")));
+                    else
+                        preparedStatement.setNull(1, Types.INTEGER);
+
+                    if (request.queryParams("id_group") != null)
+                        preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_group")));
+                    else
+                        preparedStatement.setNull(2, Types.INTEGER);
+
+                    if (request.queryParams("name") != null) {
+                        preparedStatement.setString(3, request.queryParams("name"));
+                        preparedStatement.setString(4, request.queryParams("name"));
+                    } else {
+                        preparedStatement.setNull(3, Types.VARCHAR);
+                        preparedStatement.setNull(4, Types.VARCHAR);
+                    }
+
+                    if (request.queryParams("s_name") != null)
+                        preparedStatement.setString(5, request.queryParams("s_name"));
+                    else
+                        preparedStatement.setNull(5, Types.VARCHAR);
+
+                    if (request.queryParams("l_name") != null)
+                        preparedStatement.setString(6, request.queryParams("l_name"));
+                    else
+                        preparedStatement.setNull(6, Types.VARCHAR);
+
+                    if (request.queryParams("phone") != null)
+                        preparedStatement.setString(7, request.queryParams("phone"));
+                    else
+                        preparedStatement.setNull(7, Types.VARCHAR);
+
+                    if (request.queryParams("email") != null)
+                        preparedStatement.setString(8, request.queryParams("email"));
+                    else
+                        preparedStatement.setNull(8, Types.VARCHAR);
+
+                    if (request.queryParams("id_room") != null)
+                        preparedStatement.setInt(9, Integer.parseInt(request.queryParams("id_room")));
+                    else
+                        preparedStatement.setNull(9, Types.INTEGER);
+
+                    if (request.queryParams("login") != null) {
+                        preparedStatement.setString(10, request.queryParams("login"));
+                        preparedStatement.setString(11, request.queryParams("login"));
+                    } else {
+                        preparedStatement.setNull(10, Types.VARCHAR);
+                        preparedStatement.setNull(11, Types.VARCHAR);
+                    }
+
+                    if (request.queryParams("pass") != null) {
+                        preparedStatement.setString(12, request.queryParams("pass"));
+                        preparedStatement.setString(13, request.queryParams("pass"));
+                    } else {
+                        preparedStatement.setNull(12, Types.VARCHAR);
+                        preparedStatement.setNull(13, Types.VARCHAR);
+                    }
+
+                    preparedStatement.setInt(14, Integer.parseInt(request.queryParams("id_account")));
                     preparedStatement.executeUpdate();
 
                     response.status(201);
@@ -108,7 +144,7 @@ public class OquPUT {
      * @param connection
      * @return
      */
-    public static String putChange(Connection connection, Request request, Response response){
+    public static String putChange(Connection connection, Request request, Response response) {
 
         if (request.queryParams("key").equals(HerokuAPI.key)) {
 
@@ -162,7 +198,7 @@ public class OquPUT {
      * @param connection
      * @return
      */
-    public static String putCurator(Connection connection, Request request, Response response){
+    public static String putCurator(Connection connection, Request request, Response response) {
 
         if (request.queryParams("key").equals(HerokuAPI.key)) {
 
@@ -207,7 +243,7 @@ public class OquPUT {
      * @param connection
      * @return
      */
-    public static String putFaculty(Connection connection, Request request, Response response){
+    public static String putFaculty(Connection connection, Request request, Response response) {
 
         if (request.queryParams("key").equals(HerokuAPI.key)) {
 
@@ -252,7 +288,7 @@ public class OquPUT {
      * @param connection
      * @return
      */
-    public static String putGroup(Connection connection, Request request, Response response){
+    public static String putGroup(Connection connection, Request request, Response response) {
 
         if (request.queryParams("key").equals(HerokuAPI.key)) {
 
@@ -300,7 +336,7 @@ public class OquPUT {
      * @param connection
      * @return
      */
-    public static String putListSubject(Connection connection, Request request, Response response){
+    public static String putListSubject(Connection connection, Request request, Response response) {
 
         if (request.queryParams("key").equals(HerokuAPI.key)) {
 
@@ -345,7 +381,7 @@ public class OquPUT {
      * @param connection
      * @return
      */
-    public static String putMark(Connection connection, Request request, Response response){
+    public static String putMark(Connection connection, Request request, Response response) {
 
         if (request.queryParams("key").equals(HerokuAPI.key)) {
 
@@ -396,7 +432,7 @@ public class OquPUT {
      * @param connection
      * @return
      */
-    public static String putRating(Connection connection, Request request, Response response){
+    public static String putRating(Connection connection, Request request, Response response) {
 
         if (request.queryParams("key").equals(HerokuAPI.key)) {
 
@@ -447,7 +483,7 @@ public class OquPUT {
      * @param connection
      * @return
      */
-    public static String putRoom(Connection connection, Request request, Response response){
+    public static String putRoom(Connection connection, Request request, Response response) {
 
         if (request.queryParams("key").equals(HerokuAPI.key)) {
 
@@ -492,7 +528,7 @@ public class OquPUT {
      * @param connection
      * @return
      */
-    public static String putSchedule(Connection connection, Request request, Response response){
+    public static String putSchedule(Connection connection, Request request, Response response) {
 
         if (request.queryParams("key").equals(HerokuAPI.key)) {
 
@@ -549,7 +585,7 @@ public class OquPUT {
      * @param connection
      * @return
      */
-    public static String putScheduleSubject(Connection connection, Request request, Response response){
+    public static String putScheduleSubject(Connection connection, Request request, Response response) {
 
         if (request.queryParams("key").equals(HerokuAPI.key)) {
 
@@ -603,7 +639,7 @@ public class OquPUT {
      * @param connection
      * @return
      */
-    public static String putSpecialty(Connection connection, Request request, Response response){
+    public static String putSpecialty(Connection connection, Request request, Response response) {
 
         if (request.queryParams("key").equals(HerokuAPI.key)) {
 
@@ -651,7 +687,7 @@ public class OquPUT {
      * @param connection
      * @return
      */
-    public static String putTotal(Connection connection, Request request, Response response){
+    public static String putTotal(Connection connection, Request request, Response response) {
 
         if (request.queryParams("key").equals(HerokuAPI.key)) {
 
