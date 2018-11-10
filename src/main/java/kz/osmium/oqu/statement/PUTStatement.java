@@ -28,7 +28,7 @@ public class PUTStatement {
         return "UPDATE `account`\n" +
                 "SET `account`.`t` = CASE WHEN ? IS NULL THEN `account`.`t` ELSE ? END,\n" +
                 "\t`account`.`id_group` = CASE WHEN ? IS NULL THEN `account`.`id_group` ELSE ? END,\n" +
-                "\t`account`.`name` = CASE WHEN ? IS NULL THEN `account`.`name` ELSE 'Нет' END,\n" +
+                "\t`account`.`name` = CASE WHEN ? IS NULL THEN `account`.`name` ELSE ? END,\n" +
                 "\t`account`.`s_name` = CASE WHEN ? IS NULL THEN `account`.`s_name` ELSE ? END,\n" +
                 "\t`account`.`l_name` = CASE WHEN ? IS NULL THEN `account`.`l_name` ELSE ? END,\n" +
                 "\t`account`.`phone` = CASE WHEN ? IS NULL THEN `account`.`phone` ELSE ? END,\n" +

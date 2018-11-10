@@ -83,7 +83,7 @@ public class OquPUT {
 
                     response.status(400);
 
-                    return StatusResponse.error;
+                    return e.getMessage();
                 }
 
                 return StatusResponse.success;
