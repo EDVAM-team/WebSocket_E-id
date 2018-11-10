@@ -19,6 +19,7 @@ package kz.osmium.main;
 import kz.osmium.oqu.request.OquDELETE;
 import kz.osmium.oqu.request.OquGET;
 import kz.osmium.oqu.request.OquPOST;
+import kz.osmium.oqu.request.OquPUT;
 import kz.osmium.translit.request.GETTranslit;
 
 import java.sql.Connection;
@@ -611,18 +612,306 @@ public class Request {
     public static void putAPI(Connection connection) {
 
         /*
-         * Вносит изменения в расписании группы.
+         * Изменить аккаунт.
          *
-         * https://*.example.com/schedule
+         * https://*.example.com/api/account ?
+         * & key = <String>
+         * & id_account = <Integer>
+         * - & t = <Integer>
+         * - & id_group = <Integer>
+         * - & name = <String>
+         * - & s_name = <String>
+         * - & l_name = <String>
+         * - & phone = <String>
+         * - & email = <String>
+         * - & id_room = <Integer>
+         * - & login = <String>
+         * - & pass = <String>
          */
-//        put("/schedule", (request, response) -> OquPUT.putSchedule(connection));
+        path("/api", () ->
+                get("/account", "application/json", (request, response) -> {
+                            if (HerokuDomain.getDomainOqu(request.host()))
+                                return OquPUT.putAccount(connection, request, response);
+                            else {
+
+                                response.status(404);
+
+                                return "404 Not Found";
+                            }
+                        }
+                ));
 
         /*
-         * Вносит изменения группы.
+         * Изменить замену.
          *
-         * https://*.example.com/group
+         * https://*.example.com/api/change ?
+         * & key = <String>
+         * & id_change = <Integer>
+         * - & id_list_subject = <Integer>
+         * - & t = <Integer>
+         * - & id_account = <Integer>
+         * - & id_room = <Integer>
          */
-//        put("/group", (request, response) -> "return");
+        path("/api", () ->
+                get("/change", "application/json", (request, response) -> {
+                            if (HerokuDomain.getDomainOqu(request.host()))
+                                return OquPUT.putChange(connection, request, response);
+                            else {
+
+                                response.status(404);
+
+                                return "404 Not Found";
+                            }
+                        }
+                ));
+
+        /*
+         * Изменить куратора.
+         *
+         * https://*.example.com/api/curator ?
+         * & key = <String>
+         * & id_group = <Integer>
+         * - & id_account = <Integer>
+         */
+        path("/api", () ->
+                get("/curator", "application/json", (request, response) -> {
+                            if (HerokuDomain.getDomainOqu(request.host()))
+                                return OquPUT.putCurator(connection, request, response);
+                            else {
+
+                                response.status(404);
+
+                                return "404 Not Found";
+                            }
+                        }
+                ));
+
+        /*
+         * Изменить факультет.
+         *
+         * https://*.example.com/api/faculty ?
+         * & key = <String>
+         * & id_faculty = <Integer>
+         * - & name = <String>
+         */
+        path("/api", () ->
+                get("/faculty", "application/json", (request, response) -> {
+                            if (HerokuDomain.getDomainOqu(request.host()))
+                                return OquPUT.putFaculty(connection, request, response);
+                            else {
+
+                                response.status(404);
+
+                                return "404 Not Found";
+                            }
+                        }
+                ));
+
+        /*
+         * Изменить группу.
+         *
+         * https://*.example.com/api/group ?
+         * & key = <String>
+         * & id_group = <Integer>
+         * - & name = <String>
+         * - & id_specialty = <Integer>
+         */
+        path("/api", () ->
+                get("/group", "application/json", (request, response) -> {
+                            if (HerokuDomain.getDomainOqu(request.host()))
+                                return OquPUT.putGroup(connection, request, response);
+                            else {
+
+                                response.status(404);
+
+                                return "404 Not Found";
+                            }
+                        }
+                ));
+
+        /*
+         * Изменить предмет.
+         *
+         * https://*.example.com/api/subject/list ?
+         * & key = <String>
+         * & id_list_subject = <Integer>
+         * - & name = <String>
+         */
+        path("/api", () ->
+                path("/subject", () ->
+                        get("/list", "application/json", (request, response) -> {
+                                    if (HerokuDomain.getDomainOqu(request.host()))
+                                        return OquPUT.putListSubject(connection, request, response);
+                                    else {
+
+                                        response.status(404);
+
+                                        return "404 Not Found";
+                                    }
+                                }
+                        )));
+
+        /*
+         * Изменить оценку.
+         *
+         * https://*.example.com/api/mark ?
+         * & key = <String>
+         * & id_mark = <Integer>
+         * - & id_rating = <Integer>
+         * - & n = <Integer>
+         * - & mark = <Integer>
+         */
+        path("/api", () ->
+                get("/mark", "application/json", (request, response) -> {
+                            if (HerokuDomain.getDomainOqu(request.host()))
+                                return OquPUT.putMark(connection, request, response);
+                            else {
+
+                                response.status(404);
+
+                                return "404 Not Found";
+                            }
+                        }
+                ));
+
+        /*
+         * Изменить рейтинг.
+         *
+         * https://*.example.com/api/rating ?
+         * & key = <String>
+         * & id_rating = <Integer>
+         * - & id_list_subject = <Integer>
+         * - & id_account = <Integer>
+         * - & num = <Integer>
+         */
+        path("/api", () ->
+                get("/rating", "application/json", (request, response) -> {
+                            if (HerokuDomain.getDomainOqu(request.host()))
+                                return OquPUT.putRating(connection, request, response);
+                            else {
+
+                                response.status(404);
+
+                                return "404 Not Found";
+                            }
+                        }
+                ));
+
+        /*
+         * Изменить аудиторию.
+         *
+         * https://*.example.com/api/room ?
+         * & key = <String>
+         * & id_room = <Integer>
+         * - & name = <String>
+         */
+        path("/api", () ->
+                get("/room", "application/json", (request, response) -> {
+                            if (HerokuDomain.getDomainOqu(request.host()))
+                                return OquPUT.putRoom(connection, request, response);
+                            else {
+
+                                response.status(404);
+
+                                return "404 Not Found";
+                            }
+                        }
+                ));
+
+        /*
+         * Изменить расписание.
+         *
+         * https://*.example.com/api/schedule ?
+         * & key = <String>
+         * & id_schedule = <Integer>
+         * - & d = <Integer>
+         * - & num = <Integer>
+         * - & id_schedule_subject = <Integer>
+         * - & id_group = <Integer>
+         * - & id_account = <Integer>
+         */
+        path("/api", () ->
+                get("/schedule", "application/json", (request, response) -> {
+                            if (HerokuDomain.getDomainOqu(request.host()))
+                                return OquPUT.putSchedule(connection, request, response);
+                            else {
+
+                                response.status(404);
+
+                                return "404 Not Found";
+                            }
+                        }
+                ));
+
+        /*
+         * Изменить пару.
+         *
+         * https://*.example.com/api/subject/schedule ?
+         * & key = <String>
+         * & id_schedule_subject = <Integer>
+         * - & id_list_subject = <Integer>
+         * - & t = <Integer>
+         * - & id_room = <Integer>
+         * - & id_change = <Integer>
+         */
+        path("/api", () ->
+                path("/subject", () ->
+                        get("/schedule", "application/json", (request, response) -> {
+                                    if (HerokuDomain.getDomainOqu(request.host()))
+                                        return OquPUT.putScheduleSubject(connection, request, response);
+                                    else {
+
+                                        response.status(404);
+
+                                        return "404 Not Found";
+                                    }
+                                }
+                        )));
+
+        /*
+         * Изменить специальность.
+         *
+         * https://*.example.com/api/specialty ?
+         * & key = <String>
+         * & id_specialty = <Integer>
+         * - & name = <String>
+         * - & id_faculty = <Integer>
+         */
+        path("/api", () ->
+                get("/specialty", "application/json", (request, response) -> {
+                            if (HerokuDomain.getDomainOqu(request.host()))
+                                return OquPUT.putSpecialty(connection, request, response);
+                            else {
+
+                                response.status(404);
+
+                                return "404 Not Found";
+                            }
+                        }
+                ));
+
+        /*
+         * Изменить оценку семестра.
+         *
+         * https://*.example.com/api/total ?
+         * & key = <String>
+         * & id_total = <Integer>
+         * - & id_list_subject = <Integer>
+         * - & id_account = <Integer>
+         * - & course = <Integer>
+         */
+        path("/api", () ->
+                get("/total", "application/json", (request, response) -> {
+                            if (HerokuDomain.getDomainOqu(request.host()))
+                                return OquPUT.putTotal(connection, request, response);
+                            else {
+
+                                response.status(404);
+
+                                return "404 Not Found";
+                            }
+                        }
+                ));
     }
 
     /**
