@@ -40,7 +40,7 @@ public class Main {
         config();
 
         /* Подключение к БД. */
-        connectDB();
+//        connectDB();
 
         /* Разрешаю лок. серверу доступ к API */
         preferences();
