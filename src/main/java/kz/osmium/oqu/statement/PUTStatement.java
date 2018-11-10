@@ -26,16 +26,16 @@ public class PUTStatement {
      */
     public static String putAccount(){
         return "UPDATE `account`\n" +
-                "SET `account`.`t` = CASE WHEN ? IS NULL THEN `account`.`t` ELSE 1 END,\n" +
-                "\t`account`.`id_group` = CASE WHEN ? IS NULL THEN `account`.`id_group` ELSE 1 END,\n" +
+                "SET `account`.`t` = CASE WHEN ? IS NULL THEN `account`.`t` ELSE ? END,\n" +
+                "\t`account`.`id_group` = CASE WHEN ? IS NULL THEN `account`.`id_group` ELSE ? END,\n" +
                 "\t`account`.`name` = CASE WHEN ? IS NULL THEN `account`.`name` ELSE 'Нет' END,\n" +
-                "\t`account`.`s_name` = CASE WHEN ? IS NULL THEN `account`.`s_name` ELSE '1' END,\n" +
-                "\t`account`.`l_name` = CASE WHEN ? IS NULL THEN `account`.`l_name` ELSE '1' END,\n" +
-                "\t`account`.`phone` = CASE WHEN ? IS NULL THEN `account`.`phone` ELSE '1' END,\n" +
-                "\t`account`.`email` = CASE WHEN ? IS NULL THEN `account`.`email` ELSE '1' END,\n" +
-                "\t`account`.`id_room` = CASE WHEN ? IS NULL THEN `account`.`id_room` ELSE 1 END,\n" +
-                "\t`account`.`login` = CASE WHEN ? IS NULL THEN `account`.`login` ELSE '1' END,\n" +
-                "\t`account`.`pass` = CASE WHEN ? IS NULL THEN `account`.`pass` ELSE '1' END\n" +
+                "\t`account`.`s_name` = CASE WHEN ? IS NULL THEN `account`.`s_name` ELSE ? END,\n" +
+                "\t`account`.`l_name` = CASE WHEN ? IS NULL THEN `account`.`l_name` ELSE ? END,\n" +
+                "\t`account`.`phone` = CASE WHEN ? IS NULL THEN `account`.`phone` ELSE ? END,\n" +
+                "\t`account`.`email` = CASE WHEN ? IS NULL THEN `account`.`email` ELSE ? END,\n" +
+                "\t`account`.`id_room` = CASE WHEN ? IS NULL THEN `account`.`id_room` ELSE ? END,\n" +
+                "\t`account`.`login` = CASE WHEN ? IS NULL THEN `account`.`login` ELSE ? END,\n" +
+                "\t`account`.`pass` = CASE WHEN ? IS NULL THEN `account`.`pass` ELSE ? END\n" +
                 "WHERE `account`.`id_account`=?";
     }
 
