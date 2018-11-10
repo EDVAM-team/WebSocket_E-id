@@ -111,9 +111,7 @@ public class TranslitGET {
 
             response.status(500);
 
-            return HerokuAPI.Translit.url +
-            HerokuAPI.Translit.login +
-                    HerokuAPI.Translit.password;
+            return StatusResponse.internal_server_error;
         }
     }
 }
