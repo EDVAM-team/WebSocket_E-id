@@ -850,24 +850,24 @@ public class OquPUT {
                         preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_list_subject")));
                         preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_list_subject")));
                     } else {
-                        preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_list_subject")));
-                        preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_list_subject")));
+                        preparedStatement.setNull(1, Types.INTEGER);
+                        preparedStatement.setNull(2, Types.INTEGER);
                     }
 
                     if (request.queryParams("id_account") != null) {
                         preparedStatement.setInt(3, Integer.parseInt(request.queryParams("id_account")));
                         preparedStatement.setInt(4, Integer.parseInt(request.queryParams("id_account")));
                     } else {
-                        preparedStatement.setInt(3, Integer.parseInt(request.queryParams("id_account")));
-                        preparedStatement.setInt(4, Integer.parseInt(request.queryParams("id_account")));
+                        preparedStatement.setNull(3, Types.INTEGER);
+                        preparedStatement.setNull(4, Types.INTEGER);
                     }
 
                     if (request.queryParams("course") != null) {
                         preparedStatement.setInt(5, Integer.parseInt(request.queryParams("course")));
                         preparedStatement.setInt(6, Integer.parseInt(request.queryParams("course")));
                     } else {
-                        preparedStatement.setInt(5, Integer.parseInt(request.queryParams("course")));
-                        preparedStatement.setInt(6, Integer.parseInt(request.queryParams("course")));
+                        preparedStatement.setNull(5, Types.INTEGER);
+                        preparedStatement.setNull(6, Types.INTEGER);
                     }
 
                     preparedStatement.setInt(7, Integer.parseInt(request.queryParams("id_total")));
