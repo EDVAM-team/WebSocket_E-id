@@ -36,7 +36,7 @@ public class OquDELETE {
      */
     public static String deleteCurator(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("key").equals(HerokuAPI.key)) {
+        if (request.queryParams("key").equals(HerokuAPI.Oqu.key)) {
 
             if (request.queryParams("group") != null) {
 
