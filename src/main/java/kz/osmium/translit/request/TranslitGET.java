@@ -74,9 +74,9 @@ public class TranslitGET {
 
         try {
             Connection connection = DriverManager.getConnection(
-                    HerokuAPI.Oqu.url,
-                    HerokuAPI.Oqu.login,
-                    HerokuAPI.Oqu.password
+                    HerokuAPI.Translit.url,
+                    HerokuAPI.Translit.login,
+                    HerokuAPI.Translit.password
             );
 
             try {
@@ -111,7 +111,9 @@ public class TranslitGET {
 
             response.status(500);
 
-            return e.getMessage();
+            return HerokuAPI.Translit.url +
+            HerokuAPI.Translit.login +
+                    HerokuAPI.Translit.password;
         }
     }
 }
