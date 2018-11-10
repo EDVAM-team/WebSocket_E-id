@@ -617,16 +617,16 @@ public class Request {
          * https://*.example.com/api/account ?
          * & key = <String>
          * & id_account = <Integer>
+         * [-] & name = <String>
+         * [-] & login = <String>
+         * [-] & pass = <String>
          * - & t = <Integer>
          * - & id_group = <Integer>
-         * - & name = <String>
          * - & s_name = <String>
          * - & l_name = <String>
          * - & phone = <String>
          * - & email = <String>
          * - & id_room = <Integer>
-         * - & login = <String>
-         * - & pass = <String>
          */
         path("/api", () ->
                 put("/account", "application/json", (request, response) -> {
@@ -647,9 +647,9 @@ public class Request {
          * https://*.example.com/api/change ?
          * & key = <String>
          * & id_change = <Integer>
-         * - & id_list_subject = <Integer>
-         * - & t = <Integer>
-         * - & id_account = <Integer>
+         * [-] & id_list_subject = <Integer>
+         * [-] & t = <Integer>
+         * [-] & id_account = <Integer>
          * - & id_room = <Integer>
          */
         path("/api", () ->
@@ -671,7 +671,7 @@ public class Request {
          * https://*.example.com/api/curator ?
          * & key = <String>
          * & id_group = <Integer>
-         * - & id_account = <Integer>
+         * [-] & id_account = <Integer>
          */
         path("/api", () ->
                 put("/curator", "application/json", (request, response) -> {
@@ -692,7 +692,7 @@ public class Request {
          * https://*.example.com/api/faculty ?
          * & key = <String>
          * & id_faculty = <Integer>
-         * - & name = <String>
+         * [-] & name = <String>
          */
         path("/api", () ->
                 put("/faculty", "application/json", (request, response) -> {
@@ -713,8 +713,8 @@ public class Request {
          * https://*.example.com/api/group ?
          * & key = <String>
          * & id_group = <Integer>
-         * - & name = <String>
-         * - & id_specialty = <Integer>
+         * [-] & name = <String>
+         * [-] & id_specialty = <Integer>
          */
         path("/api", () ->
                 put("/group", "application/json", (request, response) -> {
@@ -735,7 +735,7 @@ public class Request {
          * https://*.example.com/api/subject/list ?
          * & key = <String>
          * & id_list_subject = <Integer>
-         * - & name = <String>
+         * [-] & name = <String>
          */
         path("/api", () ->
                 path("/subject", () ->
@@ -757,8 +757,8 @@ public class Request {
          * https://*.example.com/api/mark ?
          * & key = <String>
          * & id_mark = <Integer>
-         * - & id_rating = <Integer>
-         * - & n = <Integer>
+         * [-] & id_rating = <Integer>
+         * [-] & n = <Integer>
          * - & mark = <Integer>
          */
         path("/api", () ->
@@ -780,9 +780,9 @@ public class Request {
          * https://*.example.com/api/rating ?
          * & key = <String>
          * & id_rating = <Integer>
-         * - & id_list_subject = <Integer>
-         * - & id_account = <Integer>
-         * - & num = <Integer>
+         * [-] & id_list_subject = <Integer>
+         * [-] & id_account = <Integer>
+         * [-] & num = <Integer>
          */
         path("/api", () ->
                 put("/rating", "application/json", (request, response) -> {
@@ -803,7 +803,7 @@ public class Request {
          * https://*.example.com/api/room ?
          * & key = <String>
          * & id_room = <Integer>
-         * - & name = <String>
+         * [-] & name = <String>
          */
         path("/api", () ->
                 put("/room", "application/json", (request, response) -> {
@@ -824,11 +824,11 @@ public class Request {
          * https://*.example.com/api/schedule ?
          * & key = <String>
          * & id_schedule = <Integer>
-         * - & d = <Integer>
-         * - & num = <Integer>
-         * - & id_schedule_subject = <Integer>
-         * - & id_group = <Integer>
-         * - & id_account = <Integer>
+         * [-] & d = <Integer>
+         * [-] & num = <Integer>
+         * [-] & id_schedule_subject = <Integer>
+         * [-] & id_group = <Integer>
+         * [-] & id_account = <Integer>
          */
         path("/api", () ->
                 put("/schedule", "application/json", (request, response) -> {
@@ -849,7 +849,7 @@ public class Request {
          * https://*.example.com/api/subject/schedule ?
          * & key = <String>
          * & id_schedule_subject = <Integer>
-         * - & id_list_subject = <Integer>
+         * [-] & id_list_subject = <Integer>
          * - & t = <Integer>
          * - & id_room = <Integer>
          * - & id_change = <Integer>
@@ -874,8 +874,8 @@ public class Request {
          * https://*.example.com/api/specialty ?
          * & key = <String>
          * & id_specialty = <Integer>
-         * - & name = <String>
-         * - & id_faculty = <Integer>
+         * [-] & name = <String>
+         * [-] & id_faculty = <Integer>
          */
         path("/api", () ->
                 put("/specialty", "application/json", (request, response) -> {
@@ -896,9 +896,9 @@ public class Request {
          * https://*.example.com/api/total ?
          * & key = <String>
          * & id_total = <Integer>
-         * - & id_list_subject = <Integer>
-         * - & id_account = <Integer>
-         * - & course = <Integer>
+         * [-] & id_list_subject = <Integer>
+         * [-] & id_account = <Integer>
+         * [-] & course = <Integer>
          */
         path("/api", () ->
                 put("/total", "application/json", (request, response) -> {

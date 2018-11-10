@@ -50,7 +50,7 @@ public class PUTStatement {
                 "SET `change`.`id_list_subject` = CASE WHEN ? IS NULL THEN `change`.`id_list_subject` ELSE ? END,\n" +
                 "\t`change`.`t` = CASE WHEN ? IS NULL THEN `change`.`t` ELSE ? END,\n" +
                 "\t`change`.`id_account` = CASE WHEN ? IS NULL THEN `change`.`id_account` ELSE ? END,\n" +
-                "\t`change`.`id_room` = CASE WHEN ? IS NULL THEN `change`.`id_room` ELSE ? END\n" +
+                "\t`change`.`id_room` = ?\n" +
                 "WHERE `change`.`id_change`=?";
     }
 
@@ -113,7 +113,7 @@ public class PUTStatement {
         return "UPDATE `mark`\n" +
                 "SET `mark`.`id_rating` = CASE WHEN ? IS NULL THEN `mark`.`id_rating` ELSE ? END,\n" +
                 "\t`mark`.`n` = CASE WHEN ? IS NULL THEN `mark`.`n` ELSE ? END,\n" +
-                "\t`mark`.`mark` = CASE WHEN ? IS NULL THEN `mark`.`mark` ELSE ? END\n" +
+                "\t`mark`.`mark` = ?\n" +
                 "WHERE `mark`.`id_mark`=?";
     }
 
@@ -168,9 +168,9 @@ public class PUTStatement {
     public static String putScheduleSubject(){
         return "UPDATE `schedule_subject`\n" +
                 "SET `schedule_subject`.`id_list_subject` = CASE WHEN ? IS NULL THEN `schedule_subject`.`id_list_subject` ELSE ? END,\n" +
-                "\t`schedule_subject`.`t` = CASE WHEN ? IS NULL THEN `schedule_subject`.`t` ELSE ? END,\n" +
-                "\t`schedule_subject`.`id_room` = CASE WHEN ? IS NULL THEN `schedule_subject`.`id_room` ELSE ? END,\n" +
-                "\t`schedule_subject`.`id_change` = CASE WHEN ? IS NULL THEN `schedule_subject`.`id_change` ELSE ? END\n" +
+                "\t`schedule_subject`.`t` = ?,\n" +
+                "\t`schedule_subject`.`id_room` = ?,\n" +
+                "\t`schedule_subject`.`id_change` = ?\n" +
                 "WHERE `schedule_subject`.`id_schedule_subject`=?";
     }
 

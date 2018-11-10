@@ -157,15 +157,36 @@ public class OquPUT {
                 try {
                     PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putChange());
 
-                    preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_list_subject")));
-                    preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_list_subject")));
-                    preparedStatement.setInt(3, Integer.parseInt(request.queryParams("t")));
-                    preparedStatement.setInt(4, Integer.parseInt(request.queryParams("t")));
-                    preparedStatement.setInt(5, Integer.parseInt(request.queryParams("id_account")));
-                    preparedStatement.setInt(6, Integer.parseInt(request.queryParams("id_account")));
-                    preparedStatement.setInt(7, Integer.parseInt(request.queryParams("id_room")));
-                    preparedStatement.setInt(8, Integer.parseInt(request.queryParams("id_room")));
-                    preparedStatement.setInt(9, Integer.parseInt(request.queryParams("id_change")));
+                    if (request.queryParams("id_list_subject") != null) {
+                        preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_list_subject")));
+                        preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_list_subject")));
+                    } else {
+                        preparedStatement.setNull(1, Types.INTEGER);
+                        preparedStatement.setNull(2, Types.INTEGER);
+                    }
+
+                    if (request.queryParams("t") != null) {
+                        preparedStatement.setInt(3, Integer.parseInt(request.queryParams("t")));
+                        preparedStatement.setInt(4, Integer.parseInt(request.queryParams("t")));
+                    } else {
+                        preparedStatement.setNull(3, Types.INTEGER);
+                        preparedStatement.setNull(4, Types.INTEGER);
+                    }
+
+                    if (request.queryParams("id_account") != null) {
+                        preparedStatement.setInt(5, Integer.parseInt(request.queryParams("id_account")));
+                        preparedStatement.setInt(6, Integer.parseInt(request.queryParams("id_account")));
+                    } else {
+                        preparedStatement.setNull(5, Types.INTEGER);
+                        preparedStatement.setNull(6, Types.INTEGER);
+                    }
+
+                    if (request.queryParams("id_room") != null)
+                        preparedStatement.setInt(7, Integer.parseInt(request.queryParams("id_room")));
+                    else
+                        preparedStatement.setNull(7, Types.INTEGER);
+
+                    preparedStatement.setInt(8, Integer.parseInt(request.queryParams("id_change")));
                     preparedStatement.executeUpdate();
 
                     response.status(201);
@@ -208,8 +229,14 @@ public class OquPUT {
                 try {
                     PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putCurator());
 
-                    preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_account")));
-                    preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_account")));
+                    if (request.queryParams("id_account") != null) {
+                        preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_account")));
+                        preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_account")));
+                    } else {
+                        preparedStatement.setNull(1, Types.INTEGER);
+                        preparedStatement.setNull(2, Types.INTEGER);
+                    }
+
                     preparedStatement.setInt(3, Integer.parseInt(request.queryParams("id_group")));
                     preparedStatement.executeUpdate();
 
@@ -253,8 +280,14 @@ public class OquPUT {
                 try {
                     PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putFaculty());
 
-                    preparedStatement.setString(1, request.queryParams("name"));
-                    preparedStatement.setString(2, request.queryParams("name"));
+                    if (request.queryParams("name") != null) {
+                        preparedStatement.setString(1, request.queryParams("name"));
+                        preparedStatement.setString(2, request.queryParams("name"));
+                    } else {
+                        preparedStatement.setNull(1, Types.VARCHAR);
+                        preparedStatement.setNull(2, Types.VARCHAR);
+                    }
+
                     preparedStatement.setInt(3, Integer.parseInt(request.queryParams("id_faculty")));
                     preparedStatement.executeUpdate();
 
@@ -299,10 +332,22 @@ public class OquPUT {
                 try {
                     PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putGroup());
 
-                    preparedStatement.setString(1, request.queryParams("name"));
-                    preparedStatement.setString(2, request.queryParams("name"));
-                    preparedStatement.setInt(3, Integer.parseInt(request.queryParams("id_specialty")));
-                    preparedStatement.setInt(4, Integer.parseInt(request.queryParams("id_specialty")));
+                    if (request.queryParams("name") != null) {
+                        preparedStatement.setString(1, request.queryParams("name"));
+                        preparedStatement.setString(2, request.queryParams("name"));
+                    } else {
+                        preparedStatement.setNull(1, Types.VARCHAR);
+                        preparedStatement.setNull(2, Types.VARCHAR);
+                    }
+
+                    if (request.queryParams("id_specialty") != null) {
+                        preparedStatement.setInt(3, Integer.parseInt(request.queryParams("id_specialty")));
+                        preparedStatement.setInt(4, Integer.parseInt(request.queryParams("id_specialty")));
+                    } else {
+                        preparedStatement.setNull(3, Types.INTEGER);
+                        preparedStatement.setNull(4, Types.INTEGER);
+                    }
+
                     preparedStatement.setInt(5, Integer.parseInt(request.queryParams("id_group")));
                     preparedStatement.executeUpdate();
 
@@ -346,8 +391,14 @@ public class OquPUT {
                 try {
                     PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putListSubject());
 
-                    preparedStatement.setString(1, request.queryParams("name"));
-                    preparedStatement.setString(2, request.queryParams("name"));
+                    if (request.queryParams("name") != null) {
+                        preparedStatement.setString(1, request.queryParams("name"));
+                        preparedStatement.setString(2, request.queryParams("name"));
+                    } else {
+                        preparedStatement.setNull(1, Types.VARCHAR);
+                        preparedStatement.setNull(2, Types.VARCHAR);
+                    }
+
                     preparedStatement.setInt(3, Integer.parseInt(request.queryParams("id_list_subject")));
                     preparedStatement.executeUpdate();
 
@@ -393,13 +444,29 @@ public class OquPUT {
                 try {
                     PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putMark());
 
-                    preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_rating")));
-                    preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_rating")));
-                    preparedStatement.setInt(3, Integer.parseInt(request.queryParams("n")));
-                    preparedStatement.setInt(4, Integer.parseInt(request.queryParams("n")));
-                    preparedStatement.setInt(5, Integer.parseInt(request.queryParams("mark")));
-                    preparedStatement.setInt(6, Integer.parseInt(request.queryParams("mark")));
-                    preparedStatement.setInt(7, Integer.parseInt(request.queryParams("id_mark")));
+                    if (request.queryParams("id_rating") != null) {
+                        preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_rating")));
+                        preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_rating")));
+                    } else {
+                        preparedStatement.setNull(1, Types.INTEGER);
+                        preparedStatement.setNull(2, Types.INTEGER);
+                    }
+
+                    if (request.queryParams("n") != null) {
+                        preparedStatement.setInt(3, Integer.parseInt(request.queryParams("n")));
+                        preparedStatement.setInt(4, Integer.parseInt(request.queryParams("n")));
+                    } else {
+                        preparedStatement.setNull(3, Types.INTEGER);
+                        preparedStatement.setNull(4, Types.INTEGER);
+                    }
+
+
+                    if (request.queryParams("mark") != null)
+                        preparedStatement.setInt(5, Integer.parseInt(request.queryParams("mark")));
+                    else
+                        preparedStatement.setInt(5, Integer.parseInt(request.queryParams("mark")));
+
+                    preparedStatement.setInt(6, Integer.parseInt(request.queryParams("id_mark")));
                     preparedStatement.executeUpdate();
 
                     response.status(201);
@@ -443,13 +510,30 @@ public class OquPUT {
 
                 try {
                     PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putRating());
+                    if (request.queryParams("id_list_subject") != null) {
+                        preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_list_subject")));
+                        preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_list_subject")));
+                    } else {
+                        preparedStatement.setNull(1, Types.INTEGER);
+                        preparedStatement.setNull(2, Types.INTEGER);
+                    }
 
-                    preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_list_subject")));
-                    preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_list_subject")));
-                    preparedStatement.setInt(3, Integer.parseInt(request.queryParams("id_account")));
-                    preparedStatement.setInt(4, Integer.parseInt(request.queryParams("id_account")));
-                    preparedStatement.setInt(5, Integer.parseInt(request.queryParams("num")));
-                    preparedStatement.setInt(6, Integer.parseInt(request.queryParams("num")));
+                    if (request.queryParams("id_account") != null) {
+                        preparedStatement.setInt(3, Integer.parseInt(request.queryParams("id_account")));
+                        preparedStatement.setInt(4, Integer.parseInt(request.queryParams("id_account")));
+                    } else {
+                        preparedStatement.setNull(3, Types.INTEGER);
+                        preparedStatement.setNull(4, Types.INTEGER);
+                    }
+
+                    if (request.queryParams("num") != null) {
+                        preparedStatement.setInt(5, Integer.parseInt(request.queryParams("num")));
+                        preparedStatement.setInt(6, Integer.parseInt(request.queryParams("num")));
+                    } else {
+                        preparedStatement.setNull(5, Types.INTEGER);
+                        preparedStatement.setNull(6, Types.INTEGER);
+                    }
+
                     preparedStatement.setInt(7, Integer.parseInt(request.queryParams("id_rating")));
                     preparedStatement.executeUpdate();
 
@@ -493,8 +577,14 @@ public class OquPUT {
                 try {
                     PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putRoom());
 
-                    preparedStatement.setString(1, request.queryParams("name"));
-                    preparedStatement.setString(2, request.queryParams("name"));
+                    if (request.queryParams("name") != null) {
+                        preparedStatement.setString(1, request.queryParams("name"));
+                        preparedStatement.setString(2, request.queryParams("name"));
+                    } else {
+                        preparedStatement.setNull(1, Types.VARCHAR);
+                        preparedStatement.setNull(2, Types.VARCHAR);
+                    }
+
                     preparedStatement.setInt(3, Integer.parseInt(request.queryParams("id_room")));
                     preparedStatement.executeUpdate();
 
@@ -542,16 +632,46 @@ public class OquPUT {
                 try {
                     PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putSchedule());
 
-                    preparedStatement.setInt(1, Integer.parseInt(request.queryParams("d")));
-                    preparedStatement.setInt(2, Integer.parseInt(request.queryParams("d")));
-                    preparedStatement.setInt(3, Integer.parseInt(request.queryParams("num")));
-                    preparedStatement.setInt(4, Integer.parseInt(request.queryParams("num")));
-                    preparedStatement.setInt(5, Integer.parseInt(request.queryParams("id_schedule_subject")));
-                    preparedStatement.setInt(6, Integer.parseInt(request.queryParams("id_schedule_subject")));
-                    preparedStatement.setInt(7, Integer.parseInt(request.queryParams("id_group")));
-                    preparedStatement.setInt(8, Integer.parseInt(request.queryParams("id_group")));
-                    preparedStatement.setInt(9, Integer.parseInt(request.queryParams("id_account")));
-                    preparedStatement.setInt(10, Integer.parseInt(request.queryParams("id_account")));
+                    if (request.queryParams("d") != null) {
+                        preparedStatement.setInt(1, Integer.parseInt(request.queryParams("d")));
+                        preparedStatement.setInt(2, Integer.parseInt(request.queryParams("d")));
+                    } else {
+                        preparedStatement.setNull(1, Types.INTEGER);
+                        preparedStatement.setNull(2, Types.INTEGER);
+                    }
+
+                    if (request.queryParams("num") != null) {
+                        preparedStatement.setInt(3, Types.INTEGER);
+                        preparedStatement.setInt(4, Types.INTEGER);
+                    } else {
+                        preparedStatement.setNull(3, Types.INTEGER);
+                        preparedStatement.setNull(4, Types.INTEGER);
+                    }
+
+                    if (request.queryParams("id_schedule_subject") != null) {
+                        preparedStatement.setInt(5, Integer.parseInt(request.queryParams("id_schedule_subject")));
+                        preparedStatement.setInt(6, Integer.parseInt(request.queryParams("id_schedule_subject")));
+                    } else {
+                        preparedStatement.setNull(5, Types.INTEGER);
+                        preparedStatement.setNull(6, Types.INTEGER);
+                    }
+
+                    if (request.queryParams("id_group") != null) {
+                        preparedStatement.setInt(7, Integer.parseInt(request.queryParams("id_group")));
+                        preparedStatement.setInt(8, Integer.parseInt(request.queryParams("id_group")));
+                    } else {
+                        preparedStatement.setNull(7, Types.INTEGER);
+                        preparedStatement.setNull(8, Types.INTEGER);
+                    }
+
+                    if (request.queryParams("id_account") != null) {
+                        preparedStatement.setInt(9, Integer.parseInt(request.queryParams("id_account")));
+                        preparedStatement.setInt(10, Integer.parseInt(request.queryParams("id_account")));
+                    } else {
+                        preparedStatement.setNull(9, Types.INTEGER);
+                        preparedStatement.setNull(10, Types.INTEGER);
+                    }
+
                     preparedStatement.setInt(11, Integer.parseInt(request.queryParams("id_schedule")));
                     preparedStatement.executeUpdate();
 
@@ -598,15 +718,30 @@ public class OquPUT {
                 try {
                     PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putScheduleSubject());
 
-                    preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_list_subject")));
-                    preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_list_subject")));
-                    preparedStatement.setInt(3, Integer.parseInt(request.queryParams("t")));
-                    preparedStatement.setInt(4, Integer.parseInt(request.queryParams("t")));
-                    preparedStatement.setInt(5, Integer.parseInt(request.queryParams("id_room")));
-                    preparedStatement.setInt(6, Integer.parseInt(request.queryParams("id_room")));
-                    preparedStatement.setInt(7, Integer.parseInt(request.queryParams("id_change")));
-                    preparedStatement.setInt(8, Integer.parseInt(request.queryParams("id_change")));
-                    preparedStatement.setInt(9, Integer.parseInt(request.queryParams("id_schedule_subject")));
+                    if (request.queryParams("id_list_subject") != null) {
+                        preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_list_subject")));
+                        preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_list_subject")));
+                    } else {
+                        preparedStatement.setNull(1, Types.INTEGER);
+                        preparedStatement.setNull(2, Types.INTEGER);
+                    }
+
+                    if (request.queryParams("t") != null)
+                        preparedStatement.setInt(3, Integer.parseInt(request.queryParams("t")));
+                    else
+                        preparedStatement.setNull(3, Types.INTEGER);
+
+                    if (request.queryParams("id_room") != null)
+                        preparedStatement.setInt(4, Integer.parseInt(request.queryParams("id_room")));
+                    else
+                        preparedStatement.setNull(4, Types.INTEGER);
+
+                    if (request.queryParams("id_change") != null)
+                        preparedStatement.setInt(5, Integer.parseInt(request.queryParams("id_change")));
+                    else
+                        preparedStatement.setNull(5, Types.INTEGER);
+
+                    preparedStatement.setInt(6, Integer.parseInt(request.queryParams("id_schedule_subject")));
                     preparedStatement.executeUpdate();
 
                     response.status(201);
@@ -650,10 +785,22 @@ public class OquPUT {
                 try {
                     PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putSpecialty());
 
-                    preparedStatement.setString(1, request.queryParams("name"));
-                    preparedStatement.setString(2, request.queryParams("name"));
-                    preparedStatement.setInt(3, Integer.parseInt(request.queryParams("id_faculty")));
-                    preparedStatement.setInt(4, Integer.parseInt(request.queryParams("id_faculty")));
+                    if (request.queryParams("name") != null) {
+                        preparedStatement.setString(1, request.queryParams("name"));
+                        preparedStatement.setString(2, request.queryParams("name"));
+                    } else {
+                        preparedStatement.setNull(1, Types.VARCHAR);
+                        preparedStatement.setNull(2, Types.VARCHAR);
+                    }
+
+                    if (request.queryParams("id_faculty") != null) {
+                        preparedStatement.setInt(3, Integer.parseInt(request.queryParams("id_faculty")));
+                        preparedStatement.setInt(4, Integer.parseInt(request.queryParams("id_faculty")));
+                    } else {
+                        preparedStatement.setNull(3, Types.INTEGER);
+                        preparedStatement.setNull(4, Types.INTEGER);
+                    }
+
                     preparedStatement.setInt(5, Integer.parseInt(request.queryParams("id_specialty")));
                     preparedStatement.executeUpdate();
 
@@ -699,12 +846,30 @@ public class OquPUT {
                 try {
                     PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putTotal());
 
-                    preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_list_subject")));
-                    preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_list_subject")));
-                    preparedStatement.setInt(3, Integer.parseInt(request.queryParams("id_account")));
-                    preparedStatement.setInt(4, Integer.parseInt(request.queryParams("id_account")));
-                    preparedStatement.setInt(5, Integer.parseInt(request.queryParams("course")));
-                    preparedStatement.setInt(6, Integer.parseInt(request.queryParams("course")));
+                    if (request.queryParams("id_list_subject") != null) {
+                        preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_list_subject")));
+                        preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_list_subject")));
+                    } else {
+                        preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_list_subject")));
+                        preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_list_subject")));
+                    }
+
+                    if (request.queryParams("id_account") != null) {
+                        preparedStatement.setInt(3, Integer.parseInt(request.queryParams("id_account")));
+                        preparedStatement.setInt(4, Integer.parseInt(request.queryParams("id_account")));
+                    } else {
+                        preparedStatement.setInt(3, Integer.parseInt(request.queryParams("id_account")));
+                        preparedStatement.setInt(4, Integer.parseInt(request.queryParams("id_account")));
+                    }
+
+                    if (request.queryParams("course") != null) {
+                        preparedStatement.setInt(5, Integer.parseInt(request.queryParams("course")));
+                        preparedStatement.setInt(6, Integer.parseInt(request.queryParams("course")));
+                    } else {
+                        preparedStatement.setInt(5, Integer.parseInt(request.queryParams("course")));
+                        preparedStatement.setInt(6, Integer.parseInt(request.queryParams("course")));
+                    }
+
                     preparedStatement.setInt(7, Integer.parseInt(request.queryParams("id_total")));
                     preparedStatement.executeUpdate();
 
