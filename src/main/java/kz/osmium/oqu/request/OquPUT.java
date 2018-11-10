@@ -464,7 +464,7 @@ public class OquPUT {
                     if (request.queryParams("mark") != null)
                         preparedStatement.setInt(5, Integer.parseInt(request.queryParams("mark")));
                     else
-                        preparedStatement.setInt(5, Integer.parseInt(request.queryParams("mark")));
+                        preparedStatement.setNull(5, Types.INTEGER);
 
                     preparedStatement.setInt(6, Integer.parseInt(request.queryParams("id_mark")));
                     preparedStatement.executeUpdate();
