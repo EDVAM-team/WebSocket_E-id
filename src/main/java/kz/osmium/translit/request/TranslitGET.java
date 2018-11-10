@@ -73,7 +73,7 @@ public class TranslitGET {
     public static String getWord(Response response) {
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
             Connection connection = DriverManager.getConnection(
                     HerokuAPI.Translit.url,
                     HerokuAPI.Translit.login,
@@ -115,6 +115,14 @@ public class TranslitGET {
             return e.getErrorCode() + " " + e.getSQLState() + " " + e.getMessage();
         } catch (ClassNotFoundException e) {
 
+            response.status(500);
+
+            return e.getMessage();
+        } catch (IllegalAccessException e) {
+            response.status(500);
+
+            return e.getMessage();
+        } catch (InstantiationException e) {
             response.status(500);
 
             return e.getMessage();
