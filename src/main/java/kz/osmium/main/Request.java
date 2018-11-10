@@ -629,7 +629,7 @@ public class Request {
          * - & pass = <String>
          */
         path("/api", () ->
-                get("/account", "application/json", (request, response) -> {
+                put("/account", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
                                 return OquPUT.putAccount(connection, request, response);
                             else {
@@ -653,7 +653,7 @@ public class Request {
          * - & id_room = <Integer>
          */
         path("/api", () ->
-                get("/change", "application/json", (request, response) -> {
+                put("/change", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
                                 return OquPUT.putChange(connection, request, response);
                             else {
@@ -674,7 +674,7 @@ public class Request {
          * - & id_account = <Integer>
          */
         path("/api", () ->
-                get("/curator", "application/json", (request, response) -> {
+                put("/curator", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
                                 return OquPUT.putCurator(connection, request, response);
                             else {
@@ -695,7 +695,7 @@ public class Request {
          * - & name = <String>
          */
         path("/api", () ->
-                get("/faculty", "application/json", (request, response) -> {
+                put("/faculty", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
                                 return OquPUT.putFaculty(connection, request, response);
                             else {
@@ -717,7 +717,7 @@ public class Request {
          * - & id_specialty = <Integer>
          */
         path("/api", () ->
-                get("/group", "application/json", (request, response) -> {
+                put("/group", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
                                 return OquPUT.putGroup(connection, request, response);
                             else {
@@ -739,7 +739,7 @@ public class Request {
          */
         path("/api", () ->
                 path("/subject", () ->
-                        get("/list", "application/json", (request, response) -> {
+                        put("/list", "application/json", (request, response) -> {
                                     if (HerokuDomain.getDomainOqu(request.host()))
                                         return OquPUT.putListSubject(connection, request, response);
                                     else {
@@ -762,7 +762,7 @@ public class Request {
          * - & mark = <Integer>
          */
         path("/api", () ->
-                get("/mark", "application/json", (request, response) -> {
+                put("/mark", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
                                 return OquPUT.putMark(connection, request, response);
                             else {
@@ -785,7 +785,7 @@ public class Request {
          * - & num = <Integer>
          */
         path("/api", () ->
-                get("/rating", "application/json", (request, response) -> {
+                put("/rating", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
                                 return OquPUT.putRating(connection, request, response);
                             else {
@@ -806,7 +806,7 @@ public class Request {
          * - & name = <String>
          */
         path("/api", () ->
-                get("/room", "application/json", (request, response) -> {
+                put("/room", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
                                 return OquPUT.putRoom(connection, request, response);
                             else {
@@ -831,7 +831,7 @@ public class Request {
          * - & id_account = <Integer>
          */
         path("/api", () ->
-                get("/schedule", "application/json", (request, response) -> {
+                put("/schedule", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
                                 return OquPUT.putSchedule(connection, request, response);
                             else {
@@ -856,7 +856,7 @@ public class Request {
          */
         path("/api", () ->
                 path("/subject", () ->
-                        get("/schedule", "application/json", (request, response) -> {
+                        put("/schedule", "application/json", (request, response) -> {
                                     if (HerokuDomain.getDomainOqu(request.host()))
                                         return OquPUT.putScheduleSubject(connection, request, response);
                                     else {
@@ -878,7 +878,7 @@ public class Request {
          * - & id_faculty = <Integer>
          */
         path("/api", () ->
-                get("/specialty", "application/json", (request, response) -> {
+                put("/specialty", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
                                 return OquPUT.putSpecialty(connection, request, response);
                             else {
@@ -901,7 +901,7 @@ public class Request {
          * - & course = <Integer>
          */
         path("/api", () ->
-                get("/total", "application/json", (request, response) -> {
+                put("/total", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
                                 return OquPUT.putTotal(connection, request, response);
                             else {
