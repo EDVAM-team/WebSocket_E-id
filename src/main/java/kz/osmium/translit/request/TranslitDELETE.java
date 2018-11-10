@@ -42,37 +42,43 @@ public class TranslitDELETE {
         if (request.queryParams("key").equals(HerokuAPI.Translit.key)) {
 
             if (request.queryParams("cyrl") != null) {
-                Connection connection = null;
 
                 try {
-                    connection = DriverManager.getConnection(
+                    Connection connection = DriverManager.getConnection(
                             HerokuAPI.Translit.url,
                             HerokuAPI.Translit.login,
                             HerokuAPI.Translit.password
                     );
 
-                    PreparedStatement preparedStatement = connection.prepareStatement(DELETEStatement.deleteWord());
-
-                    preparedStatement.setString(1, request.queryParams("cyrl"));
-                    preparedStatement.execute();
-
-                    response.status(200);
-                } catch (SQLException | NumberFormatException e) {
-
-                    response.status(409);
-
-                    return StatusResponse.conflict;
-                } finally {
-
                     try {
+                        PreparedStatement preparedStatement = connection.prepareStatement(DELETEStatement.deleteWord());
 
-                        connection.close();
-                    } catch (SQLException | NullPointerException e) {
+                        preparedStatement.setString(1, request.queryParams("cyrl"));
+                        preparedStatement.execute();
 
+                        response.status(200);
+                    } catch (SQLException | NumberFormatException e) {
+
+                        response.status(409);
+
+                        return StatusResponse.conflict;
+                    } finally {
+
+                        try {
+
+                            connection.close();
+                        } catch (SQLException | NullPointerException e) {
+
+                        }
                     }
-                }
 
-                return StatusResponse.success;
+                    return StatusResponse.success;
+                } catch (SQLException e) {
+
+                    response.status(500);
+
+                    return StatusResponse.internal_server_error;
+                }
             } else {
 
                 response.status(400);

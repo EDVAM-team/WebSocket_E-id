@@ -71,41 +71,47 @@ public class TranslitGET {
      * @return
      */
     public static String getWord(Response response) {
-        Connection connection = null;
-
         try {
-            connection = DriverManager.getConnection(
+            Connection connection = DriverManager.getConnection(
                     HerokuAPI.Translit.url,
                     HerokuAPI.Translit.login,
                     HerokuAPI.Translit.password
             );
 
-            PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getWord());
-            ResultSet resultSet = preparedStatement.executeQuery();
-            ArrayList<kz.osmium.translit.objects.gson.Translit> translits = new ArrayList<>();
-
-            while (resultSet.next())
-                translits.add(new kz.osmium.translit.objects.gson.Translit(
-                        resultSet.getString("cyrl"),
-                        resultSet.getString("latn")
-                ));
-
-            response.status(200);
-
-            return new Gson().toJson(translits);
-        } catch (SQLException | NumberFormatException e) {
-
-            response.status(409);
-
-            return e.getMessage();
-        } finally {
-
             try {
 
-                connection.close();
-            } catch (SQLException | NullPointerException e) {
+                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getWord());
+                ResultSet resultSet = preparedStatement.executeQuery();
+                ArrayList<kz.osmium.translit.objects.gson.Translit> translits = new ArrayList<>();
 
+                while (resultSet.next())
+                    translits.add(new kz.osmium.translit.objects.gson.Translit(
+                            resultSet.getString("cyrl"),
+                            resultSet.getString("latn")
+                    ));
+
+                response.status(200);
+
+                return new Gson().toJson(translits);
+            } catch (SQLException | NumberFormatException e) {
+
+                response.status(409);
+
+                return e.getMessage();
+            } finally {
+
+                try {
+
+                    connection.close();
+                } catch (SQLException | NullPointerException e) {
+
+                }
             }
+        } catch (SQLException e) {
+
+            response.status(500);
+
+            return StatusResponse.internal_server_error;
         }
     }
 }

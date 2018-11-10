@@ -43,38 +43,44 @@ public class TranslitPUT {
 
             if (request.queryParams("cyrl") != null &&
                     request.queryParams("latn") != null) {
-                Connection connection = null;
 
                 try {
-                    connection = DriverManager.getConnection(
+                    Connection connection = DriverManager.getConnection(
                             HerokuAPI.Translit.url,
                             HerokuAPI.Translit.login,
                             HerokuAPI.Translit.password
                     );
 
-                    PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putWord());
-
-                    preparedStatement.setString(1, request.queryParams("latn"));
-                    preparedStatement.setString(2, request.queryParams("cyrl"));
-                    preparedStatement.execute();
-
-                    response.status(200);
-                } catch (SQLException | NumberFormatException e) {
-
-                    response.status(409);
-
-                    return StatusResponse.conflict;
-                } finally {
-
                     try {
+                        PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putWord());
 
-                        connection.close();
-                    } catch (SQLException | NullPointerException e) {
+                        preparedStatement.setString(1, request.queryParams("latn"));
+                        preparedStatement.setString(2, request.queryParams("cyrl"));
+                        preparedStatement.execute();
 
+                        response.status(200);
+                    } catch (SQLException | NumberFormatException e) {
+
+                        response.status(409);
+
+                        return StatusResponse.conflict;
+                    } finally {
+
+                        try {
+
+                            connection.close();
+                        } catch (SQLException | NullPointerException e) {
+
+                        }
                     }
-                }
 
-                return StatusResponse.success;
+                    return StatusResponse.success;
+                } catch (SQLException e) {
+
+                    response.status(500);
+
+                    return StatusResponse.internal_server_error;
+                }
             } else {
 
                 response.status(400);
