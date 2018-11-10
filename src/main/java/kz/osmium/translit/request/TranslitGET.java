@@ -71,6 +71,7 @@ public class TranslitGET {
      * @return
      */
     public static String getWord(Response response) {
+
         try {
             Connection connection = DriverManager.getConnection(
                     HerokuAPI.Translit.url,
@@ -79,7 +80,6 @@ public class TranslitGET {
             );
 
             try {
-
                 PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getWord());
                 ResultSet resultSet = preparedStatement.executeQuery();
                 ArrayList<kz.osmium.translit.objects.gson.Translit> translits = new ArrayList<>();
@@ -97,7 +97,7 @@ public class TranslitGET {
 
                 response.status(409);
 
-                return e.getMessage();
+                return StatusResponse.conflict;
             } finally {
 
                 try {
@@ -111,7 +111,7 @@ public class TranslitGET {
 
             response.status(500);
 
-            return StatusResponse.internal_server_error;
+            return e.getErrorCode() + " " + e.getSQLState() + " " + e.getMessage();
         }
     }
 }
