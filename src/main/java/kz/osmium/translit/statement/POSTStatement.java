@@ -23,7 +23,7 @@ public class POSTStatement {
      *
      * @return
      */
-    public static String postWord(){
+    public static String postWord() {
         return "INSERT INTO `word` (`word`.`сyrl`, `word`.`latn`) VALUES (?, ?)";
     }
 }

@@ -23,7 +23,7 @@ public class GETStatement {
      *
      * @return
      */
-    public static String getWord(){
+    public static String getWord() {
         return "SELECT * FROM `word`";
     }
 }

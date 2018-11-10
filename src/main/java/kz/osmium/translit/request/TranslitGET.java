@@ -86,8 +86,8 @@ public class TranslitGET {
 
             while (resultSet.next())
                 translits.add(new kz.osmium.translit.objects.gson.Translit(
-                    resultSet.getString("cyrl"),
-                    resultSet.getString("latn")
+                        resultSet.getString("cyrl"),
+                        resultSet.getString("latn")
                 ));
 
             response.status(200);
@@ -97,7 +97,7 @@ public class TranslitGET {
 
             response.status(409);
 
-            return StatusResponse.conflict;
+            return e.getMessage();
         } finally {
 
             try {

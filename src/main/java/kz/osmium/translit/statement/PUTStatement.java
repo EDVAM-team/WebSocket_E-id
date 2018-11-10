@@ -7,7 +7,7 @@ public class PUTStatement {
      *
      * @return
      */
-    public static String putWord(){
+    public static String putWord() {
         return "UPDATE `word` SET `word`.`latn`=? WHERE `word`.`сyrl`=?";
     }
 }

@@ -67,7 +67,7 @@ public class TranslitDELETE {
                     try {
 
                         connection.close();
-                    } catch (SQLException | NullPointerException e){
+                    } catch (SQLException | NullPointerException e) {
 
                     }
                 }

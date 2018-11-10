@@ -7,7 +7,7 @@ public class DELETEStatement {
      *
      * @return
      */
-    public static String deleteWord(){
+    public static String deleteWord() {
         return "DELETE FROM `word` WHERE `word`.`сyrl`=?";
     }
 }
