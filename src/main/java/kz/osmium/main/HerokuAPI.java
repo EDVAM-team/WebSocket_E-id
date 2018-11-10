@@ -21,36 +21,75 @@ import java.net.URISyntaxException;
 
 public class HerokuAPI {
 
-    /* Ссылка на базу данных. */
-    private static URI dbUri;
+    public static class Oqu{
 
-    /* Пароль для авторизации. */
-    public static String pass;
+        /* Ссылка на базу данных. */
+        private static URI dbUri;
 
-    /* Ключ для POST запросов. */
-    public static String key;
+        /* Пароль для авторизации. */
+        public static String pass;
 
-    static {
+        /* Ключ для POST запросов. */
+        public static String key;
 
-        try {
-            dbUri = new URI(System.getenv("JAWSDB_URL"));
-            pass = System.getenv("PASSWORD_AUTH");
-            key = System.getenv("KEY_AUTH");
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
+        static {
+
+            try {
+                dbUri = new URI(System.getenv("JAWSDB_URL"));
+                pass = System.getenv("PASSWORD_AUTH");
+                key = System.getenv("KEY_AUTH");
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
         }
+
+        /**
+         * Ссылка для подключения к базе данных через JDBC.
+         * {@link java.sql.DriverManager#getConnection}
+         * в {@link Main#main(String[])}
+         */
+        public static final String url = "jdbc:mysql://" + dbUri.getHost() + dbUri.getPath();
+
+        /* Логин для подключения к базе данных. */
+        public static final String login = dbUri.getUserInfo().split(":")[0];
+
+        /* Пароль для подключения к базе данных. */
+        public static final String password = dbUri.getUserInfo().split(":")[1];
     }
 
-    /**
-     * Ссылка для подключения к базе данных через JDBC.
-     * {@link java.sql.DriverManager#getConnection}
-     * в {@link Main#main(String[])}
-     */
-    public static final String url = "jdbc:mysql://" + dbUri.getHost() + dbUri.getPath();
+    public static class Translit{
 
-    /* Логин для подключения к базе данных. */
-    public static final String login = dbUri.getUserInfo().split(":")[0];
+        /* Ссылка на базу данных. */
+        private static URI dbUri;
 
-    /* Пароль для подключения к базе данных. */
-    public static final String password = dbUri.getUserInfo().split(":")[1];
+        /* Пароль для авторизации. */
+        public static String pass;
+
+        /* Ключ для POST запросов. */
+        public static String key;
+
+        static {
+
+            try {
+                dbUri = new URI(System.getenv("JAWSDB_BROWN_URL"));
+                pass = System.getenv("PASSWORD_AUTH");
+                key = System.getenv("KEY_AUTH");
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
+        }
+
+        /**
+         * Ссылка для подключения к базе данных через JDBC.
+         * {@link java.sql.DriverManager#getConnection}
+         * в {@link kz.osmium.translit.request}
+         */
+        public static final String url = "jdbc:mysql://" + dbUri.getHost() + dbUri.getPath();
+
+        /* Логин для подключения к базе данных. */
+        public static final String login = dbUri.getUserInfo().split(":")[0];
+
+        /* Пароль для подключения к базе данных. */
+        public static final String password = dbUri.getUserInfo().split(":")[1];
+    }
 }

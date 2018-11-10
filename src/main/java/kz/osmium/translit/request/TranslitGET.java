@@ -17,14 +17,19 @@
 package kz.osmium.translit.request;
 
 import com.google.gson.Gson;
+import kz.osmium.main.HerokuAPI;
+import kz.osmium.main.StatusResponse;
 import kz.osmium.translit.objects.Translit;
+import kz.osmium.translit.statement.GETStatement;
 import spark.Request;
 import spark.Response;
 
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GETTranslit {
+public class TranslitGET {
 
     /**
      * Транслитезирует казахский текст.
@@ -39,7 +44,7 @@ public class GETTranslit {
                 request.queryParams("t") != null) {
             Map<String, String> map = new HashMap<>();
 
-            switch (Integer.parseInt(request.queryParams("t"))){
+            switch (Integer.parseInt(request.queryParams("t"))) {
                 case 1:
                     map.put("text", Translit.сyrlToLatn(request.queryParams("text")));
                     break;
@@ -56,6 +61,51 @@ public class GETTranslit {
             response.status(400);
 
             return "400 Bad Request";
+        }
+    }
+
+    /**
+     * Выводит все слова с таблицы `word`
+     *
+     * @param response
+     * @return
+     */
+    public static String getWord(Response response) {
+        Connection connection = null;
+
+        try {
+            connection = DriverManager.getConnection(
+                    HerokuAPI.Translit.url,
+                    HerokuAPI.Translit.login,
+                    HerokuAPI.Translit.password
+            );
+
+            PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getWord());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            ArrayList<kz.osmium.translit.objects.gson.Translit> translits = new ArrayList<>();
+
+            while (resultSet.next())
+                translits.add(new kz.osmium.translit.objects.gson.Translit(
+                    resultSet.getString("cyrl"),
+                    resultSet.getString("latn")
+                ));
+
+            response.status(200);
+
+            return new Gson().toJson(translits);
+        } catch (SQLException | NumberFormatException e) {
+
+            response.status(409);
+
+            return StatusResponse.conflict;
+        } finally {
+
+            try {
+
+                connection.close();
+            } catch (SQLException | NullPointerException e) {
+
+            }
         }
     }
 }

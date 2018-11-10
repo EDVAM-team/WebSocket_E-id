@@ -68,7 +68,11 @@ public class Main {
     private static void connectDB() {
 
         try {
-            connection = DriverManager.getConnection(HerokuAPI.url, HerokuAPI.login, HerokuAPI.password);
+            connection = DriverManager.getConnection(
+                    HerokuAPI.Oqu.url,
+                    HerokuAPI.Oqu.login,
+                    HerokuAPI.Oqu.password
+            );
         } catch (SQLException e) {
 
             System.out.println("Error SQL Connecting");

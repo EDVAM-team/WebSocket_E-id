@@ -24,6 +24,9 @@ public class StatusResponse {
     /* Статус JSON ошибочной операции */
     public static final String error = "{\"status\":\"ERROR\"}";
 
+    /* Статус JSON конфликтной операции */
+    public static final String conflict = "{\"status\":\"CONFLICT\"}";
+
     /* Статус JSON когда нет содержимого */
     public static final String no_content = "{\"status\":\"NO CONTENT\"}";
 }

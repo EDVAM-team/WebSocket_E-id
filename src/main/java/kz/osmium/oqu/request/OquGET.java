@@ -39,11 +39,11 @@ public class OquGET {
     public static String getAuth(Request request, Response response) {
 
         if (request.queryParams("pass") != null &&
-                HerokuAPI.pass.equals(request.queryParams("pass"))) {
+                HerokuAPI.Oqu.pass.equals(request.queryParams("pass"))) {
 
             response.status(200);
 
-            return "{\"key\":" + HerokuAPI.key + "}";
+            return "{\"key\":" + HerokuAPI.Oqu.key + "}";
         } else {
 
             response.status(400);

@@ -20,7 +20,10 @@ import kz.osmium.oqu.request.OquDELETE;
 import kz.osmium.oqu.request.OquGET;
 import kz.osmium.oqu.request.OquPOST;
 import kz.osmium.oqu.request.OquPUT;
-import kz.osmium.translit.request.GETTranslit;
+import kz.osmium.translit.request.TranslitDELETE;
+import kz.osmium.translit.request.TranslitGET;
+import kz.osmium.translit.request.TranslitPOST;
+import kz.osmium.translit.request.TranslitPUT;
 
 import java.sql.Connection;
 
@@ -322,7 +325,24 @@ public class Request {
         path("/api", () ->
                 get("/text", "application/json", (request, response) -> {
                     if (HerokuDomain.getDomainTranslit(request.host()))
-                        return GETTranslit.getTranslit(request, response);
+                        return TranslitGET.getTranslit(request, response);
+                    else {
+
+                        response.status(404);
+
+                        return "404 Not Found";
+                    }
+                }));
+
+        /*
+         * Вывод исключающих слов казахского языка в транслитизации.
+         *
+         * https://*.example.com/api/word
+         */
+        path("/api", () ->
+                get("/word", "application/json", (request, response) -> {
+                    if (HerokuDomain.getDomainTranslit(request.host()))
+                        return TranslitGET.getWord(response);
                     else {
 
                         response.status(404);
@@ -604,6 +624,27 @@ public class Request {
 //                            }
 //                        }
 //                ));
+
+        /*
+         * Создает исключающие слово казахского слово на латинском.
+         *
+         * https://*.example.com/api/word
+         * & key = <String>
+         * & cyrl = <String>
+         * & latn = <String>
+         */
+        path("/api", () ->
+                post("/word", (request, response) -> {
+                            if (HerokuDomain.getDomainTranslit(request.host()))
+                                return TranslitPOST.postWord(request, response);
+                            else {
+
+                                response.status(404);
+
+                                return "404 Not Found";
+                            }
+                        }
+                ));
     }
 
     /**
@@ -912,6 +953,27 @@ public class Request {
                             }
                         }
                 ));
+
+        /*
+         * Изменяет слово в базе транслитизации
+         *
+         * https://*.example.com/api/word ?
+         * & key = <String>
+         * & cyrl = <String>
+         * & latn = <String>
+         */
+        path("/api", () ->
+                put("/word", "application/json", (request, response) -> {
+                            if (HerokuDomain.getDomainTranslit(request.host()))
+                                return TranslitPUT.putWord(request, response);
+                            else {
+
+                                response.status(404);
+
+                                return "404 Not Found";
+                            }
+                        }
+                ));
     }
 
     /**
@@ -930,6 +992,26 @@ public class Request {
                 delete("/curator", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
                                 return OquDELETE.deleteCurator(connection, request, response);
+                            else {
+
+                                response.status(404);
+
+                                return "404 Not Found";
+                            }
+                        }
+                ));
+
+        /*
+         * Удаляет слово с базы транслитизации.
+         *
+         * https://*.example.com/api/word ?
+         * & key = <String>
+         * & cyrl = <String>
+         */
+        path("/api", () ->
+                delete("/word", "application/json", (request, response) -> {
+                            if (HerokuDomain.getDomainTranslit(request.host()))
+                                return TranslitDELETE.deleteWord(request, response);
                             else {
 
                                 response.status(404);
