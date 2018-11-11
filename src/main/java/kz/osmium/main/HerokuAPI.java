@@ -84,7 +84,7 @@ public class HerokuAPI {
          * {@link java.sql.DriverManager#getConnection}
          * в {@link kz.osmium.translit.request}
          */
-        public static final String url = "jdbc:mysql://" + dbUri.getHost() + dbUri.getPath();
+        public static final String url = "jdbc:mysql://" + dbUri.getHost() + ":" + dbUri.getPort() + dbUri.getPath() + "?" + dbUri.getQuery();
 
         /* Логин для подключения к базе данных. */
         public static final String login = dbUri.getUserInfo().split(":")[0];
