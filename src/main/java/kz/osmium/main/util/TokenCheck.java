@@ -20,6 +20,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TokenCheck {
 
@@ -73,7 +75,9 @@ public class TokenCheck {
                 return resultSet.next();
             } catch (SQLException e) {
 
-                return true;
+                Logger.getGlobal().log(Level.ALL, e.getMessage());
+
+                return false;
             }
         } else {
 
