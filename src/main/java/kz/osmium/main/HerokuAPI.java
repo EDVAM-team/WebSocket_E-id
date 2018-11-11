@@ -71,7 +71,7 @@ public class HerokuAPI {
         static {
 
             try {
-                dbUri = new URI(System.getenv("JAWSDB_BROWN_URL"));
+                dbUri = new URI(System.getenv("JAWSDB_GOLD_URL"));
                 pass = System.getenv("PASSWORD_AUTH");
                 key = System.getenv("KEY_AUTH");
             } catch (URISyntaxException e) {
