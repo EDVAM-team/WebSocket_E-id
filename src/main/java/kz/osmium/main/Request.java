@@ -941,7 +941,7 @@ public class Request {
         path("/api", () ->
                 put("/word", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainTranslit(request.host()))
-                                return TranslitPUT.putWord(request, response);
+                                return TranslitPUT.putWord(connection, request, response);
                             else {
 
                                 response.status(404);
