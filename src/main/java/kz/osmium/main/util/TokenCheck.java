@@ -75,7 +75,7 @@ public class TokenCheck {
                 return resultSet.next();
             } catch (SQLException e) {
 
-                Logger.getGlobal().log(Level.ALL, e.getMessage());
+                Logger.getLogger("SQLException").log(Level.ALL, e.getMessage());
 
                 return false;
             }
