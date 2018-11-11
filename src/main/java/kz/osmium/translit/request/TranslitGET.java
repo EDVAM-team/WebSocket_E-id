@@ -98,14 +98,6 @@ public class TranslitGET {
                 response.status(409);
 
                 return StatusResponse.conflict;
-            } finally {
-
-                try {
-
-                    connection.close();
-                } catch (SQLException | NullPointerException e) {
-
-                }
             }
         } catch (SQLException e) {
 
