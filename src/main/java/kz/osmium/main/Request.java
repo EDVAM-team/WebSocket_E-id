@@ -612,7 +612,7 @@ public class Request {
         path("/api", () ->
                 post("/word", (request, response) -> {
                             if (HerokuDomain.getDomainTranslit(request.host()))
-                                return TranslitPOST.postWord(request, response);
+                                return TranslitPOST.postWord(connection, request, response);
                             else {
 
                                 response.status(404);
@@ -987,7 +987,7 @@ public class Request {
         path("/api", () ->
                 delete("/word", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainTranslit(request.host()))
-                                return TranslitDELETE.deleteWord(request, response);
+                                return TranslitDELETE.deleteWord(connection, request, response);
                             else {
 
                                 response.status(404);
