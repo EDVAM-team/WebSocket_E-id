@@ -75,8 +75,6 @@ public class TokenCheck {
                 return resultSet.next();
             } catch (SQLException e) {
 
-                System.out.println(e.getMessage());
-
                 return false;
             }
         } else {

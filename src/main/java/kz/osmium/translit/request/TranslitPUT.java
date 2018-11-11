@@ -37,19 +37,19 @@ public class TranslitPUT {
      * @param response
      * @return
      */
-    public static String putWord(Request request, Response response) {
+    public static String putWord(Connection conn, Request request, Response response) {
 
-        try {
-            Connection connection = DriverManager.getConnection(
-                    HerokuAPI.Translit.url,
-                    HerokuAPI.Translit.login,
-                    HerokuAPI.Translit.password
-            );
+        if (TokenCheck.checkTeacher(conn, request.queryParams("key"))) {
 
-            if (TokenCheck.checkTeacher(connection, request.queryParams("key"))) {
+            if (request.queryParams("cyrl") != null &&
+                    request.queryParams("latn") != null) {
 
-                if (request.queryParams("cyrl") != null &&
-                        request.queryParams("latn") != null) {
+                try {
+                    Connection connection = DriverManager.getConnection(
+                            HerokuAPI.Translit.url,
+                            HerokuAPI.Translit.login,
+                            HerokuAPI.Translit.password
+                    );
 
                     try {
                         PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putWord());
@@ -75,23 +75,23 @@ public class TranslitPUT {
                     }
 
                     return StatusResponse.success;
-                } else {
+                } catch (SQLException e) {
 
-                    response.status(400);
+                    response.status(500);
 
-                    return StatusResponse.error;
+                    return StatusResponse.internal_server_error;
                 }
             } else {
 
-                response.status(401);
+                response.status(400);
 
                 return StatusResponse.error;
             }
-        } catch (SQLException e) {
+        } else {
 
-            response.status(500);
+            response.status(401);
 
-            return StatusResponse.internal_server_error;
+            return StatusResponse.error;
         }
     }
 }
