@@ -18,13 +18,13 @@ package kz.osmium.translit.objects.gson;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Translit {
+public class Word {
     @SerializedName("cyrl")
     private final String cyrl;
     @SerializedName("latn")
     private final String latn;
 
-    public Translit(String cyrl, String latn) {
+    public Word(String cyrl, String latn) {
         this.cyrl = cyrl;
         this.latn = latn;
     }

@@ -20,6 +20,7 @@ import com.google.gson.Gson;
 import kz.osmium.main.HerokuAPI;
 import kz.osmium.main.StatusResponse;
 import kz.osmium.translit.objects.Translit;
+import kz.osmium.translit.objects.gson.Word;
 import kz.osmium.translit.statement.GETStatement;
 import spark.Request;
 import spark.Response;
@@ -82,18 +83,18 @@ public class TranslitGET {
             try {
                 PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getWord());
                 ResultSet resultSet = preparedStatement.executeQuery();
-                ArrayList<kz.osmium.translit.objects.gson.Translit> translits = new ArrayList<>();
+                ArrayList<Word> wordArrayList = new ArrayList<>();
 
                 while (resultSet.next())
-                    translits.add(new kz.osmium.translit.objects.gson.Translit(
+                    wordArrayList.add(new Word(
                             resultSet.getString("cyrl"),
                             resultSet.getString("latn")
                     ));
 
                 response.status(200);
 
-                return new Gson().toJson(translits);
-            } catch (SQLException | NumberFormatException e) {
+                return new Gson().toJson(wordArrayList);
+            } catch (SQLException e) {
 
                 response.status(409);
 
