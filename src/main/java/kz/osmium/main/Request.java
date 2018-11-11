@@ -362,7 +362,7 @@ public class Request {
          * Создает факультет.
          *
          * https://*.example.com/api/faculty ?
-         * & key = <String>
+         * & token = <String>
          * & name = <String>
          */
         path("/api", () ->
@@ -382,7 +382,7 @@ public class Request {
          * Создает специальность.
          *
          * https://*.example.com/api/specialty ?
-         * & key = <String>
+         * & token = <String>
          * & name = <String>
          * & id_faculty = <Integer>
          */
@@ -403,7 +403,7 @@ public class Request {
          * Создает группу.
          *
          * https://*.example.com/api/group ?
-         * & key = <String>
+         * & token = <String>
          * & name = <String>
          * & id_specialty = <Integer>
          */
@@ -424,7 +424,7 @@ public class Request {
          * Создает кабинет.
          *
          * https://*.example.com/api/room ?
-         * & key = <String>
+         * & token = <String>
          * & name = <String>
          */
         path("/api", () ->
@@ -444,7 +444,7 @@ public class Request {
          * Создает рейтинг студенту.
          *
          * https://*.example.com/api/rating ?
-         * & key = <String>
+         * & token = <String>
          * & id_subject = <Integer>
          * & id_account = <Integer>
          * & num = <Integer>
@@ -466,7 +466,7 @@ public class Request {
          * Создает оценки.
          *
          * https://*.example.com/api/mark ?
-         * & key = <String>
+         * & token = <String>
          * & id_subject = <Integer>
          *
          * JSON <JSON, raw, application/json>
@@ -493,7 +493,7 @@ public class Request {
          * Создает куратора.
          *
          * https://*.example.com/api/curator ?
-         * & key = <String>
+         * & token = <String>
          * & group = <Integer>
          * & teacher = <Integer>
          */
@@ -514,7 +514,7 @@ public class Request {
          * Создает аккаунт.
          *
          * https://*.example.com/api/account ?
-         * & key = <String>
+         * & token = <String>
          * & name = <String>
          * & t = <Integer>
          * & login = <String>
@@ -543,7 +543,7 @@ public class Request {
          * Создает предмет.
          *
          * https://*.example.com/api/subject/item ?
-         * & key = <String>
+         * & token = <String>
          * & name = <String>
          */
         path("/api", () ->
@@ -582,7 +582,7 @@ public class Request {
          * Создает замену для конкретного предмета в расписании группы.
          *
          * https://*.example.com/api/change
-         * & key = <String>
+         * & token = <String>
          * & id_list_subject = <Integer>
          * & t = <Integer>
          * & id_account = <Integer>
@@ -605,7 +605,7 @@ public class Request {
          * Создает исключающие слово казахского слово на латинском.
          *
          * https://*.example.com/api/word
-         * & key = <String>
+         * & token = <String>
          * & cyrl = <String>
          * & latn = <String>
          */
@@ -632,7 +632,7 @@ public class Request {
          * Изменить аккаунт.
          *
          * https://*.example.com/api/account ?
-         * & key = <String>
+         * & token = <String>
          * & id_account = <Integer>
          * [-] & name = <String>
          * [-] & login = <String>
@@ -662,7 +662,7 @@ public class Request {
          * Изменить замену.
          *
          * https://*.example.com/api/change ?
-         * & key = <String>
+         * & token = <String>
          * & id_change = <Integer>
          * [-] & id_list_subject = <Integer>
          * [-] & t = <Integer>
@@ -686,7 +686,7 @@ public class Request {
          * Изменить куратора.
          *
          * https://*.example.com/api/curator ?
-         * & key = <String>
+         * & token = <String>
          * & id_group = <Integer>
          * [-] & id_account = <Integer>
          */
@@ -707,7 +707,7 @@ public class Request {
          * Изменить факультет.
          *
          * https://*.example.com/api/faculty ?
-         * & key = <String>
+         * & token = <String>
          * & id_faculty = <Integer>
          * [-] & name = <String>
          */
@@ -728,7 +728,7 @@ public class Request {
          * Изменить группу.
          *
          * https://*.example.com/api/group ?
-         * & key = <String>
+         * & token = <String>
          * & id_group = <Integer>
          * [-] & name = <String>
          * [-] & id_specialty = <Integer>
@@ -750,7 +750,7 @@ public class Request {
          * Изменить предмет.
          *
          * https://*.example.com/api/subject/list ?
-         * & key = <String>
+         * & token = <String>
          * & id_list_subject = <Integer>
          * [-] & name = <String>
          */
@@ -772,7 +772,7 @@ public class Request {
          * Изменить оценку.
          *
          * https://*.example.com/api/mark ?
-         * & key = <String>
+         * & token = <String>
          * & id_mark = <Integer>
          * [-] & id_rating = <Integer>
          * [-] & n = <Integer>
@@ -795,7 +795,7 @@ public class Request {
          * Изменить рейтинг.
          *
          * https://*.example.com/api/rating ?
-         * & key = <String>
+         * & token = <String>
          * & id_rating = <Integer>
          * [-] & id_list_subject = <Integer>
          * [-] & id_account = <Integer>
@@ -818,7 +818,7 @@ public class Request {
          * Изменить аудиторию.
          *
          * https://*.example.com/api/room ?
-         * & key = <String>
+         * & token = <String>
          * & id_room = <Integer>
          * [-] & name = <String>
          */
@@ -839,7 +839,7 @@ public class Request {
          * Изменить расписание.
          *
          * https://*.example.com/api/schedule ?
-         * & key = <String>
+         * & token = <String>
          * & id_schedule = <Integer>
          * [-] & d = <Integer>
          * [-] & num = <Integer>
@@ -864,7 +864,7 @@ public class Request {
          * Изменить пару.
          *
          * https://*.example.com/api/subject/schedule ?
-         * & key = <String>
+         * & token = <String>
          * & id_schedule_subject = <Integer>
          * [-] & id_list_subject = <Integer>
          * - & t = <Integer>
@@ -889,7 +889,7 @@ public class Request {
          * Изменить специальность.
          *
          * https://*.example.com/api/specialty ?
-         * & key = <String>
+         * & token = <String>
          * & id_specialty = <Integer>
          * [-] & name = <String>
          * [-] & id_faculty = <Integer>
@@ -911,7 +911,7 @@ public class Request {
          * Изменить оценку семестра.
          *
          * https://*.example.com/api/total ?
-         * & key = <String>
+         * & token = <String>
          * & id_total = <Integer>
          * [-] & id_list_subject = <Integer>
          * [-] & id_account = <Integer>
@@ -934,7 +934,7 @@ public class Request {
          * Изменяет слово в базе транслитизации
          *
          * https://*.example.com/api/word ?
-         * & key = <String>
+         * & token = <String>
          * & cyrl = <String>
          * & latn = <String>
          */
@@ -961,7 +961,7 @@ public class Request {
          * Удаляет куратора.
          *
          * https://*.example.com/api/curator ?
-         * & key = <String>
+         * & token = <String>
          * & group = <Integer>
          */
         path("/api", () ->
@@ -981,7 +981,7 @@ public class Request {
          * Удаляет слово с базы транслитизации.
          *
          * https://*.example.com/api/word ?
-         * & key = <String>
+         * & token = <String>
          * & cyrl = <String>
          */
         path("/api", () ->

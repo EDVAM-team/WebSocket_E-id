@@ -18,6 +18,7 @@ package kz.osmium.oqu.request;
 
 import kz.osmium.main.util.HerokuAPI;
 import kz.osmium.main.util.StatusResponse;
+import kz.osmium.main.util.TokenCheck;
 import kz.osmium.oqu.statement.DELETEStatement;
 import spark.Request;
 import spark.Response;
@@ -36,7 +37,7 @@ public class OquDELETE {
      */
     public static String deleteCurator(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("key").equals(HerokuAPI.Oqu.key)) {
+        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
             if (request.queryParams("group") != null) {
 

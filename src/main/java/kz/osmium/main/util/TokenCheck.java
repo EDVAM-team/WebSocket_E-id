@@ -83,6 +83,36 @@ public class TokenCheck {
         }
     }
 
+    /**
+     * Права на уровне обычного пользователя
+     *
+     * @param connection
+     * @param token
+     * @return
+     */
+    public static boolean checkAccount(Connection connection, String token, int idAccount) {
+
+        if (token != null) {
+
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(SQLStatement.account());
+
+                preparedStatement.setInt(1, idAccount);
+                preparedStatement.setString(2, token);
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                return resultSet.next();
+            } catch (SQLException e) {
+
+                return false;
+            }
+        } else {
+
+            return false;
+        }
+    }
+
     private static class SQLStatement {
 
         /**
@@ -101,6 +131,15 @@ public class TokenCheck {
          */
         public static String teacher() {
             return "SELECT * FROM `account` WHERE (`account`.`t`=2 OR `account`.`t`=3) AND `account`.`token`=?";
+        }
+
+        /**
+         * Проверка токена на статус обычного аккаунта или админа
+         *
+         * @return
+         */
+        public static String account() {
+            return "SELECT * FROM `account` WHERE (`account`.`id_account`=? OR `account`.`t`=3) AND `account`.`token`=?";
         }
     }
 }

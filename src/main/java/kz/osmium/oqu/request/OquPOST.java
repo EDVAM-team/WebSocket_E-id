@@ -19,6 +19,7 @@ package kz.osmium.oqu.request;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import kz.osmium.main.util.HerokuAPI;
+import kz.osmium.main.util.TokenCheck;
 import kz.osmium.main.util.TokenGen;
 import kz.osmium.main.util.StatusResponse;
 import kz.osmium.oqu.gson.MarkJSON;
@@ -43,7 +44,7 @@ public class OquPOST {
      */
     public static String postFaculty(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("key").equals(HerokuAPI.Oqu.key)) {
+        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
             if (request.queryParams("name") != null) {
 
@@ -85,7 +86,7 @@ public class OquPOST {
      */
     public static String postSpecialty(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("key").equals(HerokuAPI.Oqu.key)) {
+        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
             if (request.queryParams("name") != null &&
                     request.queryParams("id_faculty") != null) {
@@ -129,7 +130,7 @@ public class OquPOST {
      */
     public static String postGroup(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("key").equals(HerokuAPI.Oqu.key)) {
+        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
             if (request.queryParams("name") != null &&
                     request.queryParams("id_specialty") != null) {
@@ -173,7 +174,7 @@ public class OquPOST {
      */
     public static String postCurator(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("key").equals(HerokuAPI.Oqu.key)) {
+        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
             if (request.queryParams("group") != null &&
                     request.queryParams("teacher") != null) {
@@ -217,7 +218,7 @@ public class OquPOST {
      */
     public static String postRoom(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("key").equals(HerokuAPI.Oqu.key)) {
+        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
             if (request.queryParams("name") != null) {
 
@@ -259,7 +260,7 @@ public class OquPOST {
      */
     public static String postRating(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("key").equals(HerokuAPI.Oqu.key)) {
+        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
             if (request.queryParams("id_subject") != null &&
                     request.queryParams("id_account") != null &&
@@ -305,7 +306,7 @@ public class OquPOST {
      */
     public static String postMark(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("key").equals(HerokuAPI.Oqu.key)) {
+        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
             if (request.queryParams("id_subject") != null) {
 
@@ -364,7 +365,7 @@ public class OquPOST {
      */
     public static String postAccount(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("key").equals(HerokuAPI.Oqu.key)) {
+        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
             if (request.queryParams("name") != null &&
                     request.queryParams("login") != null &&
@@ -445,7 +446,8 @@ public class OquPOST {
      * @return
      */
     public static String postSubjectItem(Connection connection, Request request, Response response) {
-        if (request.queryParams("key").equals(HerokuAPI.Oqu.key)) {
+        
+        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
             if (request.queryParams("name") != null) {
 
@@ -488,7 +490,7 @@ public class OquPOST {
      */
     public static String postChange(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("key").equals(HerokuAPI.Oqu.key)) {
+        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
             if (request.queryParams("id_list_subject") != null &&
                     request.queryParams("t") != null &&

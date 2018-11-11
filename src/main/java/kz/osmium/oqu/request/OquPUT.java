@@ -17,6 +17,7 @@
 package kz.osmium.oqu.request;
 
 import kz.osmium.main.util.HerokuAPI;
+import kz.osmium.main.util.TokenCheck;
 import kz.osmium.main.util.TokenGen;
 import kz.osmium.main.util.StatusResponse;
 import kz.osmium.oqu.statement.PUTStatement;
@@ -36,7 +37,7 @@ public class OquPUT {
      */
     public static String putAccount(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("key").equals(HerokuAPI.Oqu.key)) {
+        if (TokenCheck.checkAccount(connection, request.queryParams("token"), Integer.parseInt(request.queryParams("id_account")))) {
 
             if (request.queryParams("id_account") != null &&
                     request.queryParams("t") != null ||
@@ -154,7 +155,7 @@ public class OquPUT {
      */
     public static String putChange(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("key").equals(HerokuAPI.Oqu.key)) {
+        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
             if (request.queryParams("id_change") != null &&
                     request.queryParams("id_list_subject") != null ||
@@ -229,7 +230,7 @@ public class OquPUT {
      */
     public static String putCurator(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("key").equals(HerokuAPI.Oqu.key)) {
+        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
             if (request.queryParams("id_group") != null &&
                     request.queryParams("id_account") != null) {
@@ -280,7 +281,7 @@ public class OquPUT {
      */
     public static String putFaculty(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("key").equals(HerokuAPI.Oqu.key)) {
+        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
             if (request.queryParams("id_faculty") != null &&
                     request.queryParams("name") != null) {
@@ -331,7 +332,7 @@ public class OquPUT {
      */
     public static String putGroup(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("key").equals(HerokuAPI.Oqu.key)) {
+        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
             if (request.queryParams("id_group") != null &&
                     request.queryParams("name") != null ||
@@ -391,7 +392,7 @@ public class OquPUT {
      */
     public static String putListSubject(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("key").equals(HerokuAPI.Oqu.key)) {
+        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
             if (request.queryParams("id_list_subject") != null &&
                     request.queryParams("name") != null) {
@@ -442,7 +443,7 @@ public class OquPUT {
      */
     public static String putMark(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("key").equals(HerokuAPI.Oqu.key)) {
+        if (TokenCheck.checkTeacher(connection, request.queryParams("token"))) {
 
             if (request.queryParams("id_mark") != null &&
                     request.queryParams("id_rating") != null ||
@@ -509,7 +510,7 @@ public class OquPUT {
      */
     public static String putRating(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("key").equals(HerokuAPI.Oqu.key)) {
+        if (TokenCheck.checkTeacher(connection, request.queryParams("token"))) {
 
             if (request.queryParams("id_rating") != null &&
                     request.queryParams("id_list_subject") != null ||
@@ -577,7 +578,7 @@ public class OquPUT {
      */
     public static String putRoom(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("key").equals(HerokuAPI.Oqu.key)) {
+        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
             if (request.queryParams("id_room") != null &&
                     request.queryParams("name") != null) {
@@ -628,7 +629,7 @@ public class OquPUT {
      */
     public static String putSchedule(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("key").equals(HerokuAPI.Oqu.key)) {
+        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
             if (request.queryParams("id_schedule") != null &&
                     request.queryParams("d") != null ||
@@ -715,7 +716,7 @@ public class OquPUT {
      */
     public static String putScheduleSubject(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("key").equals(HerokuAPI.Oqu.key)) {
+        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
             if (request.queryParams("id_schedule_subject") != null &&
                     request.queryParams("id_list_subject") != null ||
@@ -784,7 +785,7 @@ public class OquPUT {
      */
     public static String putSpecialty(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("key").equals(HerokuAPI.Oqu.key)) {
+        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
             if (request.queryParams("id_specialty") != null &&
                     request.queryParams("name") != null ||
@@ -844,7 +845,7 @@ public class OquPUT {
      */
     public static String putTotal(Connection connection, Request request, Response response) {
 
-        if (request.queryParams("key").equals(HerokuAPI.Oqu.key)) {
+        if (TokenCheck.checkTeacher(connection, request.queryParams("token"))) {
 
             if (request.queryParams("id_total") != null &&
                     request.queryParams("id_list_subject") != null ||
