@@ -17,8 +17,8 @@
 package kz.osmium.translit.request;
 
 import com.google.gson.Gson;
-import kz.osmium.main.HerokuAPI;
-import kz.osmium.main.StatusResponse;
+import kz.osmium.main.util.HerokuAPI;
+import kz.osmium.main.util.StatusResponse;
 import kz.osmium.translit.objects.Translit;
 import kz.osmium.translit.objects.gson.Word;
 import kz.osmium.translit.statement.GETStatement;

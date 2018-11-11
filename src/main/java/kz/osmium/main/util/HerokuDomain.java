@@ -1,4 +1,4 @@
-package kz.osmium.main;
+package kz.osmium.main.util;
 
 public class HerokuDomain {
 

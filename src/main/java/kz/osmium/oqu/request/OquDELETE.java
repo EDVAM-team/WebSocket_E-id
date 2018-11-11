@@ -16,8 +16,8 @@
 
 package kz.osmium.oqu.request;
 
-import kz.osmium.main.HerokuAPI;
-import kz.osmium.main.StatusResponse;
+import kz.osmium.main.util.HerokuAPI;
+import kz.osmium.main.util.StatusResponse;
 import kz.osmium.oqu.statement.DELETEStatement;
 import spark.Request;
 import spark.Response;

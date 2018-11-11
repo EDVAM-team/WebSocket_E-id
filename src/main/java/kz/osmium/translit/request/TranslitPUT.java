@@ -16,9 +16,8 @@
 
 package kz.osmium.translit.request;
 
-import kz.osmium.main.HerokuAPI;
-import kz.osmium.main.StatusResponse;
-import kz.osmium.translit.statement.POSTStatement;
+import kz.osmium.main.util.HerokuAPI;
+import kz.osmium.main.util.StatusResponse;
 import kz.osmium.translit.statement.PUTStatement;
 import spark.Request;
 import spark.Response;

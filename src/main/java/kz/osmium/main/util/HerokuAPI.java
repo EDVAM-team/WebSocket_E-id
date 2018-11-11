@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-package kz.osmium.main;
+package kz.osmium.main.util;
+
+import kz.osmium.main.Main;
 
 import java.net.URI;
 import java.net.URISyntaxException;

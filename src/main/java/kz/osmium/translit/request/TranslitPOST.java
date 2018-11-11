@@ -16,8 +16,8 @@
 
 package kz.osmium.translit.request;
 
-import kz.osmium.main.HerokuAPI;
-import kz.osmium.main.StatusResponse;
+import kz.osmium.main.util.HerokuAPI;
+import kz.osmium.main.util.StatusResponse;
 import kz.osmium.translit.statement.POSTStatement;
 import spark.Request;
 import spark.Response;
@@ -57,7 +57,7 @@ public class TranslitPOST {
                         preparedStatement.setString(2, request.queryParams("latn"));
                         preparedStatement.execute();
 
-                        response.status(200);
+                        response.status(201);
                     } catch (SQLException | NumberFormatException e) {
 
                         response.status(409);

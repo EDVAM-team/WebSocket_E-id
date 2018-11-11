@@ -67,21 +67,10 @@ public class POSTStatement {
      *
      * @return
      */
-    public static String postTeacher() {
+    public static String postAccount() {
         return "INSERT INTO `account` " +
-                "(`name`, `t`, `login`, `pass`, `s_name`, `l_name`, `phone`, `email`, `id_room`) " +
-                "VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    }
-
-    /**
-     * Запрос на создание ячейки данных в таблице `account`
-     *
-     * @return
-     */
-    public static String postStudent() {
-        return "INSERT INTO `account` " +
-                "(`name`, `t`, `login`, `pass`, `s_name`, `l_name`, `phone`, `email`, `id_group`) " +
-                "VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "(`name`, `t`, `login`, `pass`, `s_name`, `l_name`, `phone`, `email`, `id_group`, `id_room`, `token`) " +
+                "VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     }
 
     /**

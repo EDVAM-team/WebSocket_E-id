@@ -18,8 +18,9 @@ package kz.osmium.oqu.request;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import kz.osmium.main.HerokuAPI;
-import kz.osmium.main.StatusResponse;
+import kz.osmium.main.util.HerokuAPI;
+import kz.osmium.main.util.TokenGen;
+import kz.osmium.main.util.StatusResponse;
 import kz.osmium.oqu.gson.MarkJSON;
 import kz.osmium.oqu.statement.GETStatement;
 import kz.osmium.oqu.statement.POSTStatement;
@@ -250,79 +251,6 @@ public class OquPOST {
     }
 
     /**
-     * Создает преподавателя.
-     * Используется таблица "account"
-     *
-     * @param connection
-     * @return
-     */
-    public static String postTeacher(Connection connection, Request request, Response response) {
-
-        if (request.queryParams("key").equals(HerokuAPI.Oqu.key)) {
-
-            if (request.queryParams("name") != null &&
-                    request.queryParams("login") != null &&
-                    request.queryParams("pass") != null) {
-
-                try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postTeacher());
-
-                    preparedStatement.setString(1, request.queryParams("name"));
-                    preparedStatement.setInt(2, 2);
-                    preparedStatement.setString(3, request.queryParams("login"));
-                    preparedStatement.setString(4, request.queryParams("pass"));
-
-                    if (request.queryParams("s_name") != null)
-                        preparedStatement.setString(5, request.queryParams("s_name"));
-                    else
-                        preparedStatement.setNull(5, Types.VARCHAR);
-
-                    if (request.queryParams("l_name") != null)
-                        preparedStatement.setString(6, request.queryParams("l_name"));
-                    else
-                        preparedStatement.setNull(6, Types.VARCHAR);
-
-                    if (request.queryParams("phone") != null)
-                        preparedStatement.setString(7, request.queryParams("phone"));
-                    else
-                        preparedStatement.setNull(7, Types.VARCHAR);
-
-                    if (request.queryParams("email") != null)
-                        preparedStatement.setString(8, request.queryParams("email"));
-                    else
-                        preparedStatement.setNull(8, Types.VARCHAR);
-
-                    if (request.queryParams("id_room") != null)
-                        preparedStatement.setInt(9, Integer.parseInt(request.queryParams("id_room")));
-                    else
-                        preparedStatement.setNull(9, Types.INTEGER);
-
-                    preparedStatement.execute();
-
-                    response.status(201);
-                } catch (SQLException | NumberFormatException e) {
-
-                    response.status(400);
-
-                    return StatusResponse.error;
-                }
-
-                return StatusResponse.success;
-            } else {
-
-                response.status(400);
-
-                return StatusResponse.error;
-            }
-        } else {
-
-            response.status(401);
-
-            return StatusResponse.error;
-        }
-    }
-
-    /**
      * Создает рейтинг студента.
      * Используется таблица "rating"
      *
@@ -428,27 +356,29 @@ public class OquPOST {
     }
 
     /**
-     * Создает студента.
+     * Создает аккаунт.
      * Используется таблица "account"
      *
      * @param connection
      * @return
      */
-    public static String postStudent(Connection connection, Request request, Response response) {
+    public static String postAccount(Connection connection, Request request, Response response) {
 
         if (request.queryParams("key").equals(HerokuAPI.Oqu.key)) {
 
             if (request.queryParams("name") != null &&
                     request.queryParams("login") != null &&
+                    request.queryParams("t") != null &&
                     request.queryParams("pass") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postStudent());
+                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postAccount());
 
                     preparedStatement.setString(1, request.queryParams("name"));
-                    preparedStatement.setInt(2, 1);
+                    preparedStatement.setInt(2, Integer.parseInt(request.queryParams("t")));
                     preparedStatement.setString(3, request.queryParams("login"));
                     preparedStatement.setString(4, request.queryParams("pass"));
+                    preparedStatement.setString(11, TokenGen.generate(request.queryParams("login")));
 
                     if (request.queryParams("s_name") != null)
                         preparedStatement.setString(5, request.queryParams("s_name"));
@@ -470,10 +400,17 @@ public class OquPOST {
                     else
                         preparedStatement.setNull(8, Types.VARCHAR);
 
-                    if (request.queryParams("id_group") != null)
+                    if (request.queryParams("id_group") != null &&
+                            Integer.parseInt(request.queryParams("t")) == 1)
                         preparedStatement.setInt(9, Integer.parseInt(request.queryParams("id_group")));
                     else
                         preparedStatement.setNull(9, Types.INTEGER);
+
+                    if (request.queryParams("id_room") != null &&
+                            Integer.parseInt(request.queryParams("t")) == 2)
+                        preparedStatement.setInt(10, Integer.parseInt(request.queryParams("id_room")));
+                    else
+                        preparedStatement.setNull(10, Types.INTEGER);
 
                     preparedStatement.execute();
 

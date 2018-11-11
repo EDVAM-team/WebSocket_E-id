@@ -16,6 +16,7 @@
 
 package kz.osmium.main;
 
+import kz.osmium.main.util.HerokuDomain;
 import kz.osmium.oqu.request.OquDELETE;
 import kz.osmium.oqu.request.OquGET;
 import kz.osmium.oqu.request.OquPOST;
@@ -510,36 +511,9 @@ public class Request {
                 ));
 
         /*
-         * Создает преподавателя.
+         * Создает аккаунт.
          *
-         * https://*.example.com/api/teacher ?
-         * & key = <String>
-         * & name = <String>
-         * & login = <String>
-         * & pass = <String>
-         * - & s_name = <String>
-         * - & l_name = <String>
-         * - & phone = <String>
-         * - & email = <String>
-         * - & id_room = <Integer>
-         */
-        path("/api", () ->
-                post("/teacher", "application/json", (request, response) -> {
-                            if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquPOST.postTeacher(connection, request, response);
-                            else {
-
-                                response.status(404);
-
-                                return "404 Not Found";
-                            }
-                        }
-                ));
-
-        /*
-         * Создает студента.
-         *
-         * https://*.example.com/api/student ?
+         * https://*.example.com/api/account ?
          * & key = <String>
          * & name = <String>
          * & login = <String>
@@ -549,11 +523,12 @@ public class Request {
          * - & phone = <String>
          * - & email = <String>
          * - & id_group = <Integer>
+         * - & id_room = <Integer>
          */
         path("/api", () ->
-                post("/student", "application/json", (request, response) -> {
+                post("/account", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquPOST.postStudent(connection, request, response);
+                                return OquPOST.postAccount(connection, request, response);
                             else {
 
                                 response.status(404);

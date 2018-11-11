@@ -16,8 +16,9 @@
 
 package kz.osmium.oqu.request;
 
-import kz.osmium.main.HerokuAPI;
-import kz.osmium.main.StatusResponse;
+import kz.osmium.main.util.HerokuAPI;
+import kz.osmium.main.util.TokenGen;
+import kz.osmium.main.util.StatusResponse;
 import kz.osmium.oqu.statement.PUTStatement;
 import spark.Request;
 import spark.Response;
@@ -98,9 +99,16 @@ public class OquPUT {
                     if (request.queryParams("login") != null) {
                         preparedStatement.setString(10, request.queryParams("login"));
                         preparedStatement.setString(11, request.queryParams("login"));
+
+                        String token = TokenGen.generate(request.queryParams("login"));
+
+                        preparedStatement.setString(14, token);
+                        preparedStatement.setString(15, token);
                     } else {
                         preparedStatement.setNull(10, Types.VARCHAR);
                         preparedStatement.setNull(11, Types.VARCHAR);
+                        preparedStatement.setNull(14, Types.VARCHAR);
+                        preparedStatement.setNull(15, Types.VARCHAR);
                     }
 
                     if (request.queryParams("pass") != null) {
@@ -111,7 +119,7 @@ public class OquPUT {
                         preparedStatement.setNull(13, Types.VARCHAR);
                     }
 
-                    preparedStatement.setInt(14, Integer.parseInt(request.queryParams("id_account")));
+                    preparedStatement.setInt(16, Integer.parseInt(request.queryParams("id_account")));
                     preparedStatement.executeUpdate();
 
                     response.status(201);

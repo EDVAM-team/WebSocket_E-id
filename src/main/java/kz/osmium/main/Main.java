@@ -16,6 +16,8 @@
 
 package kz.osmium.main;
 
+import kz.osmium.main.util.HerokuAPI;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;

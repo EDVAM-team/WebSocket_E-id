@@ -17,7 +17,7 @@
 package kz.osmium.oqu.request;
 
 import com.google.gson.Gson;
-import kz.osmium.main.HerokuAPI;
+import kz.osmium.main.util.HerokuAPI;
 import kz.osmium.oqu.objects.gson.*;
 import kz.osmium.oqu.statement.GETStatement;
 import spark.Request;
