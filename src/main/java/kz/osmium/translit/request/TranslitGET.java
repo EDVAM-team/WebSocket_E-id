@@ -98,7 +98,7 @@ public class TranslitGET {
 
                 response.status(409);
 
-                return e.getMessage();
+                return StatusResponse.conflict;
             } finally {
 
                 try {

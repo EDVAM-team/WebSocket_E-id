@@ -8,6 +8,6 @@ public class DELETEStatement {
      * @return
      */
     public static String deleteWord() {
-        return "DELETE FROM `word` WHERE `word`.`сyrl`=?";
+        return "DELETE FROM `word` WHERE `word`.`cyrl`=?";
     }
 }
