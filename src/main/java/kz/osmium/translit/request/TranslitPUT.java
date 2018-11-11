@@ -18,6 +18,7 @@ package kz.osmium.translit.request;
 
 import kz.osmium.main.util.HerokuAPI;
 import kz.osmium.main.util.StatusResponse;
+import kz.osmium.main.util.TokenCheck;
 import kz.osmium.translit.statement.PUTStatement;
 import spark.Request;
 import spark.Response;
@@ -38,17 +39,17 @@ public class TranslitPUT {
      */
     public static String putWord(Request request, Response response) {
 
-        if (request.queryParams("key").equals(HerokuAPI.Translit.key)) {
+        try {
+            Connection connection = DriverManager.getConnection(
+                    HerokuAPI.Translit.url,
+                    HerokuAPI.Translit.login,
+                    HerokuAPI.Translit.password
+            );
 
-            if (request.queryParams("cyrl") != null &&
-                    request.queryParams("latn") != null) {
+            if (TokenCheck.checkTeacher(connection, request.queryParams("key"))) {
 
-                try {
-                    Connection connection = DriverManager.getConnection(
-                            HerokuAPI.Translit.url,
-                            HerokuAPI.Translit.login,
-                            HerokuAPI.Translit.password
-                    );
+                if (request.queryParams("cyrl") != null &&
+                        request.queryParams("latn") != null) {
 
                     try {
                         PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putWord());
@@ -74,23 +75,23 @@ public class TranslitPUT {
                     }
 
                     return StatusResponse.success;
-                } catch (SQLException e) {
+                } else {
 
-                    response.status(500);
+                    response.status(400);
 
-                    return StatusResponse.internal_server_error;
+                    return StatusResponse.error;
                 }
             } else {
 
-                response.status(400);
+                response.status(401);
 
                 return StatusResponse.error;
             }
-        } else {
+        } catch (SQLException e) {
 
-            response.status(401);
+            response.status(500);
 
-            return StatusResponse.error;
+            return StatusResponse.internal_server_error;
         }
     }
 }
