@@ -516,6 +516,7 @@ public class Request {
          * https://*.example.com/api/account ?
          * & key = <String>
          * & name = <String>
+         * & t = <Integer>
          * & login = <String>
          * & pass = <String>
          * - & s_name = <String>

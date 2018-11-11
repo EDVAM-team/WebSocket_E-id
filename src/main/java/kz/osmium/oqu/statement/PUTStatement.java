@@ -35,7 +35,7 @@ public class PUTStatement {
                 "\t`account`.`email` = ?,\n" +
                 "\t`account`.`id_room` = ?,\n" +
                 "\t`account`.`login` = CASE WHEN ? IS NULL THEN `account`.`login` ELSE ? END,\n" +
-                "\t`account`.`pass` = CASE WHEN ? IS NULL THEN `account`.`pass` ELSE ? END\n" +
+                "\t`account`.`pass` = CASE WHEN ? IS NULL THEN `account`.`pass` ELSE ? END,\n" +
                 "\t`account`.`token` = CASE WHEN ? IS NULL THEN `account`.`token` ELSE ? END\n" +
                 "WHERE `account`.`id_account`=?";
     }
