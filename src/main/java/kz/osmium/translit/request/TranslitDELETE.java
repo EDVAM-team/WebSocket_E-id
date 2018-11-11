@@ -18,6 +18,7 @@ package kz.osmium.translit.request;
 
 import kz.osmium.main.util.HerokuAPI;
 import kz.osmium.main.util.StatusResponse;
+import kz.osmium.main.util.TokenCheck;
 import kz.osmium.translit.statement.DELETEStatement;
 import spark.Request;
 import spark.Response;
@@ -36,9 +37,9 @@ public class TranslitDELETE {
      * @param response
      * @return
      */
-    public static String deleteWord(Request request, Response response) {
+    public static String deleteWord(Connection conn, Request request, Response response) {
 
-        if (request.queryParams("key").equals(HerokuAPI.Translit.key)) {
+        if (TokenCheck.checkTeacher(conn, request.queryParams("token"))) {
 
             if (request.queryParams("cyrl") != null) {
 

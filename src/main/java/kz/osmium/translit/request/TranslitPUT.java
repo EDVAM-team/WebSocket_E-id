@@ -39,7 +39,7 @@ public class TranslitPUT {
      */
     public static String putWord(Connection conn, Request request, Response response) {
 
-        if (TokenCheck.checkTeacher(conn, request.queryParams("key"))) {
+        if (TokenCheck.checkTeacher(conn, request.queryParams("token"))) {
 
             if (request.queryParams("cyrl") != null &&
                     request.queryParams("latn") != null) {
