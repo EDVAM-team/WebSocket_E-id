@@ -28,18 +28,10 @@ public class HerokuAPI {
         /* Ссылка на базу данных. */
         private static URI dbUri;
 
-        /* Пароль для авторизации. */
-        public static String pass;
-
-        /* Ключ для POST запросов. */
-        public static String key;
-
         static {
 
             try {
                 dbUri = new URI(System.getenv("JAWSDB_URL"));
-                pass = System.getenv("PASSWORD_AUTH");
-                key = System.getenv("KEY_AUTH");
             } catch (URISyntaxException e) {
                 e.printStackTrace();
             }
@@ -64,18 +56,10 @@ public class HerokuAPI {
         /* Ссылка на базу данных. */
         private static URI dbUri;
 
-        /* Пароль для авторизации. */
-        public static String pass;
-
-        /* Ключ для POST запросов. */
-        public static String key;
-
         static {
 
             try {
                 dbUri = new URI(System.getenv("JAWSDB_GOLD_URL"));
-                pass = System.getenv("PASSWORD_AUTH");
-                key = System.getenv("KEY_AUTH");
             } catch (URISyntaxException e) {
                 e.printStackTrace();
             }
