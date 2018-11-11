@@ -73,11 +73,11 @@ public class TokenCheck {
                 return resultSet.next();
             } catch (SQLException e) {
 
-                return false;
+                return true;
             }
         } else {
 
-            return true;
+            return false;
         }
     }
 
