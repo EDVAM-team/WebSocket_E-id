@@ -70,17 +70,14 @@ public class TokenCheck {
 
                 ResultSet resultSet = preparedStatement.executeQuery();
 
-                while (resultSet.next())
-                    return true;
+                return resultSet.next();
             } catch (SQLException e) {
 
                 return false;
             }
-
-            return false;
         } else {
 
-            return false;
+            return true;
         }
     }
 
