@@ -19,8 +19,8 @@
             <file pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/request/OquPOST.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="402">
-                    <caret line="421" column="48" lean-forward="true" selection-start-line="419" selection-start-column="20" selection-end-line="421" selection-end-column="48" />
+                  <state relative-caret-position="150">
+                    <caret line="412" selection-start-line="412" selection-end-line="419" selection-end-column="20" />
                     <folding>
                       <element signature="docComment;method#postFaculty#0;class#OquPOST#0" />
                       <element signature="method#postFaculty#0;class#OquPOST#0" />
@@ -270,14 +270,14 @@
           <entry key="PUMPUM" value="20" />
           <entry key="dummy" value="56" />
           <entry key="gradle" value="14" />
-          <entry key="java" value="7328" />
+          <entry key="java" value="7361" />
           <entry key="md" value="25" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="14" />
-          <entry key="JAVA" value="7328" />
+          <entry key="JAVA" value="7361" />
           <entry key="Markdown" value="25" />
           <entry key="PLAIN_TEXT" value="76" />
         </counts>
@@ -299,8 +299,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/main/util/TokenCheck.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-52">
-              <caret line="80" column="9" selection-start-line="80" selection-start-column="9" selection-end-line="80" selection-end-column="9" />
+            <state relative-caret-position="439">
+              <caret line="79" column="25" selection-start-line="79" selection-start-column="25" selection-end-line="79" selection-end-column="25" />
               <folding>
                 <element signature="e#0#2435#0" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -794,8 +794,8 @@
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/request/OquPUT.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/main/Request.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/statement/PUTStatement.java" />
-        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/main/util/TokenCheck.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitPUT.java" />
+        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/main/util/TokenCheck.java" />
       </list>
     </option>
   </component>
@@ -945,7 +945,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="{&#9;null&#9;null" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541947222543" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541947424175" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -1036,7 +1036,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="51" y="27" width="1869" height="1053" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13578889" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1438,8 +1437,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/request/OquPOST.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="421" column="48" lean-forward="true" selection-start-line="419" selection-start-column="20" selection-end-line="421" selection-end-column="48" />
+        <state relative-caret-position="150">
+          <caret line="412" selection-start-line="412" selection-end-line="419" selection-end-column="20" />
           <folding>
             <element signature="docComment;method#postFaculty#0;class#OquPOST#0" />
             <element signature="method#postFaculty#0;class#OquPOST#0" />
@@ -1493,8 +1492,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/main/util/TokenCheck.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-52">
-          <caret line="80" column="9" selection-start-line="80" selection-start-column="9" selection-end-line="80" selection-end-column="9" />
+        <state relative-caret-position="439">
+          <caret line="79" column="25" selection-start-line="79" selection-start-column="25" selection-end-line="79" selection-end-column="25" />
           <folding>
             <element signature="e#0#2435#0" expanded="true" />
             <element signature="imports" expanded="true" />
