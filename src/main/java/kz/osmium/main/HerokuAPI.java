@@ -21,7 +21,7 @@ import java.net.URISyntaxException;
 
 public class HerokuAPI {
 
-    public static class Oqu{
+    public static class Oqu {
 
         /* Ссылка на базу данных. */
         private static URI dbUri;
@@ -48,7 +48,7 @@ public class HerokuAPI {
          * {@link java.sql.DriverManager#getConnection}
          * в {@link Main#main(String[])}
          */
-        public static final String url = "jdbc:mysql://" + dbUri.getHost() + dbUri.getPath();
+        public static final String url = "jdbc:mysql://" + dbUri.getHost() + dbUri.getPath() + "?" + dbUri.getQuery();
 
         /* Логин для подключения к базе данных. */
         public static final String login = dbUri.getUserInfo().split(":")[0];
@@ -57,7 +57,7 @@ public class HerokuAPI {
         public static final String password = dbUri.getUserInfo().split(":")[1];
     }
 
-    public static class Translit{
+    public static class Translit {
 
         /* Ссылка на базу данных. */
         private static URI dbUri;
