@@ -32,27 +32,6 @@ import java.util.ArrayList;
 public class OquGET {
 
     /**
-     * Отправка ключа для редактирования
-     *
-     * @return возвращает список факультетов в JSON.
-     */
-    public static String getAuth(Request request, Response response) {
-
-        if (request.queryParams("pass") != null &&
-                HerokuAPI.Oqu.pass.equals(request.queryParams("pass"))) {
-
-            response.status(200);
-
-            return "{\"key\":" + HerokuAPI.Oqu.key + "}";
-        } else {
-
-            response.status(400);
-
-            return "400 Bad Request";
-        }
-    }
-
-    /**
      * Получает информацию с таблицы "account"
      *
      * @param connection
