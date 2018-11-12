@@ -14,25 +14,18 @@
  * limitations under the License.
  */
 
-package kz.osmium.translit.statement;
+package kz.osmium.translit.objects.gson;
 
-public class GETStatement {
+import com.google.gson.annotations.SerializedName;
 
-    /**
-     * Выводит все слова с таблицы `word`
-     *
-     * @return
-     */
-    public static String getWord() {
-        return "SELECT * FROM `word`";
-    }
+public class Symbol {
+    @SerializedName("cyrl")
+    private final String cyrl;
+    @SerializedName("latn")
+    private final String latn;
 
-    /**
-     * Выводит все символы с таблицы `symbol`
-     *
-     * @return
-     */
-    public static String getSymbol() {
-        return "SELECT * FROM `symbol`";
+    public Symbol(String cyrl, String latn) {
+        this.cyrl = cyrl;
+        this.latn = latn;
     }
 }

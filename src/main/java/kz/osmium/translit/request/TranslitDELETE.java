@@ -92,4 +92,67 @@ public class TranslitDELETE {
             return StatusResponse.error;
         }
     }
+
+    /**
+     * Удаляет символ в таблице `symbol`
+     *
+     * @param request
+     * @param response
+     * @return
+     */
+    public static String deleteSymbol(Connection conn, Request request, Response response) {
+
+        if (TokenCheck.checkTeacher(conn, request.queryParams("token"))) {
+
+            if (request.queryParams("cyrl") != null) {
+
+                try {
+                    Connection connection = DriverManager.getConnection(
+                            HerokuAPI.Translit.url,
+                            HerokuAPI.Translit.login,
+                            HerokuAPI.Translit.password
+                    );
+
+                    try {
+                        PreparedStatement preparedStatement = connection.prepareStatement(DELETEStatement.deleteSymbol());
+
+                        preparedStatement.setString(1, request.queryParams("cyrl"));
+                        preparedStatement.execute();
+
+                        response.status(200);
+                    } catch (SQLException | NumberFormatException e) {
+
+                        response.status(409);
+
+                        return StatusResponse.conflict;
+                    } finally {
+
+                        try {
+
+                            connection.close();
+                        } catch (SQLException | NullPointerException e) {
+
+                        }
+                    }
+
+                    return StatusResponse.success;
+                } catch (SQLException e) {
+
+                    response.status(500);
+
+                    return StatusResponse.internal_server_error;
+                }
+            } else {
+
+                response.status(400);
+
+                return StatusResponse.error;
+            }
+        } else {
+
+            response.status(401);
+
+            return StatusResponse.error;
+        }
+    }
 }

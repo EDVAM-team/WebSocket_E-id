@@ -20,6 +20,7 @@ import com.google.gson.Gson;
 import kz.osmium.main.util.HerokuAPI;
 import kz.osmium.main.util.StatusResponse;
 import kz.osmium.translit.objects.Translit;
+import kz.osmium.translit.objects.gson.Symbol;
 import kz.osmium.translit.objects.gson.Word;
 import kz.osmium.translit.statement.GETStatement;
 import spark.Request;
@@ -87,6 +88,57 @@ public class TranslitGET {
 
                 while (resultSet.next())
                     wordArrayList.add(new Word(
+                            resultSet.getString("cyrl"),
+                            resultSet.getString("latn")
+                    ));
+
+                response.status(200);
+
+                return new Gson().toJson(wordArrayList);
+            } catch (SQLException e) {
+
+                response.status(409);
+
+                return StatusResponse.conflict;
+            } finally {
+
+                try {
+
+                    connection.close();
+                } catch (SQLException | NullPointerException e) {
+
+                }
+            }
+        } catch (SQLException e) {
+
+            response.status(500);
+
+            return StatusResponse.internal_server_error;
+        }
+    }
+
+    /**
+     * Выводит все символы с таблицы `symbol`
+     *
+     * @param response
+     * @return
+     */
+    public static String getSymbol(Response response) {
+
+        try {
+            Connection connection = DriverManager.getConnection(
+                    HerokuAPI.Translit.url,
+                    HerokuAPI.Translit.login,
+                    HerokuAPI.Translit.password
+            );
+
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getSymbol());
+                ResultSet resultSet = preparedStatement.executeQuery();
+                ArrayList<Symbol> wordArrayList = new ArrayList<>();
+
+                while (resultSet.next())
+                    wordArrayList.add(new Symbol(
                             resultSet.getString("cyrl"),
                             resultSet.getString("latn")
                     ));

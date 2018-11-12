@@ -26,4 +26,13 @@ public class POSTStatement {
     public static String postWord() {
         return "INSERT INTO `word` (`word`.`cyrl`, `word`.`latn`) VALUES (?, ?)";
     }
+
+    /**
+     * Создает символ в таблице `symbol`
+     *
+     * @return
+     */
+    public static String postSymbol() {
+        return "INSERT INTO `symbol` (`symbol`.`cyrl`, `symbol`.`latn`) VALUES (?, ?)";
+    }
 }

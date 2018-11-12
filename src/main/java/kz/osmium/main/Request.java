@@ -351,6 +351,23 @@ public class Request {
                         return "404 Not Found";
                     }
                 }));
+
+        /*
+         * Вывод символа казахского языка в транслитизации.
+         *
+         * https://*.example.com/api/symbol
+         */
+        path("/api", () ->
+                get("/symbol", "application/json", (request, response) -> {
+                    if (HerokuDomain.getDomainTranslit(request.host()))
+                        return TranslitGET.getSymbol(response);
+                    else {
+
+                        response.status(404);
+
+                        return "404 Not Found";
+                    }
+                }));
     }
 
     /**
@@ -602,7 +619,7 @@ public class Request {
 //                ));
 
         /*
-         * Создает исключающие слово казахского слово на латинском.
+         * Создает исключающие слово казахского слово на латинице.
          *
          * https://*.example.com/api/word
          * & token = <String>
@@ -613,6 +630,27 @@ public class Request {
                 post("/word", (request, response) -> {
                             if (HerokuDomain.getDomainTranslit(request.host()))
                                 return TranslitPOST.postWord(connection, request, response);
+                            else {
+
+                                response.status(404);
+
+                                return "404 Not Found";
+                            }
+                        }
+                ));
+
+        /*
+         * Создает казахский символ на латинице.
+         *
+         * https://*.example.com/api/symbol
+         * & token = <String>
+         * & cyrl = <String>
+         * & latn = <String>
+         */
+        path("/api", () ->
+                post("/symbol", (request, response) -> {
+                            if (HerokuDomain.getDomainTranslit(request.host()))
+                                return TranslitPOST.postSymbol(connection, request, response);
                             else {
 
                                 response.status(404);
@@ -950,6 +988,27 @@ public class Request {
                             }
                         }
                 ));
+
+        /*
+         * Изменяет символ в базе данных
+         *
+         * https://*.example.com/api/symbol ?
+         * & token = <String>
+         * & cyrl = <String>
+         * & latn = <String>
+         */
+        path("/api", () ->
+                put("/symbol", "application/json", (request, response) -> {
+                            if (HerokuDomain.getDomainTranslit(request.host()))
+                                return TranslitPUT.putSymbol(connection, request, response);
+                            else {
+
+                                response.status(404);
+
+                                return "404 Not Found";
+                            }
+                        }
+                ));
     }
 
     /**
@@ -988,6 +1047,26 @@ public class Request {
                 delete("/word", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainTranslit(request.host()))
                                 return TranslitDELETE.deleteWord(connection, request, response);
+                            else {
+
+                                response.status(404);
+
+                                return "404 Not Found";
+                            }
+                        }
+                ));
+
+        /*
+         * Удаляет символ с базы данных.
+         *
+         * https://*.example.com/api/symbol ?
+         * & token = <String>
+         * & cyrl = <String>
+         */
+        path("/api", () ->
+                delete("/symbol", "application/json", (request, response) -> {
+                            if (HerokuDomain.getDomainTranslit(request.host()))
+                                return TranslitDELETE.deleteSymbol(connection, request, response);
                             else {
 
                                 response.status(404);

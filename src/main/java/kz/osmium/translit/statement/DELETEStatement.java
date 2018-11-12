@@ -10,4 +10,13 @@ public class DELETEStatement {
     public static String deleteWord() {
         return "DELETE FROM `word` WHERE `word`.`cyrl`=?";
     }
+
+    /**
+     * Удаляет символ с таблицы `symbol`
+     *
+     * @return
+     */
+    public static String deleteSymbol() {
+        return "DELETE FROM `symbol` WHERE `symbol`.`cyrl`=?";
+    }
 }
