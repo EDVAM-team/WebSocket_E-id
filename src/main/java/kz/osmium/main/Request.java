@@ -38,15 +38,6 @@ public class Request {
     public static void getAPI(Connection connection) {
 
         /*
-         * Получить ключ.
-         *
-         * https://*.example.com/api/auth ?
-         * & pass = <String>
-         */
-        path("/api", () ->
-                get("/auth", "application/json", OquGET::getAuth));
-
-        /*
          * Авторизовать приложение.
          *
          * https://*.example.com/api/account ?
