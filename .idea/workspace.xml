@@ -28,8 +28,8 @@
             <file pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/account/statement/PUTStatement.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="360">
-                    <caret line="29" column="42" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="43" />
+                  <state relative-caret-position="472">
+                    <caret line="33" column="46" lean-forward="true" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
                   </state>
                 </provider>
               </entry>
@@ -231,7 +231,7 @@
           <entry key="gitignore" value="1" />
           <entry key="gradle" value="12" />
           <entry key="gradlew" value="5" />
-          <entry key="java" value="395" />
+          <entry key="java" value="396" />
           <entry key="md" value="2" />
         </counts>
       </usages-collector>
@@ -239,7 +239,7 @@
         <counts>
           <entry key="CLASS" value="3" />
           <entry key="Groovy" value="12" />
-          <entry key="JAVA" value="395" />
+          <entry key="JAVA" value="396" />
           <entry key="Markdown" value="2" />
           <entry key="PLAIN_TEXT" value="18" />
         </counts>
@@ -249,14 +249,14 @@
           <entry key="PUMPUM" value="20" />
           <entry key="dummy" value="115" />
           <entry key="gradle" value="14" />
-          <entry key="java" value="8717" />
+          <entry key="java" value="8730" />
           <entry key="md" value="25" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="14" />
-          <entry key="JAVA" value="8717" />
+          <entry key="JAVA" value="8730" />
           <entry key="Markdown" value="25" />
           <entry key="PLAIN_TEXT" value="135" />
         </counts>
@@ -269,8 +269,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/account/request/AccountPOST.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="511">
-              <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+            <state relative-caret-position="420">
+              <caret line="41" column="75" lean-forward="true" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="75" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -296,11 +296,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/account/request/AccountDELETE.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="122" column="16" lean-forward="true" selection-start-line="122" selection-start-column="16" selection-end-line="122" selection-end-column="16" />
+            <state relative-caret-position="357">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/account/request/AccountPUT.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1176">
+              <caret line="78" column="86" lean-forward="true" selection-start-line="78" selection-start-column="86" selection-end-line="78" selection-end-column="86" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -756,7 +768,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/DELETETranslit.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/PUTTranslit.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/main/StatusResponse.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
@@ -807,6 +818,7 @@
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/account/statement/PUTStatement.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/account/main/AccountRequest.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/account/request/AccountDELETE.java" />
+        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/account/request/AccountPUT.java" />
       </list>
     </option>
   </component>
@@ -1063,7 +1075,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="{&#9;null&#9;null" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542298075784" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542298358272" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -1157,6 +1169,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="51" y="27" width="1869" height="1053" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22484882" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1353,13 +1366,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="411">
           <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/account/request/AccountPUT.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -1677,27 +1683,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/account/request/AccountPOST.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/account/statement/PUTStatement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+        <state relative-caret-position="472">
+          <caret line="33" column="46" lean-forward="true" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/account/request/AccountDELETE.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/account/statement/PUTStatement.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/account/request/AccountPOST.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="29" column="42" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="43" />
+        <state relative-caret-position="420">
+          <caret line="41" column="75" lean-forward="true" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="75" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/account/request/AccountDELETE.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/account/request/AccountPUT.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="122" column="16" lean-forward="true" selection-start-line="122" selection-start-column="16" selection-end-line="122" selection-end-column="16" />
+        <state relative-caret-position="1176">
+          <caret line="78" column="86" lean-forward="true" selection-start-line="78" selection-start-column="86" selection-end-line="78" selection-end-column="86" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -18,14 +18,13 @@ package kz.osmium.account.main;
 
 import kz.osmium.account.request.AccountGET;
 import kz.osmium.account.request.AccountPOST;
+import kz.osmium.account.request.AccountPUT;
 import kz.osmium.main.util.HerokuDomain;
 
 import java.sql.Connection;
 import java.util.HashMap;
 
-import static spark.Spark.get;
-import static spark.Spark.path;
-import static spark.Spark.post;
+import static spark.Spark.*;
 
 public class AccountRequest {
 
@@ -106,6 +105,35 @@ public class AccountRequest {
      */
     private static void putAPI(HashMap<String, Connection> connection) {
 
+        /*
+         * Изменить аккаунт.
+         *
+         * https://*.example.com/api/account ?
+         * & token = <String>
+         * & id_account = <Integer>
+         * [-] & f_name = <String>
+         * [-] & login = <String>
+         * [-] & pass = <String>
+         * - & type = <Integer>
+         * - & id_group = <Integer>
+         * - & l_name = <String>
+         * - & patronymic = <String>
+         * - & phone = <String>
+         * - & email = <String>
+         * - & id_room = <Integer>
+         */
+        path("/api", () ->
+                put("/account", "application/json", (request, response) -> {
+                            if (HerokuDomain.getDomainAccount(request.host()))
+                                return AccountPUT.putAccount(connection, request, response);
+                            else {
+
+                                response.status(404);
+
+                                return "404 Not Found";
+                            }
+                        }
+                ));
     }
 
     /**
