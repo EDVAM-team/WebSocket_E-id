@@ -80,8 +80,8 @@ public class AccountRequest {
          * & type = <Integer>
          * & login = <String>
          * & pass = <String>
-         * - & l_name = <String>
-         * - & patronymic = <String>
+         * & l_name = <String>
+         * & patronymic = <String>
          * - & phone = <String>
          * - & email = <String>
          * - & id_group = <Integer>

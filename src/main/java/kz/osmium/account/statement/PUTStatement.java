@@ -17,4 +17,25 @@
 package kz.osmium.account.statement;
 
 public class PUTStatement {
+
+    /**
+     * Вносит изменения в аккаунте.
+     * Используется таблица "account"
+     *
+     * @return
+     */
+    public static String putAccount(){
+        return "UPDATE `account`\n" +
+                "SET `account`.`type` = ?,\n" +
+                "\t`account`.`id_group` = ?,\n" +
+                "\t`account`.`f_name` = CASE WHEN ? IS NULL THEN `account`.`f_name` ELSE ? END,\n" +
+                "\t`account`.`l_name` = CASE WHEN ? IS NULL THEN `account`.`l_name` ELSE ? END,\n" +
+                "\t`account`.`patronymic` = CASE WHEN ? IS NULL THEN `account`.`patronymic` ELSE ? END,\n" +
+                "\t`account`.`phone` = ?,\n" +
+                "\t`account`.`email` = ?,\n" +
+                "\t`account`.`id_room` = ?,\n" +
+                "\t`account`.`login` = CASE WHEN ? IS NULL THEN `account`.`login` ELSE ? END,\n" +
+                "\t`account`.`pass` = CASE WHEN ? IS NULL THEN `account`.`pass` ELSE ? END\n" +
+                "WHERE `account`.`id_account`=?";
+    }
 }
