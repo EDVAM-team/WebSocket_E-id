@@ -14,24 +14,49 @@
  * limitations under the License.
  */
 
-package kz.osmium.main;
-
-import kz.osmium.account.main.AccountRequest;
-import kz.osmium.oqu.main.OquRequest;
-import kz.osmium.translit.main.TranslitRequest;
+package kz.osmium.account.main;
 
 import java.sql.Connection;
 import java.util.HashMap;
 
-public class Request {
+public class AccountRequest {
 
     /**
-     * Все запросы WebSocket'а
+     * Делается связь с API Account
      */
     public static void connectAPI(HashMap<String, Connection> connection){
 
-        AccountRequest.connectAPI(connection);
-        OquRequest.connectAPI(connection);
-        TranslitRequest.connectAPI(connection);
+        getAPI(connection);
+        postAPI(connection);
+        putAPI(connection);
+        deleteAPI(connection);
+    }
+
+    /**
+     * GET запросы.
+     */
+    private static void getAPI(HashMap<String, Connection> connection) {
+
+    }
+
+    /**
+     * POST запросы.
+     */
+    private static void postAPI(HashMap<String, Connection> connection) {
+
+    }
+
+    /**
+     * PUT запросы.
+     */
+    private static void putAPI(HashMap<String, Connection> connection) {
+
+    }
+
+    /**
+     * DELETE запросы.
+     */
+    private static void deleteAPI(HashMap<String, Connection> connection) {
+
     }
 }

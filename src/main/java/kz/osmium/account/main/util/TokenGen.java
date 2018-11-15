@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package kz.osmium.main.util;
+package kz.osmium.account.main.util;
 
 public class TokenGen {
 
-    private static final int MAX_SIZE = 25;
+    private static final int MAX_SIZE = 35;
     private static final String DIGITS = "0123456789";
     private static final char[] digit = DIGITS.toCharArray();
     private static final String LOWERCASE = "abcdefghijklmnopqrstuvwxyz";

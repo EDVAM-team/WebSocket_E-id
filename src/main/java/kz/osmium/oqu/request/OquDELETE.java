@@ -16,7 +16,6 @@
 
 package kz.osmium.oqu.request;
 
-import kz.osmium.main.util.HerokuAPI;
 import kz.osmium.main.util.StatusResponse;
 import kz.osmium.main.util.TokenCheck;
 import kz.osmium.oqu.statement.DELETEStatement;
@@ -26,6 +25,7 @@ import spark.Response;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 public class OquDELETE {
 
@@ -35,14 +35,14 @@ public class OquDELETE {
      * @param connection
      * @return возвращает список конкретных специальностей в JSON.
      */
-    public static String deleteCurator(Connection connection, Request request, Response response) {
+    public static String deleteCurator(HashMap<String, Connection> connection, Request request, Response response) {
 
         if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
             if (request.queryParams("group") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(DELETEStatement.deleteCurator());
+                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(DELETEStatement.deleteCurator());
 
                     preparedStatement.setInt(1, Integer.parseInt(request.queryParams("group")));
 
@@ -53,21 +53,21 @@ public class OquDELETE {
 
                     response.status(400);
 
-                    return StatusResponse.error;
+                    return StatusResponse.ERROR;
                 }
 
-                return StatusResponse.success;
+                return StatusResponse.SUCCESS;
             } else {
 
                 response.status(400);
 
-                return StatusResponse.error;
+                return StatusResponse.ERROR;
             }
         } else {
 
             response.status(401);
 
-            return StatusResponse.error;
+            return StatusResponse.ERROR;
         }
     }
 }

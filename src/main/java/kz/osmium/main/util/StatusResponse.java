@@ -18,18 +18,18 @@ package kz.osmium.main.util;
 
 public class StatusResponse {
 
-    /* Статус JSON успешной операции */
-    public static final String success = "{\"status\":\"SUCCESS\"}";
+    /* Статус JSON успешной операции. CODE 200 */
+    public static final String SUCCESS = "{\"status\":\"SUCCESS\"}";
 
-    /* Статус JSON ошибочной операции */
-    public static final String error = "{\"status\":\"ERROR\"}";
+    /* Статус JSON ошибочной операции. CODE 404 */
+    public static final String ERROR = "{\"status\":\"ERROR\"}";
 
-    /* Статус JSON конфликтной операции */
-    public static final String conflict = "{\"status\":\"CONFLICT\"}";
+    /* Статус JSON конфликтной операции. CODE 409 */
+    public static final String CONFLICT = "{\"status\":\"CONFLICT\"}";
 
-    /* Статус JSON серверной ошибки операции */
-    public static final String internal_server_error  = "{\"status\":\"INTERNAL SERVER ERROR\"}";
+    /* Статус JSON серверной ошибки операции. CODE 500 */
+    public static final String INTERNAL_SERVER_ERROR = "{\"status\":\"INTERNAL SERVER ERROR\"}";
 
-    /* Статус JSON когда нет содержимого */
-    public static final String no_content = "{\"status\":\"NO CONTENT\"}";
+    /* Статус JSON когда нет содержимого. CODE 204 */
+    public static final String NO_CONTENT = "{\"status\":\"NO CONTENT\"}";
 }

@@ -16,7 +16,6 @@
 
 package kz.osmium.translit.request;
 
-import kz.osmium.main.util.HerokuAPI;
 import kz.osmium.main.util.StatusResponse;
 import kz.osmium.main.util.TokenCheck;
 import kz.osmium.translit.statement.DELETEStatement;
@@ -24,9 +23,9 @@ import spark.Request;
 import spark.Response;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 public class TranslitDELETE {
 
@@ -37,21 +36,14 @@ public class TranslitDELETE {
      * @param response
      * @return
      */
-    public static String deleteWord(Connection conn, Request request, Response response) {
+    public static String deleteWord(HashMap<String, Connection> connection, Request request, Response response) {
 
-        if (TokenCheck.checkTeacher(conn, request.queryParams("token"))) {
+        if (TokenCheck.checkTeacher(connection, request.queryParams("token"))) {
 
             if (request.queryParams("cyrl") != null) {
 
-                try {
-                    Connection connection = DriverManager.getConnection(
-                            HerokuAPI.Translit.url,
-                            HerokuAPI.Translit.login,
-                            HerokuAPI.Translit.password
-                    );
-
                     try {
-                        PreparedStatement preparedStatement = connection.prepareStatement(DELETEStatement.deleteWord());
+                        PreparedStatement preparedStatement = connection.get("translit").prepareStatement(DELETEStatement.deleteWord());
 
                         preparedStatement.setString(1, request.queryParams("cyrl"));
                         preparedStatement.execute();
@@ -61,35 +53,21 @@ public class TranslitDELETE {
 
                         response.status(409);
 
-                        return StatusResponse.conflict;
-                    } finally {
-
-                        try {
-
-                            connection.close();
-                        } catch (SQLException | NullPointerException e) {
-
-                        }
+                        return StatusResponse.CONFLICT;
                     }
 
-                    return StatusResponse.success;
-                } catch (SQLException e) {
-
-                    response.status(500);
-
-                    return StatusResponse.internal_server_error;
-                }
+                    return StatusResponse.SUCCESS;
             } else {
 
                 response.status(400);
 
-                return StatusResponse.error;
+                return StatusResponse.ERROR;
             }
         } else {
 
             response.status(401);
 
-            return StatusResponse.error;
+            return StatusResponse.ERROR;
         }
     }
 
@@ -100,21 +78,14 @@ public class TranslitDELETE {
      * @param response
      * @return
      */
-    public static String deleteSymbol(Connection conn, Request request, Response response) {
+    public static String deleteSymbol(HashMap<String, Connection> connection, Request request, Response response) {
 
-        if (TokenCheck.checkTeacher(conn, request.queryParams("token"))) {
+        if (TokenCheck.checkTeacher(connection, request.queryParams("token"))) {
 
             if (request.queryParams("cyrl") != null) {
 
-                try {
-                    Connection connection = DriverManager.getConnection(
-                            HerokuAPI.Translit.url,
-                            HerokuAPI.Translit.login,
-                            HerokuAPI.Translit.password
-                    );
-
                     try {
-                        PreparedStatement preparedStatement = connection.prepareStatement(DELETEStatement.deleteSymbol());
+                        PreparedStatement preparedStatement = connection.get("translit").prepareStatement(DELETEStatement.deleteSymbol());
 
                         preparedStatement.setString(1, request.queryParams("cyrl"));
                         preparedStatement.execute();
@@ -124,35 +95,22 @@ public class TranslitDELETE {
 
                         response.status(409);
 
-                        return StatusResponse.conflict;
-                    } finally {
-
-                        try {
-
-                            connection.close();
-                        } catch (SQLException | NullPointerException e) {
-
-                        }
+                        return StatusResponse.CONFLICT;
                     }
 
-                    return StatusResponse.success;
-                } catch (SQLException e) {
+                    return StatusResponse.SUCCESS;
 
-                    response.status(500);
-
-                    return StatusResponse.internal_server_error;
-                }
             } else {
 
                 response.status(400);
 
-                return StatusResponse.error;
+                return StatusResponse.ERROR;
             }
         } else {
 
             response.status(401);
 
-            return StatusResponse.error;
+            return StatusResponse.ERROR;
         }
     }
 }

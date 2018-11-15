@@ -20,8 +20,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.HashMap;
 
 public class TokenCheck {
 
@@ -32,12 +31,12 @@ public class TokenCheck {
      * @param token
      * @return
      */
-    public static boolean checkAdmin(Connection connection, String token) {
+    public static boolean checkAdmin(HashMap<String, Connection> connection, String token) {
 
         if (token != null) {
 
             try {
-                PreparedStatement preparedStatement = connection.prepareStatement(SQLStatement.admin());
+                PreparedStatement preparedStatement = connection.get("account").prepareStatement(SQLStatement.admin());
 
                 preparedStatement.setString(1, token);
 
@@ -61,12 +60,12 @@ public class TokenCheck {
      * @param token
      * @return
      */
-    public static boolean checkTeacher(Connection connection, String token) {
+    public static boolean checkTeacher(HashMap<String, Connection> connection, String token) {
 
         if (token != null) {
 
             try {
-                PreparedStatement preparedStatement = connection.prepareStatement(SQLStatement.teacher());
+                PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(SQLStatement.teacher());
 
                 preparedStatement.setString(1, token);
 
@@ -90,12 +89,12 @@ public class TokenCheck {
      * @param token
      * @return
      */
-    public static boolean checkAccount(Connection connection, String token, int idAccount) {
+    public static boolean checkAccount(HashMap<String, Connection> connection, String token, int idAccount) {
 
         if (token != null) {
 
             try {
-                PreparedStatement preparedStatement = connection.prepareStatement(SQLStatement.account());
+                PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(SQLStatement.account());
 
                 preparedStatement.setInt(1, idAccount);
                 preparedStatement.setString(2, token);

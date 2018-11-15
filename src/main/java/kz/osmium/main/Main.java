@@ -21,13 +21,14 @@ import kz.osmium.main.util.HerokuAPI;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 import static spark.Spark.*;
 
 public class Main {
 
     /* Подключается к базе данных. */
-    private static Connection connection;
+    private static HashMap<String, Connection> connection = new HashMap<>();
 
     /**
      * Запускает WebSocket
@@ -51,17 +52,8 @@ public class Main {
 //        staticFiles.location("/public");
 //        post("/", ((request, response) -> request.body()));
 
-        /* GET запросы */
-        Request.getAPI(connection);
-
-        /* POST запросы */
-        Request.postAPI(connection);
-
-        /* PUT запросы */
-        Request.putAPI(connection);
-
-        /* DELETE запросы */
-        Request.deleteAPI(connection);
+        /* Соединение со всеми API WebSocket'а */
+        Request.connectAPI(connection);
     }
 
     /**
@@ -70,10 +62,29 @@ public class Main {
     private static void connectDB() {
 
         try {
-            connection = DriverManager.getConnection(
-                    HerokuAPI.Oqu.url,
-                    HerokuAPI.Oqu.login,
-                    HerokuAPI.Oqu.password
+            connection.put(
+                    "account",
+                    DriverManager.getConnection(
+                            HerokuAPI.Account.url,
+                            HerokuAPI.Account.login,
+                            HerokuAPI.Account.password
+                    )
+            );
+            connection.put(
+                    "oqu",
+                    DriverManager.getConnection(
+                            HerokuAPI.Oqu.url,
+                            HerokuAPI.Oqu.login,
+                            HerokuAPI.Oqu.password
+                    )
+            );
+            connection.put(
+                    "translit",
+                    DriverManager.getConnection(
+                            HerokuAPI.Translit.url,
+                            HerokuAPI.Translit.login,
+                            HerokuAPI.Translit.password
+                    )
             );
         } catch (SQLException e) {
 

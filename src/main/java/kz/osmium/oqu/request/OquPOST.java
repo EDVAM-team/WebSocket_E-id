@@ -18,9 +18,8 @@ package kz.osmium.oqu.request;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import kz.osmium.main.util.HerokuAPI;
 import kz.osmium.main.util.TokenCheck;
-import kz.osmium.main.util.TokenGen;
+import kz.osmium.account.main.util.TokenGen;
 import kz.osmium.main.util.StatusResponse;
 import kz.osmium.oqu.gson.MarkJSON;
 import kz.osmium.oqu.statement.GETStatement;
@@ -31,6 +30,7 @@ import spark.Response;
 import java.lang.reflect.Type;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class OquPOST {
@@ -42,14 +42,14 @@ public class OquPOST {
      * @param connection
      * @return
      */
-    public static String postFaculty(Connection connection, Request request, Response response) {
+    public static String postFaculty(HashMap<String, Connection> connection, Request request, Response response) {
 
         if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
             if (request.queryParams("name") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postFaculty());
+                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(POSTStatement.postFaculty());
 
                     preparedStatement.setString(1, request.queryParams("name"));
                     preparedStatement.execute();
@@ -59,21 +59,21 @@ public class OquPOST {
 
                     response.status(400);
 
-                    return StatusResponse.error;
+                    return StatusResponse.ERROR;
                 }
 
-                return StatusResponse.success;
+                return StatusResponse.SUCCESS;
             } else {
 
                 response.status(400);
 
-                return StatusResponse.error;
+                return StatusResponse.ERROR;
             }
         } else {
 
             response.status(401);
 
-            return StatusResponse.error;
+            return StatusResponse.ERROR;
         }
     }
 
@@ -84,7 +84,7 @@ public class OquPOST {
      * @param connection
      * @return
      */
-    public static String postSpecialty(Connection connection, Request request, Response response) {
+    public static String postSpecialty(HashMap<String, Connection> connection, Request request, Response response) {
 
         if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
@@ -92,7 +92,7 @@ public class OquPOST {
                     request.queryParams("id_faculty") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postSpecialty());
+                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(POSTStatement.postSpecialty());
 
                     preparedStatement.setString(1, request.queryParams("name"));
                     preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_faculty")));
@@ -103,21 +103,21 @@ public class OquPOST {
 
                     response.status(400);
 
-                    return StatusResponse.error;
+                    return StatusResponse.ERROR;
                 }
 
-                return StatusResponse.success;
+                return StatusResponse.SUCCESS;
             } else {
 
                 response.status(400);
 
-                return StatusResponse.error;
+                return StatusResponse.ERROR;
             }
         } else {
 
             response.status(401);
 
-            return StatusResponse.error;
+            return StatusResponse.ERROR;
         }
     }
 
@@ -128,7 +128,7 @@ public class OquPOST {
      * @param connection
      * @return
      */
-    public static String postGroup(Connection connection, Request request, Response response) {
+    public static String postGroup(HashMap<String, Connection> connection, Request request, Response response) {
 
         if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
@@ -136,7 +136,7 @@ public class OquPOST {
                     request.queryParams("id_specialty") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postGroup());
+                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(POSTStatement.postGroup());
 
                     preparedStatement.setString(1, request.queryParams("name"));
                     preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_specialty")));
@@ -147,21 +147,21 @@ public class OquPOST {
 
                     response.status(400);
 
-                    return StatusResponse.error;
+                    return StatusResponse.ERROR;
                 }
 
-                return StatusResponse.success;
+                return StatusResponse.SUCCESS;
             } else {
 
                 response.status(400);
 
-                return StatusResponse.error;
+                return StatusResponse.ERROR;
             }
         } else {
 
             response.status(401);
 
-            return StatusResponse.error;
+            return StatusResponse.ERROR;
         }
     }
 
@@ -172,7 +172,7 @@ public class OquPOST {
      * @param connection
      * @return
      */
-    public static String postCurator(Connection connection, Request request, Response response) {
+    public static String postCurator(HashMap<String, Connection> connection, Request request, Response response) {
 
         if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
@@ -180,7 +180,7 @@ public class OquPOST {
                     request.queryParams("teacher") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postCurator());
+                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(POSTStatement.postCurator());
 
                     preparedStatement.setInt(1, Integer.parseInt(request.queryParams("group")));
                     preparedStatement.setInt(2, Integer.parseInt(request.queryParams("teacher")));
@@ -191,21 +191,21 @@ public class OquPOST {
 
                     response.status(400);
 
-                    return StatusResponse.error;
+                    return StatusResponse.ERROR;
                 }
 
-                return StatusResponse.success;
+                return StatusResponse.SUCCESS;
             } else {
 
                 response.status(400);
 
-                return StatusResponse.error;
+                return StatusResponse.ERROR;
             }
         } else {
 
             response.status(401);
 
-            return StatusResponse.error;
+            return StatusResponse.ERROR;
         }
     }
 
@@ -216,14 +216,14 @@ public class OquPOST {
      * @param connection
      * @return
      */
-    public static String postRoom(Connection connection, Request request, Response response) {
+    public static String postRoom(HashMap<String, Connection> connection, Request request, Response response) {
 
         if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
             if (request.queryParams("name") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postRoom());
+                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(POSTStatement.postRoom());
 
                     preparedStatement.setString(1, request.queryParams("name"));
                     preparedStatement.execute();
@@ -233,21 +233,21 @@ public class OquPOST {
 
                     response.status(400);
 
-                    return StatusResponse.error;
+                    return StatusResponse.ERROR;
                 }
 
-                return StatusResponse.success;
+                return StatusResponse.SUCCESS;
             } else {
 
                 response.status(400);
 
-                return StatusResponse.error;
+                return StatusResponse.ERROR;
             }
         } else {
 
             response.status(401);
 
-            return StatusResponse.error;
+            return StatusResponse.ERROR;
         }
     }
 
@@ -258,7 +258,7 @@ public class OquPOST {
      * @param connection
      * @return
      */
-    public static String postRating(Connection connection, Request request, Response response) {
+    public static String postRating(HashMap<String, Connection> connection, Request request, Response response) {
 
         if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
@@ -267,7 +267,7 @@ public class OquPOST {
                     request.queryParams("num") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postRating());
+                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(POSTStatement.postRating());
 
                     preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_subject")));
                     preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_account")));
@@ -279,21 +279,21 @@ public class OquPOST {
 
                     response.status(400);
 
-                    return StatusResponse.error;
+                    return StatusResponse.ERROR;
                 }
 
-                return StatusResponse.success;
+                return StatusResponse.SUCCESS;
             } else {
 
                 response.status(400);
 
-                return StatusResponse.error;
+                return StatusResponse.ERROR;
             }
         } else {
 
             response.status(401);
 
-            return StatusResponse.error;
+            return StatusResponse.ERROR;
         }
     }
 
@@ -304,7 +304,7 @@ public class OquPOST {
      * @param connection
      * @return
      */
-    public static String postMark(Connection connection, Request request, Response response) {
+    public static String postMark(HashMap<String, Connection> connection, Request request, Response response) {
 
         if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
@@ -316,7 +316,7 @@ public class OquPOST {
                     ArrayList<MarkJSON> list = new Gson().fromJson(request.body(), type);
 
                     for (MarkJSON markJSON : list) {
-                        PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getRatingCurrent());
+                        PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(GETStatement.getRatingCurrent());
 
                         preparedStatement.setInt(1, markJSON.getIdAccount());
                         preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_subject")));
@@ -324,7 +324,7 @@ public class OquPOST {
                         ResultSet resultSet = preparedStatement.executeQuery();
 
                         while (resultSet.next()) {
-                            PreparedStatement preparedStatement2 = connection.prepareStatement(POSTStatement.postMark());
+                            PreparedStatement preparedStatement2 = connection.get("oqu").prepareStatement(POSTStatement.postMark());
 
                             preparedStatement2.setInt(1, resultSet.getInt("id_rating"));
                             preparedStatement2.setInt(2, markJSON.getN());
@@ -338,21 +338,21 @@ public class OquPOST {
 
                     response.status(400);
 
-                    return StatusResponse.error;
+                    return StatusResponse.ERROR;
                 }
 
-                return StatusResponse.success;
+                return StatusResponse.SUCCESS;
             } else {
 
                 response.status(400);
 
-                return StatusResponse.error;
+                return StatusResponse.ERROR;
             }
         } else {
 
             response.status(401);
 
-            return StatusResponse.error;
+            return StatusResponse.ERROR;
         }
     }
 
@@ -363,7 +363,7 @@ public class OquPOST {
      * @param connection
      * @return
      */
-    public static String postAccount(Connection connection, Request request, Response response) {
+    public static String postAccount(HashMap<String, Connection> connection, Request request, Response response) {
 
         if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
@@ -373,7 +373,7 @@ public class OquPOST {
                     request.queryParams("pass") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postAccount());
+                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(POSTStatement.postAccount());
 
                     preparedStatement.setString(1, request.queryParams("name"));
                     preparedStatement.setInt(2, Integer.parseInt(request.queryParams("t")));
@@ -420,21 +420,21 @@ public class OquPOST {
 
                     response.status(400);
 
-                    return StatusResponse.error;
+                    return StatusResponse.ERROR;
                 }
 
-                return StatusResponse.success;
+                return StatusResponse.SUCCESS;
             } else {
 
                 response.status(400);
 
-                return StatusResponse.error;
+                return StatusResponse.ERROR;
             }
         } else {
 
             response.status(401);
 
-            return StatusResponse.error;
+            return StatusResponse.ERROR;
         }
     }
 
@@ -445,14 +445,14 @@ public class OquPOST {
      * @param connection
      * @return
      */
-    public static String postSubjectItem(Connection connection, Request request, Response response) {
+    public static String postSubjectItem(HashMap<String, Connection> connection, Request request, Response response) {
         
         if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
             if (request.queryParams("name") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postItemSubject());
+                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(POSTStatement.postItemSubject());
 
                     preparedStatement.setString(1, request.queryParams("name"));
                     preparedStatement.execute();
@@ -462,21 +462,21 @@ public class OquPOST {
 
                     response.status(400);
 
-                    return StatusResponse.error;
+                    return StatusResponse.ERROR;
                 }
 
-                return StatusResponse.success;
+                return StatusResponse.SUCCESS;
             } else {
 
                 response.status(400);
 
-                return StatusResponse.error;
+                return StatusResponse.ERROR;
             }
         } else {
 
             response.status(401);
 
-            return StatusResponse.error;
+            return StatusResponse.ERROR;
         }
     }
 
@@ -488,7 +488,7 @@ public class OquPOST {
      * @param connection
      * @return
      */
-    public static String postChange(Connection connection, Request request, Response response) {
+    public static String postChange(HashMap<String, Connection> connection, Request request, Response response) {
 
         if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
@@ -497,7 +497,7 @@ public class OquPOST {
                     request.queryParams("id_account") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postChange());
+                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(POSTStatement.postChange());
 
                     preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_list_subject")));
                     preparedStatement.setInt(2, Integer.parseInt(request.queryParams("t")));
@@ -515,21 +515,21 @@ public class OquPOST {
 
                     response.status(400);
 
-                    return StatusResponse.error;
+                    return StatusResponse.ERROR;
                 }
 
-                return StatusResponse.success;
+                return StatusResponse.SUCCESS;
             } else {
 
                 response.status(400);
 
-                return StatusResponse.error;
+                return StatusResponse.ERROR;
             }
         } else {
 
             response.status(401);
 
-            return StatusResponse.error;
+            return StatusResponse.ERROR;
         }
     }
 
@@ -540,7 +540,7 @@ public class OquPOST {
      * @param connection
      * @return
      */
-    public static String postSchedule(Connection connection, Request request) {
+    public static String postSchedule(HashMap<String, Connection> connection, Request request) {
         return "OquPOST postSchedule";
     }
 }

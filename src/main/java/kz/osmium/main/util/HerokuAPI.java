@@ -23,6 +23,34 @@ import java.net.URISyntaxException;
 
 public class HerokuAPI {
 
+    public static class Account {
+
+        /* Ссылка на базу данных. */
+        private static URI dbUri;
+
+        static {
+
+            try {
+                dbUri = new URI(System.getenv("JAWSDB_BLACK_URL"));
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
+        }
+
+        /**
+         * Ссылка для подключения к базе данных через JDBC.
+         * {@link java.sql.DriverManager#getConnection}
+         * в {@link Main#main(String[])}
+         */
+        public static final String url = "jdbc:mysql://" + dbUri.getHost() + ":" + dbUri.getPort() + dbUri.getPath() + "?" + dbUri.getQuery();
+
+        /* Логин для подключения к базе данных. */
+        public static final String login = dbUri.getUserInfo().split(":")[0];
+
+        /* Пароль для подключения к базе данных. */
+        public static final String password = dbUri.getUserInfo().split(":")[1];
+    }
+
     public static class Oqu {
 
         /* Ссылка на базу данных. */

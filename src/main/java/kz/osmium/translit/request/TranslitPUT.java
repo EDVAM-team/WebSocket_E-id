@@ -16,7 +16,6 @@
 
 package kz.osmium.translit.request;
 
-import kz.osmium.main.util.HerokuAPI;
 import kz.osmium.main.util.StatusResponse;
 import kz.osmium.main.util.TokenCheck;
 import kz.osmium.translit.statement.PUTStatement;
@@ -24,9 +23,9 @@ import spark.Request;
 import spark.Response;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 public class TranslitPUT {
 
@@ -37,22 +36,15 @@ public class TranslitPUT {
      * @param response
      * @return
      */
-    public static String putWord(Connection conn, Request request, Response response) {
+    public static String putWord(HashMap<String, Connection> connection, Request request, Response response) {
 
-        if (TokenCheck.checkTeacher(conn, request.queryParams("token"))) {
+        if (TokenCheck.checkTeacher(connection, request.queryParams("token"))) {
 
             if (request.queryParams("cyrl") != null &&
                     request.queryParams("latn") != null) {
 
-                try {
-                    Connection connection = DriverManager.getConnection(
-                            HerokuAPI.Translit.url,
-                            HerokuAPI.Translit.login,
-                            HerokuAPI.Translit.password
-                    );
-
                     try {
-                        PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putWord());
+                        PreparedStatement preparedStatement = connection.get("translit").prepareStatement(PUTStatement.putWord());
 
                         preparedStatement.setString(1, request.queryParams("latn"));
                         preparedStatement.setString(2, request.queryParams("cyrl"));
@@ -63,35 +55,21 @@ public class TranslitPUT {
 
                         response.status(409);
 
-                        return StatusResponse.conflict;
-                    } finally {
-
-                        try {
-
-                            connection.close();
-                        } catch (SQLException | NullPointerException e) {
-
-                        }
+                        return StatusResponse.CONFLICT;
                     }
 
-                    return StatusResponse.success;
-                } catch (SQLException e) {
-
-                    response.status(500);
-
-                    return StatusResponse.internal_server_error;
-                }
+                    return StatusResponse.SUCCESS;
             } else {
 
                 response.status(400);
 
-                return StatusResponse.error;
+                return StatusResponse.ERROR;
             }
         } else {
 
             response.status(401);
 
-            return StatusResponse.error;
+            return StatusResponse.ERROR;
         }
     }
 
@@ -102,22 +80,15 @@ public class TranslitPUT {
      * @param response
      * @return
      */
-    public static String putSymbol(Connection conn, Request request, Response response) {
+    public static String putSymbol(HashMap<String, Connection> connection, Request request, Response response) {
 
-        if (TokenCheck.checkTeacher(conn, request.queryParams("token"))) {
+        if (TokenCheck.checkTeacher(connection, request.queryParams("token"))) {
 
             if (request.queryParams("cyrl") != null &&
                     request.queryParams("latn") != null) {
 
-                try {
-                    Connection connection = DriverManager.getConnection(
-                            HerokuAPI.Translit.url,
-                            HerokuAPI.Translit.login,
-                            HerokuAPI.Translit.password
-                    );
-
                     try {
-                        PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putSymbol());
+                        PreparedStatement preparedStatement = connection.get("translit").prepareStatement(PUTStatement.putSymbol());
 
                         preparedStatement.setString(1, request.queryParams("latn"));
                         preparedStatement.setString(2, request.queryParams("cyrl"));
@@ -128,35 +99,21 @@ public class TranslitPUT {
 
                         response.status(409);
 
-                        return StatusResponse.conflict;
-                    } finally {
-
-                        try {
-
-                            connection.close();
-                        } catch (SQLException | NullPointerException e) {
-
-                        }
+                        return StatusResponse.CONFLICT;
                     }
 
-                    return StatusResponse.success;
-                } catch (SQLException e) {
-
-                    response.status(500);
-
-                    return StatusResponse.internal_server_error;
-                }
+                    return StatusResponse.SUCCESS;
             } else {
 
                 response.status(400);
 
-                return StatusResponse.error;
+                return StatusResponse.ERROR;
             }
         } else {
 
             response.status(401);
 
-            return StatusResponse.error;
+            return StatusResponse.ERROR;
         }
     }
 }

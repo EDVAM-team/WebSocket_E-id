@@ -16,15 +16,15 @@
 
 package kz.osmium.oqu.request;
 
-import kz.osmium.main.util.HerokuAPI;
 import kz.osmium.main.util.TokenCheck;
-import kz.osmium.main.util.TokenGen;
+import kz.osmium.account.main.util.TokenGen;
 import kz.osmium.main.util.StatusResponse;
 import kz.osmium.oqu.statement.PUTStatement;
 import spark.Request;
 import spark.Response;
 
 import java.sql.*;
+import java.util.HashMap;
 
 public class OquPUT {
 
@@ -35,7 +35,7 @@ public class OquPUT {
      * @param connection
      * @return
      */
-    public static String putAccount(Connection connection, Request request, Response response) {
+    public static String putAccount(HashMap<String, Connection> connection, Request request, Response response) {
 
         if (TokenCheck.checkAccount(connection, request.queryParams("token"), Integer.parseInt(request.queryParams("id_account")))) {
 
@@ -52,7 +52,7 @@ public class OquPUT {
                     request.queryParams("pass") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putAccount());
+                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(PUTStatement.putAccount());
 
                     if (request.queryParams("t") != null)
                         preparedStatement.setInt(1, Integer.parseInt(request.queryParams("t")));
@@ -131,18 +131,18 @@ public class OquPUT {
                     return e.getMessage();
                 }
 
-                return StatusResponse.success;
+                return StatusResponse.SUCCESS;
             } else {
 
                 response.status(204);
 
-                return StatusResponse.no_content;
+                return StatusResponse.NO_CONTENT;
             }
         } else {
 
             response.status(401);
 
-            return StatusResponse.error;
+            return StatusResponse.ERROR;
         }
     }
 
@@ -153,7 +153,7 @@ public class OquPUT {
      * @param connection
      * @return
      */
-    public static String putChange(Connection connection, Request request, Response response) {
+    public static String putChange(HashMap<String, Connection> connection, Request request, Response response) {
 
         if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
@@ -164,7 +164,7 @@ public class OquPUT {
                     request.queryParams("id_room") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putChange());
+                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(PUTStatement.putChange());
 
                     if (request.queryParams("id_list_subject") != null) {
                         preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_list_subject")));
@@ -203,21 +203,21 @@ public class OquPUT {
 
                     response.status(400);
 
-                    return StatusResponse.error;
+                    return StatusResponse.ERROR;
                 }
 
-                return StatusResponse.success;
+                return StatusResponse.SUCCESS;
             } else {
 
                 response.status(204);
 
-                return StatusResponse.no_content;
+                return StatusResponse.NO_CONTENT;
             }
         } else {
 
             response.status(401);
 
-            return StatusResponse.error;
+            return StatusResponse.ERROR;
         }
     }
 
@@ -228,7 +228,7 @@ public class OquPUT {
      * @param connection
      * @return
      */
-    public static String putCurator(Connection connection, Request request, Response response) {
+    public static String putCurator(HashMap<String, Connection> connection, Request request, Response response) {
 
         if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
@@ -236,7 +236,7 @@ public class OquPUT {
                     request.queryParams("id_account") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putCurator());
+                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(PUTStatement.putCurator());
 
                     if (request.queryParams("id_account") != null) {
                         preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_account")));
@@ -254,21 +254,21 @@ public class OquPUT {
 
                     response.status(400);
 
-                    return StatusResponse.error;
+                    return StatusResponse.ERROR;
                 }
 
-                return StatusResponse.success;
+                return StatusResponse.SUCCESS;
             } else {
 
                 response.status(204);
 
-                return StatusResponse.no_content;
+                return StatusResponse.NO_CONTENT;
             }
         } else {
 
             response.status(401);
 
-            return StatusResponse.error;
+            return StatusResponse.ERROR;
         }
     }
 
@@ -279,7 +279,7 @@ public class OquPUT {
      * @param connection
      * @return
      */
-    public static String putFaculty(Connection connection, Request request, Response response) {
+    public static String putFaculty(HashMap<String, Connection> connection, Request request, Response response) {
 
         if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
@@ -287,7 +287,7 @@ public class OquPUT {
                     request.queryParams("name") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putFaculty());
+                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(PUTStatement.putFaculty());
 
                     if (request.queryParams("name") != null) {
                         preparedStatement.setString(1, request.queryParams("name"));
@@ -305,21 +305,21 @@ public class OquPUT {
 
                     response.status(400);
 
-                    return StatusResponse.error;
+                    return StatusResponse.ERROR;
                 }
 
-                return StatusResponse.success;
+                return StatusResponse.SUCCESS;
             } else {
 
                 response.status(204);
 
-                return StatusResponse.no_content;
+                return StatusResponse.NO_CONTENT;
             }
         } else {
 
             response.status(401);
 
-            return StatusResponse.error;
+            return StatusResponse.ERROR;
         }
     }
 
@@ -330,7 +330,7 @@ public class OquPUT {
      * @param connection
      * @return
      */
-    public static String putGroup(Connection connection, Request request, Response response) {
+    public static String putGroup(HashMap<String, Connection> connection, Request request, Response response) {
 
         if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
@@ -339,7 +339,7 @@ public class OquPUT {
                     request.queryParams("id_specialty") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putGroup());
+                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(PUTStatement.putGroup());
 
                     if (request.queryParams("name") != null) {
                         preparedStatement.setString(1, request.queryParams("name"));
@@ -365,21 +365,21 @@ public class OquPUT {
 
                     response.status(400);
 
-                    return StatusResponse.error;
+                    return StatusResponse.ERROR;
                 }
 
-                return StatusResponse.success;
+                return StatusResponse.SUCCESS;
             } else {
 
                 response.status(204);
 
-                return StatusResponse.no_content;
+                return StatusResponse.NO_CONTENT;
             }
         } else {
 
             response.status(401);
 
-            return StatusResponse.error;
+            return StatusResponse.ERROR;
         }
     }
 
@@ -390,7 +390,7 @@ public class OquPUT {
      * @param connection
      * @return
      */
-    public static String putListSubject(Connection connection, Request request, Response response) {
+    public static String putListSubject(HashMap<String, Connection> connection, Request request, Response response) {
 
         if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
@@ -398,7 +398,7 @@ public class OquPUT {
                     request.queryParams("name") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putListSubject());
+                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(PUTStatement.putListSubject());
 
                     if (request.queryParams("name") != null) {
                         preparedStatement.setString(1, request.queryParams("name"));
@@ -416,21 +416,21 @@ public class OquPUT {
 
                     response.status(400);
 
-                    return StatusResponse.error;
+                    return StatusResponse.ERROR;
                 }
 
-                return StatusResponse.success;
+                return StatusResponse.SUCCESS;
             } else {
 
                 response.status(204);
 
-                return StatusResponse.no_content;
+                return StatusResponse.NO_CONTENT;
             }
         } else {
 
             response.status(401);
 
-            return StatusResponse.error;
+            return StatusResponse.ERROR;
         }
     }
 
@@ -441,7 +441,7 @@ public class OquPUT {
      * @param connection
      * @return
      */
-    public static String putMark(Connection connection, Request request, Response response) {
+    public static String putMark(HashMap<String, Connection> connection, Request request, Response response) {
 
         if (TokenCheck.checkTeacher(connection, request.queryParams("token"))) {
 
@@ -451,7 +451,7 @@ public class OquPUT {
                     request.queryParams("mark") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putMark());
+                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(PUTStatement.putMark());
 
                     if (request.queryParams("id_rating") != null) {
                         preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_rating")));
@@ -483,21 +483,21 @@ public class OquPUT {
 
                     response.status(400);
 
-                    return StatusResponse.error;
+                    return StatusResponse.ERROR;
                 }
 
-                return StatusResponse.success;
+                return StatusResponse.SUCCESS;
             } else {
 
                 response.status(204);
 
-                return StatusResponse.no_content;
+                return StatusResponse.NO_CONTENT;
             }
         } else {
 
             response.status(401);
 
-            return StatusResponse.error;
+            return StatusResponse.ERROR;
         }
     }
 
@@ -508,7 +508,7 @@ public class OquPUT {
      * @param connection
      * @return
      */
-    public static String putRating(Connection connection, Request request, Response response) {
+    public static String putRating(HashMap<String, Connection> connection, Request request, Response response) {
 
         if (TokenCheck.checkTeacher(connection, request.queryParams("token"))) {
 
@@ -518,7 +518,7 @@ public class OquPUT {
                     request.queryParams("num") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putRating());
+                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(PUTStatement.putRating());
                     if (request.queryParams("id_list_subject") != null) {
                         preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_list_subject")));
                         preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_list_subject")));
@@ -551,21 +551,21 @@ public class OquPUT {
 
                     response.status(400);
 
-                    return StatusResponse.error;
+                    return StatusResponse.ERROR;
                 }
 
-                return StatusResponse.success;
+                return StatusResponse.SUCCESS;
             } else {
 
                 response.status(204);
 
-                return StatusResponse.no_content;
+                return StatusResponse.NO_CONTENT;
             }
         } else {
 
             response.status(401);
 
-            return StatusResponse.error;
+            return StatusResponse.ERROR;
         }
     }
 
@@ -576,7 +576,7 @@ public class OquPUT {
      * @param connection
      * @return
      */
-    public static String putRoom(Connection connection, Request request, Response response) {
+    public static String putRoom(HashMap<String, Connection> connection, Request request, Response response) {
 
         if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
@@ -584,7 +584,7 @@ public class OquPUT {
                     request.queryParams("name") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putRoom());
+                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(PUTStatement.putRoom());
 
                     if (request.queryParams("name") != null) {
                         preparedStatement.setString(1, request.queryParams("name"));
@@ -602,21 +602,21 @@ public class OquPUT {
 
                     response.status(400);
 
-                    return StatusResponse.error;
+                    return StatusResponse.ERROR;
                 }
 
-                return StatusResponse.success;
+                return StatusResponse.SUCCESS;
             } else {
 
                 response.status(204);
 
-                return StatusResponse.no_content;
+                return StatusResponse.NO_CONTENT;
             }
         } else {
 
             response.status(401);
 
-            return StatusResponse.error;
+            return StatusResponse.ERROR;
         }
     }
 
@@ -627,7 +627,7 @@ public class OquPUT {
      * @param connection
      * @return
      */
-    public static String putSchedule(Connection connection, Request request, Response response) {
+    public static String putSchedule(HashMap<String, Connection> connection, Request request, Response response) {
 
         if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
@@ -639,7 +639,7 @@ public class OquPUT {
                     request.queryParams("id_account") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putSchedule());
+                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(PUTStatement.putSchedule());
 
                     if (request.queryParams("d") != null) {
                         preparedStatement.setInt(1, Integer.parseInt(request.queryParams("d")));
@@ -689,21 +689,21 @@ public class OquPUT {
 
                     response.status(400);
 
-                    return StatusResponse.error;
+                    return StatusResponse.ERROR;
                 }
 
-                return StatusResponse.success;
+                return StatusResponse.SUCCESS;
             } else {
 
                 response.status(204);
 
-                return StatusResponse.no_content;
+                return StatusResponse.NO_CONTENT;
             }
         } else {
 
             response.status(401);
 
-            return StatusResponse.error;
+            return StatusResponse.ERROR;
         }
     }
 
@@ -714,7 +714,7 @@ public class OquPUT {
      * @param connection
      * @return
      */
-    public static String putScheduleSubject(Connection connection, Request request, Response response) {
+    public static String putScheduleSubject(HashMap<String, Connection> connection, Request request, Response response) {
 
         if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
@@ -725,7 +725,7 @@ public class OquPUT {
                     request.queryParams("id_change") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putScheduleSubject());
+                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(PUTStatement.putScheduleSubject());
 
                     if (request.queryParams("id_list_subject") != null) {
                         preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_list_subject")));
@@ -758,21 +758,21 @@ public class OquPUT {
 
                     response.status(400);
 
-                    return StatusResponse.error;
+                    return StatusResponse.ERROR;
                 }
 
-                return StatusResponse.success;
+                return StatusResponse.SUCCESS;
             } else {
 
                 response.status(204);
 
-                return StatusResponse.no_content;
+                return StatusResponse.NO_CONTENT;
             }
         } else {
 
             response.status(401);
 
-            return StatusResponse.error;
+            return StatusResponse.ERROR;
         }
     }
 
@@ -783,7 +783,7 @@ public class OquPUT {
      * @param connection
      * @return
      */
-    public static String putSpecialty(Connection connection, Request request, Response response) {
+    public static String putSpecialty(HashMap<String, Connection> connection, Request request, Response response) {
 
         if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
@@ -792,7 +792,7 @@ public class OquPUT {
                     request.queryParams("id_faculty") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putSpecialty());
+                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(PUTStatement.putSpecialty());
 
                     if (request.queryParams("name") != null) {
                         preparedStatement.setString(1, request.queryParams("name"));
@@ -818,21 +818,21 @@ public class OquPUT {
 
                     response.status(400);
 
-                    return StatusResponse.error;
+                    return StatusResponse.ERROR;
                 }
 
-                return StatusResponse.success;
+                return StatusResponse.SUCCESS;
             } else {
 
                 response.status(204);
 
-                return StatusResponse.no_content;
+                return StatusResponse.NO_CONTENT;
             }
         } else {
 
             response.status(401);
 
-            return StatusResponse.error;
+            return StatusResponse.ERROR;
         }
     }
 
@@ -843,7 +843,7 @@ public class OquPUT {
      * @param connection
      * @return
      */
-    public static String putTotal(Connection connection, Request request, Response response) {
+    public static String putTotal(HashMap<String, Connection> connection, Request request, Response response) {
 
         if (TokenCheck.checkTeacher(connection, request.queryParams("token"))) {
 
@@ -853,7 +853,7 @@ public class OquPUT {
                     request.queryParams("course") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putTotal());
+                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(PUTStatement.putTotal());
 
                     if (request.queryParams("id_list_subject") != null) {
                         preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_list_subject")));
@@ -887,21 +887,21 @@ public class OquPUT {
 
                     response.status(400);
 
-                    return StatusResponse.error;
+                    return StatusResponse.ERROR;
                 }
 
-                return StatusResponse.success;
+                return StatusResponse.SUCCESS;
             } else {
 
                 response.status(204);
 
-                return StatusResponse.no_content;
+                return StatusResponse.NO_CONTENT;
             }
         } else {
 
             response.status(401);
 
-            return StatusResponse.error;
+            return StatusResponse.ERROR;
         }
     }
 }

@@ -17,7 +17,6 @@
 package kz.osmium.translit.request;
 
 import com.google.gson.Gson;
-import kz.osmium.main.util.HerokuAPI;
 import kz.osmium.main.util.StatusResponse;
 import kz.osmium.translit.objects.Translit;
 import kz.osmium.translit.objects.gson.Symbol;
@@ -72,17 +71,10 @@ public class TranslitGET {
      * @param response
      * @return
      */
-    public static String getWord(Response response) {
-
-        try {
-            Connection connection = DriverManager.getConnection(
-                    HerokuAPI.Translit.url,
-                    HerokuAPI.Translit.login,
-                    HerokuAPI.Translit.password
-            );
+    public static String getWord(HashMap<String, Connection> connection, Response response) {
 
             try {
-                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getWord());
+                PreparedStatement preparedStatement = connection.get("translit").prepareStatement(GETStatement.getWord());
                 ResultSet resultSet = preparedStatement.executeQuery();
                 ArrayList<Word> wordArrayList = new ArrayList<>();
 
@@ -99,22 +91,8 @@ public class TranslitGET {
 
                 response.status(409);
 
-                return StatusResponse.conflict;
-            } finally {
-
-                try {
-
-                    connection.close();
-                } catch (SQLException | NullPointerException e) {
-
-                }
+                return StatusResponse.CONFLICT;
             }
-        } catch (SQLException e) {
-
-            response.status(500);
-
-            return StatusResponse.internal_server_error;
-        }
     }
 
     /**
@@ -123,17 +101,10 @@ public class TranslitGET {
      * @param response
      * @return
      */
-    public static String getSymbol(Response response) {
-
-        try {
-            Connection connection = DriverManager.getConnection(
-                    HerokuAPI.Translit.url,
-                    HerokuAPI.Translit.login,
-                    HerokuAPI.Translit.password
-            );
+    public static String getSymbol(HashMap<String, Connection> connection, Response response) {
 
             try {
-                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getSymbol());
+                PreparedStatement preparedStatement = connection.get("translit").prepareStatement(GETStatement.getSymbol());
                 ResultSet resultSet = preparedStatement.executeQuery();
                 ArrayList<Symbol> wordArrayList = new ArrayList<>();
 
@@ -150,21 +121,7 @@ public class TranslitGET {
 
                 response.status(409);
 
-                return StatusResponse.conflict;
-            } finally {
-
-                try {
-
-                    connection.close();
-                } catch (SQLException | NullPointerException e) {
-
-                }
+                return StatusResponse.CONFLICT;
             }
-        } catch (SQLException e) {
-
-            response.status(500);
-
-            return StatusResponse.internal_server_error;
-        }
     }
 }
