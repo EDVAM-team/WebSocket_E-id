@@ -46,12 +46,12 @@ public class AccountRequest {
         /*
          * Авторизовать приложение.
          *
-         * https://*.example.com/api/account ?
+         * https://*.example.com/api/auth ?
          * & login = <String>
          * & pass = <String>
          */
         path("/api", () ->
-                get("/account", "application/json", (request, response) -> {
+                get("/auth", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainAccount(request.host()))
                                 return AccountGET.getAccount(connection, request, response);
                             else {
