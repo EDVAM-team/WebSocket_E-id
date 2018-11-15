@@ -56,30 +56,24 @@ public class AccountGET {
 
                     preparedStatement2.setString(1, token);
                     preparedStatement2.setInt(2, resultSet.getInt("id_account"));
+                    preparedStatement2.execute();
 
-                    if (preparedStatement2.execute()){
-                        Auth account = new Auth(
-                                resultSet.getInt("id_account"),
-                                resultSet.getString("f_name"),
-                                resultSet.getString("l_name"),
-                                resultSet.getString("patronymic"),
-                                resultSet.getString("phone"),
-                                resultSet.getString("email"),
-                                resultSet.getInt("id_room"),
-                                resultSet.getInt("id_group"),
-                                resultSet.getInt("type"),
-                                token
-                        );
+                    Auth account = new Auth(
+                            resultSet.getInt("id_account"),
+                            resultSet.getString("f_name"),
+                            resultSet.getString("l_name"),
+                            resultSet.getString("patronymic"),
+                            resultSet.getString("phone"),
+                            resultSet.getString("email"),
+                            resultSet.getInt("id_room"),
+                            resultSet.getInt("id_group"),
+                            resultSet.getInt("type"),
+                            token
+                    );
 
-                        response.status(200);
+                    response.status(200);
 
-                        return new Gson().toJson(account);
-                    } else {
-
-                        response.status(400);
-
-                        return "400 Bad Request";
-                    }
+                    return new Gson().toJson(account);
                 }
             } catch (SQLException | NumberFormatException e) {
 
