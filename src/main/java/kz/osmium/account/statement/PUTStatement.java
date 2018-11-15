@@ -26,7 +26,7 @@ public class PUTStatement {
      */
     public static String putAccount(){
         return "UPDATE `account`\n" +
-                "SET `account`.`type` = ?,\n" +
+                "SET `account`.`type` = CASE WHEN ? IS NULL THEN `account`.`type` ELSE ? END,\n" +
                 "\t`account`.`id_group` = ?,\n" +
                 "\t`account`.`f_name` = CASE WHEN ? IS NULL THEN `account`.`f_name` ELSE ? END,\n" +
                 "\t`account`.`l_name` = CASE WHEN ? IS NULL THEN `account`.`l_name` ELSE ? END,\n" +

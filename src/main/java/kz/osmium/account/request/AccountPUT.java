@@ -58,70 +58,72 @@ public class AccountPUT {
 
                     if (request.queryParams("type") != null)
                         preparedStatement.setInt(1, Integer.parseInt(request.queryParams("type")));
+                        preparedStatement.setInt(2, Integer.parseInt(request.queryParams("type")));
                     else
                         preparedStatement.setNull(1, Types.INTEGER);
-
-                    if (request.queryParams("id_group") != null)
-                        preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_group")));
-                    else
                         preparedStatement.setNull(2, Types.INTEGER);
 
+                    if (request.queryParams("id_group") != null)
+                        preparedStatement.setInt(3, Integer.parseInt(request.queryParams("id_group")));
+                    else
+                        preparedStatement.setNull(3, Types.INTEGER);
+
                     if (request.queryParams("f_name") != null) {
-                        preparedStatement.setString(3, request.queryParams("f_name"));
                         preparedStatement.setString(4, request.queryParams("f_name"));
+                        preparedStatement.setString(5, request.queryParams("f_name"));
                     } else {
-                        preparedStatement.setNull(3, Types.VARCHAR);
                         preparedStatement.setNull(4, Types.VARCHAR);
+                        preparedStatement.setNull(5, Types.VARCHAR);
                     }
 
                     if (request.queryParams("l_name") != null) {
-                        preparedStatement.setString(5, request.queryParams("l_name"));
                         preparedStatement.setString(6, request.queryParams("l_name"));
+                        preparedStatement.setString(7, request.queryParams("l_name"));
                     } else {
-                        preparedStatement.setNull(5, Types.VARCHAR);
                         preparedStatement.setNull(6, Types.VARCHAR);
+                        preparedStatement.setNull(7, Types.VARCHAR);
                     }
 
                     if (request.queryParams("patronymic") != null) {
-                        preparedStatement.setString(7, request.queryParams("patronymic"));
                         preparedStatement.setString(8, request.queryParams("patronymic"));
+                        preparedStatement.setString(9, request.queryParams("patronymic"));
                     } else {
-                        preparedStatement.setNull(7, Types.VARCHAR);
                         preparedStatement.setNull(8, Types.VARCHAR);
+                        preparedStatement.setNull(9, Types.VARCHAR);
                     }
 
                     if (request.queryParams("phone") != null)
-                        preparedStatement.setString(9, request.queryParams("phone"));
-                    else
-                        preparedStatement.setNull(9, Types.VARCHAR);
-
-                    if (request.queryParams("email") != null)
-                        preparedStatement.setString(10, request.queryParams("email"));
+                        preparedStatement.setString(10, request.queryParams("phone"));
                     else
                         preparedStatement.setNull(10, Types.VARCHAR);
 
-                    if (request.queryParams("id_room") != null)
-                        preparedStatement.setInt(11, Integer.parseInt(request.queryParams("id_room")));
+                    if (request.queryParams("email") != null)
+                        preparedStatement.setString(11, request.queryParams("email"));
                     else
-                        preparedStatement.setNull(11, Types.INTEGER);
+                        preparedStatement.setNull(11, Types.VARCHAR);
+
+                    if (request.queryParams("id_room") != null)
+                        preparedStatement.setInt(12, Integer.parseInt(request.queryParams("id_room")));
+                    else
+                        preparedStatement.setNull(12, Types.INTEGER);
 
                     if (request.queryParams("login") != null) {
-                        preparedStatement.setString(12, request.queryParams("login"));
                         preparedStatement.setString(13, request.queryParams("login"));
+                        preparedStatement.setString(14, request.queryParams("login"));
                     } else {
-                        preparedStatement.setNull(12, Types.VARCHAR);
                         preparedStatement.setNull(13, Types.VARCHAR);
+                        preparedStatement.setNull(14, Types.VARCHAR);
                     }
 
                     if (request.queryParams("pass") != null) {
-                        preparedStatement.setString(14, request.queryParams("pass"));
                         preparedStatement.setString(15, request.queryParams("pass"));
+                        preparedStatement.setString(16, request.queryParams("pass"));
                     } else {
-                        preparedStatement.setNull(14, Types.VARCHAR);
                         preparedStatement.setNull(15, Types.VARCHAR);
+                        preparedStatement.setNull(16, Types.VARCHAR);
                     }
 
-                    preparedStatement.setInt(16, Integer.parseInt(request.queryParams("id_account")));
+                    preparedStatement.setInt(17, Integer.parseInt(request.queryParams("id_account")));
                     preparedStatement.executeUpdate();
 
                     response.status(201);
