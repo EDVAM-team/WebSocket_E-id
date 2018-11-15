@@ -16,7 +16,7 @@
 
 package kz.osmium.oqu.request;
 
-import kz.osmium.main.util.TokenCheck;
+import kz.osmium.account.main.util.TokenCheck;
 import kz.osmium.account.main.util.TokenGen;
 import kz.osmium.main.util.StatusResponse;
 import kz.osmium.oqu.statement.PUTStatement;

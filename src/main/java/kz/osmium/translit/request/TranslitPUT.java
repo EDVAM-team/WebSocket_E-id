@@ -16,8 +16,8 @@
 
 package kz.osmium.translit.request;
 
+import kz.osmium.account.main.util.TokenCheck;
 import kz.osmium.main.util.StatusResponse;
-import kz.osmium.main.util.TokenCheck;
 import kz.osmium.translit.statement.PUTStatement;
 import spark.Request;
 import spark.Response;

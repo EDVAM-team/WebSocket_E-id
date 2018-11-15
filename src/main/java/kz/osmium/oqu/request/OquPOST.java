@@ -18,7 +18,7 @@ package kz.osmium.oqu.request;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import kz.osmium.main.util.TokenCheck;
+import kz.osmium.account.main.util.TokenCheck;
 import kz.osmium.account.main.util.TokenGen;
 import kz.osmium.main.util.StatusResponse;
 import kz.osmium.oqu.gson.MarkJSON;

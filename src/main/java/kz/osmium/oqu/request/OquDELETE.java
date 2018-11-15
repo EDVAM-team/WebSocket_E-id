@@ -16,8 +16,8 @@
 
 package kz.osmium.oqu.request;
 
+import kz.osmium.account.main.util.TokenCheck;
 import kz.osmium.main.util.StatusResponse;
-import kz.osmium.main.util.TokenCheck;
 import kz.osmium.oqu.statement.DELETEStatement;
 import spark.Request;
 import spark.Response;
