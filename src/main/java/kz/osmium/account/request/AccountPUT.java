@@ -56,12 +56,13 @@ public class AccountPUT {
                 try {
                     PreparedStatement preparedStatement = connection.get("account").prepareStatement(PUTStatement.putAccount());
 
-                    if (request.queryParams("type") != null)
+                    if (request.queryParams("type") != null) {
                         preparedStatement.setInt(1, Integer.parseInt(request.queryParams("type")));
                         preparedStatement.setInt(2, Integer.parseInt(request.queryParams("type")));
-                    else
+                    } else {
                         preparedStatement.setNull(1, Types.INTEGER);
                         preparedStatement.setNull(2, Types.INTEGER);
+                    }
 
                     if (request.queryParams("id_group") != null)
                         preparedStatement.setInt(3, Integer.parseInt(request.queryParams("id_group")));
