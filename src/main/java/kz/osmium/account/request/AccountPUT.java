@@ -54,7 +54,7 @@ public class AccountPUT {
                     request.queryParams("pass") != null) {
 
                 try {
-                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(PUTStatement.putAccount());
+                    PreparedStatement preparedStatement = connection.get("account").prepareStatement(PUTStatement.putAccount());
 
                     if (request.queryParams("type") != null)
                         preparedStatement.setInt(1, Integer.parseInt(request.queryParams("type")));
