@@ -33,55 +33,6 @@ import java.util.HashMap;
 public class OquGET {
 
     /**
-     * Получает информацию с таблицы "account"
-     *
-     * @param connection
-     * @return возвращает список факультетов в JSON.
-     */
-    public static String getAccount(HashMap<String, Connection> connection, Request request, Response response) {
-
-        if (request.queryParams("login") != null &&
-                request.queryParams("pass") != null) {
-
-            try {
-                PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(GETStatement.getAccount());
-
-                preparedStatement.setString(1, request.queryParams("login"));
-                preparedStatement.setString(2, request.queryParams("pass"));
-
-                ResultSet resultSet = preparedStatement.executeQuery();
-
-                while (resultSet.next()) {
-                    Account account = new Account(
-                            resultSet.getInt("id_account"),
-                            resultSet.getString("name"),
-                            resultSet.getString("s_name"),
-                            resultSet.getString("l_name"),
-                            resultSet.getString("phone"),
-                            resultSet.getString("email"),
-                            resultSet.getInt("id_room"),
-                            resultSet.getInt("id_group"),
-                            resultSet.getInt("t")
-                    );
-
-                    response.status(200);
-
-                    return new Gson().toJson(account);
-                }
-            } catch (SQLException | NumberFormatException e) {
-
-                response.status(400);
-
-                return "400 Bad Request";
-            }
-        }
-
-        response.status(400);
-
-        return "400 Bad Request";
-    }
-
-    /**
      * Получает информацию с таблицы "faculty"
      *
      * @param connection

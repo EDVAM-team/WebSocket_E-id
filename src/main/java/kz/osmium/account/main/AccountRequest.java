@@ -16,8 +16,14 @@
 
 package kz.osmium.account.main;
 
+import kz.osmium.account.request.AccountGET;
+import kz.osmium.main.util.HerokuDomain;
+
 import java.sql.Connection;
 import java.util.HashMap;
+
+import static spark.Spark.get;
+import static spark.Spark.path;
 
 public class AccountRequest {
 
@@ -37,6 +43,25 @@ public class AccountRequest {
      */
     private static void getAPI(HashMap<String, Connection> connection) {
 
+        /*
+         * Авторизовать приложение.
+         *
+         * https://*.example.com/api/account ?
+         * & login = <String>
+         * & pass = <String>
+         */
+        path("/api", () ->
+                get("/account", "application/json", (request, response) -> {
+                            if (HerokuDomain.getDomainAccount(request.host()))
+                                return AccountGET.getAccount(connection, request, response);
+                            else {
+
+                                response.status(404);
+
+                                return "404 Not Found";
+                            }
+                        }
+                ));
     }
 
     /**

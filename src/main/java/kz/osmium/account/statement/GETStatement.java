@@ -17,4 +17,26 @@
 package kz.osmium.account.statement;
 
 public class GETStatement {
+
+    /**
+     * Запрос на авторизацию приложения.
+     * Истользуется таблица "account"
+     *
+     * @return
+     */
+    public static String getAccount() {
+        return "SELECT * FROM `account` WHERE `account`.login=? AND `account`.pass=?";
+    }
+
+    /**
+     * Запрос на создание токена.
+     * Истользуется таблица "auth"
+     *
+     * @return
+     */
+    public static String addToken() {
+        return "INSERT INTO `auth` " +
+                "(`token`, `id_account`) " +
+                "VALUE (?, ?)";
+    }
 }

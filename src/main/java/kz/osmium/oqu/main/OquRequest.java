@@ -47,26 +47,6 @@ public class OquRequest {
     private static void getAPI(HashMap<String, Connection> connection) {
 
         /*
-         * Авторизовать приложение.
-         *
-         * https://*.example.com/api/account ?
-         * & login = <String>
-         * & pass = <String>
-         */
-        path("/api", () ->
-                get("/account", "application/json", (request, response) -> {
-                            if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquGET.getAccount(connection, request, response);
-                            else {
-
-                                response.status(404);
-
-                                return "404 Not Found";
-                            }
-                        }
-                ));
-
-        /*
          * Получить рейтинг студента.
          *
          * https://*.example.com/api/rating ?

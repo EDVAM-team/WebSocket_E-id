@@ -16,5 +16,5 @@
 
 package kz.osmium.account.request;
 
-public class OquPUT {
+public class AccountDELETE {
 }
