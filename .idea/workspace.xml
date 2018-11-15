@@ -20,7 +20,7 @@
               <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/account/statement/POSTStatement.java">
                 <provider selected="true" editor-type-id="text-editor">
                   <state relative-caret-position="364">
-                    <caret line="27" column="49" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="49" />
+                    <caret line="27" column="103" selection-start-line="27" selection-start-column="97" selection-end-line="27" selection-end-column="103" />
                   </state>
                 </provider>
               </entry>
@@ -260,8 +260,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/account/request/AccountPOST.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="43" column="12" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
+            <state relative-caret-position="-245">
+              <caret line="53" column="48" selection-start-line="53" selection-start-column="48" selection-end-line="54" selection-end-column="80" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -836,8 +836,8 @@
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/main/util/TokenCheck.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/account/main/util/TokenCheck.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/account/statement/POSTStatement.java" />
-        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/account/request/AccountPOST.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/account/main/AccountRequest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/account/request/AccountPOST.java" />
       </list>
     </option>
   </component>
@@ -1094,7 +1094,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="{&#9;null&#9;null" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542296231133" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542296532124" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -1190,7 +1190,7 @@
     <frame x="51" y="27" width="1869" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22484882" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22484882" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -1205,7 +1205,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32917318" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5002755" side_tool="true" weight="0.32411504" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4997245" visible="true" weight="0.2568306" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.4997245" visible="true" weight="0.2568306" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32964602" />
       <window_info anchor="bottom" id="Build" order="10" weight="0.32893288" />
       <window_info anchor="bottom" id="Messages" order="11" />
@@ -1702,13 +1702,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/account/statement/POSTStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="27" column="49" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/account/main/AccountRequest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
@@ -1719,10 +1712,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/account/statement/POSTStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="27" column="103" selection-start-line="27" selection-start-column="97" selection-end-line="27" selection-end-column="103" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/account/request/AccountPOST.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="43" column="12" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
+        <state relative-caret-position="-245">
+          <caret line="53" column="48" selection-start-line="53" selection-start-column="48" selection-end-line="54" selection-end-column="80" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

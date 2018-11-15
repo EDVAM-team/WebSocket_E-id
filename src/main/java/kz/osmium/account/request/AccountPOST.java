@@ -42,6 +42,8 @@ public class AccountPOST {
         if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
             if (request.queryParams("f_name") != null &&
+                    request.queryParams("l_name") != null &&
+                    request.queryParams("patronymic") != null &&
                     request.queryParams("login") != null &&
                     request.queryParams("type") != null &&
                     request.queryParams("pass") != null) {
@@ -50,19 +52,11 @@ public class AccountPOST {
                     PreparedStatement preparedStatement = connection.get("account").prepareStatement(POSTStatement.postAccount());
 
                     preparedStatement.setString(1, request.queryParams("f_name"));
+                    preparedStatement.setString(2, request.queryParams("l_name"));
+                    preparedStatement.setString(3, request.queryParams("patronymic"));
                     preparedStatement.setInt(6, Integer.parseInt(request.queryParams("type")));
                     preparedStatement.setString(7, request.queryParams("login"));
                     preparedStatement.setString(8, request.queryParams("pass"));
-
-                    if (request.queryParams("l_name") != null)
-                        preparedStatement.setString(2, request.queryParams("l_name"));
-                    else
-                        preparedStatement.setNull(2, Types.VARCHAR);
-
-                    if (request.queryParams("patronymic") != null)
-                        preparedStatement.setString(3, request.queryParams("patronymic"));
-                    else
-                        preparedStatement.setNull(3, Types.VARCHAR);
 
                     if (request.queryParams("phone") != null)
                         preparedStatement.setString(4, request.queryParams("phone"));
