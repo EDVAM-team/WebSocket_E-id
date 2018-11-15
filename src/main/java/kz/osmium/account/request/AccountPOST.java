@@ -41,7 +41,7 @@ public class AccountPOST {
 
         if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
 
-            if (request.queryParams("name") != null &&
+            if (request.queryParams("f_name") != null &&
                     request.queryParams("login") != null &&
                     request.queryParams("type") != null &&
                     request.queryParams("pass") != null) {
