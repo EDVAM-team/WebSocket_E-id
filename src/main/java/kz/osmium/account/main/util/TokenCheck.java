@@ -56,7 +56,7 @@ public class TokenCheck {
     }
 
     /**
-     * Права на уровне преподавателя
+     * Права на уровне преподавателя и админа
      *
      * @param connection
      * @param token
@@ -97,6 +97,36 @@ public class TokenCheck {
 
             try {
                 PreparedStatement preparedStatement = connection.get("account").prepareStatement(RoleStatement.account());
+
+                preparedStatement.setInt(1, idAccount);
+                preparedStatement.setString(2, token);
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                return resultSet.next();
+            } catch (SQLException e) {
+
+                return false;
+            }
+        } else {
+
+            return false;
+        }
+    }
+
+    /**
+     * Права на уровне обычного пользователя и админа
+     *
+     * @param connection
+     * @param token
+     * @return
+     */
+    public static boolean checkAccountAdmin(HashMap<String, Connection> connection, String token, int idAccount) {
+
+        if (token != null) {
+
+            try {
+                PreparedStatement preparedStatement = connection.get("account").prepareStatement(RoleStatement.accountAdmin());
 
                 preparedStatement.setInt(1, idAccount);
                 preparedStatement.setString(2, token);

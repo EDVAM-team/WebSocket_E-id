@@ -16,6 +16,7 @@
 
 package kz.osmium.account.main;
 
+import kz.osmium.account.request.AccountDELETE;
 import kz.osmium.account.request.AccountGET;
 import kz.osmium.account.request.AccountPOST;
 import kz.osmium.account.request.AccountPUT;
@@ -31,7 +32,7 @@ public class AccountRequest {
     /**
      * Делается связь с API Account
      */
-    public static void connectAPI(HashMap<String, Connection> connection){
+    public static void connectAPI(HashMap<String, Connection> connection) {
 
         getAPI(connection);
         postAPI(connection);
@@ -141,5 +142,45 @@ public class AccountRequest {
      */
     private static void deleteAPI(HashMap<String, Connection> connection) {
 
+        /*
+         * Удаляет сессию аккаунта.
+         *
+         * https://*.example.com/api/auth ?
+         * & token = <String>
+         * & id_account = <Integer>
+         */
+        path("/api", () ->
+                delete("/auth", "application/json", (request, response) -> {
+                            if (HerokuDomain.getDomainAccount(request.host()))
+                                return AccountDELETE.deleteAuth(connection, request, response);
+                            else {
+
+                                response.status(404);
+
+                                return "404 Not Found";
+                            }
+                        }
+                ));
+
+        /*
+         * Удаляет сессии аккаунта.
+         *
+         * https://*.example.com/api/auth/all ?
+         * & token = <String>
+         * & id_account = <Integer>
+         */
+        path("/api", () ->
+                path("/auth", () ->
+                        delete("/all","application/json", (request, response) -> {
+                                    if (HerokuDomain.getDomainAccount(request.host()))
+                                        return AccountDELETE.deleteAuthAll(connection, request, response);
+                                    else {
+
+                                        response.status(404);
+
+                                        return "404 Not Found";
+                                    }
+                                }
+                        )));
     }
 }

@@ -43,11 +43,23 @@ public class RoleStatement {
     }
 
     /**
-     * Проверка токена на статус обычного аккаунта или админа
+     * Проверка токена на статус обычного аккаунта
      *
      * @return
      */
     public static String account() {
+        return "SELECT `account`.`id_account` \n" +
+                "FROM `auth` \n" +
+                "INNER JOIN `account` ON `auth`.`id_account`=`account`.`id_account` \n" +
+                "WHERE `account`.`id_account`=? AND `auth`.`token`=?";
+    }
+
+    /**
+     * Проверка токена на статус обычного аккаунта или админа
+     *
+     * @return
+     */
+    public static String accountAdmin() {
         return "SELECT `account`.`id_account` \n" +
                 "FROM `auth` \n" +
                 "INNER JOIN `account` ON `auth`.`id_account`=`account`.`id_account` \n" +

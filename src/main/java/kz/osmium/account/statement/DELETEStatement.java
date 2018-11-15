@@ -17,4 +17,24 @@
 package kz.osmium.account.statement;
 
 public class DELETEStatement {
+
+    /**
+     * Запрос на удаление сессии аккаунта.
+     * Истользуется таблица "auth"
+     *
+     * @return
+     */
+    public static String deleteAuth() {
+        return "DELETE FROM `auth` WHERE `auth`.`token`=?";
+    }
+
+    /**
+     * Запрос на удаление всех сессии аккаунта.
+     * Истользуется таблица "auth"
+     *
+     * @return
+     */
+    public static String deleteAuthAll() {
+        return "DELETE FROM `auth` WHERE `auth`.`id_account`=?";
+    }
 }

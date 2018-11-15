@@ -16,7 +16,9 @@
 
 package kz.osmium.account.request;
 
+import kz.osmium.account.main.util.TokenCheck;
 import kz.osmium.account.main.util.TokenGen;
+import kz.osmium.account.statement.DELETEStatement;
 import kz.osmium.account.statement.PUTStatement;
 import kz.osmium.main.util.StatusResponse;
 import spark.Request;
@@ -25,11 +27,91 @@ import spark.Response;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Types;
 import java.util.HashMap;
 
 public class AccountDELETE {
 
+    /**
+     * Удаляет сессию аккаунта в таблице "auth"
+     *
+     * @param connection
+     * @return возвращает список конкретных специальностей в JSON.
+     */
+    public static String deleteAuth(HashMap<String, Connection> connection, Request request, Response response) {
 
+        if (TokenCheck.checkAccount(connection, request.queryParams("token"), Integer.parseInt(request.queryParams("id_account")))) {
 
+            if (request.queryParams("token") != null) {
+
+                try {
+                    PreparedStatement preparedStatement = connection.get("account").prepareStatement(DELETEStatement.deleteAuth());
+
+                    preparedStatement.setString(1, request.queryParams("token"));
+
+                    preparedStatement.execute();
+
+                    response.status(200);
+                } catch (SQLException | NumberFormatException e) {
+
+                    response.status(400);
+
+                    return StatusResponse.ERROR;
+                }
+
+                return StatusResponse.SUCCESS;
+            } else {
+
+                response.status(400);
+
+                return StatusResponse.ERROR;
+            }
+        } else {
+
+            response.status(401);
+
+            return StatusResponse.ERROR;
+        }
+    }
+
+    /**
+     * Удаляет сессии аккаунта в таблице "auth"
+     *
+     * @param connection
+     * @return возвращает список конкретных специальностей в JSON.
+     */
+    public static String deleteAuthAll(HashMap<String, Connection> connection, Request request, Response response) {
+
+        if (TokenCheck.checkAccountAdmin(connection, request.queryParams("token"), Integer.parseInt(request.queryParams("id_account")))) {
+
+            if (request.queryParams("token") != null) {
+
+                try {
+                    PreparedStatement preparedStatement = connection.get("account").prepareStatement(DELETEStatement.deleteAuthAll());
+
+                    preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_account")));
+
+                    preparedStatement.execute();
+
+                    response.status(200);
+                } catch (SQLException | NumberFormatException e) {
+
+                    response.status(400);
+
+                    return StatusResponse.ERROR;
+                }
+
+                return StatusResponse.SUCCESS;
+            } else {
+
+                response.status(400);
+
+                return StatusResponse.ERROR;
+            }
+        } else {
+
+            response.status(401);
+
+            return StatusResponse.ERROR;
+        }
+    }
 }
