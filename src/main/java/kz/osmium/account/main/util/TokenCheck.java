@@ -67,7 +67,7 @@ public class TokenCheck {
         if (token != null) {
 
             try {
-                PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(RoleStatement.teacher());
+                PreparedStatement preparedStatement = connection.get("account").prepareStatement(RoleStatement.teacher());
 
                 preparedStatement.setString(1, token);
 
@@ -96,7 +96,7 @@ public class TokenCheck {
         if (token != null) {
 
             try {
-                PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(RoleStatement.account());
+                PreparedStatement preparedStatement = connection.get("account").prepareStatement(RoleStatement.account());
 
                 preparedStatement.setInt(1, idAccount);
                 preparedStatement.setString(2, token);
