@@ -209,7 +209,7 @@ public class TranslitRequest {
          *
          * https://*.example.com/api/word ?
          * & token = <String>
-         * & cyrl = <String>
+         * & id_word = <Integer>
          */
         path("/api", () ->
                 delete("/word", "application/json", (request, response) -> {
@@ -229,7 +229,7 @@ public class TranslitRequest {
          *
          * https://*.example.com/api/symbol ?
          * & token = <String>
-         * & cyrl = <String>
+         * & id_symbol = <Integer>
          */
         path("/api", () ->
                 delete("/symbol", "application/json", (request, response) -> {
