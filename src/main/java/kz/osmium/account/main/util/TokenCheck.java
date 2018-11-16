@@ -30,16 +30,15 @@ public class TokenCheck {
     /**
      * Права на уровне админа
      *
-     * @param connection
      * @param token
      * @return
      */
-    public static boolean checkAdmin(HashMap<String, Connection> connection, String token) {
+    public static boolean checkAdmin(HashMap<String, Connection> connection1, String token) {
 
         if (token != null) {
 
-            try {
-                PreparedStatement preparedStatement = connection.get("account").prepareStatement(RoleStatement.admin());
+            try (Connection connection = HerokuAPI.Account.getDB()) {
+                PreparedStatement preparedStatement = connection.prepareStatement(RoleStatement.admin());
 
                 preparedStatement.setString(1, token);
 

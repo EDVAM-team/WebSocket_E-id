@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f1a897c-0f26-43e4-8795-18635adbb59a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/main/util/HerokuAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/main/util/HerokuAPI.java" afterDir="false" />
-    </list>
+    <list default="true" id="8f1a897c-0f26-43e4-8795-18635adbb59a" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -225,14 +221,14 @@
           <entry key="PUMPUM" value="20" />
           <entry key="dummy" value="115" />
           <entry key="gradle" value="14" />
-          <entry key="java" value="9502" />
+          <entry key="java" value="9525" />
           <entry key="md" value="25" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="14" />
-          <entry key="JAVA" value="9502" />
+          <entry key="JAVA" value="9525" />
           <entry key="Markdown" value="25" />
           <entry key="PLAIN_TEXT" value="135" />
         </counts>
@@ -273,8 +269,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/account/main/util/TokenCheck.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="69" column="114" selection-start-line="69" selection-start-column="114" selection-end-line="69" selection-end-column="114" />
+            <state relative-caret-position="508">
+              <caret line="69" column="64" selection-start-line="69" selection-start-column="64" selection-end-line="69" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -797,7 +793,6 @@
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/account/statement/DELETEStatement.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/account/main/AccountRequest.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/account/statement/RoleStatement.java" />
-        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/account/main/util/TokenCheck.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/request/OquDELETE.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/request/OquPOST.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/request/OquPUT.java" />
@@ -815,6 +810,7 @@
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/translit/main/TranslitRequest.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/main/util/HerokuAPI.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/main/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/account/main/util/TokenCheck.java" />
       </list>
     </option>
   </component>
@@ -1131,9 +1127,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="51" y="27" width="1869" height="1053" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23034634" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23034634" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -1148,7 +1143,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32917318" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5002755" side_tool="true" weight="0.32411504" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4997245" weight="0.25652173" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.4997245" visible="true" weight="0.2557377" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32964602" />
       <window_info anchor="bottom" id="Build" order="10" weight="0.32893288" />
       <window_info anchor="bottom" id="Messages" order="11" />
@@ -1653,8 +1648,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/account/main/util/TokenCheck.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="69" column="114" selection-start-line="69" selection-start-column="114" selection-end-line="69" selection-end-column="114" />
+        <state relative-caret-position="508">
+          <caret line="69" column="64" selection-start-line="69" selection-start-column="64" selection-end-line="69" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
