@@ -122,7 +122,9 @@ public class TranslitPOST {
                         preparedStatement.setString(1, request.queryParams("cyrl"));
                         preparedStatement.setString(2, request.queryParams("latn"));
 
-                        if (preparedStatement.executeUpdate() == 0){
+                        int affectedRows = preparedStatement.executeUpdate();
+
+                        if (affectedRows == 0){
 
                             response.status(409);
 
