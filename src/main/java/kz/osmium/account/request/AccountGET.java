@@ -20,6 +20,7 @@ import com.google.gson.Gson;
 import kz.osmium.account.main.util.TokenGen;
 import kz.osmium.account.objects.gson.Auth;
 import kz.osmium.account.statement.GETStatement;
+import kz.osmium.main.util.StatusResponse;
 import spark.Request;
 import spark.Response;
 
@@ -83,8 +84,8 @@ public class AccountGET {
             }
         }
 
-        response.status(400);
+        response.status(204);
 
-        return "400 Bad Request";
+        return StatusResponse.NO_CONTENT;
     }
 }

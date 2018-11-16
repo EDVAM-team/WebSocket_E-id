@@ -19,12 +19,15 @@ package kz.osmium.translit.objects.gson;
 import com.google.gson.annotations.SerializedName;
 
 public class Symbol {
+    @SerializedName("id_symbol")
+    private final int idSymbol;
     @SerializedName("cyrl")
     private final String cyrl;
     @SerializedName("latn")
     private final String latn;
 
-    public Symbol(String cyrl, String latn) {
+    public Symbol(int idSymbol, String cyrl, String latn) {
+        this.idSymbol = idSymbol;
         this.cyrl = cyrl;
         this.latn = latn;
     }

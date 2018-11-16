@@ -80,6 +80,7 @@ public class TranslitGET {
 
                 while (resultSet.next())
                     wordArrayList.add(new Word(
+                            resultSet.getInt("id_word"),
                             resultSet.getString("cyrl"),
                             resultSet.getString("latn")
                     ));
@@ -110,6 +111,7 @@ public class TranslitGET {
 
                 while (resultSet.next())
                     wordArrayList.add(new Symbol(
+                            resultSet.getInt("id_symbol"),
                             resultSet.getString("cyrl"),
                             resultSet.getString("latn")
                     ));

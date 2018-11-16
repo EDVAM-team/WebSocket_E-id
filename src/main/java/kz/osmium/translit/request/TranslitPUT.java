@@ -25,6 +25,7 @@ import spark.Response;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.HashMap;
 
 public class TranslitPUT {
@@ -40,15 +41,32 @@ public class TranslitPUT {
 
         if (TokenCheck.checkTeacher(connection, request.queryParams("token"))) {
 
-            if (request.queryParams("cyrl") != null &&
+            if (request.queryParams("id_word") != null &&
+                    request.queryParams("cyrl") != null ||
                     request.queryParams("latn") != null) {
 
                     try {
                         PreparedStatement preparedStatement = connection.get("translit").prepareStatement(PUTStatement.putWord());
 
-                        preparedStatement.setString(1, request.queryParams("latn"));
-                        preparedStatement.setString(2, request.queryParams("cyrl"));
-                        preparedStatement.execute();
+                        preparedStatement.setInt(5, Integer.parseInt(request.queryParams("id_word")));
+
+                        if (request.queryParams("cyrl") != null) {
+                            preparedStatement.setString(1, request.queryParams("cyrl"));
+                            preparedStatement.setString(2, request.queryParams("cyrl"));
+                        } else {
+                            preparedStatement.setNull(1, Types.VARCHAR);
+                            preparedStatement.setNull(2, Types.VARCHAR);
+                        }
+
+                        if (request.queryParams("latn") != null) {
+                            preparedStatement.setString(3, request.queryParams("latn"));
+                            preparedStatement.setString(4, request.queryParams("latn"));
+                        } else {
+                            preparedStatement.setNull(3, Types.VARCHAR);
+                            preparedStatement.setNull(4, Types.VARCHAR);
+                        }
+
+                        preparedStatement.executeUpdate();
 
                         response.status(200);
                     } catch (SQLException | NumberFormatException e) {
@@ -61,9 +79,9 @@ public class TranslitPUT {
                     return StatusResponse.SUCCESS;
             } else {
 
-                response.status(400);
+                response.status(204);
 
-                return StatusResponse.ERROR;
+                return StatusResponse.NO_CONTENT;
             }
         } else {
 
@@ -84,15 +102,32 @@ public class TranslitPUT {
 
         if (TokenCheck.checkTeacher(connection, request.queryParams("token"))) {
 
-            if (request.queryParams("cyrl") != null &&
+            if (request.queryParams("id_symbol") != null &&
+                    request.queryParams("cyrl") != null ||
                     request.queryParams("latn") != null) {
 
                     try {
                         PreparedStatement preparedStatement = connection.get("translit").prepareStatement(PUTStatement.putSymbol());
 
-                        preparedStatement.setString(1, request.queryParams("latn"));
-                        preparedStatement.setString(2, request.queryParams("cyrl"));
-                        preparedStatement.execute();
+                        preparedStatement.setInt(5, Integer.parseInt(request.queryParams("id_symbol")));
+
+                        if (request.queryParams("cyrl") != null) {
+                            preparedStatement.setString(1, request.queryParams("cyrl"));
+                            preparedStatement.setString(2, request.queryParams("cyrl"));
+                        } else {
+                            preparedStatement.setNull(1, Types.VARCHAR);
+                            preparedStatement.setNull(2, Types.VARCHAR);
+                        }
+
+                        if (request.queryParams("latn") != null) {
+                            preparedStatement.setString(3, request.queryParams("latn"));
+                            preparedStatement.setString(4, request.queryParams("latn"));
+                        } else {
+                            preparedStatement.setNull(3, Types.VARCHAR);
+                            preparedStatement.setNull(4, Types.VARCHAR);
+                        }
+
+                        preparedStatement.executeUpdate();
 
                         response.status(200);
                     } catch (SQLException | NumberFormatException e) {
@@ -105,9 +140,9 @@ public class TranslitPUT {
                     return StatusResponse.SUCCESS;
             } else {
 
-                response.status(400);
+                response.status(204);
 
-                return StatusResponse.ERROR;
+                return StatusResponse.NO_CONTENT;
             }
         } else {
 

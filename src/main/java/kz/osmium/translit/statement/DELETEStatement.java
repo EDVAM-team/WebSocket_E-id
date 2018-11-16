@@ -8,7 +8,7 @@ public class DELETEStatement {
      * @return
      */
     public static String deleteWord() {
-        return "DELETE FROM `word` WHERE `word`.`cyrl`=?";
+        return "DELETE FROM `word` WHERE `word`.`id_word`=?";
     }
 
     /**
@@ -17,6 +17,6 @@ public class DELETEStatement {
      * @return
      */
     public static String deleteSymbol() {
-        return "DELETE FROM `symbol` WHERE `symbol`.`cyrl`=?";
+        return "DELETE FROM `symbol` WHERE `symbol`.`id_symbol`=?";
     }
 }

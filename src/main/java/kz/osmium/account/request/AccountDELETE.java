@@ -61,9 +61,9 @@ public class AccountDELETE {
                 return StatusResponse.SUCCESS;
             } else {
 
-                response.status(400);
+                response.status(204);
 
-                return StatusResponse.ERROR;
+                return StatusResponse.NO_CONTENT;
             }
         } else {
 
@@ -103,9 +103,9 @@ public class AccountDELETE {
                 return StatusResponse.SUCCESS;
             } else {
 
-                response.status(400);
+                response.status(204);
 
-                return StatusResponse.ERROR;
+                return StatusResponse.NO_CONTENT;
             }
         } else {
 

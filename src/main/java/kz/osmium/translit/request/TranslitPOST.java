@@ -16,14 +16,17 @@
 
 package kz.osmium.translit.request;
 
+import com.google.gson.Gson;
 import kz.osmium.account.main.util.TokenCheck;
 import kz.osmium.main.util.StatusResponse;
+import kz.osmium.translit.objects.gson.Symbol;
 import kz.osmium.translit.statement.POSTStatement;
 import spark.Request;
 import spark.Response;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 
@@ -48,22 +51,45 @@ public class TranslitPOST {
 
                         preparedStatement.setString(1, request.queryParams("cyrl"));
                         preparedStatement.setString(2, request.queryParams("latn"));
-                        preparedStatement.execute();
 
-                        response.status(201);
+                        if (preparedStatement.executeUpdate() == 0){
+
+                            response.status(409);
+
+                            return StatusResponse.CONFLICT;
+                        }
+
+                        try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                            if (generatedKeys.next()) {
+
+                                response.status(201);
+
+                                return new Gson().toJson(
+                                        new Symbol(
+                                                Math.toIntExact(generatedKeys.getLong(1)),
+                                                request.queryParams("cyrl"),
+                                                request.queryParams("latn")
+                                        )
+                                );
+                            }
+                            else {
+
+                                response.status(500);
+
+                                return StatusResponse.INTERNAL_SERVER_ERROR;
+                            }
+                        }
                     } catch (SQLException | NumberFormatException e) {
 
                         response.status(409);
 
                         return StatusResponse.CONFLICT;
                     }
-
-                    return StatusResponse.SUCCESS;
             } else {
 
-                response.status(400);
+                response.status(204);
 
-                return StatusResponse.ERROR;
+                return StatusResponse.NO_CONTENT;
             }
         } else {
 
@@ -93,22 +119,45 @@ public class TranslitPOST {
 
                         preparedStatement.setString(1, request.queryParams("cyrl"));
                         preparedStatement.setString(2, request.queryParams("latn"));
-                        preparedStatement.execute();
 
-                        response.status(201);
+                        if (preparedStatement.executeUpdate() == 0){
+
+                            response.status(409);
+
+                            return StatusResponse.CONFLICT;
+                        }
+
+                        try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                            if (generatedKeys.next()) {
+
+                                response.status(201);
+
+                                return new Gson().toJson(
+                                        new Symbol(
+                                                Math.toIntExact(generatedKeys.getLong(1)),
+                                                request.queryParams("cyrl"),
+                                                request.queryParams("latn")
+                                        )
+                                );
+                            }
+                            else {
+
+                                response.status(500);
+
+                                return StatusResponse.INTERNAL_SERVER_ERROR;
+                            }
+                        }
                     } catch (SQLException | NumberFormatException e) {
 
                         response.status(409);
 
                         return StatusResponse.CONFLICT;
                     }
-
-                    return StatusResponse.SUCCESS;
             } else {
 
-                response.status(400);
+                response.status(204);
 
-                return StatusResponse.ERROR;
+                return StatusResponse.NO_CONTENT;
             }
         } else {
 

@@ -93,9 +93,9 @@ public class AccountPOST {
                 return StatusResponse.SUCCESS;
             } else {
 
-                response.status(400);
+                response.status(204);
 
-                return StatusResponse.ERROR;
+                return StatusResponse.NO_CONTENT;
             }
         } else {
 

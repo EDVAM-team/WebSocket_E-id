@@ -159,8 +159,9 @@ public class TranslitRequest {
          *
          * https://*.example.com/api/word ?
          * & token = <String>
-         * & cyrl = <String>
-         * & latn = <String>
+         * & id_word = <Integer>
+         * [-] & cyrl = <String>
+         * [-] & latn = <String>
          */
         path("/api", () ->
                 put("/word", "application/json", (request, response) -> {
@@ -180,8 +181,9 @@ public class TranslitRequest {
          *
          * https://*.example.com/api/symbol ?
          * & token = <String>
-         * & cyrl = <String>
-         * & latn = <String>
+         * & id_symbol = <Integer>
+         * [-] & cyrl = <String>
+         * [-] & latn = <String>
          */
         path("/api", () ->
                 put("/symbol", "application/json", (request, response) -> {

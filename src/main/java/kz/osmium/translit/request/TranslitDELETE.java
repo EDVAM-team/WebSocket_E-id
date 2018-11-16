@@ -40,12 +40,12 @@ public class TranslitDELETE {
 
         if (TokenCheck.checkTeacher(connection, request.queryParams("token"))) {
 
-            if (request.queryParams("cyrl") != null) {
+            if (request.queryParams("id_word") != null) {
 
                     try {
                         PreparedStatement preparedStatement = connection.get("translit").prepareStatement(DELETEStatement.deleteWord());
 
-                        preparedStatement.setString(1, request.queryParams("cyrl"));
+                        preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_word")));
                         preparedStatement.execute();
 
                         response.status(200);
@@ -59,9 +59,9 @@ public class TranslitDELETE {
                     return StatusResponse.SUCCESS;
             } else {
 
-                response.status(400);
+                response.status(204);
 
-                return StatusResponse.ERROR;
+                return StatusResponse.NO_CONTENT;
             }
         } else {
 
@@ -82,12 +82,12 @@ public class TranslitDELETE {
 
         if (TokenCheck.checkTeacher(connection, request.queryParams("token"))) {
 
-            if (request.queryParams("cyrl") != null) {
+            if (request.queryParams("id_symbol") != null) {
 
                     try {
                         PreparedStatement preparedStatement = connection.get("translit").prepareStatement(DELETEStatement.deleteSymbol());
 
-                        preparedStatement.setString(1, request.queryParams("cyrl"));
+                        preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_symbol")));
                         preparedStatement.execute();
 
                         response.status(200);
@@ -102,9 +102,9 @@ public class TranslitDELETE {
 
             } else {
 
-                response.status(400);
+                response.status(204);
 
-                return StatusResponse.ERROR;
+                return StatusResponse.NO_CONTENT;
             }
         } else {
 
