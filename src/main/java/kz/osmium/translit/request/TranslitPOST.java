@@ -24,10 +24,7 @@ import kz.osmium.translit.statement.POSTStatement;
 import spark.Request;
 import spark.Response;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.HashMap;
 
 public class TranslitPOST {
@@ -47,14 +44,13 @@ public class TranslitPOST {
                     request.queryParams("latn") != null) {
 
                     try {
-                        PreparedStatement preparedStatement = connection.get("translit").prepareStatement(POSTStatement.postWord());
+                        PreparedStatement preparedStatement = connection.get("translit")
+                                .prepareStatement(POSTStatement.postWord(), Statement.RETURN_GENERATED_KEYS);
 
                         preparedStatement.setString(1, request.queryParams("cyrl"));
                         preparedStatement.setString(2, request.queryParams("latn"));
 
-                        int affectedRows = preparedStatement.executeUpdate();
-
-                        if (affectedRows == 0){
+                        if (preparedStatement.executeUpdate() == 0){
 
                             response.status(409);
 
@@ -117,14 +113,13 @@ public class TranslitPOST {
                     request.queryParams("latn") != null) {
 
                     try {
-                        PreparedStatement preparedStatement = connection.get("translit").prepareStatement(POSTStatement.postSymbol());
+                        PreparedStatement preparedStatement = connection.get("translit")
+                                .prepareStatement(POSTStatement.postSymbol(), Statement.RETURN_GENERATED_KEYS);
 
                         preparedStatement.setString(1, request.queryParams("cyrl"));
                         preparedStatement.setString(2, request.queryParams("latn"));
 
-                        int affectedRows = preparedStatement.executeUpdate();
-
-                        if (affectedRows == 0){
+                        if (preparedStatement.executeUpdate() == 0){
 
                             response.status(409);
 
