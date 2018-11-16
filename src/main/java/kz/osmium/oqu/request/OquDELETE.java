@@ -17,6 +17,7 @@
 package kz.osmium.oqu.request;
 
 import kz.osmium.account.main.util.TokenCheck;
+import kz.osmium.main.util.HerokuAPI;
 import kz.osmium.main.util.StatusResponse;
 import kz.osmium.oqu.statement.DELETEStatement;
 import spark.Request;
@@ -25,24 +26,22 @@ import spark.Response;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.HashMap;
 
 public class OquDELETE {
 
     /**
      * Получает информацию с таблицы "curator"
      *
-     * @param connection
      * @return возвращает список конкретных специальностей в JSON.
      */
-    public static String deleteCurator(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String deleteCurator(Request request, Response response) {
 
-        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkAdmin(request.queryParams("token"))) {
 
             if (request.queryParams("group") != null) {
 
-                try {
-                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(DELETEStatement.deleteCurator());
+                try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(DELETEStatement.deleteCurator());
 
                     preparedStatement.setInt(1, Integer.parseInt(request.queryParams("group")));
 

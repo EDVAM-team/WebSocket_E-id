@@ -17,6 +17,7 @@
 package kz.osmium.translit.request;
 
 import kz.osmium.account.main.util.TokenCheck;
+import kz.osmium.main.util.HerokuAPI;
 import kz.osmium.main.util.StatusResponse;
 import kz.osmium.translit.statement.DELETEStatement;
 import spark.Request;
@@ -25,7 +26,6 @@ import spark.Response;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.HashMap;
 
 public class TranslitDELETE {
 
@@ -36,14 +36,14 @@ public class TranslitDELETE {
      * @param response
      * @return
      */
-    public static String deleteWord(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String deleteWord(Request request, Response response) {
 
-        if (TokenCheck.checkTeacher(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkTeacher( request.queryParams("token"))) {
 
             if (request.queryParams("id_word") != null) {
 
-                    try {
-                        PreparedStatement preparedStatement = connection.get("translit").prepareStatement(DELETEStatement.deleteWord());
+                    try (Connection connection = HerokuAPI.Translit.getDB()) {
+                        PreparedStatement preparedStatement = connection.prepareStatement(DELETEStatement.deleteWord());
 
                         preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_word")));
                         preparedStatement.execute();
@@ -78,14 +78,14 @@ public class TranslitDELETE {
      * @param response
      * @return
      */
-    public static String deleteSymbol(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String deleteSymbol(Request request, Response response) {
 
-        if (TokenCheck.checkTeacher(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkTeacher( request.queryParams("token"))) {
 
             if (request.queryParams("id_symbol") != null) {
 
-                    try {
-                        PreparedStatement preparedStatement = connection.get("translit").prepareStatement(DELETEStatement.deleteSymbol());
+                    try (Connection connection = HerokuAPI.Translit.getDB()) {
+                        PreparedStatement preparedStatement = connection.prepareStatement(DELETEStatement.deleteSymbol());
 
                         preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_symbol")));
                         preparedStatement.execute();

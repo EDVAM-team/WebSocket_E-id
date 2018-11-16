@@ -22,9 +22,6 @@ import kz.osmium.translit.request.TranslitGET;
 import kz.osmium.translit.request.TranslitPOST;
 import kz.osmium.translit.request.TranslitPUT;
 
-import java.sql.Connection;
-import java.util.HashMap;
-
 import static spark.Spark.*;
 import static spark.Spark.post;
 
@@ -34,18 +31,18 @@ public class TranslitRequest {
     /**
      * Делается связь с API Translit
      */
-    public static void connectAPI(HashMap<String, Connection> connection){
+    public static void connectAPI(){
 
-        getAPI(connection);
-        postAPI(connection);
-        putAPI(connection);
-        deleteAPI(connection);
+        getAPI();
+        postAPI();
+        putAPI();
+        deleteAPI();
     }
 
     /**
      * GET запросы.
      */
-    private static void getAPI(HashMap<String, Connection> connection) {
+    private static void getAPI() {
 
         /*
          * Транслитезация казахского текста.
@@ -74,7 +71,7 @@ public class TranslitRequest {
         path("/api", () ->
                 get("/word", "application/json", (request, response) -> {
                     if (HerokuDomain.getDomainTranslit(request.host()))
-                        return TranslitGET.getWord(connection, response);
+                        return TranslitGET.getWord(response);
                     else {
 
                         response.status(404);
@@ -91,7 +88,7 @@ public class TranslitRequest {
         path("/api", () ->
                 get("/symbol", "application/json", (request, response) -> {
                     if (HerokuDomain.getDomainTranslit(request.host()))
-                        return TranslitGET.getSymbol(connection, response);
+                        return TranslitGET.getSymbol(response);
                     else {
 
                         response.status(404);
@@ -104,7 +101,7 @@ public class TranslitRequest {
     /**
      * POST запросы.
      */
-    private static void postAPI(HashMap<String, Connection> connection) {
+    private static void postAPI() {
 
         /*
          * Создает исключающие слово казахского слово на латинице.
@@ -117,7 +114,7 @@ public class TranslitRequest {
         path("/api", () ->
                 post("/word", (request, response) -> {
                             if (HerokuDomain.getDomainTranslit(request.host()))
-                                return TranslitPOST.postWord(connection, request, response);
+                                return TranslitPOST.postWord(request, response);
                             else {
 
                                 response.status(404);
@@ -138,7 +135,7 @@ public class TranslitRequest {
         path("/api", () ->
                 post("/symbol", (request, response) -> {
                             if (HerokuDomain.getDomainTranslit(request.host()))
-                                return TranslitPOST.postSymbol(connection, request, response);
+                                return TranslitPOST.postSymbol(request, response);
                             else {
 
                                 response.status(404);
@@ -152,7 +149,7 @@ public class TranslitRequest {
     /**
      * PUT запросы.
      */
-    private static void putAPI(HashMap<String, Connection> connection) {
+    private static void putAPI() {
 
         /*
          * Изменяет слово в базе транслитизации
@@ -166,7 +163,7 @@ public class TranslitRequest {
         path("/api", () ->
                 put("/word", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainTranslit(request.host()))
-                                return TranslitPUT.putWord(connection, request, response);
+                                return TranslitPUT.putWord(request, response);
                             else {
 
                                 response.status(404);
@@ -188,7 +185,7 @@ public class TranslitRequest {
         path("/api", () ->
                 put("/symbol", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainTranslit(request.host()))
-                                return TranslitPUT.putSymbol(connection, request, response);
+                                return TranslitPUT.putSymbol(request, response);
                             else {
 
                                 response.status(404);
@@ -202,7 +199,7 @@ public class TranslitRequest {
     /**
      * DELETE запросы.
      */
-    private static void deleteAPI(HashMap<String, Connection> connection) {
+    private static void deleteAPI() {
 
         /*
          * Удаляет слово с базы транслитизации.
@@ -214,7 +211,7 @@ public class TranslitRequest {
         path("/api", () ->
                 delete("/word", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainTranslit(request.host()))
-                                return TranslitDELETE.deleteWord(connection, request, response);
+                                return TranslitDELETE.deleteWord(request, response);
                             else {
 
                                 response.status(404);
@@ -234,7 +231,7 @@ public class TranslitRequest {
         path("/api", () ->
                 delete("/symbol", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainTranslit(request.host()))
-                                return TranslitDELETE.deleteSymbol(connection, request, response);
+                                return TranslitDELETE.deleteSymbol(request, response);
                             else {
 
                                 response.status(404);

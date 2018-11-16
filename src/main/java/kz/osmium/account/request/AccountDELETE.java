@@ -17,9 +17,8 @@
 package kz.osmium.account.request;
 
 import kz.osmium.account.main.util.TokenCheck;
-import kz.osmium.account.main.util.TokenGen;
 import kz.osmium.account.statement.DELETEStatement;
-import kz.osmium.account.statement.PUTStatement;
+import kz.osmium.main.util.HerokuAPI;
 import kz.osmium.main.util.StatusResponse;
 import spark.Request;
 import spark.Response;
@@ -27,24 +26,22 @@ import spark.Response;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.HashMap;
 
 public class AccountDELETE {
 
     /**
      * Удаляет сессию аккаунта в таблице "auth"
      *
-     * @param connection
      * @return возвращает список конкретных специальностей в JSON.
      */
-    public static String deleteAuth(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String deleteAuth(Request request, Response response) {
 
-        if (TokenCheck.checkAccount(connection, request.queryParams("token"), Integer.parseInt(request.queryParams("id_account")))) {
+        if (TokenCheck.checkAccount(request.queryParams("token"), Integer.parseInt(request.queryParams("id_account")))) {
 
             if (request.queryParams("token") != null) {
 
-                try {
-                    PreparedStatement preparedStatement = connection.get("account").prepareStatement(DELETEStatement.deleteAuth());
+                try (Connection connection = HerokuAPI.Account.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(DELETEStatement.deleteAuth());
 
                     preparedStatement.setString(1, request.queryParams("token"));
 
@@ -76,17 +73,16 @@ public class AccountDELETE {
     /**
      * Удаляет сессии аккаунта в таблице "auth"
      *
-     * @param connection
      * @return возвращает список конкретных специальностей в JSON.
      */
-    public static String deleteAuthAll(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String deleteAuthAll(Request request, Response response) {
 
-        if (TokenCheck.checkAccountAdmin(connection, request.queryParams("token"), Integer.parseInt(request.queryParams("id_account")))) {
+        if (TokenCheck.checkAccountAdmin(request.queryParams("token"), Integer.parseInt(request.queryParams("id_account")))) {
 
             if (request.queryParams("token") != null) {
 
-                try {
-                    PreparedStatement preparedStatement = connection.get("account").prepareStatement(DELETEStatement.deleteAuthAll());
+                try (Connection connection = HerokuAPI.Account.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(DELETEStatement.deleteAuthAll());
 
                     preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_account")));
 

@@ -20,18 +20,15 @@ import kz.osmium.account.main.AccountRequest;
 import kz.osmium.oqu.main.OquRequest;
 import kz.osmium.translit.main.TranslitRequest;
 
-import java.sql.Connection;
-import java.util.HashMap;
-
 public class Request {
 
     /**
      * Все запросы WebSocket'а
      */
-    public static void connectAPI(HashMap<String, Connection> connection){
+    public static void connectAPI(){
 
-        AccountRequest.connectAPI(connection);
-        OquRequest.connectAPI(connection);
-        TranslitRequest.connectAPI(connection);
+        AccountRequest.connectAPI();
+        OquRequest.connectAPI();
+        TranslitRequest.connectAPI();
     }
 }

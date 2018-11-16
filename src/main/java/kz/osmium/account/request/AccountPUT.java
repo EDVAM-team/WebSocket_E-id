@@ -18,6 +18,7 @@ package kz.osmium.account.request;
 
 import kz.osmium.account.main.util.TokenCheck;
 import kz.osmium.account.statement.PUTStatement;
+import kz.osmium.main.util.HerokuAPI;
 import kz.osmium.main.util.StatusResponse;
 import spark.Request;
 import spark.Response;
@@ -26,7 +27,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Types;
-import java.util.HashMap;
 
 public class AccountPUT {
 
@@ -34,12 +34,11 @@ public class AccountPUT {
      * Вносит изменения в аккаунте.
      * Используется таблица "account"
      *
-     * @param connection
      * @return
      */
-    public static String putAccount(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String putAccount(Request request, Response response) {
 
-        if (TokenCheck.checkAccount(connection, request.queryParams("token"), Integer.parseInt(request.queryParams("id_account")))) {
+        if (TokenCheck.checkAccount(request.queryParams("token"), Integer.parseInt(request.queryParams("id_account")))) {
 
             if (request.queryParams("id_account") != null &&
                     request.queryParams("type") != null ||
@@ -53,8 +52,8 @@ public class AccountPUT {
                     request.queryParams("login") != null ||
                     request.queryParams("pass") != null) {
 
-                try {
-                    PreparedStatement preparedStatement = connection.get("account").prepareStatement(PUTStatement.putAccount());
+                try (Connection connection = HerokuAPI.Account.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putAccount());
 
                     if (request.queryParams("type") != null) {
                         preparedStatement.setInt(1, Integer.parseInt(request.queryParams("type")));

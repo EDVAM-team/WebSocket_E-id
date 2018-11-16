@@ -18,6 +18,7 @@ package kz.osmium.account.request;
 
 import kz.osmium.account.main.util.TokenCheck;
 import kz.osmium.account.statement.POSTStatement;
+import kz.osmium.main.util.HerokuAPI;
 import kz.osmium.main.util.StatusResponse;
 import spark.Request;
 import spark.Response;
@@ -26,7 +27,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Types;
-import java.util.HashMap;
 
 public class AccountPOST {
 
@@ -34,12 +34,11 @@ public class AccountPOST {
      * Создает аккаунт.
      * Используется таблица "account"
      *
-     * @param connection
      * @return
      */
-    public static String postAccount(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String postAccount(Request request, Response response) {
 
-        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkAdmin(request.queryParams("token"))) {
 
             if (request.queryParams("f_name") != null &&
                     request.queryParams("l_name") != null &&
@@ -48,8 +47,8 @@ public class AccountPOST {
                     request.queryParams("type") != null &&
                     request.queryParams("pass") != null) {
 
-                try {
-                    PreparedStatement preparedStatement = connection.get("account").prepareStatement(POSTStatement.postAccount());
+                try (Connection connection = HerokuAPI.Account.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postAccount());
 
                     preparedStatement.setString(1, request.queryParams("f_name"));
                     preparedStatement.setString(2, request.queryParams("l_name"));

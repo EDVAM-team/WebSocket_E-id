@@ -18,6 +18,7 @@ package kz.osmium.translit.request;
 
 import com.google.gson.Gson;
 import kz.osmium.account.main.util.TokenCheck;
+import kz.osmium.main.util.HerokuAPI;
 import kz.osmium.main.util.StatusResponse;
 import kz.osmium.translit.objects.gson.Symbol;
 import kz.osmium.translit.statement.POSTStatement;
@@ -25,7 +26,6 @@ import spark.Request;
 import spark.Response;
 
 import java.sql.*;
-import java.util.HashMap;
 
 public class TranslitPOST {
 
@@ -36,15 +36,15 @@ public class TranslitPOST {
      * @param response
      * @return
      */
-    public static String postWord(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String postWord(Request request, Response response) {
 
-        if (TokenCheck.checkTeacher(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkTeacher( request.queryParams("token"))) {
 
             if (request.queryParams("cyrl") != null &&
                     request.queryParams("latn") != null) {
 
-                    try {
-                        PreparedStatement preparedStatement = connection.get("translit")
+                    try (Connection connection = HerokuAPI.Translit.getDB()) {
+                        PreparedStatement preparedStatement = connection
                                 .prepareStatement(POSTStatement.postWord(), Statement.RETURN_GENERATED_KEYS);
 
                         preparedStatement.setString(1, request.queryParams("cyrl"));
@@ -105,15 +105,15 @@ public class TranslitPOST {
      * @param response
      * @return
      */
-    public static String postSymbol(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String postSymbol(Request request, Response response) {
 
-        if (TokenCheck.checkTeacher(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkTeacher( request.queryParams("token"))) {
 
             if (request.queryParams("cyrl") != null &&
                     request.queryParams("latn") != null) {
 
-                    try {
-                        PreparedStatement preparedStatement = connection.get("translit")
+                    try (Connection connection = HerokuAPI.Translit.getDB()) {
+                        PreparedStatement preparedStatement = connection
                                 .prepareStatement(POSTStatement.postSymbol(), Statement.RETURN_GENERATED_KEYS);
 
                         preparedStatement.setString(1, request.queryParams("cyrl"));

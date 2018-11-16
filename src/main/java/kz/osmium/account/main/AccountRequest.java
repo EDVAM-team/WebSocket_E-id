@@ -22,9 +22,6 @@ import kz.osmium.account.request.AccountPOST;
 import kz.osmium.account.request.AccountPUT;
 import kz.osmium.main.util.HerokuDomain;
 
-import java.sql.Connection;
-import java.util.HashMap;
-
 import static spark.Spark.*;
 
 public class AccountRequest {
@@ -32,18 +29,18 @@ public class AccountRequest {
     /**
      * Делается связь с API Account
      */
-    public static void connectAPI(HashMap<String, Connection> connection) {
+    public static void connectAPI() {
 
-        getAPI(connection);
-        postAPI(connection);
-        putAPI(connection);
-        deleteAPI(connection);
+        getAPI();
+        postAPI();
+        putAPI();
+        deleteAPI();
     }
 
     /**
      * GET запросы.
      */
-    private static void getAPI(HashMap<String, Connection> connection) {
+    private static void getAPI() {
 
         /*
          * Авторизовать приложение.
@@ -55,7 +52,7 @@ public class AccountRequest {
         path("/api", () ->
                 get("/auth", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainAccount(request.host()))
-                                return AccountGET.getAccount(connection, request, response);
+                                return AccountGET.getAccount(request, response);
                             else {
 
                                 response.status(404);
@@ -69,7 +66,7 @@ public class AccountRequest {
     /**
      * POST запросы.
      */
-    private static void postAPI(HashMap<String, Connection> connection) {
+    private static void postAPI() {
 
         /*
          * Создает аккаунт.
@@ -90,7 +87,7 @@ public class AccountRequest {
         path("/api", () ->
                 post("/account", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainAccount(request.host()))
-                                return AccountPOST.postAccount(connection, request, response);
+                                return AccountPOST.postAccount(request, response);
                             else {
 
                                 response.status(404);
@@ -104,7 +101,7 @@ public class AccountRequest {
     /**
      * PUT запросы.
      */
-    private static void putAPI(HashMap<String, Connection> connection) {
+    private static void putAPI() {
 
         /*
          * Изменить аккаунт.
@@ -126,7 +123,7 @@ public class AccountRequest {
         path("/api", () ->
                 put("/account", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainAccount(request.host()))
-                                return AccountPUT.putAccount(connection, request, response);
+                                return AccountPUT.putAccount(request, response);
                             else {
 
                                 response.status(404);
@@ -140,7 +137,7 @@ public class AccountRequest {
     /**
      * DELETE запросы.
      */
-    private static void deleteAPI(HashMap<String, Connection> connection) {
+    private static void deleteAPI() {
 
         /*
          * Удаляет сессию аккаунта.
@@ -152,7 +149,7 @@ public class AccountRequest {
         path("/api", () ->
                 delete("/auth", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainAccount(request.host()))
-                                return AccountDELETE.deleteAuth(connection, request, response);
+                                return AccountDELETE.deleteAuth(request, response);
                             else {
 
                                 response.status(404);
@@ -173,7 +170,7 @@ public class AccountRequest {
                 path("/auth", () ->
                         delete("/all","application/json", (request, response) -> {
                                     if (HerokuDomain.getDomainAccount(request.host()))
-                                        return AccountDELETE.deleteAuthAll(connection, request, response);
+                                        return AccountDELETE.deleteAuthAll(request, response);
                                     else {
 
                                         response.status(404);

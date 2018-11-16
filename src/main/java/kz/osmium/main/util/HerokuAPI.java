@@ -53,6 +53,7 @@ public class HerokuAPI {
         /* Пароль для подключения к базе данных. */
         private static final String password = dbUri.getUserInfo().split(":")[1];
 
+        /* Подключение к БД. */
         public static Connection getDB() throws SQLException {
             return DriverManager.getConnection(url, login, password);
         }
@@ -77,13 +78,18 @@ public class HerokuAPI {
          * {@link java.sql.DriverManager#getConnection}
          * в {@link Main#main(String[])}
          */
-        public static final String url = "jdbc:mysql://" + dbUri.getHost() + ":" + dbUri.getPort() + dbUri.getPath() + "?" + dbUri.getQuery();
+        private static final String url = "jdbc:mysql://" + dbUri.getHost() + ":" + dbUri.getPort() + dbUri.getPath() + "?" + dbUri.getQuery();
 
         /* Логин для подключения к базе данных. */
-        public static final String login = dbUri.getUserInfo().split(":")[0];
+        private static final String login = dbUri.getUserInfo().split(":")[0];
 
         /* Пароль для подключения к базе данных. */
-        public static final String password = dbUri.getUserInfo().split(":")[1];
+        private static final String password = dbUri.getUserInfo().split(":")[1];
+
+        /* Подключение к БД. */
+        public static Connection getDB() throws SQLException {
+            return DriverManager.getConnection(url, login, password);
+        }
     }
 
     public static class Translit {
@@ -105,12 +111,17 @@ public class HerokuAPI {
          * {@link java.sql.DriverManager#getConnection}
          * в {@link kz.osmium.translit.request}
          */
-        public static final String url = "jdbc:mysql://" + dbUri.getHost() + ":" + dbUri.getPort() + dbUri.getPath() + "?" + dbUri.getQuery();
+        private static final String url = "jdbc:mysql://" + dbUri.getHost() + ":" + dbUri.getPort() + dbUri.getPath() + "?" + dbUri.getQuery();
 
         /* Логин для подключения к базе данных. */
-        public static final String login = dbUri.getUserInfo().split(":")[0];
+        private static final String login = dbUri.getUserInfo().split(":")[0];
 
         /* Пароль для подключения к базе данных. */
-        public static final String password = dbUri.getUserInfo().split(":")[1];
+        private static final String password = dbUri.getUserInfo().split(":")[1];
+
+        /* Подключение к БД. */
+        public static Connection getDB() throws SQLException {
+            return DriverManager.getConnection(url, login, password);
+        }
     }
 }

@@ -20,6 +20,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import kz.osmium.account.main.util.TokenCheck;
 import kz.osmium.account.main.util.TokenGen;
+import kz.osmium.main.util.HerokuAPI;
 import kz.osmium.main.util.StatusResponse;
 import kz.osmium.oqu.gson.MarkJSON;
 import kz.osmium.oqu.statement.GETStatement;
@@ -30,7 +31,6 @@ import spark.Response;
 import java.lang.reflect.Type;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class OquPOST {
@@ -39,17 +39,16 @@ public class OquPOST {
      * Создает факультет.
      * Используется таблица "faculty"
      *
-     * @param connection
      * @return
      */
-    public static String postFaculty(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String postFaculty(  Request request, Response response) {
 
-        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkAdmin(request.queryParams("token"))) {
 
             if (request.queryParams("name") != null) {
 
-                try {
-                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(POSTStatement.postFaculty());
+                try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postFaculty());
 
                     preparedStatement.setString(1, request.queryParams("name"));
                     preparedStatement.execute();
@@ -81,18 +80,17 @@ public class OquPOST {
      * Создает факультет.
      * Используется таблица "specialty"
      *
-     * @param connection
      * @return
      */
-    public static String postSpecialty(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String postSpecialty(  Request request, Response response) {
 
-        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkAdmin(request.queryParams("token"))) {
 
             if (request.queryParams("name") != null &&
                     request.queryParams("id_faculty") != null) {
 
-                try {
-                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(POSTStatement.postSpecialty());
+                try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postSpecialty());
 
                     preparedStatement.setString(1, request.queryParams("name"));
                     preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_faculty")));
@@ -125,18 +123,17 @@ public class OquPOST {
      * Создает группу.
      * Используется таблица "group"
      *
-     * @param connection
      * @return
      */
-    public static String postGroup(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String postGroup(  Request request, Response response) {
 
-        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkAdmin(request.queryParams("token"))) {
 
             if (request.queryParams("name") != null &&
                     request.queryParams("id_specialty") != null) {
 
-                try {
-                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(POSTStatement.postGroup());
+                try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postGroup());
 
                     preparedStatement.setString(1, request.queryParams("name"));
                     preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_specialty")));
@@ -169,18 +166,17 @@ public class OquPOST {
      * Создает куратора.
      * Используется таблица "search"
      *
-     * @param connection
      * @return
      */
-    public static String postCurator(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String postCurator(  Request request, Response response) {
 
-        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkAdmin(request.queryParams("token"))) {
 
             if (request.queryParams("group") != null &&
                     request.queryParams("teacher") != null) {
 
-                try {
-                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(POSTStatement.postCurator());
+                try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postCurator());
 
                     preparedStatement.setInt(1, Integer.parseInt(request.queryParams("group")));
                     preparedStatement.setInt(2, Integer.parseInt(request.queryParams("teacher")));
@@ -213,17 +209,16 @@ public class OquPOST {
      * Создает кабинет.
      * Используется таблица "room"
      *
-     * @param connection
      * @return
      */
-    public static String postRoom(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String postRoom(  Request request, Response response) {
 
-        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkAdmin(request.queryParams("token"))) {
 
             if (request.queryParams("name") != null) {
 
-                try {
-                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(POSTStatement.postRoom());
+                try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postRoom());
 
                     preparedStatement.setString(1, request.queryParams("name"));
                     preparedStatement.execute();
@@ -255,19 +250,18 @@ public class OquPOST {
      * Создает рейтинг студента.
      * Используется таблица "rating"
      *
-     * @param connection
      * @return
      */
-    public static String postRating(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String postRating(  Request request, Response response) {
 
-        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkAdmin(  request.queryParams("token"))) {
 
             if (request.queryParams("id_subject") != null &&
                     request.queryParams("id_account") != null &&
                     request.queryParams("num") != null) {
 
-                try {
-                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(POSTStatement.postRating());
+                try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postRating());
 
                     preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_subject")));
                     preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_account")));
@@ -301,22 +295,21 @@ public class OquPOST {
      * Создает оценку студентам.
      * Используется таблица "mark"
      *
-     * @param connection
      * @return
      */
-    public static String postMark(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String postMark(  Request request, Response response) {
 
-        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkAdmin(  request.queryParams("token"))) {
 
             if (request.queryParams("id_subject") != null) {
 
-                try {
+                try (Connection connection = HerokuAPI.Oqu.getDB()) {
                     Type type = new TypeToken<List<MarkJSON>>() {
                     }.getType();
                     ArrayList<MarkJSON> list = new Gson().fromJson(request.body(), type);
 
                     for (MarkJSON markJSON : list) {
-                        PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(GETStatement.getRatingCurrent());
+                        PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getRatingCurrent());
 
                         preparedStatement.setInt(1, markJSON.getIdAccount());
                         preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_subject")));
@@ -324,7 +317,7 @@ public class OquPOST {
                         ResultSet resultSet = preparedStatement.executeQuery();
 
                         while (resultSet.next()) {
-                            PreparedStatement preparedStatement2 = connection.get("oqu").prepareStatement(POSTStatement.postMark());
+                            PreparedStatement preparedStatement2 = connection.prepareStatement(POSTStatement.postMark());
 
                             preparedStatement2.setInt(1, resultSet.getInt("id_rating"));
                             preparedStatement2.setInt(2, markJSON.getN());
@@ -360,20 +353,19 @@ public class OquPOST {
      * Создает аккаунт.
      * Используется таблица "account"
      *
-     * @param connection
      * @return
      */
-    public static String postAccount(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String postAccount(  Request request, Response response) {
 
-        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkAdmin(  request.queryParams("token"))) {
 
             if (request.queryParams("name") != null &&
                     request.queryParams("login") != null &&
                     request.queryParams("t") != null &&
                     request.queryParams("pass") != null) {
 
-                try {
-                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(POSTStatement.postAccount());
+                try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postAccount());
 
                     preparedStatement.setString(1, request.queryParams("name"));
                     preparedStatement.setInt(2, Integer.parseInt(request.queryParams("t")));
@@ -442,17 +434,16 @@ public class OquPOST {
      * Создает предмет для расписания.
      * Используется таблица "list_subject"
      *
-     * @param connection
      * @return
      */
-    public static String postSubjectItem(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String postSubjectItem(  Request request, Response response) {
         
-        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkAdmin(  request.queryParams("token"))) {
 
             if (request.queryParams("name") != null) {
 
-                try {
-                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(POSTStatement.postItemSubject());
+                try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postItemSubject());
 
                     preparedStatement.setString(1, request.queryParams("name"));
                     preparedStatement.execute();
@@ -485,19 +476,18 @@ public class OquPOST {
      * Создает замену для конкретного предмета в расписании группы.
      * Используется таблица "change"
      *
-     * @param connection
      * @return
      */
-    public static String postChange(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String postChange(  Request request, Response response) {
 
-        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkAdmin(  request.queryParams("token"))) {
 
             if (request.queryParams("id_list_subject") != null &&
                     request.queryParams("t") != null &&
                     request.queryParams("id_account") != null) {
 
-                try {
-                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(POSTStatement.postChange());
+                try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postChange());
 
                     preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_list_subject")));
                     preparedStatement.setInt(2, Integer.parseInt(request.queryParams("t")));
@@ -537,10 +527,9 @@ public class OquPOST {
      * Создает расписание для группы.
      * Используется таблица "schedule"
      *
-     * @param connection
      * @return
      */
-    public static String postSchedule(HashMap<String, Connection> connection, Request request) {
+    public static String postSchedule(  Request request) {
         return "OquPOST postSchedule";
     }
 }

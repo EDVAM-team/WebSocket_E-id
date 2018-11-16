@@ -18,13 +18,13 @@ package kz.osmium.oqu.request;
 
 import kz.osmium.account.main.util.TokenCheck;
 import kz.osmium.account.main.util.TokenGen;
+import kz.osmium.main.util.HerokuAPI;
 import kz.osmium.main.util.StatusResponse;
 import kz.osmium.oqu.statement.PUTStatement;
 import spark.Request;
 import spark.Response;
 
 import java.sql.*;
-import java.util.HashMap;
 
 public class OquPUT {
 
@@ -32,12 +32,11 @@ public class OquPUT {
      * Вносит изменения в аккаунте.
      * Используется таблица "account"
      *
-     * @param connection
      * @return
      */
-    public static String putAccount(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String putAccount( Request request, Response response) {
 
-        if (TokenCheck.checkAccount(connection, request.queryParams("token"), Integer.parseInt(request.queryParams("id_account")))) {
+        if (TokenCheck.checkAccount(   request.queryParams("token"), Integer.parseInt(request.queryParams("id_account")))) {
 
             if (request.queryParams("id_account") != null &&
                     request.queryParams("t") != null ||
@@ -51,8 +50,8 @@ public class OquPUT {
                     request.queryParams("login") != null ||
                     request.queryParams("pass") != null) {
 
-                try {
-                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(PUTStatement.putAccount());
+                try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putAccount());
 
                     if (request.queryParams("t") != null)
                         preparedStatement.setInt(1, Integer.parseInt(request.queryParams("t")));
@@ -150,12 +149,11 @@ public class OquPUT {
      * Вносит изменения в замене.
      * Используется таблица "change"
      *
-     * @param connection
      * @return
      */
-    public static String putChange(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String putChange( Request request, Response response) {
 
-        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkAdmin(   request.queryParams("token"))) {
 
             if (request.queryParams("id_change") != null &&
                     request.queryParams("id_list_subject") != null ||
@@ -163,8 +161,8 @@ public class OquPUT {
                     request.queryParams("id_account") != null ||
                     request.queryParams("id_room") != null) {
 
-                try {
-                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(PUTStatement.putChange());
+                try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putChange());
 
                     if (request.queryParams("id_list_subject") != null) {
                         preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_list_subject")));
@@ -225,18 +223,17 @@ public class OquPUT {
      * Вносит изменения в кураторе.
      * Используется таблица "curator"
      *
-     * @param connection
      * @return
      */
-    public static String putCurator(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String putCurator( Request request, Response response) {
 
-        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkAdmin(   request.queryParams("token"))) {
 
             if (request.queryParams("id_group") != null &&
                     request.queryParams("id_account") != null) {
 
-                try {
-                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(PUTStatement.putCurator());
+                try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putCurator());
 
                     if (request.queryParams("id_account") != null) {
                         preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_account")));
@@ -276,18 +273,17 @@ public class OquPUT {
      * Вносит изменения в факультете.
      * Используется таблица "faculty"
      *
-     * @param connection
      * @return
      */
-    public static String putFaculty(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String putFaculty( Request request, Response response) {
 
-        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkAdmin(   request.queryParams("token"))) {
 
             if (request.queryParams("id_faculty") != null &&
                     request.queryParams("name") != null) {
 
-                try {
-                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(PUTStatement.putFaculty());
+                try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putFaculty());
 
                     if (request.queryParams("name") != null) {
                         preparedStatement.setString(1, request.queryParams("name"));
@@ -327,19 +323,18 @@ public class OquPUT {
      * Вносит изменения в группе.
      * Используется таблица "group"
      *
-     * @param connection
      * @return
      */
-    public static String putGroup(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String putGroup( Request request, Response response) {
 
-        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkAdmin(   request.queryParams("token"))) {
 
             if (request.queryParams("id_group") != null &&
                     request.queryParams("name") != null ||
                     request.queryParams("id_specialty") != null) {
 
-                try {
-                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(PUTStatement.putGroup());
+                try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putGroup());
 
                     if (request.queryParams("name") != null) {
                         preparedStatement.setString(1, request.queryParams("name"));
@@ -387,18 +382,17 @@ public class OquPUT {
      * Вносит изменения в списке предметов.
      * Используется таблица "list_subject"
      *
-     * @param connection
      * @return
      */
-    public static String putListSubject(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String putListSubject( Request request, Response response) {
 
-        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkAdmin(   request.queryParams("token"))) {
 
             if (request.queryParams("id_list_subject") != null &&
                     request.queryParams("name") != null) {
 
-                try {
-                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(PUTStatement.putListSubject());
+                try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putListSubject());
 
                     if (request.queryParams("name") != null) {
                         preparedStatement.setString(1, request.queryParams("name"));
@@ -438,20 +432,19 @@ public class OquPUT {
      * Вносит изменения в оценках.
      * Используется таблица "mark"
      *
-     * @param connection
      * @return
      */
-    public static String putMark(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String putMark( Request request, Response response) {
 
-        if (TokenCheck.checkTeacher(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkTeacher(   request.queryParams("token"))) {
 
             if (request.queryParams("id_mark") != null &&
                     request.queryParams("id_rating") != null ||
                     request.queryParams("n") != null ||
                     request.queryParams("mark") != null) {
 
-                try {
-                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(PUTStatement.putMark());
+                try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putMark());
 
                     if (request.queryParams("id_rating") != null) {
                         preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_rating")));
@@ -505,20 +498,19 @@ public class OquPUT {
      * Вносит изменения в рейтинге.
      * Используется таблица "rating"
      *
-     * @param connection
      * @return
      */
-    public static String putRating(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String putRating( Request request, Response response) {
 
-        if (TokenCheck.checkTeacher(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkTeacher(   request.queryParams("token"))) {
 
             if (request.queryParams("id_rating") != null &&
                     request.queryParams("id_list_subject") != null ||
                     request.queryParams("id_account") != null ||
                     request.queryParams("num") != null) {
 
-                try {
-                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(PUTStatement.putRating());
+                try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putRating());
                     if (request.queryParams("id_list_subject") != null) {
                         preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_list_subject")));
                         preparedStatement.setInt(2, Integer.parseInt(request.queryParams("id_list_subject")));
@@ -573,18 +565,17 @@ public class OquPUT {
      * Вносит изменения в аудитории.
      * Используется таблица "room"
      *
-     * @param connection
      * @return
      */
-    public static String putRoom(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String putRoom( Request request, Response response) {
 
-        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkAdmin(   request.queryParams("token"))) {
 
             if (request.queryParams("id_room") != null &&
                     request.queryParams("name") != null) {
 
-                try {
-                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(PUTStatement.putRoom());
+                try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putRoom());
 
                     if (request.queryParams("name") != null) {
                         preparedStatement.setString(1, request.queryParams("name"));
@@ -624,12 +615,11 @@ public class OquPUT {
      * Вносит изменения в расписании.
      * Используется таблица "schedule"
      *
-     * @param connection
      * @return
      */
-    public static String putSchedule(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String putSchedule( Request request, Response response) {
 
-        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkAdmin(   request.queryParams("token"))) {
 
             if (request.queryParams("id_schedule") != null &&
                     request.queryParams("d") != null ||
@@ -638,8 +628,8 @@ public class OquPUT {
                     request.queryParams("id_group") != null ||
                     request.queryParams("id_account") != null) {
 
-                try {
-                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(PUTStatement.putSchedule());
+                try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putSchedule());
 
                     if (request.queryParams("d") != null) {
                         preparedStatement.setInt(1, Integer.parseInt(request.queryParams("d")));
@@ -711,12 +701,11 @@ public class OquPUT {
      * Вносит изменения в паре.
      * Используется таблица "schedule_subject"
      *
-     * @param connection
      * @return
      */
-    public static String putScheduleSubject(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String putScheduleSubject( Request request, Response response) {
 
-        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkAdmin(   request.queryParams("token"))) {
 
             if (request.queryParams("id_schedule_subject") != null &&
                     request.queryParams("id_list_subject") != null ||
@@ -724,8 +713,8 @@ public class OquPUT {
                     request.queryParams("id_room") != null ||
                     request.queryParams("id_change") != null) {
 
-                try {
-                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(PUTStatement.putScheduleSubject());
+                try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putScheduleSubject());
 
                     if (request.queryParams("id_list_subject") != null) {
                         preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_list_subject")));
@@ -780,19 +769,18 @@ public class OquPUT {
      * Вносит изменения в специальности.
      * Используется таблица "specialty"
      *
-     * @param connection
      * @return
      */
-    public static String putSpecialty(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String putSpecialty( Request request, Response response) {
 
-        if (TokenCheck.checkAdmin(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkAdmin(   request.queryParams("token"))) {
 
             if (request.queryParams("id_specialty") != null &&
                     request.queryParams("name") != null ||
                     request.queryParams("id_faculty") != null) {
 
-                try {
-                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(PUTStatement.putSpecialty());
+                try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putSpecialty());
 
                     if (request.queryParams("name") != null) {
                         preparedStatement.setString(1, request.queryParams("name"));
@@ -840,20 +828,19 @@ public class OquPUT {
      * Вносит изменения в семестре.
      * Используется таблица "total"
      *
-     * @param connection
      * @return
      */
-    public static String putTotal(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String putTotal( Request request, Response response) {
 
-        if (TokenCheck.checkTeacher(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkTeacher(   request.queryParams("token"))) {
 
             if (request.queryParams("id_total") != null &&
                     request.queryParams("id_list_subject") != null ||
                     request.queryParams("id_account") != null ||
                     request.queryParams("course") != null) {
 
-                try {
-                    PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(PUTStatement.putTotal());
+                try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putTotal());
 
                     if (request.queryParams("id_list_subject") != null) {
                         preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_list_subject")));

@@ -22,9 +22,6 @@ import kz.osmium.oqu.request.OquGET;
 import kz.osmium.oqu.request.OquPOST;
 import kz.osmium.oqu.request.OquPUT;
 
-import java.sql.Connection;
-import java.util.HashMap;
-
 import static spark.Spark.*;
 import static spark.Spark.get;
 
@@ -33,18 +30,18 @@ public class OquRequest {
     /**
      * Делается связь с API Oqu
      */
-    public static void connectAPI(HashMap<String, Connection> connection){
+    public static void connectAPI(){
 
-        getAPI(connection);
-        postAPI(connection);
-        putAPI(connection);
-        deleteAPI(connection);
+        getAPI();
+        postAPI();
+        putAPI();
+        deleteAPI();
     }
 
     /**
      * GET запросы.
      */
-    private static void getAPI(HashMap<String, Connection> connection) {
+    private static void getAPI() {
 
         /*
          * Получить рейтинг студента.
@@ -56,7 +53,7 @@ public class OquRequest {
         path("/api", () ->
                 get("/rating", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquGET.getRatingStudent(connection, request, response);
+                                return OquGET.getRatingStudent(request, response);
                             else {
 
                                 response.status(404);
@@ -75,7 +72,7 @@ public class OquRequest {
         path("/api", () ->
                 get("/total", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquGET.getTotal(connection, request, response);
+                                return OquGET.getTotal(request, response);
                             else {
 
                                 response.status(404);
@@ -93,7 +90,7 @@ public class OquRequest {
         path("/api", () ->
                 get("/faculty", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquGET.getFaculty(connection, response);
+                                return OquGET.getFaculty(response);
                             else {
 
                                 response.status(404);
@@ -112,7 +109,7 @@ public class OquRequest {
         path("/api", () ->
                 get("/specialty", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquGET.getSpecialty(connection, request, response);
+                                return OquGET.getSpecialty(request, response);
                             else {
 
                                 response.status(404);
@@ -131,7 +128,7 @@ public class OquRequest {
         path("/api", () ->
                 get("/group", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquGET.getGroup(connection, request, response);
+                                return OquGET.getGroup(request, response);
                             else {
 
                                 response.status(404);
@@ -151,7 +148,7 @@ public class OquRequest {
                 path("/curator", () ->
                         get("/group", "application/json", (request, response) -> {
                                     if (HerokuDomain.getDomainOqu(request.host()))
-                                        return OquGET.getCuratorGroup(connection, request, response);
+                                        return OquGET.getCuratorGroup(request, response);
                                     else {
 
                                         response.status(404);
@@ -171,7 +168,7 @@ public class OquRequest {
                 path("/curator", () ->
                         get("/teacher", "application/json", (request, response) -> {
                                     if (HerokuDomain.getDomainOqu(request.host()))
-                                        return OquGET.getCuratorTeacher(connection, request, response);
+                                        return OquGET.getCuratorTeacher(request, response);
                                     else {
 
                                         response.status(404);
@@ -189,7 +186,7 @@ public class OquRequest {
         path("/api", () ->
                 get("/room", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquGET.getRoom(connection, response);
+                                return OquGET.getRoom(response);
                             else {
 
                                 response.status(404);
@@ -208,7 +205,7 @@ public class OquRequest {
         path("/api", () ->
                 get("/schedule", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquGET.getScheduleStudent(connection, request, response);
+                                return OquGET.getScheduleStudent(request, response);
                             else {
 
                                 response.status(404);
@@ -228,7 +225,7 @@ public class OquRequest {
 //                path("/schedule", () ->
 //                        get("/teacher", (request, response) -> {
 //                                    if (HerokuDomain.getDomainOqu(request.host()))
-//                                        return OquGET.getScheduleTeacher(connection, request, response);
+//                                        return OquGET.getScheduleTeacher(request, response);
 //                                    else {
 //
 //                                        response.status(404);
@@ -248,7 +245,7 @@ public class OquRequest {
                 path("/account", () ->
                         get("/id", "application/json", (request, response) -> {
                                     if (HerokuDomain.getDomainOqu(request.host()))
-                                        return OquGET.getAccountID(connection, request, response);
+                                        return OquGET.getAccountID(request, response);
                                     else {
 
                                         response.status(404);
@@ -267,7 +264,7 @@ public class OquRequest {
                 path("/teacher", () ->
                         get("/all", "application/json", (request, response) -> {
                                     if (HerokuDomain.getDomainOqu(request.host()))
-                                        return OquGET.getTeacherAll(connection, response);
+                                        return OquGET.getTeacherAll(response);
                                     else {
 
                                         response.status(404);
@@ -286,7 +283,7 @@ public class OquRequest {
                 path("/subject", () ->
                         get("/list", "application/json", (request, response) -> {
                                     if (HerokuDomain.getDomainOqu(request.host()))
-                                        return OquGET.getListSubject(connection, response);
+                                        return OquGET.getListSubject(response);
                                     else {
 
                                         response.status(404);
@@ -300,7 +297,7 @@ public class OquRequest {
     /**
      * POST запросы.
      */
-    private static void postAPI(HashMap<String, Connection> connection) {
+    private static void postAPI() {
 
         /*
          * Создает факультет.
@@ -312,7 +309,7 @@ public class OquRequest {
         path("/api", () ->
                 post("/faculty", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquPOST.postFaculty(connection, request, response);
+                                return OquPOST.postFaculty(request, response);
                             else {
 
                                 response.status(404);
@@ -333,7 +330,7 @@ public class OquRequest {
         path("/api", () ->
                 post("/specialty", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquPOST.postSpecialty(connection, request, response);
+                                return OquPOST.postSpecialty(request, response);
                             else {
 
                                 response.status(404);
@@ -354,7 +351,7 @@ public class OquRequest {
         path("/api", () ->
                 post("/group", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquPOST.postGroup(connection, request, response);
+                                return OquPOST.postGroup(request, response);
                             else {
 
                                 response.status(404);
@@ -374,7 +371,7 @@ public class OquRequest {
         path("/api", () ->
                 post("/room", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquPOST.postRoom(connection, request, response);
+                                return OquPOST.postRoom(request, response);
                             else {
 
                                 response.status(404);
@@ -396,7 +393,7 @@ public class OquRequest {
         path("/api", () ->
                 post("/rating", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquPOST.postRating(connection, request, response);
+                                return OquPOST.postRating(request, response);
                             else {
 
                                 response.status(404);
@@ -423,7 +420,7 @@ public class OquRequest {
         path("/api", () ->
                 post("/mark", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquPOST.postMark(connection, request, response);
+                                return OquPOST.postMark(request, response);
                             else {
 
                                 response.status(404);
@@ -444,7 +441,7 @@ public class OquRequest {
         path("/api", () ->
                 post("/curator", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquPOST.postCurator(connection, request, response);
+                                return OquPOST.postCurator(request, response);
                             else {
 
                                 response.status(404);
@@ -473,7 +470,7 @@ public class OquRequest {
         path("/api", () ->
                 post("/account", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquPOST.postAccount(connection, request, response);
+                                return OquPOST.postAccount(request, response);
                             else {
 
                                 response.status(404);
@@ -494,7 +491,7 @@ public class OquRequest {
                 path("/subject", () ->
                         post("/item", (request, response) -> {
                                     if (HerokuDomain.getDomainOqu(request.host()))
-                                        return OquPOST.postSubjectItem(connection, request, response);
+                                        return OquPOST.postSubjectItem(request, response);
                                     else {
 
                                         response.status(404);
@@ -512,7 +509,7 @@ public class OquRequest {
         path("/api", () ->
                 post("/schedule", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquPOST.postSchedule(connection, request);
+                                return OquPOST.postSchedule(request);
                             else {
 
                                 response.status(404);
@@ -549,7 +546,7 @@ public class OquRequest {
     /**
      * PUT запросы.
      */
-    private static void putAPI(HashMap<String, Connection> connection) {
+    private static void putAPI() {
 
         /*
          * Изменить аккаунт.
@@ -571,7 +568,7 @@ public class OquRequest {
         path("/api", () ->
                 put("/account", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquPUT.putAccount(connection, request, response);
+                                return OquPUT.putAccount(request, response);
                             else {
 
                                 response.status(404);
@@ -595,7 +592,7 @@ public class OquRequest {
         path("/api", () ->
                 put("/change", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquPUT.putChange(connection, request, response);
+                                return OquPUT.putChange(request, response);
                             else {
 
                                 response.status(404);
@@ -616,7 +613,7 @@ public class OquRequest {
         path("/api", () ->
                 put("/curator", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquPUT.putCurator(connection, request, response);
+                                return OquPUT.putCurator(request, response);
                             else {
 
                                 response.status(404);
@@ -637,7 +634,7 @@ public class OquRequest {
         path("/api", () ->
                 put("/faculty", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquPUT.putFaculty(connection, request, response);
+                                return OquPUT.putFaculty(request, response);
                             else {
 
                                 response.status(404);
@@ -659,7 +656,7 @@ public class OquRequest {
         path("/api", () ->
                 put("/group", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquPUT.putGroup(connection, request, response);
+                                return OquPUT.putGroup(request, response);
                             else {
 
                                 response.status(404);
@@ -681,7 +678,7 @@ public class OquRequest {
                 path("/subject", () ->
                         put("/list", "application/json", (request, response) -> {
                                     if (HerokuDomain.getDomainOqu(request.host()))
-                                        return OquPUT.putListSubject(connection, request, response);
+                                        return OquPUT.putListSubject(request, response);
                                     else {
 
                                         response.status(404);
@@ -704,7 +701,7 @@ public class OquRequest {
         path("/api", () ->
                 put("/mark", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquPUT.putMark(connection, request, response);
+                                return OquPUT.putMark(request, response);
                             else {
 
                                 response.status(404);
@@ -727,7 +724,7 @@ public class OquRequest {
         path("/api", () ->
                 put("/rating", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquPUT.putRating(connection, request, response);
+                                return OquPUT.putRating(request, response);
                             else {
 
                                 response.status(404);
@@ -748,7 +745,7 @@ public class OquRequest {
         path("/api", () ->
                 put("/room", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquPUT.putRoom(connection, request, response);
+                                return OquPUT.putRoom(request, response);
                             else {
 
                                 response.status(404);
@@ -773,7 +770,7 @@ public class OquRequest {
         path("/api", () ->
                 put("/schedule", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquPUT.putSchedule(connection, request, response);
+                                return OquPUT.putSchedule(request, response);
                             else {
 
                                 response.status(404);
@@ -798,7 +795,7 @@ public class OquRequest {
                 path("/subject", () ->
                         put("/schedule", "application/json", (request, response) -> {
                                     if (HerokuDomain.getDomainOqu(request.host()))
-                                        return OquPUT.putScheduleSubject(connection, request, response);
+                                        return OquPUT.putScheduleSubject(request, response);
                                     else {
 
                                         response.status(404);
@@ -820,7 +817,7 @@ public class OquRequest {
         path("/api", () ->
                 put("/specialty", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquPUT.putSpecialty(connection, request, response);
+                                return OquPUT.putSpecialty(request, response);
                             else {
 
                                 response.status(404);
@@ -843,7 +840,7 @@ public class OquRequest {
         path("/api", () ->
                 put("/total", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquPUT.putTotal(connection, request, response);
+                                return OquPUT.putTotal(request, response);
                             else {
 
                                 response.status(404);
@@ -857,7 +854,7 @@ public class OquRequest {
     /**
      * DELETE запросы.
      */
-    private static void deleteAPI(HashMap<String, Connection> connection) {
+    private static void deleteAPI() {
 
         /*
          * Удаляет куратора.
@@ -869,7 +866,7 @@ public class OquRequest {
         path("/api", () ->
                 delete("/curator", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquDELETE.deleteCurator(connection, request, response);
+                                return OquDELETE.deleteCurator(request, response);
                             else {
 
                                 response.status(404);

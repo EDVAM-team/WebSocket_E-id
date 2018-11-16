@@ -28,21 +28,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class OquGET {
 
     /**
      * Получает информацию с таблицы "faculty"
      *
-     * @param connection
      * @return возвращает список факультетов в JSON.
      */
-    public static String getFaculty(HashMap<String, Connection> connection, Response response) {
+    public static String getFaculty(Response response) {
         ArrayList<Faculty> list = new ArrayList<>();
 
-        try {
-            ResultSet resultSet = connection.get("oqu").prepareStatement(GETStatement.getFaculty()).executeQuery();
+        try (Connection connection = HerokuAPI.Oqu.getDB()) {
+            ResultSet resultSet = connection.prepareStatement(GETStatement.getFaculty()).executeQuery();
 
             while (resultSet.next())
                 list.add(new Faculty(resultSet.getInt("id_faculty"), resultSet.getString("name")));
@@ -61,16 +59,15 @@ public class OquGET {
     /**
      * Получает информацию с таблицы "specialty"
      *
-     * @param connection
      * @return возвращает список конкретных специальностей в JSON.
      */
-    public static String getSpecialty(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String getSpecialty( Request request, Response response) {
 
         if (request.queryParams("faculty") != null) {
             ArrayList<Specialty> list = new ArrayList<>();
 
-            try {
-                PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(GETStatement.getSpecialty());
+            try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getSpecialty());
 
                 preparedStatement.setInt(1, Integer.parseInt(request.queryParams("faculty")));
 
@@ -102,15 +99,14 @@ public class OquGET {
     /**
      * Получает информацию с таблицы "account"
      *
-     * @param connection
      * @return возвращает список конкретных специальностей в JSON.
      */
-    public static String getCuratorGroup(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String getCuratorGroup( Request request, Response response) {
 
         if (request.queryParams("group") != null) {
 
-            try {
-                ResultSet resultSet = GETStatement.getReadDB(connection.get("oqu"), GETStatement.getCuratorGroup(), Integer.parseInt(request.queryParams("group")));
+            try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                ResultSet resultSet = GETStatement.getReadDB(connection, GETStatement.getCuratorGroup(), Integer.parseInt(request.queryParams("group")));
 
                 while (resultSet.next()) {
 
@@ -142,19 +138,18 @@ public class OquGET {
     /**
      * Получает информацию с таблицы "curator"
      *
-     * @param connection
      * @return возвращает список конкретных специальностей в JSON.
      */
-    public static String getCuratorTeacher(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String getCuratorTeacher( Request request, Response response) {
 
         if (request.queryParams("teacher") != null) {
 
-            try {
-                ResultSet resultSet = GETStatement.getReadDB(connection.get("oqu"), GETStatement.getCuratorTeacher(), Integer.parseInt(request.queryParams("teacher")));
+            try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                ResultSet resultSet = GETStatement.getReadDB(connection, GETStatement.getCuratorTeacher(), Integer.parseInt(request.queryParams("teacher")));
 
                 while (resultSet.next()) {
                     ArrayList<Group> list = new ArrayList<>();
-                    ResultSet resultSet2 = GETStatement.getReadDB(connection.get("oqu"), GETStatement.getGroup(), resultSet.getInt("id_group"));
+                    ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getGroup(), resultSet.getInt("id_group"));
 
                     while (resultSet2.next())
                         list.add(new Group(resultSet2.getInt("id_group"), resultSet2.getString("name")));
@@ -184,16 +179,15 @@ public class OquGET {
     /**
      * Получает информацию с таблицы "group"
      *
-     * @param connection
      * @return возвращает конкретную группу в JSON.
      */
-    public static String getGroup(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String getGroup( Request request, Response response) {
 
         if (request.queryParams("specialty") != null) {
             ArrayList<Group> list = new ArrayList<>();
 
-            try {
-                PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(GETStatement.getGroup());
+            try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getGroup());
 
                 preparedStatement.setInt(1, Integer.parseInt(request.queryParams("specialty")));
 
@@ -225,14 +219,13 @@ public class OquGET {
     /**
      * Получает информацию с таблицы "room"
      *
-     * @param connection
      * @return возвращает конкретную группу в JSON.
      */
-    public static String getRoom(HashMap<String, Connection> connection, Response response) {
+    public static String getRoom( Response response) {
         ArrayList<Room> list = new ArrayList<>();
 
-        try {
-            PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(GETStatement.getRoomAll());
+        try (Connection connection = HerokuAPI.Oqu.getDB()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getRoomAll());
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -256,16 +249,15 @@ public class OquGET {
     /**
      * Получает информацию с таблицы "total"
      *
-     * @param connection
      * @return возвращает конкретную группу в JSON.
      */
-    public static String getTotal(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String getTotal( Request request, Response response) {
 
         if (request.queryParams("id_account") != null) {
             ArrayList<Total> list = new ArrayList<>();
 
-            try {
-                ResultSet resultSet = GETStatement.getReadDB(connection.get("oqu"), GETStatement.getTotal(), Integer.parseInt(request.queryParams("id_account")));
+            try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                ResultSet resultSet = GETStatement.getReadDB(connection, GETStatement.getTotal(), Integer.parseInt(request.queryParams("id_account")));
 
                 while (resultSet.next()) {
                     Total total = new Total();
@@ -299,10 +291,9 @@ public class OquGET {
     /**
      * Получает информацию с таблицы "rating"
      *
-     * @param connection
      * @return возвращает конкретную группу в JSON.
      */
-    public static String getRatingStudent(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String getRatingStudent( Request request, Response response) {
 
         if (request.queryParams("id_account") != null &&
                 request.queryParams("num") != null) {
@@ -310,8 +301,8 @@ public class OquGET {
             Rating rating = new Rating();
             ArrayList<Rating.RatingChild> ratingChildren = new ArrayList<>();
 
-            try {
-                PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(GETStatement.getRatingStudent());
+            try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getRatingStudent());
 
                 preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_account")));
                 preparedStatement.setInt(2, Integer.parseInt(request.queryParams("num")));
@@ -334,7 +325,7 @@ public class OquGET {
                     if (rating.getNameAccount() == null)
                         rating.setNameAccount(resultSet.getString("name_account"));
 
-                    ResultSet resultSet2 = GETStatement.getReadDB(connection.get("oqu"), GETStatement.getMark(), resultSet.getInt("id_rating"));
+                    ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getMark(), resultSet.getInt("id_rating"));
 
                     while (resultSet2.next())
                         markArrayList.add(new Rating.RatingChild.Mark(
@@ -371,16 +362,15 @@ public class OquGET {
      * Обрабатывает информацию так, чтобы JSON отправлял ответ
      * расписания на всю неделю для ученика. Еще есть информация про замены.
      *
-     * @param connection
      * @return возвращает полную информацию расписания группы в JSON.
      */
-    public static String getScheduleStudent(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String getScheduleStudent( Request request, Response response) {
 
         if (request.queryParams("group") != null) {
             ArrayList<ScheduleStudent> list = new ArrayList<>();
 
-            try {
-                PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(GETStatement.getScheduleStudent());
+            try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getScheduleStudent());
 
                 preparedStatement.setInt(1, Integer.parseInt(request.queryParams("group")));
                 preparedStatement.setInt(2, Integer.parseInt(request.queryParams("group")));
@@ -439,16 +429,15 @@ public class OquGET {
      * Обрабатывает информацию так, чтобы JSON отправлял ответ
      * расписания на всю неделю для преподавателя. Еще есть информация про замены.
      *
-     * @param connection
      * @return возвращает полную информацию расписания группы в JSON.
      */
-    public static String getScheduleTeacher(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String getScheduleTeacher( Request request, Response response) {
 
         if (request.queryParams("teacher") != null) {
             ArrayList<ScheduleTeacher> list = new ArrayList<>();
 
-            try {
-                ResultSet resultSet = GETStatement.getReadDB(connection.get("oqu"), GETStatement.getScheduleTeacher(), Integer.parseInt(request.queryParams("teacher")));
+            try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                ResultSet resultSet = GETStatement.getReadDB(connection, GETStatement.getScheduleTeacher(), Integer.parseInt(request.queryParams("teacher")));
 
                 while (resultSet.next()) {
 
@@ -458,24 +447,24 @@ public class OquGET {
                     scheduleTeacher.setD(resultSet.getInt(2));
                     scheduleTeacher.setNum(resultSet.getInt(3));
 
-                    ResultSet resultSet2 = GETStatement.getReadDB(connection.get("oqu"), GETStatement.getScheduleSubject(), resultSet.getInt(4));
+                    ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getScheduleSubject(), resultSet.getInt(4));
 
                     resultSet2.next();
 
                     scheduleTeacher.setType(resultSet2.getInt("t"));
                     scheduleTeacher.setChange(0);
 
-                    ResultSet resultSet3 = GETStatement.getReadDB(connection.get("oqu"), GETStatement.getRoom(), resultSet2.getInt("room"));
+                    ResultSet resultSet3 = GETStatement.getReadDB(connection, GETStatement.getRoom(), resultSet2.getInt("room"));
 
                     while (resultSet3.next())
                         scheduleTeacher.setRoom(resultSet3.getString("name"));
 
-                    resultSet3 = GETStatement.getReadDB(connection.get("oqu"), GETStatement.getListSubject(), resultSet2.getInt("id_list_subject"));
+                    resultSet3 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet2.getInt("id_list_subject"));
 
                     resultSet3.next();
                     scheduleTeacher.setSubject(resultSet3.getString("name"));
 
-                    resultSet3 = GETStatement.getReadDB(connection.get("oqu"), GETStatement.getGroupID(), resultSet.getInt(5));
+                    resultSet3 = GETStatement.getReadDB(connection, GETStatement.getGroupID(), resultSet.getInt(5));
                     ArrayList<Group> groupList = new ArrayList<>();
 
                     while (resultSet3.next())
@@ -486,7 +475,7 @@ public class OquGET {
                     list.add(scheduleTeacher);
                 }
 
-                resultSet = GETStatement.getReadDB(connection.get("oqu"), GETStatement.getChangeTeacher(), Integer.parseInt(request.queryParams("teacher")));
+                resultSet = GETStatement.getReadDB(connection, GETStatement.getChangeTeacher(), Integer.parseInt(request.queryParams("teacher")));
 
                 while (resultSet.next()) {
                     ScheduleTeacher scheduleTeacher = new ScheduleTeacher();
@@ -494,15 +483,15 @@ public class OquGET {
                     scheduleTeacher.setType(resultSet.getInt("t"));
                     scheduleTeacher.setChange(1);
 
-                    ResultSet resultSet2 = GETStatement.getReadDB(connection.get("oqu"), GETStatement.getRoom(), resultSet.getInt("id_room"));
+                    ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getRoom(), resultSet.getInt("id_room"));
 
                     while (resultSet2.next())
                         scheduleTeacher.setRoom(resultSet2.getString("name"));
 
-                    resultSet2 = GETStatement.getReadDB(connection.get("oqu"), GETStatement.getScheduleChange(), resultSet.getInt("id_change"));
+                    resultSet2 = GETStatement.getReadDB(connection, GETStatement.getScheduleChange(), resultSet.getInt("id_change"));
 
                     while (resultSet2.next()) {
-                        ResultSet resultSet3 = GETStatement.getReadDB(connection.get("oqu"), GETStatement.getSubjectSchedule(), resultSet2.getInt("id_schedule_subject"));
+                        ResultSet resultSet3 = GETStatement.getReadDB(connection, GETStatement.getSubjectSchedule(), resultSet2.getInt("id_schedule_subject"));
 
                         while (resultSet3.next()) {
 
@@ -510,7 +499,7 @@ public class OquGET {
                             scheduleTeacher.setD(resultSet3.getInt("d"));
                             scheduleTeacher.setNum(resultSet3.getInt("num"));
 
-                            ResultSet resultSet4 = GETStatement.getReadDB(connection.get("oqu"), GETStatement.getGroupID(), resultSet3.getInt("id_group"));
+                            ResultSet resultSet4 = GETStatement.getReadDB(connection, GETStatement.getGroupID(), resultSet3.getInt("id_group"));
                             ArrayList<Group> groupList = new ArrayList<>();
 
                             while (resultSet4.next())
@@ -518,7 +507,7 @@ public class OquGET {
 
                             scheduleTeacher.setGroup(groupList);
 
-                            resultSet4 = GETStatement.getReadDB(connection.get("oqu"), GETStatement.getListSubject(), resultSet.getInt("id_list_subject"));
+                            resultSet4 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet.getInt("id_list_subject"));
 
                             resultSet4.next();
                             scheduleTeacher.setSubject(resultSet4.getString("name"));
@@ -548,15 +537,14 @@ public class OquGET {
     /**
      * Получает информацию с таблицы "account"
      *
-     * @param connection
      * @return возвращает конкретного преподователя в JSON.
      */
-    public static String getAccountID(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String getAccountID( Request request, Response response) {
 
         if (request.queryParams("id_account") != null) {
 
-            try {
-                PreparedStatement preparedStatement = connection.get("oqu").prepareStatement(GETStatement.getAccountID());
+            try (Connection connection = HerokuAPI.Oqu.getDB()) {
+                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getAccountID());
 
                 preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_account")));
 
@@ -595,14 +583,13 @@ public class OquGET {
     /**
      * Получает информацию с таблицы "account"
      *
-     * @param connection
      * @return возвращает всех преподавателей в JSON.
      */
-    public static String getTeacherAll(HashMap<String, Connection> connection, Response response) {
+    public static String getTeacherAll( Response response) {
         ArrayList<Account> list = new ArrayList<>();
 
-        try {
-            ResultSet resultSet = connection.get("oqu").prepareStatement(GETStatement.getTeacherAll()).executeQuery();
+        try (Connection connection = HerokuAPI.Oqu.getDB()) {
+            ResultSet resultSet = connection.prepareStatement(GETStatement.getTeacherAll()).executeQuery();
 
             while (resultSet.next())
                 list.add(new Account(
@@ -631,14 +618,13 @@ public class OquGET {
     /**
      * Получает информацию с таблицы "list_subject"
      *
-     * @param connection
      * @return возвращает весь список предметов в JSON.
      */
-    public static String getListSubject(HashMap<String, Connection> connection, Response response) {
+    public static String getListSubject( Response response) {
         ArrayList<ListSubject> list = new ArrayList<>();
 
-        try {
-            ResultSet resultSet = connection.get("oqu").prepareStatement(GETStatement.getListSubjectAll()).executeQuery();
+        try (Connection connection = HerokuAPI.Oqu.getDB()) {
+            ResultSet resultSet = connection.prepareStatement(GETStatement.getListSubjectAll()).executeQuery();
 
             while (resultSet.next())
                 list.add(new ListSubject(resultSet.getInt("id_list_subject"), resultSet.getString("name")));

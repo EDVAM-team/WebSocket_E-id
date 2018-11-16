@@ -23,7 +23,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
 
 public class TokenCheck {
 
@@ -33,7 +32,7 @@ public class TokenCheck {
      * @param token
      * @return
      */
-    public static boolean checkAdmin(HashMap<String, Connection> connection1, String token) {
+    public static boolean checkAdmin(String token) {
 
         if (token != null) {
 
@@ -61,7 +60,7 @@ public class TokenCheck {
      * @param token
      * @return
      */
-    public static boolean checkTeacher(HashMap<String, Connection> connection1, String token) {
+    public static boolean checkTeacher(String token) {
 
         if (token != null) {
 
@@ -89,7 +88,7 @@ public class TokenCheck {
      * @param token
      * @return
      */
-    public static boolean checkAccount(HashMap<String, Connection> connection1, String token, int idAccount) {
+    public static boolean checkAccount(String token, int idAccount) {
 
         if (token != null) {
 
@@ -118,7 +117,7 @@ public class TokenCheck {
      * @param token
      * @return
      */
-    public static boolean checkAccountAdmin(HashMap<String, Connection> connection1, String token, int idAccount) {
+    public static boolean checkAccountAdmin(String token, int idAccount) {
 
         if (token != null) {
 

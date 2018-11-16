@@ -17,6 +17,7 @@
 package kz.osmium.translit.request;
 
 import com.google.gson.Gson;
+import kz.osmium.main.util.HerokuAPI;
 import kz.osmium.main.util.StatusResponse;
 import kz.osmium.translit.objects.Translit;
 import kz.osmium.translit.objects.gson.Symbol;
@@ -71,10 +72,10 @@ public class TranslitGET {
      * @param response
      * @return
      */
-    public static String getWord(HashMap<String, Connection> connection, Response response) {
+    public static String getWord(Response response) {
 
-            try {
-                PreparedStatement preparedStatement = connection.get("translit").prepareStatement(GETStatement.getWord());
+            try (Connection connection = HerokuAPI.Translit.getDB()) {
+                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getWord());
                 ResultSet resultSet = preparedStatement.executeQuery();
                 ArrayList<Word> wordArrayList = new ArrayList<>();
 
@@ -102,10 +103,10 @@ public class TranslitGET {
      * @param response
      * @return
      */
-    public static String getSymbol(HashMap<String, Connection> connection, Response response) {
+    public static String getSymbol(Response response) {
 
-            try {
-                PreparedStatement preparedStatement = connection.get("translit").prepareStatement(GETStatement.getSymbol());
+            try (Connection connection = HerokuAPI.Translit.getDB()) {
+                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getSymbol());
                 ResultSet resultSet = preparedStatement.executeQuery();
                 ArrayList<Symbol> wordArrayList = new ArrayList<>();
 

@@ -29,7 +29,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
 
 public class AccountGET {
 
@@ -38,7 +37,7 @@ public class AccountGET {
      *
      * @return возвращает список факультетов в JSON.
      */
-    public static String getAccount(HashMap<String, Connection> connection1, Request request, Response response) {
+    public static String getAccount(Request request, Response response) {
 
         if (request.queryParams("login") != null &&
                 request.queryParams("pass") != null) {

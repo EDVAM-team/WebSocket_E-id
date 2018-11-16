@@ -17,6 +17,7 @@
 package kz.osmium.translit.request;
 
 import kz.osmium.account.main.util.TokenCheck;
+import kz.osmium.main.util.HerokuAPI;
 import kz.osmium.main.util.StatusResponse;
 import kz.osmium.translit.statement.PUTStatement;
 import spark.Request;
@@ -26,7 +27,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Types;
-import java.util.HashMap;
 
 public class TranslitPUT {
 
@@ -37,16 +37,16 @@ public class TranslitPUT {
      * @param response
      * @return
      */
-    public static String putWord(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String putWord(Request request, Response response) {
 
-        if (TokenCheck.checkTeacher(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkTeacher( request.queryParams("token"))) {
 
             if (request.queryParams("id_word") != null &&
                     request.queryParams("cyrl") != null ||
                     request.queryParams("latn") != null) {
 
-                    try {
-                        PreparedStatement preparedStatement = connection.get("translit").prepareStatement(PUTStatement.putWord());
+                    try (Connection connection = HerokuAPI.Translit.getDB()) {
+                        PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putWord());
 
                         preparedStatement.setInt(5, Integer.parseInt(request.queryParams("id_word")));
 
@@ -98,16 +98,16 @@ public class TranslitPUT {
      * @param response
      * @return
      */
-    public static String putSymbol(HashMap<String, Connection> connection, Request request, Response response) {
+    public static String putSymbol(Request request, Response response) {
 
-        if (TokenCheck.checkTeacher(connection, request.queryParams("token"))) {
+        if (TokenCheck.checkTeacher( request.queryParams("token"))) {
 
             if (request.queryParams("id_symbol") != null &&
                     request.queryParams("cyrl") != null ||
                     request.queryParams("latn") != null) {
 
-                    try {
-                        PreparedStatement preparedStatement = connection.get("translit").prepareStatement(PUTStatement.putSymbol());
+                    try (Connection connection = HerokuAPI.Translit.getDB()) {
+                        PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putSymbol());
 
                         preparedStatement.setInt(5, Integer.parseInt(request.queryParams("id_symbol")));
 
