@@ -221,14 +221,14 @@
           <entry key="PUMPUM" value="20" />
           <entry key="dummy" value="115" />
           <entry key="gradle" value="14" />
-          <entry key="java" value="9450" />
+          <entry key="java" value="9454" />
           <entry key="md" value="25" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="14" />
-          <entry key="JAVA" value="9450" />
+          <entry key="JAVA" value="9454" />
           <entry key="Markdown" value="25" />
           <entry key="PLAIN_TEXT" value="135" />
         </counts>
@@ -242,7 +242,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitPOST.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="259">
-              <caret line="124" column="77" lean-forward="true" selection-start-line="124" selection-start-column="77" selection-end-line="124" selection-end-column="77" />
+              <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1006,7 +1006,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="{&#9;null&#9;null" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542349088558" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542349741347" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -1100,7 +1100,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="51" y="27" width="1869" height="1053" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22759758" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1630,7 +1629,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitPOST.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="259">
-          <caret line="124" column="77" lean-forward="true" selection-start-line="124" selection-start-column="77" selection-end-line="124" selection-end-column="77" />
+          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
