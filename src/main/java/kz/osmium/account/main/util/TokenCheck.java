@@ -17,6 +17,7 @@
 package kz.osmium.account.main.util;
 
 import kz.osmium.account.statement.RoleStatement;
+import kz.osmium.main.util.HerokuAPI;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -58,16 +59,15 @@ public class TokenCheck {
     /**
      * Права на уровне преподавателя и админа
      *
-     * @param connection
      * @param token
      * @return
      */
-    public static boolean checkTeacher(HashMap<String, Connection> connection, String token) {
+    public static boolean checkTeacher(HashMap<String, Connection> connection1, String token) {
 
         if (token != null) {
 
-            try {
-                PreparedStatement preparedStatement = connection.get("account").prepareStatement(RoleStatement.teacher());
+            try (Connection connection = HerokuAPI.Account.getDB()) {
+                PreparedStatement preparedStatement = connection.prepareStatement(RoleStatement.teacher());
 
                 preparedStatement.setString(1, token);
 
@@ -87,16 +87,15 @@ public class TokenCheck {
     /**
      * Права на уровне обычного пользователя
      *
-     * @param connection
      * @param token
      * @return
      */
-    public static boolean checkAccount(HashMap<String, Connection> connection, String token, int idAccount) {
+    public static boolean checkAccount(HashMap<String, Connection> connection1, String token, int idAccount) {
 
         if (token != null) {
 
-            try {
-                PreparedStatement preparedStatement = connection.get("account").prepareStatement(RoleStatement.account());
+            try (Connection connection = HerokuAPI.Account.getDB()) {
+                PreparedStatement preparedStatement = connection.prepareStatement(RoleStatement.account());
 
                 preparedStatement.setInt(1, idAccount);
                 preparedStatement.setString(2, token);
@@ -117,16 +116,15 @@ public class TokenCheck {
     /**
      * Права на уровне обычного пользователя и админа
      *
-     * @param connection
      * @param token
      * @return
      */
-    public static boolean checkAccountAdmin(HashMap<String, Connection> connection, String token, int idAccount) {
+    public static boolean checkAccountAdmin(HashMap<String, Connection> connection1, String token, int idAccount) {
 
         if (token != null) {
 
-            try {
-                PreparedStatement preparedStatement = connection.get("account").prepareStatement(RoleStatement.accountAdmin());
+            try (Connection connection = HerokuAPI.Account.getDB()) {
+                PreparedStatement preparedStatement = connection.prepareStatement(RoleStatement.accountAdmin());
 
                 preparedStatement.setInt(1, idAccount);
                 preparedStatement.setString(2, token);

@@ -63,14 +63,6 @@ public class Main {
 
         try {
             connection.put(
-                    "account",
-                    DriverManager.getConnection(
-                            HerokuAPI.Account.url,
-                            HerokuAPI.Account.login,
-                            HerokuAPI.Account.password
-                    )
-            );
-            connection.put(
                     "oqu",
                     DriverManager.getConnection(
                             HerokuAPI.Oqu.url,
