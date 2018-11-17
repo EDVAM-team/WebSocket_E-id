@@ -23,8 +23,8 @@ import java.util.ArrayList;
 public class ScheduleTeacher {
     @SerializedName("id_schedule")
     private int id_schedule;
-    @SerializedName("d")
-    private int d;
+    @SerializedName("day")
+    private int day;
     @SerializedName("num")
     private int num;
     @SerializedName("subject")
@@ -42,8 +42,8 @@ public class ScheduleTeacher {
         this.id_schedule = id_schedule;
     }
 
-    public void setD(int d) {
-        this.d = d;
+    public void setDay(int day) {
+        this.day = day;
     }
 
     public void setNum(int num) {

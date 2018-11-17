@@ -95,15 +95,19 @@ public class OquGET {
         if (request.queryParams("group") != null) {
 
             try (Connection connection = HerokuAPI.Oqu.getDB()) {
-                ResultSet resultSet = GETStatement.getReadDB(connection, GETStatement.getCuratorGroup(), Integer.parseInt(request.queryParams("group")));
+                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getCuratorGroup());
+
+                preparedStatement.setInt(1, Integer.parseInt(request.queryParams("group")));
+
+                ResultSet resultSet = preparedStatement.executeQuery();
 
                 while (resultSet.next()) {
 
                     response.status(200);
 
-                    return new Gson().toJson(new Teacher(
-                            resultSet.getInt("id_account"),
-                            resultSet.getString("name")
+                    return new Gson().toJson(new Curator(
+                            resultSet.getInt("id_group"),
+                            resultSet.getInt("id_account")
                     ));
                 }
             } catch (SQLException | NumberFormatException e) {
@@ -242,7 +246,12 @@ public class OquGET {
             ArrayList<Total> list = new ArrayList<>();
 
             try (Connection connection = HerokuAPI.Oqu.getDB()) {
-                ResultSet resultSet = GETStatement.getReadDB(connection, GETStatement.getTotal(), Integer.parseInt(request.queryParams("id_account")));
+
+                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getTotal());
+
+                preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_account")));
+
+                ResultSet resultSet = preparedStatement.executeQuery();
 
                 while (resultSet.next()) {
                     Total total = new Total();
@@ -310,7 +319,11 @@ public class OquGET {
                     if (rating.getNameAccount() == null)
                         rating.setNameAccount(resultSet.getString("name_account"));
 
-                    ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getMark(), resultSet.getInt("id_rating"));
+                    PreparedStatement preparedStatement2 = connection.prepareStatement(GETStatement.getMark());
+
+                    preparedStatement2.setInt(1, resultSet.getInt("id_rating"));
+
+                    ResultSet resultSet2 = preparedStatement2.executeQuery();
 
                     while (resultSet2.next())
                         markArrayList.add(new Rating.RatingChild.Mark(
@@ -367,7 +380,6 @@ public class OquGET {
                     ScheduleStudent.SubjectSchedule subjectSchedule = new ScheduleStudent.SubjectSchedule();
                     ScheduleStudent.SubjectSchedule.SubjectList subjectList = new ScheduleStudent.SubjectSchedule.SubjectList();
                     ScheduleStudent.SubjectSchedule.Room room = new ScheduleStudent.SubjectSchedule.Room();
-                    ScheduleStudent.Teacher teacher = new ScheduleStudent.Teacher();
 
                     subjectList.setId(resultSet.getInt("id_list_subject"));
                     subjectList.setName(resultSet.getString("name_list_subject"));
@@ -375,20 +387,17 @@ public class OquGET {
                     room.setId(resultSet.getInt("id_room"));
                     room.setName(resultSet.getString("name_room"));
 
-                    teacher.setId(resultSet.getInt("id_account"));
-                    teacher.setName(resultSet.getString("name_account"));
-
                     subjectSchedule.setId(resultSet.getInt("id_schedule_subject"));
-                    subjectSchedule.setT(resultSet.getInt("t"));
+                    subjectSchedule.setT(resultSet.getInt("type"));
                     subjectSchedule.setChange(resultSet.getInt("id_change"));
                     subjectSchedule.setRoom(room);
                     subjectSchedule.setSubjectList(subjectList);
 
                     scheduleStudent.setIdSchedule(resultSet.getInt("id_schedule"));
-                    scheduleStudent.setD(resultSet.getInt("d"));
+                    scheduleStudent.setIdAccount(resultSet.getInt("id_account"));
+                    scheduleStudent.setDay(resultSet.getInt("day"));
                     scheduleStudent.setNum(resultSet.getInt("num"));
                     scheduleStudent.setSubjectSchedule(subjectSchedule);
-                    scheduleStudent.setTeacher(teacher);
 
                     list.add(scheduleStudent);
                 }
@@ -417,106 +426,7 @@ public class OquGET {
      * @return возвращает полную информацию расписания группы в JSON.
      */
     public static String getScheduleTeacher( Request request, Response response) {
-
-        if (request.queryParams("teacher") != null) {
-            ArrayList<ScheduleTeacher> list = new ArrayList<>();
-
-            try (Connection connection = HerokuAPI.Oqu.getDB()) {
-                ResultSet resultSet = GETStatement.getReadDB(connection, GETStatement.getScheduleTeacher(), Integer.parseInt(request.queryParams("teacher")));
-
-                while (resultSet.next()) {
-
-                    ScheduleTeacher scheduleTeacher = new ScheduleTeacher();
-
-                    scheduleTeacher.setId_schedule(resultSet.getInt(1));
-                    scheduleTeacher.setD(resultSet.getInt(2));
-                    scheduleTeacher.setNum(resultSet.getInt(3));
-
-                    ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getScheduleSubject(), resultSet.getInt(4));
-
-                    resultSet2.next();
-
-                    scheduleTeacher.setType(resultSet2.getInt("t"));
-                    scheduleTeacher.setChange(0);
-
-                    ResultSet resultSet3 = GETStatement.getReadDB(connection, GETStatement.getRoom(), resultSet2.getInt("room"));
-
-                    while (resultSet3.next())
-                        scheduleTeacher.setRoom(resultSet3.getString("name"));
-
-                    resultSet3 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet2.getInt("id_list_subject"));
-
-                    resultSet3.next();
-                    scheduleTeacher.setSubject(resultSet3.getString("name"));
-
-                    resultSet3 = GETStatement.getReadDB(connection, GETStatement.getGroupID(), resultSet.getInt(5));
-                    ArrayList<Group> groupList = new ArrayList<>();
-
-                    while (resultSet3.next())
-                        groupList.add(new Group(resultSet3.getInt("id_group"), resultSet3.getString("name")));
-
-                    scheduleTeacher.setGroup(groupList);
-
-                    list.add(scheduleTeacher);
-                }
-
-                resultSet = GETStatement.getReadDB(connection, GETStatement.getChangeTeacher(), Integer.parseInt(request.queryParams("teacher")));
-
-                while (resultSet.next()) {
-                    ScheduleTeacher scheduleTeacher = new ScheduleTeacher();
-
-                    scheduleTeacher.setType(resultSet.getInt("t"));
-                    scheduleTeacher.setChange(1);
-
-                    ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getRoom(), resultSet.getInt("id_room"));
-
-                    while (resultSet2.next())
-                        scheduleTeacher.setRoom(resultSet2.getString("name"));
-
-                    resultSet2 = GETStatement.getReadDB(connection, GETStatement.getScheduleChange(), resultSet.getInt("id_change"));
-
-                    while (resultSet2.next()) {
-                        ResultSet resultSet3 = GETStatement.getReadDB(connection, GETStatement.getSubjectSchedule(), resultSet2.getInt("id_schedule_subject"));
-
-                        while (resultSet3.next()) {
-
-                            scheduleTeacher.setId_schedule(resultSet3.getInt("id_schedule"));
-                            scheduleTeacher.setD(resultSet3.getInt("d"));
-                            scheduleTeacher.setNum(resultSet3.getInt("num"));
-
-                            ResultSet resultSet4 = GETStatement.getReadDB(connection, GETStatement.getGroupID(), resultSet3.getInt("id_group"));
-                            ArrayList<Group> groupList = new ArrayList<>();
-
-                            while (resultSet4.next())
-                                groupList.add(new Group(resultSet4.getInt("id_group"), resultSet4.getString("name")));
-
-                            scheduleTeacher.setGroup(groupList);
-
-                            resultSet4 = GETStatement.getReadDB(connection, GETStatement.getListSubject(), resultSet.getInt("id_list_subject"));
-
-                            resultSet4.next();
-                            scheduleTeacher.setSubject(resultSet4.getString("name"));
-                        }
-                    }
-
-                    list.add(scheduleTeacher);
-                }
-
-                response.status(200);
-            } catch (SQLException | NumberFormatException e) {
-
-                response.status(400);
-
-                return "400 Bad Request: " + e.getMessage();
-            }
-
-            return new Gson().toJson(list);
-        } else {
-
-            response.status(400);
-
-            return "400 Bad Request";
-        }
+        return "Errer";
     }
 
     /**

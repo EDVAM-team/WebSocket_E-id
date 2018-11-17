@@ -91,10 +91,7 @@ public class GETStatement {
      * @return
      */
     public static String getCuratorGroup() {
-        return "SELECT `account`.`id_account`, `account`.`name`\n" +
-                "FROM `curator` \n" +
-                "INNER JOIN `account` ON `curator`.`id_account`=`account`.`id_account`\n" +
-                "WHERE `curator`.`id_group`=?";
+        return "SELECT * FROM `curator` WHERE `curator`.`id_group`=?";
     }
 
     /**
@@ -114,21 +111,19 @@ public class GETStatement {
      * @return
      */
     public static String getScheduleStudent() {
-        return "(SELECT `schedule`.`id_schedule`, `schedule`.`d`, `schedule`.`num`, `schedule_subject`.`id_schedule_subject`, `schedule_subject`.`t`, `schedule_subject`.`id_change`, `list_subject`.`id_list_subject`, `list_subject`.`name` AS \"name_list_subject\", `room`.`id_room`, `room`.`name` AS \"name_room\", `account`.`id_account`, `account`.`name` AS \"name_account\"\n" +
+        return "(SELECT `schedule`.`id_schedule`, `schedule`.`day`, `schedule`.`num`, `schedule_subject`.`id_schedule_subject`, `schedule_subject`.`type`, `schedule_subject`.`id_change`, `list_subject`.`id_list_subject`, `list_subject`.`name` AS \"name_list_subject\", `room`.`id_room`, `room`.`name` AS \"name_room\", `schedule`.`id_account`\n" +
                 "FROM `schedule`\n" +
                 "INNER JOIN `schedule_subject` ON `schedule`.`id_schedule_subject`=`schedule_subject`.`id_schedule_subject`\n" +
                 "INNER JOIN `list_subject` ON `schedule_subject`.`id_list_subject`=`list_subject`.`id_list_subject`\n" +
                 "LEFT JOIN `room` ON `schedule_subject`.`id_room`=`room`.`id_room`\n" +
-                "INNER JOIN `account` ON `schedule`.`id_account`=`account`.`id_account`\n" +
                 "WHERE `schedule_subject`.`id_change` IS NULL AND `schedule`.`id_group`=?) \n" +
                 "UNION \n" +
-                "(SELECT `schedule`.`id_schedule`, `schedule`.`d`, `schedule`.`num`, `schedule_subject`.`id_schedule_subject`, `change`.`t`, `change`.`id_change`, `list_subject`.`id_list_subject`, `list_subject`.`name` AS \"name_list_subject\", `room`.`id_room`, `room`.`name` AS \"name_room\", `account`.`id_account`, `account`.`name` AS \"name_account\"\n" +
+                "(SELECT `schedule`.`id_schedule`, `schedule`.`day`, `schedule`.`num`, `schedule_subject`.`id_schedule_subject`, `change`.`type`, `change`.`id_change`, `list_subject`.`id_list_subject`, `list_subject`.`name` AS \"name_list_subject\", `room`.`id_room`, `room`.`name` AS \"name_room\", `schedule`.`id_account`\n" +
                 "FROM `schedule`\n" +
                 "INNER JOIN `schedule_subject` ON `schedule`.`id_schedule_subject`=`schedule_subject`.`id_schedule_subject`\n" +
                 "INNER JOIN `change` ON `schedule_subject`.`id_change`=`change`.`id_change`\n" +
                 "INNER JOIN `list_subject` ON `change`.`id_list_subject`=`list_subject`.`id_list_subject`\n" +
                 "LEFT JOIN `room` ON `change`.`id_room`=`room`.`id_room`\n" +
-                "INNER JOIN `account` ON `change`.`id_account`=`account`.`id_account`\n" +
                 "WHERE `schedule_subject`.`id_change` IS NOT NULL AND `schedule`.`id_group`=?)";
     }
 
@@ -139,11 +134,7 @@ public class GETStatement {
      * @return
      */
     public static String getScheduleTeacher() {
-        return "SELECT `schedule`.id_schedule, `schedule`.d , `schedule`.num, `schedule`.id_schedule_subject, " +
-                "`schedule`.id_group, `group`.name " +
-                "FROM `schedule`, `group` " +
-                "WHERE `schedule`.id_group = `group`.id_group " +
-                "AND `schedule`.id_account = ?";
+        return "null";
     }
 
     /**
@@ -251,14 +242,5 @@ public class GETStatement {
      */
     public static String getMark() {
         return "SELECT * FROM `mark` WHERE `id_rating`=?";
-    }
-
-    public static ResultSet getReadDB(Connection connection, String sql, int id) throws SQLException {
-
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-
-        preparedStatement.setInt(1, id);
-
-        return preparedStatement.executeQuery();
     }
 }

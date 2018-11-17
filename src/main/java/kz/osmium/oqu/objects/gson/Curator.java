@@ -18,14 +18,14 @@ package kz.osmium.oqu.objects.gson;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Teacher {
+public class Curator {
+    @SerializedName("id_group")
+    private final int idGroup;
     @SerializedName("id_account")
     private final int idAccount;
-    @SerializedName("name")
-    private final String name;
 
-    public Teacher(int idAccount, String name) {
+    public Curator(int idGroup, int idAccount) {
+        this.idGroup = idGroup;
         this.idAccount = idAccount;
-        this.name = name;
     }
 }

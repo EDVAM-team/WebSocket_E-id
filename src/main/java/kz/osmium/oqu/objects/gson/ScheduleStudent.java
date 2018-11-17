@@ -20,36 +20,21 @@ import com.google.gson.annotations.SerializedName;
 
 public class ScheduleStudent {
     @SerializedName("id_schedule")
-    private int id_schedule;
-    @SerializedName("d")
-    private int d;
+    private int idSchedule;
+    @SerializedName("day")
+    private int day;
     @SerializedName("num")
     private int num;
+    @SerializedName("id_account")
+    private int idAccount;
     @SerializedName("schedule_subject")
     private SubjectSchedule subjectSchedule;
-    @SerializedName("teacher")
-    private Teacher teacher;
-
-    public static class Teacher {
-        @SerializedName("id")
-        private int id;
-        @SerializedName("name")
-        private String name;
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-    }
 
     public static class SubjectSchedule{
         @SerializedName("id")
         private int id;
-        @SerializedName("t")
-        private int t;
+        @SerializedName("type")
+        private int type;
         @SerializedName("change")
         private int change;
         @SerializedName("list_subject")
@@ -95,8 +80,8 @@ public class ScheduleStudent {
             this.subjectList = subjectList;
         }
 
-        public void setT(int t) {
-            this.t = t;
+        public void setT(int type) {
+            this.type = type;
         }
 
         public void setRoom(Room room) {
@@ -108,12 +93,8 @@ public class ScheduleStudent {
         }
     }
 
-    public void setIdSchedule(int id_schedule) {
-        this.id_schedule = id_schedule;
-    }
-
-    public void setD(int d) {
-        this.d = d;
+    public void setIdSchedule(int idSchedule) {
+        this.idSchedule = idSchedule;
     }
 
     public void setNum(int num) {
@@ -124,7 +105,11 @@ public class ScheduleStudent {
         this.subjectSchedule = subjectSchedule;
     }
 
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    public void setIdAccount(int idAccount) {
+        this.idAccount = idAccount;
     }
 }
