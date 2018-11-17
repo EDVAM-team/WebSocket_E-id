@@ -40,7 +40,7 @@ public class GETStatement {
      * @return
      */
     public static String getSpecialty() {
-        return "SELECT * FROM `specialty` WHERE `id_faculty`=?";
+        return "SELECT * FROM `specialty`";
     }
 
     /**
@@ -50,7 +50,7 @@ public class GETStatement {
      * @return
      */
     public static String getGroup() {
-        return "SELECT * FROM `group` WHERE `id_specialty`=?";
+        return "SELECT * FROM `group`";
     }
 
 
@@ -157,16 +157,6 @@ public class GETStatement {
     }
 
     /**
-     * Запрос на вывод замены по `id_change`
-     * Истользуется таблица "change"
-     *
-     * @return
-     */
-    public static String getChange() {
-        return "SELECT * FROM `change` WHERE `id_change`=?";
-    }
-
-    /**
      * Запрос на вывод расписания по `id_schedule_subject`
      * Истользуется таблица "schedule"
      *
@@ -194,26 +184,6 @@ public class GETStatement {
      */
     public static String getScheduleSubject() {
         return "SELECT * FROM `schedule_subject` WHERE `id_schedule_subject`=?";
-    }
-
-    /**
-     * Запрос на вывод конкретного аккаунта по `id_account`
-     * Истользуется таблица "account"
-     *
-     * @return
-     */
-    public static String getAccountID() {
-        return "SELECT * FROM `account` WHERE `id_account`=?";
-    }
-
-    /**
-     * Запрос на вывод всех преподавателей
-     * Истользуется таблица "teacher"
-     *
-     * @return
-     */
-    public static String getTeacherAll() {
-        return "SELECT * FROM `account` WHERE `account`.t=2";
     }
 
     /**
@@ -281,27 +251,6 @@ public class GETStatement {
      */
     public static String getMark() {
         return "SELECT * FROM `mark` WHERE `id_rating`=?";
-    }
-
-    /**
-     * Запрос на вывод куратора группы по `i
-	`id_student` INT NOT NULL, d_group`
-     * Истользуется таблица "search"
-     *
-     * @return
-     */
-    public static String getSearchTeacher() {
-        return "SELECT * FROM `search` WHERE `id_group`=?";
-    }
-
-    /**
-     * Запрос на вывод групп куратора
-     * Истользуется таблица "search"
-     *
-     * @return
-     */
-    public static String getSearchGroup() {
-        return "SELECT * FROM `search` WHERE `id_account`=?";
     }
 
     public static ResultSet getReadDB(Connection connection, String sql, int id) throws SQLException {

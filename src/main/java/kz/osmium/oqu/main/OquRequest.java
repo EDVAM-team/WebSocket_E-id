@@ -103,13 +103,12 @@ public class OquRequest {
         /*
          * Получить специальности.
          *
-         * https://*.example.com/api/specialty ?
-         * & faculty = <Integer>
+         * https://*.example.com/api/specialty
          */
         path("/api", () ->
                 get("/specialty", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquGET.getSpecialty(request, response);
+                                return OquGET.getSpecialty(response);
                             else {
 
                                 response.status(404);
@@ -122,13 +121,12 @@ public class OquRequest {
         /*
          * Получить группы.
          *
-         * https://*.example.com/api/group ?
-         * & specialty = <Integer>
+         * https://*.example.com/api/group
          */
         path("/api", () ->
                 get("/group", "application/json", (request, response) -> {
                             if (HerokuDomain.getDomainOqu(request.host()))
-                                return OquGET.getGroup(request, response);
+                                return OquGET.getGroup(response);
                             else {
 
                                 response.status(404);
@@ -234,45 +232,6 @@ public class OquRequest {
 //                                    }
 //                                }
 //                        )));
-
-        /*
-         * Получить информацию аккаунта.
-         *
-         * https://*.example.com/api/account/id ?
-         * & id_account = <Integer>
-         */
-        path("/api", () ->
-                path("/account", () ->
-                        get("/id", "application/json", (request, response) -> {
-                                    if (HerokuDomain.getDomainOqu(request.host()))
-                                        return OquGET.getAccountID(request, response);
-                                    else {
-
-                                        response.status(404);
-
-                                        return "404 Not Found";
-                                    }
-                                }
-                        )));
-
-        /*
-         * Получить список преподавателей.
-         *
-         * https://*.example.com/api/teacher/all
-         */
-        path("/api", () ->
-                path("/teacher", () ->
-                        get("/all", "application/json", (request, response) -> {
-                                    if (HerokuDomain.getDomainOqu(request.host()))
-                                        return OquGET.getTeacherAll(response);
-                                    else {
-
-                                        response.status(404);
-
-                                        return "404 Not Found";
-                                    }
-                                }
-                        )));
 
         /*
          * Получить список предметов.

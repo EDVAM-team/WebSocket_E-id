@@ -61,16 +61,11 @@ public class OquGET {
      *
      * @return возвращает список конкретных специальностей в JSON.
      */
-    public static String getSpecialty( Request request, Response response) {
-
-        if (request.queryParams("faculty") != null) {
+    public static String getSpecialty(Response response) {
             ArrayList<Specialty> list = new ArrayList<>();
 
             try (Connection connection = HerokuAPI.Oqu.getDB()) {
                 PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getSpecialty());
-
-                preparedStatement.setInt(1, Integer.parseInt(request.queryParams("faculty")));
-
                 ResultSet resultSet = preparedStatement.executeQuery();
 
                 while (resultSet.next())
@@ -88,12 +83,6 @@ public class OquGET {
             }
 
             return new Gson().toJson(list);
-        } else {
-
-            response.status(400);
-
-            return "400 Bad Request";
-        }
     }
 
     /**
@@ -145,11 +134,19 @@ public class OquGET {
         if (request.queryParams("teacher") != null) {
 
             try (Connection connection = HerokuAPI.Oqu.getDB()) {
-                ResultSet resultSet = GETStatement.getReadDB(connection, GETStatement.getCuratorTeacher(), Integer.parseInt(request.queryParams("teacher")));
+                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getCuratorTeacher());
+
+                preparedStatement.setInt(1, Integer.parseInt(request.queryParams("teacher")));
+
+                ResultSet resultSet = preparedStatement.executeQuery();
 
                 while (resultSet.next()) {
                     ArrayList<Group> list = new ArrayList<>();
-                    ResultSet resultSet2 = GETStatement.getReadDB(connection, GETStatement.getGroup(), resultSet.getInt("id_group"));
+                    PreparedStatement preparedStatement2 = connection.prepareStatement(GETStatement.getGroupID());
+
+                    preparedStatement2.setInt(1, Integer.parseInt(request.queryParams("id_group")));
+
+                    ResultSet resultSet2 = preparedStatement.executeQuery();
 
                     while (resultSet2.next())
                         list.add(new Group(resultSet2.getInt("id_group"), resultSet2.getString("name")));
@@ -181,17 +178,11 @@ public class OquGET {
      *
      * @return возвращает конкретную группу в JSON.
      */
-    public static String getGroup( Request request, Response response) {
-
-        if (request.queryParams("specialty") != null) {
+    public static String getGroup(Response response) {
             ArrayList<Group> list = new ArrayList<>();
 
             try (Connection connection = HerokuAPI.Oqu.getDB()) {
-                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getGroup());
-
-                preparedStatement.setInt(1, Integer.parseInt(request.queryParams("specialty")));
-
-                ResultSet resultSet = preparedStatement.executeQuery();
+                ResultSet resultSet = connection.prepareStatement(GETStatement.getGroup()).executeQuery();
 
                 while (resultSet.next())
                     list.add(new Group(
@@ -208,12 +199,6 @@ public class OquGET {
             }
 
             return new Gson().toJson(list);
-        } else {
-
-            response.status(400);
-
-            return "400 Bad Request";
-        }
     }
 
     /**
@@ -532,87 +517,6 @@ public class OquGET {
 
             return "400 Bad Request";
         }
-    }
-
-    /**
-     * Получает информацию с таблицы "account"
-     *
-     * @return возвращает конкретного преподователя в JSON.
-     */
-    public static String getAccountID( Request request, Response response) {
-
-        if (request.queryParams("id_account") != null) {
-
-            try (Connection connection = HerokuAPI.Oqu.getDB()) {
-                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getAccountID());
-
-                preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_account")));
-
-                ResultSet resultSet = preparedStatement.executeQuery();
-
-                while (resultSet.next()) {
-                    Account account = new Account(
-                            resultSet.getInt("id_account"),
-                            resultSet.getString("name"),
-                            resultSet.getString("s_name"),
-                            resultSet.getString("l_name"),
-                            resultSet.getString("phone"),
-                            resultSet.getString("email"),
-                            resultSet.getInt("id_room"),
-                            resultSet.getInt("id_group"),
-                            resultSet.getInt("t")
-                    );
-
-                    response.status(200);
-
-                    return new Gson().toJson(account);
-                }
-            } catch (SQLException | NumberFormatException e) {
-
-                response.status(400);
-
-                return "400 Bad Request";
-            }
-        }
-
-        response.status(400);
-
-        return "400 Bad Request";
-    }
-
-    /**
-     * Получает информацию с таблицы "account"
-     *
-     * @return возвращает всех преподавателей в JSON.
-     */
-    public static String getTeacherAll( Response response) {
-        ArrayList<Account> list = new ArrayList<>();
-
-        try (Connection connection = HerokuAPI.Oqu.getDB()) {
-            ResultSet resultSet = connection.prepareStatement(GETStatement.getTeacherAll()).executeQuery();
-
-            while (resultSet.next())
-                list.add(new Account(
-                        resultSet.getInt("id_account"),
-                        resultSet.getString("name"),
-                        resultSet.getString("s_name"),
-                        resultSet.getString("l_name"),
-                        resultSet.getString("phone"),
-                        resultSet.getString("email"),
-                        resultSet.getInt("id_room"),
-                        resultSet.getInt("id_group"),
-                        resultSet.getInt("t")
-                ));
-
-            response.status(200);
-        } catch (SQLException e) {
-
-            response.status(400);
-
-            return "400 Bad Request";
-        }
-
-        return new Gson().toJson(list);
     }
 
     /**

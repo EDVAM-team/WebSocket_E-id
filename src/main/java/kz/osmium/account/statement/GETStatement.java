@@ -39,4 +39,25 @@ public class GETStatement {
                 "(`token`, `id_account`) " +
                 "VALUE (?, ?)";
     }
+
+
+    /**
+     * Запрос на вывод конкретного аккаунта по `id_account`
+     * Истользуется таблица "account"
+     *
+     * @return
+     */
+    public static String getAccountID() {
+        return "SELECT * FROM `account` WHERE `id_account`=?";
+    }
+
+    /**
+     * Запрос на вывод всех преподавателей
+     * Истользуется таблица "account"
+     *
+     * @return
+     */
+    public static String getTeacherAll() {
+        return "SELECT * FROM `account` WHERE `account`.type=2";
+    }
 }
