@@ -23,7 +23,7 @@ public class GETStatement {
      *
      * @return
      */
-    public static String getWord() {
+    public static String getWordAll() {
         return "SELECT * FROM `word`";
     }
 
@@ -32,7 +32,25 @@ public class GETStatement {
      *
      * @return
      */
-    public static String getSymbol() {
+    public static String getSymbolAll() {
         return "SELECT * FROM `symbol`";
+    }
+
+    /**
+     * Выводит слово с таблицы `word`
+     *
+     * @return
+     */
+    public static String getWord() {
+        return "SELECT * FROM `word` WHERE `word`.`cyrl`=?";
+    }
+
+    /**
+     * Выводит символ с таблицы `symbol`
+     *
+     * @return
+     */
+    public static String getSymbol() {
+        return "SELECT * FROM `symbol` WHERE `symbol`.`cyrl`=?";
     }
 }

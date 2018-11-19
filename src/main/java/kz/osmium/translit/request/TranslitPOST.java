@@ -21,6 +21,7 @@ import kz.osmium.account.main.util.TokenCheck;
 import kz.osmium.main.util.HerokuAPI;
 import kz.osmium.main.util.StatusResponse;
 import kz.osmium.translit.objects.gson.Symbol;
+import kz.osmium.translit.statement.GETStatement;
 import kz.osmium.translit.statement.POSTStatement;
 import spark.Request;
 import spark.Response;
@@ -38,51 +39,60 @@ public class TranslitPOST {
      */
     public static String postWord(Request request, Response response) {
 
-        if (TokenCheck.checkTeacher( request.queryParams("token"))) {
+        if (TokenCheck.checkTeacher(request.queryParams("token"))) {
 
             if (request.queryParams("cyrl") != null &&
                     request.queryParams("latn") != null) {
 
-                    try (Connection connection = HerokuAPI.Translit.getDB()) {
-                        PreparedStatement preparedStatement = connection
-                                .prepareStatement(POSTStatement.postWord(), Statement.RETURN_GENERATED_KEYS);
+                try (Connection connection = HerokuAPI.Translit.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getWord());
 
-                        preparedStatement.setString(1, request.queryParams("cyrl"));
-                        preparedStatement.setString(2, request.queryParams("latn"));
+                    preparedStatement.setString(1, request.queryParams("cyrl"));
 
-                        if (preparedStatement.executeUpdate() == 0){
-
-                            response.status(409);
-
-                            return StatusResponse.CONFLICT;
-                        }
-
-                        try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
-                            if (generatedKeys.next()) {
-
-                                response.status(201);
-
-                                return new Gson().toJson(
-                                        new Symbol(
-                                                Math.toIntExact(generatedKeys.getLong(1)),
-                                                request.queryParams("cyrl"),
-                                                request.queryParams("latn")
-                                        )
-                                );
-                            }
-                            else {
-
-                                response.status(500);
-
-                                return StatusResponse.INTERNAL_SERVER_ERROR;
-                            }
-                        }
-                    } catch (SQLException | NumberFormatException e) {
+                    if (preparedStatement.executeQuery().next()) {
 
                         response.status(409);
 
                         return StatusResponse.CONFLICT;
                     }
+
+                    preparedStatement = connection.prepareStatement(POSTStatement.postWord(), Statement.RETURN_GENERATED_KEYS);
+
+                    preparedStatement.setString(1, request.queryParams("cyrl"));
+                    preparedStatement.setString(2, request.queryParams("latn"));
+
+                    if (preparedStatement.executeUpdate() == 0) {
+
+                        response.status(500);
+
+                        return StatusResponse.INTERNAL_SERVER_ERROR;
+                    }
+
+                    try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                        if (generatedKeys.next()) {
+
+                            response.status(201);
+
+                            return new Gson().toJson(
+                                    new Symbol(
+                                            Math.toIntExact(generatedKeys.getLong(1)),
+                                            request.queryParams("cyrl"),
+                                            request.queryParams("latn")
+                                    )
+                            );
+                        } else {
+
+                            response.status(500);
+
+                            return StatusResponse.INTERNAL_SERVER_ERROR;
+                        }
+                    }
+                } catch (SQLException | NumberFormatException e) {
+
+                    response.status(409);
+
+                    return StatusResponse.CONFLICT;
+                }
             } else {
 
                 response.status(204);
@@ -107,51 +117,61 @@ public class TranslitPOST {
      */
     public static String postSymbol(Request request, Response response) {
 
-        if (TokenCheck.checkTeacher( request.queryParams("token"))) {
+        if (TokenCheck.checkTeacher(request.queryParams("token"))) {
 
             if (request.queryParams("cyrl") != null &&
                     request.queryParams("latn") != null) {
 
-                    try (Connection connection = HerokuAPI.Translit.getDB()) {
-                        PreparedStatement preparedStatement = connection
-                                .prepareStatement(POSTStatement.postSymbol(), Statement.RETURN_GENERATED_KEYS);
+                try (Connection connection = HerokuAPI.Translit.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getSymbol());
 
-                        preparedStatement.setString(1, request.queryParams("cyrl"));
-                        preparedStatement.setString(2, request.queryParams("latn"));
+                    preparedStatement.setString(1, request.queryParams("cyrl"));
 
-                        if (preparedStatement.executeUpdate() == 0){
-
-                            response.status(409);
-
-                            return StatusResponse.CONFLICT;
-                        }
-
-                        try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
-                            if (generatedKeys.next()) {
-
-                                response.status(201);
-
-                                return new Gson().toJson(
-                                        new Symbol(
-                                                Math.toIntExact(generatedKeys.getLong(1)),
-                                                request.queryParams("cyrl"),
-                                                request.queryParams("latn")
-                                        )
-                                );
-                            }
-                            else {
-
-                                response.status(500);
-
-                                return StatusResponse.INTERNAL_SERVER_ERROR;
-                            }
-                        }
-                    } catch (SQLException | NumberFormatException e) {
+                    if (preparedStatement.executeQuery().next()) {
 
                         response.status(409);
 
                         return StatusResponse.CONFLICT;
                     }
+
+                    preparedStatement = connection
+                            .prepareStatement(POSTStatement.postSymbol(), Statement.RETURN_GENERATED_KEYS);
+
+                    preparedStatement.setString(1, request.queryParams("cyrl"));
+                    preparedStatement.setString(2, request.queryParams("latn"));
+
+                    if (preparedStatement.executeUpdate() == 0) {
+
+                        response.status(500);
+
+                        return StatusResponse.INTERNAL_SERVER_ERROR;
+                    }
+
+                    try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                        if (generatedKeys.next()) {
+
+                            response.status(201);
+
+                            return new Gson().toJson(
+                                    new Symbol(
+                                            Math.toIntExact(generatedKeys.getLong(1)),
+                                            request.queryParams("cyrl"),
+                                            request.queryParams("latn")
+                                    )
+                            );
+                        } else {
+
+                            response.status(500);
+
+                            return StatusResponse.INTERNAL_SERVER_ERROR;
+                        }
+                    }
+                } catch (SQLException | NumberFormatException e) {
+
+                    response.status(409);
+
+                    return StatusResponse.CONFLICT;
+                }
             } else {
 
                 response.status(204);

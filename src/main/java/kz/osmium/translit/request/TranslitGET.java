@@ -75,7 +75,7 @@ public class TranslitGET {
     public static String getWord(Response response) {
 
             try (Connection connection = HerokuAPI.Translit.getDB()) {
-                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getWord());
+                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getWordAll());
                 ResultSet resultSet = preparedStatement.executeQuery();
                 ArrayList<Word> wordArrayList = new ArrayList<>();
 
@@ -106,7 +106,7 @@ public class TranslitGET {
     public static String getSymbol(Response response) {
 
             try (Connection connection = HerokuAPI.Translit.getDB()) {
-                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getSymbol());
+                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getSymbolAll());
                 ResultSet resultSet = preparedStatement.executeQuery();
                 ArrayList<Symbol> wordArrayList = new ArrayList<>();
 
