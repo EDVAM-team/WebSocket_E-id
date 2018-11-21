@@ -19,6 +19,7 @@ package kz.osmium.translit.request;
 import kz.osmium.account.main.util.TokenCheck;
 import kz.osmium.main.util.HerokuAPI;
 import kz.osmium.main.util.StatusResponse;
+import kz.osmium.translit.main.util.Restrictions;
 import kz.osmium.translit.statement.GETStatement;
 import kz.osmium.translit.statement.PUTStatement;
 import spark.Request;
@@ -40,56 +41,58 @@ public class TranslitPUT {
      */
     public static String putWord(Request request, Response response) {
 
-        if (TokenCheck.checkTeacher( request.queryParams("token"))) {
+        if (TokenCheck.checkTeacher(request.queryParams("token"))) {
 
             if (request.queryParams("id_word") != null &&
-                    request.queryParams("cyrl") != null ||
-                    request.queryParams("latn") != null) {
+                    (request.queryParams("cyrl") != null &&
+                            request.queryParams("cyrl").length() <= Restrictions.SIZE_WORD_CYRL) ||
+                    (request.queryParams("latn") != null &&
+                            request.queryParams("latn").length() <= Restrictions.SIZE_WORD_LATN)) {
 
-                    try (Connection connection = HerokuAPI.Translit.getDB()) {
-                        PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getWord());
+                try (Connection connection = HerokuAPI.Translit.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getWord());
 
-                        preparedStatement.setString(1, request.queryParams("cyrl"));
-                        preparedStatement.setString(2, request.queryParams("latn"));
+                    preparedStatement.setString(1, request.queryParams("cyrl"));
+                    preparedStatement.setString(2, request.queryParams("latn"));
 
-                        if (preparedStatement.executeQuery().next()) {
-
-                            response.status(409);
-
-                            return StatusResponse.CONFLICT;
-                        }
-
-                        preparedStatement = connection.prepareStatement(PUTStatement.putWord());
-
-                        preparedStatement.setInt(5, Integer.parseInt(request.queryParams("id_word")));
-
-                        if (request.queryParams("cyrl") != null) {
-                            preparedStatement.setString(1, request.queryParams("cyrl"));
-                            preparedStatement.setString(2, request.queryParams("cyrl"));
-                        } else {
-                            preparedStatement.setNull(1, Types.VARCHAR);
-                            preparedStatement.setNull(2, Types.VARCHAR);
-                        }
-
-                        if (request.queryParams("latn") != null) {
-                            preparedStatement.setString(3, request.queryParams("latn"));
-                            preparedStatement.setString(4, request.queryParams("latn"));
-                        } else {
-                            preparedStatement.setNull(3, Types.VARCHAR);
-                            preparedStatement.setNull(4, Types.VARCHAR);
-                        }
-
-                        preparedStatement.executeUpdate();
-
-                        response.status(200);
-                    } catch (SQLException | NumberFormatException e) {
+                    if (preparedStatement.executeQuery().next()) {
 
                         response.status(409);
 
                         return StatusResponse.CONFLICT;
                     }
 
-                    return StatusResponse.SUCCESS;
+                    preparedStatement = connection.prepareStatement(PUTStatement.putWord());
+
+                    preparedStatement.setInt(5, Integer.parseInt(request.queryParams("id_word")));
+
+                    if (request.queryParams("cyrl") != null) {
+                        preparedStatement.setString(1, request.queryParams("cyrl"));
+                        preparedStatement.setString(2, request.queryParams("cyrl"));
+                    } else {
+                        preparedStatement.setNull(1, Types.VARCHAR);
+                        preparedStatement.setNull(2, Types.VARCHAR);
+                    }
+
+                    if (request.queryParams("latn") != null) {
+                        preparedStatement.setString(3, request.queryParams("latn"));
+                        preparedStatement.setString(4, request.queryParams("latn"));
+                    } else {
+                        preparedStatement.setNull(3, Types.VARCHAR);
+                        preparedStatement.setNull(4, Types.VARCHAR);
+                    }
+
+                    preparedStatement.executeUpdate();
+
+                    response.status(200);
+                } catch (SQLException | NumberFormatException e) {
+
+                    response.status(409);
+
+                    return StatusResponse.CONFLICT;
+                }
+
+                return StatusResponse.SUCCESS;
             } else {
 
                 response.status(204);
@@ -113,56 +116,58 @@ public class TranslitPUT {
      */
     public static String putSymbol(Request request, Response response) {
 
-        if (TokenCheck.checkTeacher( request.queryParams("token"))) {
+        if (TokenCheck.checkTeacher(request.queryParams("token"))) {
 
             if (request.queryParams("id_symbol") != null &&
-                    request.queryParams("cyrl") != null ||
-                    request.queryParams("latn") != null) {
+                    (request.queryParams("cyrl") != null &&
+                            request.queryParams("cyrl").length() <= Restrictions.SIZE_SYMBOL_CYRL) ||
+                    (request.queryParams("latn") != null &&
+                            request.queryParams("latn").length() <= Restrictions.SIZE_SYMBOL_LATN)) {
 
-                    try (Connection connection = HerokuAPI.Translit.getDB()) {
-                        PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getSymbol());
+                try (Connection connection = HerokuAPI.Translit.getDB()) {
+                    PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getSymbol());
 
-                        preparedStatement.setString(1, request.queryParams("cyrl"));
-                        preparedStatement.setString(2, request.queryParams("latn"));
+                    preparedStatement.setString(1, request.queryParams("cyrl"));
+                    preparedStatement.setString(2, request.queryParams("latn"));
 
-                        if (preparedStatement.executeQuery().next()) {
-
-                            response.status(409);
-
-                            return StatusResponse.CONFLICT;
-                        }
-
-                        preparedStatement = connection.prepareStatement(PUTStatement.putSymbol());
-
-                        preparedStatement.setInt(5, Integer.parseInt(request.queryParams("id_symbol")));
-
-                        if (request.queryParams("cyrl") != null) {
-                            preparedStatement.setString(1, request.queryParams("cyrl"));
-                            preparedStatement.setString(2, request.queryParams("cyrl"));
-                        } else {
-                            preparedStatement.setNull(1, Types.VARCHAR);
-                            preparedStatement.setNull(2, Types.VARCHAR);
-                        }
-
-                        if (request.queryParams("latn") != null) {
-                            preparedStatement.setString(3, request.queryParams("latn"));
-                            preparedStatement.setString(4, request.queryParams("latn"));
-                        } else {
-                            preparedStatement.setNull(3, Types.VARCHAR);
-                            preparedStatement.setNull(4, Types.VARCHAR);
-                        }
-
-                        preparedStatement.executeUpdate();
-
-                        response.status(200);
-                    } catch (SQLException | NumberFormatException e) {
+                    if (preparedStatement.executeQuery().next()) {
 
                         response.status(409);
 
                         return StatusResponse.CONFLICT;
                     }
 
-                    return StatusResponse.SUCCESS;
+                    preparedStatement = connection.prepareStatement(PUTStatement.putSymbol());
+
+                    preparedStatement.setInt(5, Integer.parseInt(request.queryParams("id_symbol")));
+
+                    if (request.queryParams("cyrl") != null) {
+                        preparedStatement.setString(1, request.queryParams("cyrl"));
+                        preparedStatement.setString(2, request.queryParams("cyrl"));
+                    } else {
+                        preparedStatement.setNull(1, Types.VARCHAR);
+                        preparedStatement.setNull(2, Types.VARCHAR);
+                    }
+
+                    if (request.queryParams("latn") != null) {
+                        preparedStatement.setString(3, request.queryParams("latn"));
+                        preparedStatement.setString(4, request.queryParams("latn"));
+                    } else {
+                        preparedStatement.setNull(3, Types.VARCHAR);
+                        preparedStatement.setNull(4, Types.VARCHAR);
+                    }
+
+                    preparedStatement.executeUpdate();
+
+                    response.status(200);
+                } catch (SQLException | NumberFormatException e) {
+
+                    response.status(409);
+
+                    return StatusResponse.CONFLICT;
+                }
+
+                return StatusResponse.SUCCESS;
             } else {
 
                 response.status(204);

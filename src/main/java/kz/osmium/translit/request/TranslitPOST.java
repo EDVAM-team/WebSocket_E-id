@@ -20,6 +20,7 @@ import com.google.gson.Gson;
 import kz.osmium.account.main.util.TokenCheck;
 import kz.osmium.main.util.HerokuAPI;
 import kz.osmium.main.util.StatusResponse;
+import kz.osmium.translit.main.util.Restrictions;
 import kz.osmium.translit.objects.gson.Symbol;
 import kz.osmium.translit.statement.GETStatement;
 import kz.osmium.translit.statement.POSTStatement;
@@ -42,7 +43,9 @@ public class TranslitPOST {
         if (TokenCheck.checkTeacher(request.queryParams("token"))) {
 
             if (request.queryParams("cyrl") != null &&
-                    request.queryParams("latn") != null) {
+                    request.queryParams("latn") != null &&
+                    request.queryParams("cyrl").length() <= Restrictions.SIZE_WORD_CYRL &&
+                    request.queryParams("latn").length() <= Restrictions.SIZE_WORD_LATN) {
 
                 try (Connection connection = HerokuAPI.Translit.getDB()) {
                     PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getWord());
@@ -121,7 +124,9 @@ public class TranslitPOST {
         if (TokenCheck.checkTeacher(request.queryParams("token"))) {
 
             if (request.queryParams("cyrl") != null &&
-                    request.queryParams("latn") != null) {
+                    request.queryParams("latn") != null &&
+                    request.queryParams("cyrl").length() <= Restrictions.SIZE_SYMBOL_CYRL &&
+                    request.queryParams("latn").length() <= Restrictions.SIZE_SYMBOL_LATN) {
 
                 try (Connection connection = HerokuAPI.Translit.getDB()) {
                     PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getSymbol());
