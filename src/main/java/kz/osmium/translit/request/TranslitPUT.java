@@ -44,10 +44,10 @@ public class TranslitPUT {
         if (TokenCheck.checkTeacher(request.queryParams("token"))) {
 
             if (request.queryParams("id_word") != null &&
-                    (request.queryParams("cyrl") != null &&
+                    ((request.queryParams("cyrl") != null &&
                             request.queryParams("cyrl").length() <= Restrictions.SIZE_WORD_CYRL) ||
                     (request.queryParams("latn") != null &&
-                            request.queryParams("latn").length() <= Restrictions.SIZE_WORD_LATN)) {
+                            request.queryParams("latn").length() <= Restrictions.SIZE_WORD_LATN))) {
 
                 try (Connection connection = HerokuAPI.Translit.getDB()) {
                     PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getWord());
@@ -119,10 +119,10 @@ public class TranslitPUT {
         if (TokenCheck.checkTeacher(request.queryParams("token"))) {
 
             if (request.queryParams("id_symbol") != null &&
-                    (request.queryParams("cyrl") != null &&
+                    ((request.queryParams("cyrl") != null &&
                             request.queryParams("cyrl").length() <= Restrictions.SIZE_SYMBOL_CYRL) ||
                     (request.queryParams("latn") != null &&
-                            request.queryParams("latn").length() <= Restrictions.SIZE_SYMBOL_LATN)) {
+                            request.queryParams("latn").length() <= Restrictions.SIZE_SYMBOL_LATN))) {
 
                 try (Connection connection = HerokuAPI.Translit.getDB()) {
                     PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getSymbol());
