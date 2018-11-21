@@ -48,6 +48,7 @@ public class TranslitPOST {
                     PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getWord());
 
                     preparedStatement.setString(1, request.queryParams("cyrl"));
+                    preparedStatement.setString(2, request.queryParams("latn"));
 
                     if (preparedStatement.executeQuery().next()) {
 
@@ -126,6 +127,7 @@ public class TranslitPOST {
                     PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getSymbol());
 
                     preparedStatement.setString(1, request.queryParams("cyrl"));
+                    preparedStatement.setString(2, request.queryParams("latn"));
 
                     if (preparedStatement.executeQuery().next()) {
 

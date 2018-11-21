@@ -19,6 +19,7 @@ package kz.osmium.translit.request;
 import kz.osmium.account.main.util.TokenCheck;
 import kz.osmium.main.util.HerokuAPI;
 import kz.osmium.main.util.StatusResponse;
+import kz.osmium.translit.statement.GETStatement;
 import kz.osmium.translit.statement.PUTStatement;
 import spark.Request;
 import spark.Response;
@@ -46,7 +47,19 @@ public class TranslitPUT {
                     request.queryParams("latn") != null) {
 
                     try (Connection connection = HerokuAPI.Translit.getDB()) {
-                        PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putWord());
+                        PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getWord());
+
+                        preparedStatement.setString(1, request.queryParams("cyrl"));
+                        preparedStatement.setString(2, request.queryParams("latn"));
+
+                        if (preparedStatement.executeQuery().next()) {
+
+                            response.status(409);
+
+                            return StatusResponse.CONFLICT;
+                        }
+
+                        preparedStatement = connection.prepareStatement(PUTStatement.putWord());
 
                         preparedStatement.setInt(5, Integer.parseInt(request.queryParams("id_word")));
 
@@ -107,7 +120,19 @@ public class TranslitPUT {
                     request.queryParams("latn") != null) {
 
                     try (Connection connection = HerokuAPI.Translit.getDB()) {
-                        PreparedStatement preparedStatement = connection.prepareStatement(PUTStatement.putSymbol());
+                        PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getSymbol());
+
+                        preparedStatement.setString(1, request.queryParams("cyrl"));
+                        preparedStatement.setString(2, request.queryParams("latn"));
+
+                        if (preparedStatement.executeQuery().next()) {
+
+                            response.status(409);
+
+                            return StatusResponse.CONFLICT;
+                        }
+
+                        preparedStatement = connection.prepareStatement(PUTStatement.putSymbol());
 
                         preparedStatement.setInt(5, Integer.parseInt(request.queryParams("id_symbol")));
 

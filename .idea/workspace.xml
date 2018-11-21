@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8f1a897c-0f26-43e4-8795-18635adbb59a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitGET.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitGET.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitPOST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitPOST.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitPUT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitPUT.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/translit/statement/GETStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/translit/statement/GETStatement.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -181,7 +181,7 @@
     <session id="-307704009">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="18" />
+          <entry key="project.closed" value="19" />
           <entry key="project.open.time.11" value="2" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.15" value="1" />
@@ -192,10 +192,10 @@
           <entry key="project.open.time.26" value="1" />
           <entry key="project.open.time.27" value="1" />
           <entry key="project.open.time.28" value="1" />
-          <entry key="project.open.time.30" value="2" />
+          <entry key="project.open.time.30" value="3" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="21" />
+          <entry key="project.opened" value="22" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -209,7 +209,7 @@
           <entry key="gitignore" value="1" />
           <entry key="gradle" value="12" />
           <entry key="gradlew" value="5" />
-          <entry key="java" value="559" />
+          <entry key="java" value="560" />
           <entry key="md" value="2" />
         </counts>
       </usages-collector>
@@ -217,7 +217,7 @@
         <counts>
           <entry key="CLASS" value="4" />
           <entry key="Groovy" value="12" />
-          <entry key="JAVA" value="559" />
+          <entry key="JAVA" value="560" />
           <entry key="Markdown" value="2" />
           <entry key="PLAIN_TEXT" value="18" />
         </counts>
@@ -227,14 +227,14 @@
           <entry key="PUMPUM" value="20" />
           <entry key="dummy" value="126" />
           <entry key="gradle" value="14" />
-          <entry key="java" value="9858" />
+          <entry key="java" value="9877" />
           <entry key="md" value="25" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="14" />
-          <entry key="JAVA" value="9858" />
+          <entry key="JAVA" value="9877" />
           <entry key="Markdown" value="25" />
           <entry key="PLAIN_TEXT" value="146" />
         </counts>
@@ -247,14 +247,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/translit/statement/GETStatement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="554">
-              <caret line="53" column="62" selection-start-line="53" selection-start-column="62" selection-end-line="53" selection-end-column="62" />
-              <folding>
-                <element signature="e#1108#1109#0" expanded="true" />
-                <element signature="e#1153#1154#0" expanded="true" />
-                <element signature="e#1277#1278#0" expanded="true" />
-                <element signature="e#1324#1325#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="302">
+              <caret line="41" column="14" lean-forward="true" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -268,14 +262,24 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitPOST.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-314">
-              <caret line="129" column="66" lean-forward="true" selection-start-line="129" selection-start-column="66" selection-end-line="129" selection-end-column="66" />
+            <state relative-caret-position="161">
+              <caret line="126" column="20" selection-start-line="126" selection-start-column="20" selection-end-line="136" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#postWord#0;class#TranslitPOST#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitPUT.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="554">
+              <caret line="120" column="25" selection-start-line="120" selection-start-column="25" selection-end-line="120" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -283,8 +287,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitGET.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="108" column="107" selection-start-line="108" selection-start-column="107" selection-end-line="108" selection-end-column="107" />
+            <state relative-caret-position="399">
+              <caret line="115" column="56" lean-forward="true" selection-start-line="115" selection-start-column="56" selection-end-line="115" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -782,7 +786,6 @@
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/account/request/AccountPOST.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/account/request/AccountPUT.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitDELETE.java" />
-        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitPUT.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/request/OquDELETE.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/request/OquPOST.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/request/OquPUT.java" />
@@ -801,6 +804,7 @@
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitGET.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/translit/statement/GETStatement.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitPOST.java" />
+        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitPUT.java" />
       </list>
     </option>
   </component>
@@ -825,23 +829,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="keu-guide" type="58d84e3e:PackageViewProjectNode" />
-              <item name="keu-guide_main" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="keu-guide" type="58d84e3e:PackageViewProjectNode" />
-              <item name="keu-guide_main" type="616d4139:PackageViewModuleNode" />
-              <item name="kz.keu" type="1f31426a:PackageElementNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -858,52 +845,69 @@
               <item name="e-id" type="b2602c69:ProjectViewProjectNode" />
               <item name="WebSocket_Oqu" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="e-id" type="b2602c69:ProjectViewProjectNode" />
               <item name="WebSocket_Oqu" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="e-id" type="b2602c69:ProjectViewProjectNode" />
               <item name="WebSocket_Oqu" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="kz" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="e-id" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebSocket_Oqu" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="kz" type="462c0819:PsiDirectoryNode" />
-              <item name="osmium" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="e-id" type="b2602c69:ProjectViewProjectNode" />
               <item name="WebSocket_Oqu" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="kz" type="462c0819:PsiDirectoryNode" />
               <item name="osmium" type="462c0819:PsiDirectoryNode" />
-              <item name="translit" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="e-id" type="b2602c69:ProjectViewProjectNode" />
               <item name="WebSocket_Oqu" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="kz" type="462c0819:PsiDirectoryNode" />
               <item name="osmium" type="462c0819:PsiDirectoryNode" />
               <item name="translit" type="462c0819:PsiDirectoryNode" />
-              <item name="statement" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="e-id" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WebSocket_Oqu" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="kz" type="462c0819:PsiDirectoryNode" />
+              <item name="osmium" type="462c0819:PsiDirectoryNode" />
+              <item name="translit" type="462c0819:PsiDirectoryNode" />
+              <item name="request" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="keu-guide" type="58d84e3e:PackageViewProjectNode" />
+              <item name="keu-guide_main" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="keu-guide" type="58d84e3e:PackageViewProjectNode" />
+              <item name="keu-guide_main" type="616d4139:PackageViewModuleNode" />
+              <item name="kz.keu" type="1f31426a:PackageElementNode" />
             </path>
           </expand>
           <select />
@@ -913,7 +917,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="{&#9;null&#9;null" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542470417089" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542642543683" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -1007,8 +1011,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="51" y="27" width="1869" height="1053" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15942825" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16107751" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -1023,7 +1028,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32917318" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5002755" side_tool="true" weight="0.32411504" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.4997245" visible="true" weight="0.2557377" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4997245" visible="true" weight="0.2557377" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32964602" />
       <window_info anchor="bottom" id="Build" order="10" weight="0.32893288" />
       <window_info anchor="bottom" id="Messages" order="11" />
@@ -1210,13 +1215,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitPUT.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-584">
-          <caret line="109" column="72" selection-start-line="109" selection-start-column="72" selection-end-line="109" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/oqu/request/OquDELETE.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-136">
@@ -1266,9 +1264,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="31" column="29" lean-forward="true" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1283,9 +1278,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="364">
           <caret line="38" column="68" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1399,11 +1391,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
           <caret line="149" column="30" selection-start-line="149" selection-start-column="30" selection-end-line="149" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;method#connectAPI#0;class#OquRequest#0" />
-            <element signature="docComment;method#getAPI#0;class#OquRequest#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1421,19 +1408,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/translit/statement/GETStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="554">
-          <caret line="53" column="62" selection-start-line="53" selection-start-column="62" selection-end-line="53" selection-end-column="62" />
-          <folding>
-            <element signature="e#1108#1109#0" expanded="true" />
-            <element signature="e#1153#1154#0" expanded="true" />
-            <element signature="e#1277#1278#0" expanded="true" />
-            <element signature="e#1324#1325#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/translit/statement/POSTStatement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
@@ -1441,10 +1415,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/translit/statement/GETStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="41" column="14" lean-forward="true" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitGET.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="108" column="107" selection-start-line="108" selection-start-column="107" selection-end-line="108" selection-end-column="107" />
+        <state relative-caret-position="399">
+          <caret line="115" column="56" lean-forward="true" selection-start-line="115" selection-start-column="56" selection-end-line="115" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1453,11 +1434,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitPOST.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-314">
-          <caret line="129" column="66" lean-forward="true" selection-start-line="129" selection-start-column="66" selection-end-line="129" selection-end-column="66" />
+        <state relative-caret-position="161">
+          <caret line="126" column="20" selection-start-line="126" selection-start-column="20" selection-end-line="136" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#postWord#0;class#TranslitPOST#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitPUT.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="554">
+          <caret line="120" column="25" selection-start-line="120" selection-start-column="25" selection-end-line="120" selection-end-column="25" />
         </state>
       </provider>
     </entry>

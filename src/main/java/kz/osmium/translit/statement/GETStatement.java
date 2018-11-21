@@ -42,7 +42,7 @@ public class GETStatement {
      * @return
      */
     public static String getWord() {
-        return "SELECT * FROM `word` WHERE `word`.`cyrl`=?";
+        return "SELECT * FROM `word` WHERE `word`.`cyrl`=? OR `word`.`latn`=?";
     }
 
     /**
@@ -51,6 +51,6 @@ public class GETStatement {
      * @return
      */
     public static String getSymbol() {
-        return "SELECT * FROM `symbol` WHERE `symbol`.`cyrl`=?";
+        return "SELECT * FROM `symbol` WHERE `symbol`.`cyrl`=? OR `symbol`.`latn`=?";
     }
 }
