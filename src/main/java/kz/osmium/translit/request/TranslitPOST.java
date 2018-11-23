@@ -22,6 +22,7 @@ import kz.osmium.main.util.HerokuAPI;
 import kz.osmium.main.util.StatusResponse;
 import kz.osmium.translit.main.util.Restrictions;
 import kz.osmium.translit.objects.gson.Symbol;
+import kz.osmium.translit.objects.gson.Word;
 import kz.osmium.translit.statement.GETStatement;
 import kz.osmium.translit.statement.POSTStatement;
 import spark.Request;
@@ -78,7 +79,7 @@ public class TranslitPOST {
                             response.status(201);
 
                             return new Gson().toJson(
-                                    new Symbol(
+                                    new Word(
                                             Math.toIntExact(generatedKeys.getLong(1)),
                                             request.queryParams("cyrl"),
                                             request.queryParams("latn")

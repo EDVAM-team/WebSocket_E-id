@@ -16,9 +16,6 @@
 
 package kz.osmium.main;
 
-import java.sql.Connection;
-import java.util.HashMap;
-
 import static spark.Spark.*;
 
 public class Main {
