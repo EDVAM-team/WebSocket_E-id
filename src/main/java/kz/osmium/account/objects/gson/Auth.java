@@ -19,11 +19,11 @@ package kz.osmium.account.objects.gson;
 import com.google.gson.annotations.SerializedName;
 
 public class Auth {
-    @SerializedName("id_account")
-    private final int idAccount;
-    @SerializedName("f_name")
+    @SerializedName("id")
+    private final int id;
+    @SerializedName("name_f")
     private final String fName;
-    @SerializedName("l_name")
+    @SerializedName("name_l")
     private final String lName;
     @SerializedName("patronymic")
     private final String patronymic;
@@ -31,17 +31,17 @@ public class Auth {
     private final String phone;
     @SerializedName("email")
     private final String email;
-    @SerializedName("id_room")
+    @SerializedName("room_id")
     private final int idRoom;
-    @SerializedName("id_group")
+    @SerializedName("group_id")
     private final int idGroup;
     @SerializedName("type")
     private final int type;
     @SerializedName("token")
     private final String token;
 
-    public Auth(int idAccount, String fName, String lName, String patronymic, String phone, String email, int idRoom, int idGroup, int type, String token) {
-        this.idAccount = idAccount;
+    public Auth(int id, String fName, String lName, String patronymic, String phone, String email, int idRoom, int idGroup, int type, String token) {
+        this.id = id;
         this.fName = fName;
         this.lName = lName;
         this.patronymic = patronymic;
