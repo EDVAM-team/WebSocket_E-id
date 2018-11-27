@@ -35,8 +35,8 @@ public class GETStatement {
      * @return
      */
     public static String addToken() {
-        return "INSERT INTO `auth` " +
-                "(`token`, `id_account`) " +
+        return "INSERT INTO `auths` " +
+                "(`token`, `account_id`) " +
                 "VALUE (?, ?)";
     }
 
