@@ -19,15 +19,15 @@ package kz.osmium.translit.objects.gson;
 import com.google.gson.annotations.SerializedName;
 
 public class Word {
-    @SerializedName("id_word")
-    private final int idWord;
+    @SerializedName("id")
+    private final int id;
     @SerializedName("cyrl")
     private final String cyrl;
     @SerializedName("latn")
     private final String latn;
 
-    public Word(int idWord, String cyrl, String latn) {
-        this.idWord = idWord;
+    public Word(int id, String cyrl, String latn) {
+        this.id = id;
         this.cyrl = cyrl;
         this.latn = latn;
     }

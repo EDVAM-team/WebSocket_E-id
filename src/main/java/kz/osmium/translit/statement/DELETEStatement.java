@@ -3,20 +3,20 @@ package kz.osmium.translit.statement;
 public class DELETEStatement {
 
     /**
-     * Удаляет слово с таблицы `word`
+     * Удаляет слово с таблицы `words`
      *
      * @return
      */
     public static String deleteWord() {
-        return "DELETE FROM `word` WHERE `word`.`id_word`=?";
+        return "DELETE FROM `words` WHERE `words`.`id`=?";
     }
 
     /**
-     * Удаляет символ с таблицы `symbol`
+     * Удаляет символ с таблицы `symbols`
      *
      * @return
      */
     public static String deleteSymbol() {
-        return "DELETE FROM `symbol` WHERE `symbol`.`id_symbol`=?";
+        return "DELETE FROM `symbols` WHERE `symbol`.`id`=?";
     }
 }

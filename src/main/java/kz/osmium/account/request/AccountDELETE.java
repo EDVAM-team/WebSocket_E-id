@@ -30,13 +30,13 @@ import java.sql.SQLException;
 public class AccountDELETE {
 
     /**
-     * Удаляет сессию аккаунта в таблице "auth"
+     * Удаляет сессию аккаунта в таблице "auths"
      *
      * @return возвращает список конкретных специальностей в JSON.
      */
     public static String deleteAuth(Request request, Response response) {
 
-        if (TokenCheck.checkAccount(request.queryParams("token"), Integer.parseInt(request.queryParams("id_account")))) {
+        if (TokenCheck.checkAccount(request.queryParams("token"), Integer.parseInt(request.queryParams("id")))) {
 
             if (request.queryParams("token") != null) {
 
@@ -52,7 +52,7 @@ public class AccountDELETE {
 
                     response.status(400);
 
-                    return StatusResponse.ERROR;
+                    return StatusResponse.BAD_REQUEST;
                 }
 
                 return StatusResponse.SUCCESS;
@@ -66,25 +66,25 @@ public class AccountDELETE {
 
             response.status(401);
 
-            return StatusResponse.ERROR;
+            return StatusResponse.UNAUTHORIZED;
         }
     }
 
     /**
-     * Удаляет сессии аккаунта в таблице "auth"
+     * Удаляет сессии аккаунта в таблице "auths"
      *
      * @return возвращает список конкретных специальностей в JSON.
      */
     public static String deleteAuthAll(Request request, Response response) {
 
-        if (TokenCheck.checkAccountAdmin(request.queryParams("token"), Integer.parseInt(request.queryParams("id_account")))) {
+        if (TokenCheck.checkAccountAdmin(request.queryParams("token"), Integer.parseInt(request.queryParams("id")))) {
 
             if (request.queryParams("token") != null) {
 
                 try (Connection connection = HerokuAPI.Account.getDB()) {
                     PreparedStatement preparedStatement = connection.prepareStatement(DELETEStatement.deleteAuthAll());
 
-                    preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_account")));
+                    preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id")));
 
                     preparedStatement.execute();
 
@@ -93,7 +93,7 @@ public class AccountDELETE {
 
                     response.status(400);
 
-                    return StatusResponse.ERROR;
+                    return StatusResponse.BAD_REQUEST;
                 }
 
                 return StatusResponse.SUCCESS;
@@ -107,7 +107,7 @@ public class AccountDELETE {
 
             response.status(401);
 
-            return StatusResponse.ERROR;
+            return StatusResponse.UNAUTHORIZED;
         }
     }
 }

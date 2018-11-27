@@ -21,9 +21,6 @@ public class StatusResponse {
     /* Статус JSON успешной операции. CODE 200 */
     public static final String SUCCESS = "{\"status\":\"SUCCESS\"}";
 
-    /* Статус JSON ошибочной операции. CODE 404 */
-    public static final String ERROR = "{\"status\":\"ERROR\"}";
-
     /* Статус JSON конфликтной операции. CODE 409 */
     public static final String CONFLICT = "{\"status\":\"CONFLICT\"}";
 
@@ -32,4 +29,13 @@ public class StatusResponse {
 
     /* Статус JSON когда нет содержимого. CODE 204 */
     public static final String NO_CONTENT = "{\"status\":\"NO CONTENT\"}";
+
+    /* Статус JSON когда не найдена стр. CODE 404 */
+    public static final String NOT_FOUND = "{\"status\":\"NOT FOUND\"}";
+
+    /* Статус JSON когда не найдена стр. CODE 400 */
+    public static final String BAD_REQUEST = "{\"status\":\"BAD REQUEST\"}";
+
+    /* Статус JSON когда не найдена стр. CODE 401 */
+    public static final String UNAUTHORIZED = "{\"status\":\"UNAUTHORIZED\"}";
 }

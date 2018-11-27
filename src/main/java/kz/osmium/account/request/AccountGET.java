@@ -35,7 +35,7 @@ import java.util.ArrayList;
 public class AccountGET {
 
     /**
-     * Получает информацию с таблицы "account"
+     * Получает информацию с таблицы "accounts"
      *
      * @return возвращает список факультетов в JSON.
      */
@@ -57,18 +57,18 @@ public class AccountGET {
                     String token = TokenGen.generate(request.queryParams("login"));
 
                     preparedStatement2.setString(1, token);
-                    preparedStatement2.setInt(2, resultSet.getInt("id_account"));
+                    preparedStatement2.setInt(2, resultSet.getInt("id"));
                     preparedStatement2.execute();
 
                     Auth account = new Auth(
-                            resultSet.getInt("id_account"),
-                            resultSet.getString("f_name"),
-                            resultSet.getString("l_name"),
+                            resultSet.getInt("id"),
+                            resultSet.getString("name_f"),
+                            resultSet.getString("name_l"),
                             resultSet.getString("patronymic"),
                             resultSet.getString("phone"),
                             resultSet.getString("email"),
-                            resultSet.getInt("id_room"),
-                            resultSet.getInt("id_group"),
+                            resultSet.getInt("room_id"),
+                            resultSet.getInt("group_id"),
                             resultSet.getInt("type"),
                             token
                     );
@@ -81,7 +81,7 @@ public class AccountGET {
 
                 response.status(400);
 
-                return "400 Bad Request";
+                return StatusResponse.BAD_REQUEST;
             }
         }
 
@@ -92,31 +92,31 @@ public class AccountGET {
 
 
     /**
-     * Получает информацию с таблицы "account"
+     * Получает информацию с таблицы "accounts"
      *
      * @return возвращает конкретного преподователя в JSON.
      */
     public static String getAccountID( Request request, Response response) {
 
-        if (request.queryParams("id_account") != null) {
+        if (request.queryParams("id") != null) {
 
             try (Connection connection = HerokuAPI.Account.getDB()) {
                 PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getAccountID());
 
-                preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_account")));
+                preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id")));
 
                 ResultSet resultSet = preparedStatement.executeQuery();
 
                 while (resultSet.next()) {
                     Account account = new Account(
-                            resultSet.getInt("id_account"),
-                            resultSet.getString("f_name"),
-                            resultSet.getString("l_name"),
+                            resultSet.getInt("id"),
+                            resultSet.getString("name_f"),
+                            resultSet.getString("name_l"),
                             resultSet.getString("patronymic"),
                             resultSet.getString("phone"),
                             resultSet.getString("email"),
-                            resultSet.getInt("id_room"),
-                            resultSet.getInt("id_group"),
+                            resultSet.getInt("room_id"),
+                            resultSet.getInt("group_id"),
                             resultSet.getInt("type")
                     );
 
@@ -128,17 +128,17 @@ public class AccountGET {
 
                 response.status(400);
 
-                return "400 Bad Request";
+                return StatusResponse.BAD_REQUEST;
             }
         }
 
         response.status(400);
 
-        return "400 Bad Request";
+        return StatusResponse.BAD_REQUEST;
     }
 
     /**
-     * Получает информацию с таблицы "account"
+     * Получает информацию с таблицы "accounts"
      *
      * @return возвращает всех преподавателей в JSON.
      */
@@ -150,14 +150,14 @@ public class AccountGET {
 
             while (resultSet.next())
                 list.add(new Account(
-                        resultSet.getInt("id_account"),
-                        resultSet.getString("f_name"),
-                        resultSet.getString("l_name"),
+                        resultSet.getInt("id"),
+                        resultSet.getString("name_f"),
+                        resultSet.getString("name_l"),
                         resultSet.getString("patronymic"),
                         resultSet.getString("phone"),
                         resultSet.getString("email"),
-                        resultSet.getInt("id_room"),
-                        resultSet.getInt("id_group"),
+                        resultSet.getInt("room_id"),
+                        resultSet.getInt("group_id"),
                         resultSet.getInt("type")
                 ));
 
@@ -166,7 +166,7 @@ public class AccountGET {
 
             response.status(400);
 
-            return "400 Bad Request";
+            return StatusResponse.BAD_REQUEST;
         }
 
         return new Gson().toJson(list);

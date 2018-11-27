@@ -28,7 +28,7 @@ public class Request {
     public static void connectAPI(){
 
         AccountRequest.connectAPI();
-        OquRequest.connectAPI();
+//        OquRequest.connectAPI();
         TranslitRequest.connectAPI();
     }
 }

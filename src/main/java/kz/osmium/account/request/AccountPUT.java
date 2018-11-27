@@ -32,23 +32,23 @@ public class AccountPUT {
 
     /**
      * Вносит изменения в аккаунте.
-     * Используется таблица "account"
+     * Используется таблица "accounts"
      *
      * @return
      */
     public static String putAccount(Request request, Response response) {
 
-        if (TokenCheck.checkAccount(request.queryParams("token"), Integer.parseInt(request.queryParams("id_account")))) {
+        if (TokenCheck.checkAccount(request.queryParams("token"), Integer.parseInt(request.queryParams("id")))) {
 
-            if (request.queryParams("id_account") != null &&
+            if (request.queryParams("id") != null &&
                     request.queryParams("type") != null ||
-                    request.queryParams("id_group") != null ||
-                    request.queryParams("f_name") != null ||
-                    request.queryParams("l_name") != null ||
+                    request.queryParams("group_id") != null ||
+                    request.queryParams("name_f") != null ||
+                    request.queryParams("name_l") != null ||
                     request.queryParams("patronymic") != null ||
                     request.queryParams("phone") != null ||
                     request.queryParams("email") != null ||
-                    request.queryParams("id_room") != null ||
+                    request.queryParams("room_id") != null ||
                     request.queryParams("login") != null ||
                     request.queryParams("pass") != null) {
 
@@ -63,22 +63,22 @@ public class AccountPUT {
                         preparedStatement.setNull(2, Types.INTEGER);
                     }
 
-                    if (request.queryParams("id_group") != null)
-                        preparedStatement.setInt(3, Integer.parseInt(request.queryParams("id_group")));
+                    if (request.queryParams("group_id") != null)
+                        preparedStatement.setInt(3, Integer.parseInt(request.queryParams("group_id")));
                     else
                         preparedStatement.setNull(3, Types.INTEGER);
 
-                    if (request.queryParams("f_name") != null) {
-                        preparedStatement.setString(4, request.queryParams("f_name"));
-                        preparedStatement.setString(5, request.queryParams("f_name"));
+                    if (request.queryParams("name_f") != null) {
+                        preparedStatement.setString(4, request.queryParams("name_f"));
+                        preparedStatement.setString(5, request.queryParams("name_f"));
                     } else {
                         preparedStatement.setNull(4, Types.VARCHAR);
                         preparedStatement.setNull(5, Types.VARCHAR);
                     }
 
-                    if (request.queryParams("l_name") != null) {
-                        preparedStatement.setString(6, request.queryParams("l_name"));
-                        preparedStatement.setString(7, request.queryParams("l_name"));
+                    if (request.queryParams("name_l") != null) {
+                        preparedStatement.setString(6, request.queryParams("name_l"));
+                        preparedStatement.setString(7, request.queryParams("name_l"));
                     } else {
                         preparedStatement.setNull(6, Types.VARCHAR);
                         preparedStatement.setNull(7, Types.VARCHAR);
@@ -102,8 +102,8 @@ public class AccountPUT {
                     else
                         preparedStatement.setNull(11, Types.VARCHAR);
 
-                    if (request.queryParams("id_room") != null)
-                        preparedStatement.setInt(12, Integer.parseInt(request.queryParams("id_room")));
+                    if (request.queryParams("room_id") != null)
+                        preparedStatement.setInt(12, Integer.parseInt(request.queryParams("room_id")));
                     else
                         preparedStatement.setNull(12, Types.INTEGER);
 
@@ -123,7 +123,7 @@ public class AccountPUT {
                         preparedStatement.setNull(16, Types.VARCHAR);
                     }
 
-                    preparedStatement.setInt(17, Integer.parseInt(request.queryParams("id_account")));
+                    preparedStatement.setInt(17, Integer.parseInt(request.queryParams("id")));
                     preparedStatement.executeUpdate();
 
                     response.status(201);
@@ -145,7 +145,7 @@ public class AccountPUT {
 
             response.status(401);
 
-            return StatusResponse.ERROR;
+            return StatusResponse.UNAUTHORIZED;
         }
     }
 }

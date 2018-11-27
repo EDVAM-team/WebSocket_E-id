@@ -33,7 +33,7 @@ import java.sql.*;
 public class TranslitPOST {
 
     /**
-     * Создает исключающие слово в таблице `word`
+     * Создает исключающие слово в таблице `words`
      *
      * @param request
      * @param response
@@ -108,13 +108,13 @@ public class TranslitPOST {
 
             response.status(401);
 
-            return StatusResponse.ERROR;
+            return StatusResponse.UNAUTHORIZED;
         }
 
     }
 
     /**
-     * Создает символ в таблице `symbol`
+     * Создает символ в таблице `symbols`
      *
      * @param request
      * @param response
@@ -190,7 +190,7 @@ public class TranslitPOST {
 
             response.status(401);
 
-            return StatusResponse.ERROR;
+            return StatusResponse.UNAUTHORIZED;
         }
 
     }

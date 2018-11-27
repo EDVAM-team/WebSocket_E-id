@@ -32,7 +32,7 @@ public class AccountPOST {
 
     /**
      * Создает аккаунт.
-     * Используется таблица "account"
+     * Используется таблица "accounts"
      *
      * @return
      */
@@ -40,8 +40,8 @@ public class AccountPOST {
 
         if (TokenCheck.checkAdmin(request.queryParams("token"))) {
 
-            if (request.queryParams("f_name") != null &&
-                    request.queryParams("l_name") != null &&
+            if (request.queryParams("name_f") != null &&
+                    request.queryParams("name_l") != null &&
                     request.queryParams("patronymic") != null &&
                     request.queryParams("login") != null &&
                     request.queryParams("type") != null &&
@@ -50,8 +50,8 @@ public class AccountPOST {
                 try (Connection connection = HerokuAPI.Account.getDB()) {
                     PreparedStatement preparedStatement = connection.prepareStatement(POSTStatement.postAccount());
 
-                    preparedStatement.setString(1, request.queryParams("f_name"));
-                    preparedStatement.setString(2, request.queryParams("l_name"));
+                    preparedStatement.setString(1, request.queryParams("name_f"));
+                    preparedStatement.setString(2, request.queryParams("name_l"));
                     preparedStatement.setString(3, request.queryParams("patronymic"));
                     preparedStatement.setInt(6, Integer.parseInt(request.queryParams("type")));
                     preparedStatement.setString(7, request.queryParams("login"));
@@ -67,15 +67,15 @@ public class AccountPOST {
                     else
                         preparedStatement.setNull(5, Types.VARCHAR);
 
-                    if (request.queryParams("id_group") != null &&
+                    if (request.queryParams("group_id") != null &&
                             Integer.parseInt(request.queryParams("type")) == 1)
-                        preparedStatement.setInt(10, Integer.parseInt(request.queryParams("id_group")));
+                        preparedStatement.setInt(10, Integer.parseInt(request.queryParams("group_id")));
                     else
                         preparedStatement.setNull(10, Types.INTEGER);
 
-                    if (request.queryParams("id_room") != null &&
+                    if (request.queryParams("room_id") != null &&
                             Integer.parseInt(request.queryParams("type")) == 2)
-                        preparedStatement.setInt(9, Integer.parseInt(request.queryParams("id_room")));
+                        preparedStatement.setInt(9, Integer.parseInt(request.queryParams("room_id")));
                     else
                         preparedStatement.setNull(9, Types.INTEGER);
 
@@ -86,7 +86,7 @@ public class AccountPOST {
 
                     response.status(400);
 
-                    return StatusResponse.ERROR;
+                    return StatusResponse.BAD_REQUEST;
                 }
 
                 return StatusResponse.SUCCESS;
@@ -100,7 +100,7 @@ public class AccountPOST {
 
             response.status(401);
 
-            return StatusResponse.ERROR;
+            return StatusResponse.UNAUTHORIZED;
         }
     }
 }

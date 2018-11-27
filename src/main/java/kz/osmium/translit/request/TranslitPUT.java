@@ -33,7 +33,7 @@ import java.sql.Types;
 public class TranslitPUT {
 
     /**
-     * Изменяет исключающие слово в таблице `word`
+     * Изменяет исключающие слово в таблице `words`
      *
      * @param request
      * @param response
@@ -43,7 +43,7 @@ public class TranslitPUT {
 
         if (TokenCheck.checkTeacher(request.queryParams("token"))) {
 
-            if (request.queryParams("id_word") != null &&
+            if (request.queryParams("id") != null &&
                     ((request.queryParams("cyrl") != null &&
                             request.queryParams("cyrl").length() <= Restrictions.SIZE_WORD_CYRL) ||
                     (request.queryParams("latn") != null &&
@@ -64,7 +64,7 @@ public class TranslitPUT {
 
                     preparedStatement = connection.prepareStatement(PUTStatement.putWord());
 
-                    preparedStatement.setInt(5, Integer.parseInt(request.queryParams("id_word")));
+                    preparedStatement.setInt(5, Integer.parseInt(request.queryParams("id")));
 
                     if (request.queryParams("cyrl") != null) {
                         preparedStatement.setString(1, request.queryParams("cyrl"));
@@ -103,12 +103,12 @@ public class TranslitPUT {
 
             response.status(401);
 
-            return StatusResponse.ERROR;
+            return StatusResponse.UNAUTHORIZED;
         }
     }
 
     /**
-     * Изменяет символ в таблице `symbol`
+     * Изменяет символ в таблице `symbols`
      *
      * @param request
      * @param response
@@ -118,7 +118,7 @@ public class TranslitPUT {
 
         if (TokenCheck.checkTeacher(request.queryParams("token"))) {
 
-            if (request.queryParams("id_symbol") != null &&
+            if (request.queryParams("id") != null &&
                     ((request.queryParams("cyrl") != null &&
                             request.queryParams("cyrl").length() <= Restrictions.SIZE_SYMBOL_CYRL) ||
                     (request.queryParams("latn") != null &&
@@ -139,7 +139,7 @@ public class TranslitPUT {
 
                     preparedStatement = connection.prepareStatement(PUTStatement.putSymbol());
 
-                    preparedStatement.setInt(5, Integer.parseInt(request.queryParams("id_symbol")));
+                    preparedStatement.setInt(5, Integer.parseInt(request.queryParams("id")));
 
                     if (request.queryParams("cyrl") != null) {
                         preparedStatement.setString(1, request.queryParams("cyrl"));
@@ -178,7 +178,7 @@ public class TranslitPUT {
 
             response.status(401);
 
-            return StatusResponse.ERROR;
+            return StatusResponse.UNAUTHORIZED;
         }
     }
 }

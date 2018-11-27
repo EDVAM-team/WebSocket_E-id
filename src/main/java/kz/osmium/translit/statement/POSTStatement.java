@@ -19,20 +19,20 @@ package kz.osmium.translit.statement;
 public class POSTStatement {
 
     /**
-     * Создает исключающие слово в таблице `word`
+     * Создает исключающие слово в таблице `words`
      *
      * @return
      */
     public static String postWord() {
-        return "INSERT INTO `word` (`word`.`cyrl`, `word`.`latn`) VALUES (?, ?)";
+        return "INSERT INTO `words` (`words`.`cyrl`, `words`.`latn`) VALUES (?, ?)";
     }
 
     /**
-     * Создает символ в таблице `symbol`
+     * Создает символ в таблице `symbols`
      *
      * @return
      */
     public static String postSymbol() {
-        return "INSERT INTO `symbol` (`symbol`.`cyrl`, `symbol`.`latn`) VALUES (?, ?)";
+        return "INSERT INTO `symbols` (`symbols`.`cyrl`, `symbols`.`latn`) VALUES (?, ?)";
     }
 }

@@ -20,17 +20,17 @@ public class GETStatement {
 
     /**
      * Запрос на авторизацию приложения.
-     * Истользуется таблица "account"
+     * Истользуется таблица "accounts"
      *
      * @return
      */
     public static String getAccount() {
-        return "SELECT * FROM `account` WHERE `account`.login=? AND `account`.pass=?";
+        return "SELECT * FROM `accounts` WHERE `accounts`.login=? AND `accounts`.pass=?";
     }
 
     /**
      * Запрос на создание токена.
-     * Истользуется таблица "auth"
+     * Истользуется таблица "auths"
      *
      * @return
      */
@@ -42,22 +42,22 @@ public class GETStatement {
 
 
     /**
-     * Запрос на вывод конкретного аккаунта по `id_account`
-     * Истользуется таблица "account"
+     * Запрос на вывод конкретного аккаунта по `id`
+     * Истользуется таблица "accounts"
      *
      * @return
      */
     public static String getAccountID() {
-        return "SELECT * FROM `account` WHERE `id_account`=?";
+        return "SELECT * FROM `accounts` WHERE `id`=?";
     }
 
     /**
      * Запрос на вывод всех преподавателей
-     * Истользуется таблица "account"
+     * Истользуется таблица "accounts"
      *
      * @return
      */
     public static String getTeacherAll() {
-        return "SELECT * FROM `account` WHERE `account`.type=2";
+        return "SELECT * FROM `accounts` WHERE `accounts`.type=2";
     }
 }

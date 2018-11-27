@@ -17,6 +17,7 @@
 package kz.osmium.translit.main;
 
 import kz.osmium.main.util.HerokuDomain;
+import kz.osmium.main.util.StatusResponse;
 import kz.osmium.translit.request.TranslitDELETE;
 import kz.osmium.translit.request.TranslitGET;
 import kz.osmium.translit.request.TranslitPOST;
@@ -49,7 +50,6 @@ public class TranslitRequest {
          *
          * https://*.example.com/api/text ?
          * & text = <String>
-         * & t = <Integer>
          */
         path("/api", () ->
                 get("/text", "application/json", (request, response) -> {
@@ -59,7 +59,7 @@ public class TranslitRequest {
 
                         response.status(404);
 
-                        return "404 Not Found";
+                        return StatusResponse.NOT_FOUND;
                     }
                 }));
 
@@ -76,7 +76,7 @@ public class TranslitRequest {
 
                         response.status(404);
 
-                        return "404 Not Found";
+                        return StatusResponse.NOT_FOUND;
                     }
                 }));
 
@@ -93,7 +93,7 @@ public class TranslitRequest {
 
                         response.status(404);
 
-                        return "404 Not Found";
+                        return StatusResponse.NOT_FOUND;
                     }
                 }));
     }
@@ -119,7 +119,7 @@ public class TranslitRequest {
 
                                 response.status(404);
 
-                                return "404 Not Found";
+                                return StatusResponse.NOT_FOUND;
                             }
                         }
                 ));
@@ -140,7 +140,7 @@ public class TranslitRequest {
 
                                 response.status(404);
 
-                                return "404 Not Found";
+                                return StatusResponse.NOT_FOUND;
                             }
                         }
                 ));
@@ -156,7 +156,7 @@ public class TranslitRequest {
          *
          * https://*.example.com/api/word ?
          * & token = <String>
-         * & id_word = <Integer>
+         * & id = <Integer>
          * [-] & cyrl = <String>
          * [-] & latn = <String>
          */
@@ -168,7 +168,7 @@ public class TranslitRequest {
 
                                 response.status(404);
 
-                                return "404 Not Found";
+                                return StatusResponse.NOT_FOUND;
                             }
                         }
                 ));
@@ -178,7 +178,7 @@ public class TranslitRequest {
          *
          * https://*.example.com/api/symbol ?
          * & token = <String>
-         * & id_symbol = <Integer>
+         * & id = <Integer>
          * [-] & cyrl = <String>
          * [-] & latn = <String>
          */
@@ -190,7 +190,7 @@ public class TranslitRequest {
 
                                 response.status(404);
 
-                                return "404 Not Found";
+                                return StatusResponse.NOT_FOUND;
                             }
                         }
                 ));
@@ -206,7 +206,7 @@ public class TranslitRequest {
          *
          * https://*.example.com/api/word ?
          * & token = <String>
-         * & id_word = <Integer>
+         * & id = <Integer>
          */
         path("/api", () ->
                 delete("/word", "application/json", (request, response) -> {
@@ -216,7 +216,7 @@ public class TranslitRequest {
 
                                 response.status(404);
 
-                                return "404 Not Found";
+                                return StatusResponse.NOT_FOUND;
                             }
                         }
                 ));
@@ -226,7 +226,7 @@ public class TranslitRequest {
          *
          * https://*.example.com/api/symbol ?
          * & token = <String>
-         * & id_symbol = <Integer>
+         * & id = <Integer>
          */
         path("/api", () ->
                 delete("/symbol", "application/json", (request, response) -> {
@@ -236,7 +236,7 @@ public class TranslitRequest {
 
                                 response.status(404);
 
-                                return "404 Not Found";
+                                return StatusResponse.NOT_FOUND;
                             }
                         }
                 ));

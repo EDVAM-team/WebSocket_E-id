@@ -52,7 +52,7 @@ public class OquDELETE {
 
                     response.status(400);
 
-                    return StatusResponse.ERROR;
+                    return StatusResponse.BAD_REQUEST;
                 }
 
                 return StatusResponse.SUCCESS;
@@ -60,13 +60,13 @@ public class OquDELETE {
 
                 response.status(400);
 
-                return StatusResponse.ERROR;
+                return StatusResponse.BAD_REQUEST;
             }
         } else {
 
             response.status(401);
 
-            return StatusResponse.ERROR;
+            return StatusResponse.UNAUTHORIZED;
         }
     }
 }

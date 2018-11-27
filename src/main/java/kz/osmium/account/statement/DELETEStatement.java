@@ -20,21 +20,21 @@ public class DELETEStatement {
 
     /**
      * Запрос на удаление сессии аккаунта.
-     * Истользуется таблица "auth"
+     * Истользуется таблица "auths"
      *
      * @return
      */
     public static String deleteAuth() {
-        return "DELETE FROM `auth` WHERE `auth`.`token`=?";
+        return "DELETE FROM `auths` WHERE `auths`.`token`=?";
     }
 
     /**
      * Запрос на удаление всех сессии аккаунта.
-     * Истользуется таблица "auth"
+     * Истользуется таблица "auths"
      *
      * @return
      */
     public static String deleteAuthAll() {
-        return "DELETE FROM `auth` WHERE `auth`.`id_account`=?";
+        return "DELETE FROM `auths` WHERE `auths`.`account_id`=?";
     }
 }

@@ -141,7 +141,7 @@ public class OquPUT {
 
             response.status(401);
 
-            return StatusResponse.ERROR;
+            return StatusResponse.UNAUTHORIZED;
         }
     }
 
@@ -201,7 +201,7 @@ public class OquPUT {
 
                     response.status(400);
 
-                    return StatusResponse.ERROR;
+                    return StatusResponse.BAD_REQUEST;
                 }
 
                 return StatusResponse.SUCCESS;
@@ -215,7 +215,7 @@ public class OquPUT {
 
             response.status(401);
 
-            return StatusResponse.ERROR;
+            return StatusResponse.UNAUTHORIZED;
         }
     }
 
@@ -251,7 +251,7 @@ public class OquPUT {
 
                     response.status(400);
 
-                    return StatusResponse.ERROR;
+                    return StatusResponse.BAD_REQUEST;
                 }
 
                 return StatusResponse.SUCCESS;
@@ -265,7 +265,7 @@ public class OquPUT {
 
             response.status(401);
 
-            return StatusResponse.ERROR;
+            return StatusResponse.UNAUTHORIZED;
         }
     }
 
@@ -301,7 +301,7 @@ public class OquPUT {
 
                     response.status(400);
 
-                    return StatusResponse.ERROR;
+                    return StatusResponse.BAD_REQUEST;
                 }
 
                 return StatusResponse.SUCCESS;
@@ -315,7 +315,7 @@ public class OquPUT {
 
             response.status(401);
 
-            return StatusResponse.ERROR;
+            return StatusResponse.UNAUTHORIZED;
         }
     }
 
@@ -360,7 +360,7 @@ public class OquPUT {
 
                     response.status(400);
 
-                    return StatusResponse.ERROR;
+                    return StatusResponse.BAD_REQUEST;
                 }
 
                 return StatusResponse.SUCCESS;
@@ -374,7 +374,7 @@ public class OquPUT {
 
             response.status(401);
 
-            return StatusResponse.ERROR;
+            return StatusResponse.UNAUTHORIZED;
         }
     }
 
@@ -410,7 +410,7 @@ public class OquPUT {
 
                     response.status(400);
 
-                    return StatusResponse.ERROR;
+                    return StatusResponse.BAD_REQUEST;
                 }
 
                 return StatusResponse.SUCCESS;
@@ -424,7 +424,7 @@ public class OquPUT {
 
             response.status(401);
 
-            return StatusResponse.ERROR;
+            return StatusResponse.UNAUTHORIZED;
         }
     }
 
@@ -476,7 +476,7 @@ public class OquPUT {
 
                     response.status(400);
 
-                    return StatusResponse.ERROR;
+                    return StatusResponse.BAD_REQUEST;
                 }
 
                 return StatusResponse.SUCCESS;
@@ -490,7 +490,7 @@ public class OquPUT {
 
             response.status(401);
 
-            return StatusResponse.ERROR;
+            return StatusResponse.UNAUTHORIZED;
         }
     }
 
@@ -543,7 +543,7 @@ public class OquPUT {
 
                     response.status(400);
 
-                    return StatusResponse.ERROR;
+                    return StatusResponse.BAD_REQUEST;
                 }
 
                 return StatusResponse.SUCCESS;
@@ -557,7 +557,7 @@ public class OquPUT {
 
             response.status(401);
 
-            return StatusResponse.ERROR;
+            return StatusResponse.UNAUTHORIZED;
         }
     }
 
@@ -593,7 +593,7 @@ public class OquPUT {
 
                     response.status(400);
 
-                    return StatusResponse.ERROR;
+                    return StatusResponse.BAD_REQUEST;
                 }
 
                 return StatusResponse.SUCCESS;
@@ -607,7 +607,7 @@ public class OquPUT {
 
             response.status(401);
 
-            return StatusResponse.ERROR;
+            return StatusResponse.UNAUTHORIZED;
         }
     }
 
@@ -679,7 +679,7 @@ public class OquPUT {
 
                     response.status(400);
 
-                    return StatusResponse.ERROR;
+                    return StatusResponse.BAD_REQUEST;
                 }
 
                 return StatusResponse.SUCCESS;
@@ -693,7 +693,7 @@ public class OquPUT {
 
             response.status(401);
 
-            return StatusResponse.ERROR;
+            return StatusResponse.UNAUTHORIZED;
         }
     }
 
@@ -747,7 +747,7 @@ public class OquPUT {
 
                     response.status(400);
 
-                    return StatusResponse.ERROR;
+                    return StatusResponse.BAD_REQUEST;
                 }
 
                 return StatusResponse.SUCCESS;
@@ -761,7 +761,7 @@ public class OquPUT {
 
             response.status(401);
 
-            return StatusResponse.ERROR;
+            return StatusResponse.UNAUTHORIZED;
         }
     }
 
@@ -806,7 +806,7 @@ public class OquPUT {
 
                     response.status(400);
 
-                    return StatusResponse.ERROR;
+                    return StatusResponse.BAD_REQUEST;
                 }
 
                 return StatusResponse.SUCCESS;
@@ -820,7 +820,7 @@ public class OquPUT {
 
             response.status(401);
 
-            return StatusResponse.ERROR;
+            return StatusResponse.UNAUTHORIZED;
         }
     }
 
@@ -874,7 +874,7 @@ public class OquPUT {
 
                     response.status(400);
 
-                    return StatusResponse.ERROR;
+                    return StatusResponse.BAD_REQUEST;
                 }
 
                 return StatusResponse.SUCCESS;
@@ -888,7 +888,7 @@ public class OquPUT {
 
             response.status(401);
 
-            return StatusResponse.ERROR;
+            return StatusResponse.UNAUTHORIZED;
         }
     }
 }

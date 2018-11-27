@@ -30,7 +30,7 @@ import java.sql.SQLException;
 public class TranslitDELETE {
 
     /**
-     * Удаляет слово в таблице `word`
+     * Удаляет слово в таблице `words`
      *
      * @param request
      * @param response
@@ -40,12 +40,12 @@ public class TranslitDELETE {
 
         if (TokenCheck.checkTeacher( request.queryParams("token"))) {
 
-            if (request.queryParams("id_word") != null) {
+            if (request.queryParams("id") != null) {
 
                     try (Connection connection = HerokuAPI.Translit.getDB()) {
                         PreparedStatement preparedStatement = connection.prepareStatement(DELETEStatement.deleteWord());
 
-                        preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_word")));
+                        preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id")));
                         preparedStatement.execute();
 
                         response.status(200);
@@ -67,12 +67,12 @@ public class TranslitDELETE {
 
             response.status(401);
 
-            return StatusResponse.ERROR;
+            return StatusResponse.UNAUTHORIZED;
         }
     }
 
     /**
-     * Удаляет символ в таблице `symbol`
+     * Удаляет символ в таблице `symbols`
      *
      * @param request
      * @param response
@@ -82,12 +82,12 @@ public class TranslitDELETE {
 
         if (TokenCheck.checkTeacher( request.queryParams("token"))) {
 
-            if (request.queryParams("id_symbol") != null) {
+            if (request.queryParams("id") != null) {
 
                     try (Connection connection = HerokuAPI.Translit.getDB()) {
                         PreparedStatement preparedStatement = connection.prepareStatement(DELETEStatement.deleteSymbol());
 
-                        preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id_symbol")));
+                        preparedStatement.setInt(1, Integer.parseInt(request.queryParams("id")));
                         preparedStatement.execute();
 
                         response.status(200);
@@ -110,7 +110,7 @@ public class TranslitDELETE {
 
             response.status(401);
 
-            return StatusResponse.ERROR;
+            return StatusResponse.UNAUTHORIZED;
         }
     }
 }

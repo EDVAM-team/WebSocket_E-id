@@ -21,6 +21,7 @@ import kz.osmium.account.request.AccountGET;
 import kz.osmium.account.request.AccountPOST;
 import kz.osmium.account.request.AccountPUT;
 import kz.osmium.main.util.HerokuDomain;
+import kz.osmium.main.util.StatusResponse;
 
 import static spark.Spark.*;
 
@@ -57,7 +58,7 @@ public class AccountRequest {
 
                                 response.status(404);
 
-                                return "404 Not Found";
+                                return StatusResponse.NOT_FOUND;
                             }
                         }
                 ));
@@ -66,7 +67,7 @@ public class AccountRequest {
          * Получить информацию аккаунта.
          *
          * https://*.example.com/api/account/id ?
-         * & id_account = <Integer>
+         * & id = <Integer>
          */
         path("/api", () ->
                 path("/account", () ->
@@ -77,7 +78,7 @@ public class AccountRequest {
 
                                         response.status(404);
 
-                                        return "404 Not Found";
+                                        return StatusResponse.NOT_FOUND;
                                     }
                                 }
                         )));
@@ -96,7 +97,7 @@ public class AccountRequest {
 
                                         response.status(404);
 
-                                        return "404 Not Found";
+                                        return StatusResponse.NOT_FOUND;
                                     }
                                 }
                         )));
@@ -112,16 +113,16 @@ public class AccountRequest {
          *
          * https://*.example.com/api/account ?
          * & token = <String>
-         * & f_name = <String>
+         * & name_f = <String>
          * & type = <Integer>
          * & login = <String>
          * & pass = <String>
-         * & l_name = <String>
+         * & name_l = <String>
          * & patronymic = <String>
          * - & phone = <String>
          * - & email = <String>
-         * - & id_group = <Integer>
-         * - & id_room = <Integer>
+         * - & group_id = <Integer>
+         * - & room_id = <Integer>
          */
         path("/api", () ->
                 post("/account", "application/json", (request, response) -> {
@@ -131,7 +132,7 @@ public class AccountRequest {
 
                                 response.status(404);
 
-                                return "404 Not Found";
+                                return StatusResponse.NOT_FOUND;
                             }
                         }
                 ));
@@ -147,17 +148,17 @@ public class AccountRequest {
          *
          * https://*.example.com/api/account ?
          * & token = <String>
-         * & id_account = <Integer>
-         * [-] & f_name = <String>
+         * & id = <Integer>
+         * [-] & name_f = <String>
          * [-] & login = <String>
          * [-] & pass = <String>
          * - & type = <Integer>
-         * - & id_group = <Integer>
-         * - & l_name = <String>
+         * - & group_id = <Integer>
+         * - & name_l = <String>
          * - & patronymic = <String>
          * - & phone = <String>
          * - & email = <String>
-         * - & id_room = <Integer>
+         * - & room_id = <Integer>
          */
         path("/api", () ->
                 put("/account", "application/json", (request, response) -> {
@@ -167,7 +168,7 @@ public class AccountRequest {
 
                                 response.status(404);
 
-                                return "404 Not Found";
+                                return StatusResponse.NOT_FOUND;
                             }
                         }
                 ));
@@ -183,7 +184,7 @@ public class AccountRequest {
          *
          * https://*.example.com/api/auth ?
          * & token = <String>
-         * & id_account = <Integer>
+         * & id = <Integer>
          */
         path("/api", () ->
                 delete("/auth", "application/json", (request, response) -> {
@@ -193,7 +194,7 @@ public class AccountRequest {
 
                                 response.status(404);
 
-                                return "404 Not Found";
+                                return StatusResponse.NOT_FOUND;
                             }
                         }
                 ));
@@ -203,7 +204,7 @@ public class AccountRequest {
          *
          * https://*.example.com/api/auth/all ?
          * & token = <String>
-         * & id_account = <Integer>
+         * & id = <Integer>
          */
         path("/api", () ->
                 path("/auth", () ->
@@ -214,7 +215,7 @@ public class AccountRequest {
 
                                         response.status(404);
 
-                                        return "404 Not Found";
+                                        return StatusResponse.NOT_FOUND;
                                     }
                                 }
                         )));

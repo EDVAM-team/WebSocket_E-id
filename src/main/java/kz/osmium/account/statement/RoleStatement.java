@@ -24,10 +24,10 @@ public class RoleStatement {
      * @return
      */
     public static String admin() {
-        return "SELECT `account`.`id_account` \n" +
-                "FROM `auth` \n" +
-                "INNER JOIN `account` ON `auth`.`id_account`=`account`.`id_account` \n" +
-                "WHERE `account`.`type`=3 AND `auth`.`token`=?";
+        return "SELECT `accounts`.`id` \n" +
+                "FROM `auths` \n" +
+                "INNER JOIN `accounts` ON `auths`.`account_id`=`accounts`.`id` \n" +
+                "WHERE `accounts`.`type`=3 AND `auths`.`token`=?";
     }
 
     /**
@@ -36,10 +36,10 @@ public class RoleStatement {
      * @return
      */
     public static String teacher() {
-        return "SELECT `account`.`id_account` \n" +
-                "FROM `auth` \n" +
-                "INNER JOIN `account` ON `auth`.`id_account`=`account`.`id_account` \n" +
-                "WHERE (`account`.`type`=2 OR `account`.`type`=3) AND `auth`.`token`=?";
+        return "SELECT `accounts`.`id` \n" +
+                "FROM `auths` \n" +
+                "INNER JOIN `accounts` ON `auths`.`account_id`=`accounts`.`id` \n" +
+                "WHERE (`accounts`.`type`=2 OR `accounts`.`type`=3) AND `auths`.`token`=?";
     }
 
     /**
@@ -48,10 +48,10 @@ public class RoleStatement {
      * @return
      */
     public static String account() {
-        return "SELECT `account`.`id_account` \n" +
-                "FROM `auth` \n" +
-                "INNER JOIN `account` ON `auth`.`id_account`=`account`.`id_account` \n" +
-                "WHERE `account`.`id_account`=? AND `auth`.`token`=?";
+        return "SELECT `accounts`.`id` \n" +
+                "FROM `auths` \n" +
+                "INNER JOIN `accounts` ON `auths`.`account_id`=`accounts`.`id` \n" +
+                "WHERE `accounts`.`id`=? AND `auths`.`token`=?";
     }
 
     /**
@@ -60,9 +60,9 @@ public class RoleStatement {
      * @return
      */
     public static String accountAdmin() {
-        return "SELECT `account`.`id_account` \n" +
-                "FROM `auth` \n" +
-                "INNER JOIN `account` ON `auth`.`id_account`=`account`.`id_account` \n" +
-                "WHERE (`account`.`id_account`=? OR `account`.`type`=3) AND `auth`.`token`=?";
+        return "SELECT `accounts`.`id` \n" +
+                "FROM `auths` \n" +
+                "INNER JOIN `accounts` ON `auths`.`account_id`=`accounts`.`id` \n" +
+                "WHERE (`accounts`.`id`=? OR `accounts`.`type`=3) AND `auths`.`token`=?";
     }
 }

@@ -42,19 +42,10 @@ public class TranslitGET {
      */
     public static String getTranslit(Request request, Response response) {
 
-        if (request.queryParams("text") != null &&
-                request.queryParams("t") != null) {
+        if (request.queryParams("text") != null) {
             Map<String, String> map = new HashMap<>();
 
-            switch (Integer.parseInt(request.queryParams("t"))) {
-                case 1:
-                    map.put("text", Translit.сyrlToLatn(request.queryParams("text")));
-                    break;
-                case 2:
-                    map.put("text", Translit.latnToCyrl(request.queryParams("text")));
-                    break;
-            }
-
+            map.put("text", Translit.сyrlToLatn(request.queryParams("text")));
             response.status(200);
 
             return new Gson().toJson(map);
@@ -62,69 +53,69 @@ public class TranslitGET {
 
             response.status(400);
 
-            return "400 Bad Request";
+            return StatusResponse.BAD_REQUEST;
         }
     }
 
     /**
-     * Выводит все слова с таблицы `word`
+     * Выводит все слова с таблицы `words`
      *
      * @param response
      * @return
      */
     public static String getWord(Response response) {
 
-            try (Connection connection = HerokuAPI.Translit.getDB()) {
-                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getWordAll());
-                ResultSet resultSet = preparedStatement.executeQuery();
-                ArrayList<Word> wordArrayList = new ArrayList<>();
+        try (Connection connection = HerokuAPI.Translit.getDB()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getWordAll());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            ArrayList<Word> wordArrayList = new ArrayList<>();
 
-                while (resultSet.next())
-                    wordArrayList.add(new Word(
-                            resultSet.getInt("id_word"),
-                            resultSet.getString("cyrl"),
-                            resultSet.getString("latn")
-                    ));
+            while (resultSet.next())
+                wordArrayList.add(new Word(
+                        resultSet.getInt("id"),
+                        resultSet.getString("cyrl"),
+                        resultSet.getString("latn")
+                ));
 
-                response.status(200);
+            response.status(200);
 
-                return new Gson().toJson(wordArrayList);
-            } catch (SQLException e) {
+            return new Gson().toJson(wordArrayList);
+        } catch (SQLException e) {
 
-                response.status(409);
+            response.status(409);
 
-                return StatusResponse.CONFLICT;
-            }
+            return StatusResponse.CONFLICT;
+        }
     }
 
     /**
-     * Выводит все символы с таблицы `symbol`
+     * Выводит все символы с таблицы `symbols`
      *
      * @param response
      * @return
      */
     public static String getSymbol(Response response) {
 
-            try (Connection connection = HerokuAPI.Translit.getDB()) {
-                PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getSymbolAll());
-                ResultSet resultSet = preparedStatement.executeQuery();
-                ArrayList<Symbol> wordArrayList = new ArrayList<>();
+        try (Connection connection = HerokuAPI.Translit.getDB()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(GETStatement.getSymbolAll());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            ArrayList<Symbol> wordArrayList = new ArrayList<>();
 
-                while (resultSet.next())
-                    wordArrayList.add(new Symbol(
-                            resultSet.getInt("id_symbol"),
-                            resultSet.getString("cyrl"),
-                            resultSet.getString("latn")
-                    ));
+            while (resultSet.next())
+                wordArrayList.add(new Symbol(
+                        resultSet.getInt("id"),
+                        resultSet.getString("cyrl"),
+                        resultSet.getString("latn")
+                ));
 
-                response.status(200);
+            response.status(200);
 
-                return new Gson().toJson(wordArrayList);
-            } catch (SQLException e) {
+            return new Gson().toJson(wordArrayList);
+        } catch (SQLException e) {
 
-                response.status(409);
+            response.status(409);
 
-                return StatusResponse.CONFLICT;
-            }
+            return StatusResponse.CONFLICT;
+        }
     }
 }

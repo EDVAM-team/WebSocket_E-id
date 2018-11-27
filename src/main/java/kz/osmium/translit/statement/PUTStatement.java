@@ -3,26 +3,26 @@ package kz.osmium.translit.statement;
 public class PUTStatement {
 
     /**
-     * Изменяет слово в таблице `word`
+     * Изменяет слово в таблице `words`
      *
      * @return
      */
     public static String putWord() {
-        return "UPDATE `word` " +
-                "SET `word`.`cyrl`= CASE WHEN ? IS NULL THEN `word`.`cyrl` ELSE ? END, " +
-                "`word`.`latn`= CASE WHEN ? IS NULL THEN `word`.`latn` ELSE ? END " +
-                "WHERE `word`.`id_word`=?";
+        return "UPDATE `words` " +
+                "SET `words`.`cyrl`= CASE WHEN ? IS NULL THEN `words`.`cyrl` ELSE ? END, " +
+                "`words`.`latn`= CASE WHEN ? IS NULL THEN `words`.`latn` ELSE ? END " +
+                "WHERE `words`.`id`=?";
     }
 
     /**
-     * Изменяет символ в таблице `symbol`
+     * Изменяет символ в таблице `symbols`
      *
      * @return
      */
     public static String putSymbol() {
-        return "UPDATE `symbol` " +
-                "SET `symbol`.`cyrl`= CASE WHEN ? IS NULL THEN `symbol`.`cyrl` ELSE ? END, " +
-                "`symbol`.`latn`= CASE WHEN ? IS NULL THEN `symbol`.`latn` ELSE ? END " +
-                "WHERE `symbol`.`id_symbol`=?";
+        return "UPDATE `symbols` " +
+                "SET `symbols`.`cyrl`= CASE WHEN ? IS NULL THEN `symbols`.`cyrl` ELSE ? END, " +
+                "`symbols`.`latn`= CASE WHEN ? IS NULL THEN `symbols`.`latn` ELSE ? END " +
+                "WHERE `symbols`.`id`=?";
     }
 }

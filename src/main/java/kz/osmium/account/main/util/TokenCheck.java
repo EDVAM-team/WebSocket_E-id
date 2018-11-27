@@ -88,14 +88,14 @@ public class TokenCheck {
      * @param token
      * @return
      */
-    public static boolean checkAccount(String token, int idAccount) {
+    public static boolean checkAccount(String token, int id) {
 
         if (token != null) {
 
             try (Connection connection = HerokuAPI.Account.getDB()) {
                 PreparedStatement preparedStatement = connection.prepareStatement(RoleStatement.account());
 
-                preparedStatement.setInt(1, idAccount);
+                preparedStatement.setInt(1, id);
                 preparedStatement.setString(2, token);
 
                 ResultSet resultSet = preparedStatement.executeQuery();
@@ -117,14 +117,14 @@ public class TokenCheck {
      * @param token
      * @return
      */
-    public static boolean checkAccountAdmin(String token, int idAccount) {
+    public static boolean checkAccountAdmin(String token, int id) {
 
         if (token != null) {
 
             try (Connection connection = HerokuAPI.Account.getDB()) {
                 PreparedStatement preparedStatement = connection.prepareStatement(RoleStatement.accountAdmin());
 
-                preparedStatement.setInt(1, idAccount);
+                preparedStatement.setInt(1, id);
                 preparedStatement.setString(2, token);
 
                 ResultSet resultSet = preparedStatement.executeQuery();

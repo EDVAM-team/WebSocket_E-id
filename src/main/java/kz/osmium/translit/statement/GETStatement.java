@@ -19,38 +19,38 @@ package kz.osmium.translit.statement;
 public class GETStatement {
 
     /**
-     * Выводит все слова с таблицы `word`
+     * Выводит все слова с таблицы `words`
      *
      * @return
      */
     public static String getWordAll() {
-        return "SELECT * FROM `word`";
+        return "SELECT * FROM `words`";
     }
 
     /**
-     * Выводит все символы с таблицы `symbol`
+     * Выводит все символы с таблицы `symbols`
      *
      * @return
      */
     public static String getSymbolAll() {
-        return "SELECT * FROM `symbol`";
+        return "SELECT * FROM `symbols`";
     }
 
     /**
-     * Выводит слово с таблицы `word`
+     * Выводит слово с таблицы `words`
      *
      * @return
      */
     public static String getWord() {
-        return "SELECT * FROM `word` WHERE `word`.`cyrl`=? OR `word`.`latn`=?";
+        return "SELECT * FROM `words` WHERE `words`.`cyrl`=? OR `words`.`latn`=?";
     }
 
     /**
-     * Выводит символ с таблицы `symbol`
+     * Выводит символ с таблицы `symbols`
      *
      * @return
      */
     public static String getSymbol() {
-        return "SELECT * FROM `symbol` WHERE `symbol`.`cyrl`=? OR `symbol`.`latn`=?";
+        return "SELECT * FROM `symbols` WHERE `symbols`.`cyrl`=? OR `symbols`.`latn`=?";
     }
 }

@@ -20,22 +20,22 @@ public class PUTStatement {
 
     /**
      * Вносит изменения в аккаунте.
-     * Используется таблица "account"
+     * Используется таблица "accounts"
      *
      * @return
      */
     public static String putAccount(){
-        return "UPDATE `account`\n" +
-                "SET `account`.`type` = CASE WHEN ? IS NULL THEN `account`.`type` ELSE ? END,\n" +
-                "\t`account`.`id_group` = ?,\n" +
-                "\t`account`.`f_name` = CASE WHEN ? IS NULL THEN `account`.`f_name` ELSE ? END,\n" +
-                "\t`account`.`l_name` = CASE WHEN ? IS NULL THEN `account`.`l_name` ELSE ? END,\n" +
-                "\t`account`.`patronymic` = CASE WHEN ? IS NULL THEN `account`.`patronymic` ELSE ? END,\n" +
-                "\t`account`.`phone` = ?,\n" +
-                "\t`account`.`email` = ?,\n" +
-                "\t`account`.`id_room` = ?,\n" +
-                "\t`account`.`login` = CASE WHEN ? IS NULL THEN `account`.`login` ELSE ? END,\n" +
-                "\t`account`.`pass` = CASE WHEN ? IS NULL THEN `account`.`pass` ELSE ? END\n" +
-                "WHERE `account`.`id_account`=?";
+        return "UPDATE `accounts`\n" +
+                "SET `accounts`.`type` = CASE WHEN ? IS NULL THEN `accounts`.`type` ELSE ? END,\n" +
+                "\t`accounts`.`group_id` = ?,\n" +
+                "\t`accounts`.`name_f` = CASE WHEN ? IS NULL THEN `accounts`.`name_f` ELSE ? END,\n" +
+                "\t`accounts`.`name_l` = CASE WHEN ? IS NULL THEN `accounts`.`name_l` ELSE ? END,\n" +
+                "\t`accounts`.`patronymic` = CASE WHEN ? IS NULL THEN `accounts`.`patronymic` ELSE ? END,\n" +
+                "\t`accounts`.`phone` = ?,\n" +
+                "\t`accounts`.`email` = ?,\n" +
+                "\t`accounts`.`room_id` = ?,\n" +
+                "\t`accounts`.`login` = CASE WHEN ? IS NULL THEN `accounts`.`login` ELSE ? END,\n" +
+                "\t`accounts`.`pass` = CASE WHEN ? IS NULL THEN `accounts`.`pass` ELSE ? END\n" +
+                "WHERE `accounts`.`id`=?";
     }
 }

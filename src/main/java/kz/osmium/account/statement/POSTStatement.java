@@ -19,13 +19,13 @@ package kz.osmium.account.statement;
 public class POSTStatement {
 
     /**
-     * Запрос на создание ячейки данных в таблице `account`
+     * Запрос на создание ячейки данных в таблице `accounts`
      *
      * @return
      */
     public static String postAccount() {
-        return "INSERT INTO `account` " +
-                "(`f_name`, `l_name`, `patronymic`, `phone`, `email`, `type`, `login`, `pass`, `id_room`, `id_group`) " +
+        return "INSERT INTO `accounts` " +
+                "(`name_f`, `name_l`, `patronymic`, `phone`, `email`, `type`, `login`, `pass`, `room_id`, `group_id`) " +
                 "VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     }
 }
