@@ -34,7 +34,7 @@ import java.util.Map;
 public class TranslitGET {
 
     /**
-     * Транслитезирует казахский текст.
+     * Транслитерация казахского текста.
      *
      * @param request
      * @param response
