@@ -1,150 +1,23 @@
-# GET
-
-| Название  | Код |
-|---------|-------------|
-| [Транслитерировать казахский текст]() | 200 |
-| [Получить слова исключения]() | 200 |
-| [Получить символы казахской латиницы]() | 200 |
-
-## Транслитерация казахского текста
-### URL
-```URL
-http://translit.osmium.kz/api/text ?
-& text <String>
-```
-### JSON [200]
-```JSON
-{
-  "text":"content"
-}
-```
-
-## Получить слова исключения
-### URL
-```URL
-https://translit.osmium.kz/api/word
-```
-### JSON [200]
-```JSON
-[
-  {
-   "id":1,
-   "cyrl":"содержимое",
-   "latn":"content"
-  }
-]
-```
-
-## Получить символы казахской латиницы
-### URL
-```URL
-https://translit.osmium.kz/api/symbol
-```
-### JSON [200]
-```JSON
-[
-  {
-   "id":1,
-   "cyrl":"қ",
-   "latn":"Q"
-  }
-]
-```
-
-# POST
-
-| Название  | Код |
-|---------|-------------|
-| [Создание исключающего слова]() | 201 |
-| [Создание символа на латинице]() | 201 |
-
-## Создание исключающего слова
-### URL
-```URL
-https://translit.osmium.kz/api/word
-& token <String>
-& cyrl  <String>
-& latn  <String>
-```
-### JSON [201]
-```JSON
-{
-  "id":1,
-  "cyrl":"содержимое",
-  "latn":"content"
-}
-```
-
-## Создание символа на латинице
-### URL
-```URL
-https://translit.osmium.kz/api/symbol
-& token <String>
-& cyrl  <String>
-& latn  <String>
-```
-### JSON [201]
-```JSON
-{
-  "id":1,
-  "cyrl":"қ",
-  "latn":"Q"
-}
-```
-
-# PUT
-
-| Название  | Код |
-|---------|-------------|
-| [Изменение исключающего слова]() | 200 |
-| [Изменение символа на латинице]() | 200 |
-
-## Изменение исключающего слова
-### URL
-```URL
-https://translit.osmium.kz/api/word ?
-    & token <String>
-    & id    <Integer>
-[-] & cyrl  <String>
-[-] & latn  <String>
-```
-### JSON [200]
-```JSON
-{
-  "status":"SUCCESS"
-}
-```
-
-## Изменение символа на латинице
-### URL
-```URL
-https://translit.osmium.kz/api/symbol ?
-    & token <String>
-    & id    <Integer>
-[-] & cyrl  <String>
-[-] & latn  <String>
-```
-### JSON [200]
-```JSON
-{
-  "status":"SUCCESS"
-}
-```
-
 # DELETE
 
 | Название  | Код |
 |---------|-------------|
-| [Удаление исключающего слова]() | 200 |
-| [Удаление символа на латинице]() | 200 |
+| [Удаляет сессию аккаунта]() | 200 |
+| [Удаляет сессии аккаунта]() | 200 |
 
-## Удаление исключающего слова
+## Удаляет сессию аккаунта
 ### URL
 ```URL
-https://translit.osmium.kz/api/word ?
-& token <String>
-& id    <Integer>
+http://account.osmium.kz/api/auth ?
+& token = <String>
+& id = <Integer>
 ```
+
+| Аргумент  | Тип | Приоретет | Описание |
+|---|---|---|---|
+| `token` | String | 1 | null |
+| `id` | Integer | 1 | null |
+
 ### JSON [200]
 ```JSON
 {
@@ -152,16 +25,30 @@ https://translit.osmium.kz/api/word ?
 }
 ```
 
-## Удаление символа на латинице
+| Аргумент  | Тип | Описание |
+|---|---|---|
+| `status` | String | null |
+
+## Удаляет сессии аккаунта
 ### URL
 ```URL
-https://translit.osmium.kz/api/symbol ?
-& token <String>
-& id    <Integer>
+http://account.osmium.kz/api/auth/all ?
+& token = <String>
+& id = <Integer>
 ```
+
+| Аргумент  | Тип | Приоретет | Описание |
+|---|---|---|---|
+| `token` | String | 1 | null |
+| `id` | Integer | 1 | null |
+
 ### JSON [200]
 ```JSON
 {
   "status":"SUCCESS"
 }
 ```
+
+| Аргумент  | Тип | Описание |
+|---|---|---|
+| `status` | String | null |
