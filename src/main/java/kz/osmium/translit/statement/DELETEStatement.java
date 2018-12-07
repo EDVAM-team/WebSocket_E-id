@@ -17,6 +17,6 @@ public class DELETEStatement {
      * @return
      */
     public static String deleteSymbol() {
-        return "DELETE FROM `symbols` WHERE `symbol`.`id`=?";
+        return "DELETE FROM `symbols` WHERE `symbols`.`id`=?";
     }
 }
