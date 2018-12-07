@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f1a897c-0f26-43e4-8795-18635adbb59a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/json-answer/TRANSLIT.md" beforeDir="false" afterPath="$PROJECT_DIR$/json-answer/TRANSLIT.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitPUT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitPUT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kz/osmium/translit/statement/GETStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/osmium/translit/statement/GETStatement.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -207,7 +207,7 @@
           <entry key="gitignore" value="1" />
           <entry key="gradle" value="12" />
           <entry key="gradlew" value="5" />
-          <entry key="java" value="661" />
+          <entry key="java" value="662" />
           <entry key="md" value="7" />
         </counts>
       </usages-collector>
@@ -215,7 +215,7 @@
         <counts>
           <entry key="CLASS" value="4" />
           <entry key="Groovy" value="12" />
-          <entry key="JAVA" value="661" />
+          <entry key="JAVA" value="662" />
           <entry key="Markdown" value="7" />
           <entry key="PLAIN_TEXT" value="18" />
         </counts>
@@ -225,14 +225,14 @@
           <entry key="PUMPUM" value="20" />
           <entry key="dummy" value="126" />
           <entry key="gradle" value="14" />
-          <entry key="java" value="10531" />
+          <entry key="java" value="10538" />
           <entry key="md" value="912" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="14" />
-          <entry key="JAVA" value="10531" />
+          <entry key="JAVA" value="10538" />
           <entry key="JSON" value="17" />
           <entry key="Markdown" value="895" />
           <entry key="PLAIN_TEXT" value="146" />
@@ -243,11 +243,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitPUT.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="702">
-              <caret line="116" column="71" selection-start-line="116" selection-start-column="71" selection-end-line="116" selection-end-column="71" />
+            <state relative-caret-position="50">
+              <caret line="128" lean-forward="true" selection-start-line="128" selection-end-line="128" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/translit/statement/GETStatement.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="674">
+              <caret line="53" column="81" selection-start-line="53" selection-start-column="81" selection-end-line="53" selection-end-column="81" />
             </state>
           </provider>
         </entry>
@@ -735,7 +744,6 @@
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/translit/objects/gson/Symbol.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/translit/objects/gson/Word.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/translit/statement/DELETEStatement.java" />
-        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/translit/statement/GETStatement.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/translit/statement/POSTStatement.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/translit/statement/PUTStatement.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/account/statement/DELETEStatement.java" />
@@ -751,7 +759,6 @@
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/account/request/AccountPUT.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitDELETE.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitPOST.java" />
-        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitPUT.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/account/request/AccountDELETE.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/account/request/AccountPOST.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/oqu/request/OquDELETE.java" />
@@ -761,6 +768,8 @@
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/main/util/StatusResponse.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitGET.java" />
         <option value="$PROJECT_DIR$/json-answer/TRANSLIT.md" />
+        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitPUT.java" />
+        <option value="$PROJECT_DIR$/src/main/java/kz/osmium/translit/statement/GETStatement.java" />
       </list>
     </option>
   </component>
@@ -771,8 +780,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="102" />
-    <option name="y" value="48" />
+    <option name="x" value="112" />
+    <option name="y" value="47" />
     <option name="width" value="1661" />
     <option name="height" value="939" />
   </component>
@@ -966,10 +975,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="102" y="48" width="1661" height="939" extended-state="0" />
+    <frame x="112" y="47" width="1661" height="939" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19925512" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19925512" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -984,7 +993,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32917318" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5002755" side_tool="true" weight="0.32411504" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4997245" weight="0.3024453" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4997245" weight="0.30212235" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32964602" />
       <window_info anchor="bottom" id="Build" order="10" weight="0.32893288" />
       <window_info anchor="bottom" id="Messages" order="11" />
@@ -1175,13 +1184,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/translit/statement/GETStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="48" column="40" selection-start-line="48" selection-start-column="40" selection-end-line="48" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/translit/statement/POSTStatement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="392">
@@ -1353,6 +1355,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="37" column="6" lean-forward="true" selection-start-line="37" selection-start-column="6" selection-end-line="38" selection-end-column="16" />
+          <folding>
+            <element signature="method#getTranslit#0;class#TranslitGET#0" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1367,6 +1372,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="355">
           <caret line="151" column="32" selection-start-line="151" selection-start-column="32" selection-end-line="151" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1406,8 +1414,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/translit/request/TranslitPUT.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="116" column="71" selection-start-line="116" selection-start-column="71" selection-end-line="116" selection-end-column="71" />
+        <state relative-caret-position="50">
+          <caret line="128" lean-forward="true" selection-start-line="128" selection-end-line="128" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/osmium/translit/statement/GETStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="674">
+          <caret line="53" column="81" selection-start-line="53" selection-start-column="81" selection-end-line="53" selection-end-column="81" />
         </state>
       </provider>
     </entry>

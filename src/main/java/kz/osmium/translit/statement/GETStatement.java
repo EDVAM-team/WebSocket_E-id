@@ -51,6 +51,6 @@ public class GETStatement {
      * @return
      */
     public static String getSymbol() {
-        return "SELECT * FROM `symbols` WHERE `symbols`.`cyrl`=? OR `symbols`.`latn`=?";
+        return "SELECT * FROM `symbols` WHERE BINARY `symbols`.`cyrl`=? OR BINARY `symbols`.`latn`=?";
     }
 }

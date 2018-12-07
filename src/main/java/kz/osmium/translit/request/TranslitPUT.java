@@ -164,8 +164,7 @@ public class TranslitPUT {
 
                     response.status(409);
 
-//                    return StatusResponse.CONFLICT;
-                    return e.getMessage();
+                    return StatusResponse.CONFLICT;
                 }
 
                 return StatusResponse.SUCCESS;
